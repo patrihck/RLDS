@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <Version>3.0.0</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.0.0" />
+    <PackageReference Include="FluentNHibernate" Version="2.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
+    <PackageReference Include="NHibernate" Version="5.2.4" />
+    <PackageReference Include="Serilog.Extensions.Logging.File" Version="1.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RldsApp.Common\RldsApp.Common.csproj" />
+    <ProjectReference Include="..\RldsApp.Data.SqlServer\RldsApp.Data.SqlServer.csproj" />
+    <ProjectReference Include="..\RldsApp.Data\RldsApp.Data.csproj" />
+    <ProjectReference Include="..\RldsApp.Web.Api.Models\RldsApp.Web.Api.Models.csproj" />
+    <ProjectReference Include="..\RldsApp.Web.Common\RldsApp.Web.Common.csproj" />
+  </ItemGroup>
+
+</Project>
