@@ -76,4 +76,11 @@
   <ItemGroup>
     <RefactorLog Include="RldsAppCoreDb.refactorlog" />
   </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="Scripts\Script.PostDeployment1.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\InitialData.sql" />
+    <None Include="Scripts\DictionaryValue.sql" />
+  </ItemGroup>
 </Project>
