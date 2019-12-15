@@ -6,31 +6,31 @@
 
 	/* Defalut Values */
 if not exists (select * from [User] where Login = 'Piotr' )
-	insert into [dbo].[User] ([Login], [Password], [Firstname], [Lastname],[Email],[ts],[UserId])
+	insert into [dbo].[User] ([Login], [Password], [Firstname], [Lastname],[Email])
 		values(N'LogPiotr', N'qwerty',N',Piotr',N'Zubu',N'email@test.com')
 
 if not exists (select * from [User] where Login = 'Mariusz' )
-	insert into [dbo].[User] ([Login], [Password], [Firstname], [Lastname],[Email],[ts],[UserId])
+	insert into [dbo].[User] ([Login], [Password], [Firstname], [Lastname],[Email])
 		values(N'LogMariusz', N'password',N',Mariusz',N'Chochol',N'email@test.com')
 
 if not exists (select * from [User] where Login = 'Jon' )
-	insert into [dbo].[User] ([Login], [Password], [Firstname], [Lastname],[Email],[ts],[UserId])
+	insert into [dbo].[User] ([Login], [Password], [Firstname], [Lastname],[Email])
 		values(N'LogJon', N'qwerty',N',Jon',N'Jonas',N'email@test.com')
 
 if not exists (select * from [User] where Login = 'Alan' )
-	insert into [dbo].[User] ([Login], [Password], [Firstname], [Lastname],[Email],[ts],[UserId])
+	insert into [dbo].[User] ([Login], [Password], [Firstname], [Lastname],[Email])
 		values(N'LogAlan', N'qwerty',N',Alan',N'Zubu',N'email@test.com')
 
 if not exists (select * from [User] where Login = 'Konrad' )
-	insert into [dbo].[User] ([Login], [Password], [Firstname], [Lastname],[Email],[ts],[UserId])
+	insert into [dbo].[User] ([Login], [Password], [Firstname], [Lastname],[Email])
 		values(N'LogKonrad', N'qwerty',N',Konrad',N'Sladko',N'email@test.com')
 
 if not exists (select * from [User] where Login = 'Damian' )
-	insert into [dbo].[User] ([Login], [Password], [Firstname], [Lastname],[Email],[ts],[UserId])
+	insert into [dbo].[User] ([Login], [Password], [Firstname], [Lastname],[Email])
 		values(N'LogDamian', N'qwerty',N',Damian',N'Dam',N'email@test.com')
 
 if not exists (select * from [User] where Login = 'Patryk' )
-	insert into [dbo].[User] ([Login], [Password], [Firstname], [Lastname],[Email],[ts],[UserId])
+	insert into [dbo].[User] ([Login], [Password], [Firstname], [Lastname],[Email])
 		values(N'LogPatryk', N'qwerty',N',Patryk',N'Zubu',N'email@test.com')
 
 
@@ -66,15 +66,6 @@ begin
 		values ( 3, 3)
 end
 
-if not exists (select * from [UserRole] where UserId = 3)
-begin
-	insert into [dbo].[UserRole] ( [UserId], [RoleId]) 
-		values ( 3, 1)
-			insert into [dbo].[UserRole] ( [UserId], [RoleId]) 
-		values ( 3, 2)
-			insert into [dbo].[UserRole] ( [UserId], [RoleId]) 
-		values ( 3, 3)
-end
 
 if not exists (select * from [UserRole] where UserId = 4)
 begin
