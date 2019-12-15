@@ -13,10 +13,11 @@ insert into dbo.Role(RoleName) values(N'Admin');
 -- State Table --
 
 
-if not exists(select * from dbo.TransactionState where Name = 'Not Started') insert into dbo.TransactionState(Name, Ordinal) values(N'Not Started', 0);
+if not exists(select * from dbo.TransactionState where Name = 'PLANNED') insert into dbo.TransactionState(Name, Ordinal) values(N'PLANNED', 0);
 
-if not exists(select * from dbo.TransactionState where Name = 'In Progress') insert into dbo.TransactionState(Name, Ordinal) values(N'In Progress', 0);
+if not exists(select * from dbo.TransactionState where Name = 'AWAITING') insert into dbo.TransactionState(Name, Ordinal) values(N'AWAITING', 0);
 
-if not exists(select * from dbo.TransactionState where Name = 'Completed') insert into dbo.TransactionState(Name, Ordinal) values(N'Completed', 0);
+if not exists(select * from dbo.TransactionState where Name = 'PAID') insert into dbo.TransactionState(Name, Ordinal) values(N'PAID', 0);
 
+if not exists(select * from dbo.TransactionState where Name = 'OUTDATED') insert into dbo.TransactionState(Name, Ordinal) values(N'OUTDATED', 0);
 
