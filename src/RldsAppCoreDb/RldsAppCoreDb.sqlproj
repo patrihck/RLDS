@@ -80,7 +80,7 @@
     <PostDeploy Include="Scripts\Script.PostDeployment.sql" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Scripts\Initialdata.sql" />
+    <None Include="Scripts\InitialData.sql" />
     <None Include="Scripts\DictionaryData.sql" />
   </ItemGroup>
 </Project>
