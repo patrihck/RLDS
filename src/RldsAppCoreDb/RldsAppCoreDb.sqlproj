@@ -70,7 +70,6 @@
     <Build Include="Tables\Account.sql" />
     <Build Include="Tables\AccountType.sql" />
     <Build Include="Tables\UserAccount.sql" />
-    <Build Include="Tables\UserAccountRole.sql" />
     <Build Include="Tables\Group.sql" />
   </ItemGroup>
   <ItemGroup>
