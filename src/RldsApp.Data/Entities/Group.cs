@@ -4,7 +4,7 @@ using System.Text;
 
 namespace RldsApp.Data.Entities
 {
-    class Group : IVersionedEntity
+    public class Group : IVersionedEntity
     {
         public virtual int GroupId { get; set; }
 
@@ -15,6 +15,5 @@ namespace RldsApp.Data.Entities
         public virtual int Ordinal { get; set; }
         
         public virtual byte[] Version { get; set; }
-
     }
 }

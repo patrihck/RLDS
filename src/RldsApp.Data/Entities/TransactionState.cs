@@ -4,7 +4,7 @@ using System.Text;
 
 namespace RldsApp.Data.Entities
 {
-    class TransactionState : IVersionedEntity
+    public class TransactionState : IVersionedEntity
     {
         public virtual long TransactionStateId { get; set; }
 
