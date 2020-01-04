@@ -9,8 +9,11 @@ namespace RldsApp.Data.Entities
 		public byte[] Version { get ; set; }
 
 		public virtual long CategoryId { get; set; }
+
 		public virtual long UserId { get; set; }
+
 		public virtual string Name { get; set; }
+
 		public virtual string Description { get; set; }
 	}
 }
