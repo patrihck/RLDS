@@ -5,12 +5,12 @@ using System.Text;
 namespace RldsApp.Data.Entities
 {
     public class Account : IVersionedEntity
-    {
-        public int AccountId { get; set; }
+	{
+		private readonly IList<User> _users = new List<User>();
+
+		public int AccountId { get; set; }
 
         public Currency Currency { get; set; }
-
-        public User User { get; set; }
 
         public Group Group { get; set; }
 
@@ -18,6 +18,8 @@ namespace RldsApp.Data.Entities
 
         public decimal StartAmount { get; set; }
 
-        public byte[] Version { get ; set; }
+		public virtual IList<User> Users => _users;
+
+		public byte[] Version { get ; set; }
     }
 }
