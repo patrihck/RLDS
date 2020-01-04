@@ -1,5 +1,4 @@
 ﻿using RldsApp.Data.Entities;
-using FluentNHibernate.Mapping;
 
 namespace RldsApp.Data.SqlServer.Mapping
 {
