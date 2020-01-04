@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace RldsApp.Data.Entities
 {
@@ -8,15 +6,15 @@ namespace RldsApp.Data.Entities
 	{
 		public virtual long TransactionId { get; set; }
 
-		public virtual long UserId { get; set; }
+		public virtual User User { get; set; }
 
-		public virtual long SourceAccountId { get; set; }
+		public virtual Account SourceAccount { get; set; }
 
-		public virtual long TargetAccountId { get; set; }
+		public virtual Account TargetAccount { get; set; }
 
-		public virtual long TransactionStateId { get; set; }
+		public virtual TransactionStatus TransactionState { get; set; }
 
-		public virtual long CategoryId { get; set; }
+		public virtual Category Category { get; set; }
 
 		public virtual int Type { get; set; }
 
