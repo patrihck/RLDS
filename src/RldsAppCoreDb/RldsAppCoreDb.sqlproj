@@ -65,7 +65,7 @@
     <Build Include="Tables\UserRole.sql" />
     <Build Include="Tables\Transaction.sql" />
     <Build Include="Tables\Category.sql" />
-    <Build Include="Tables\TransactionState.sql" />
+    <Build Include="Tables\TransactionStatus.sql" />
     <Build Include="Tables\Currency.sql" />
     <Build Include="Tables\Account.sql" />
     <Build Include="Tables\AccountType.sql" />
