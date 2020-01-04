@@ -4,16 +4,16 @@ using System.Text;
 
 namespace RldsApp.Data.Entities
 {
-	class Category : IVersionedEntity
+	public class Category : IVersionedEntity
 	{
-		public byte[] Version { get ; set; }
-
 		public virtual long CategoryId { get; set; }
 
-		public virtual long UserId { get; set; }
+		public virtual User User { get; set; }
 
 		public virtual string Name { get; set; }
 
 		public virtual string Description { get; set; }
+
+		public byte[] Version { get; set; }
 	}
 }
