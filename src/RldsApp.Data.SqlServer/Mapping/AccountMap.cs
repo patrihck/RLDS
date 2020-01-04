@@ -12,6 +12,12 @@ namespace RldsApp.Data.SqlServer.Mapping
 			References(x => x.Currency, "CurrencyId");
 			References(x => x.Group, "GroupId");
 			References(x => x.AccountType, "AccountTypeId");
+
+			HasManyToMany(x => x.Users)
+				.Access.ReadOnlyPropertyThroughCamelCaseField(Prefix.Underscore)
+				.Table("UserAccount")
+				.ParentKeyColumn("UserId")
+				.ChildKeyColumn("AccountId");
 		}
 	}
 
