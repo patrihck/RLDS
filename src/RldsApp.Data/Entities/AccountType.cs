@@ -4,6 +4,11 @@ using System.Text;
 
 namespace RldsApp.Data.Entities
 {
+<<<<<<< HEAD
+    class Class1
+    {
+    }
+=======
     public class AccountType : IVersionedEntity
 	{
 		private readonly IList<User> _users = new List<User>();
@@ -18,4 +23,5 @@ namespace RldsApp.Data.Entities
 
 		public virtual byte[] Version { get; set; }
 	}
+>>>>>>> development
 }
