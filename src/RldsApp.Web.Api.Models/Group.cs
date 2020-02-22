@@ -1,13 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace RldsApp.Web.Api.Models
 {
-    public class Status : ILinkContaining
+    public class Group : ILinkContaining
     {
-        public long StatusId { get; set; }
-        public string Name { get; set; }
-        public int Ordinal { get; set; }
-
+        public virtual int GroupId { get; set; }
+        public virtual string Name { get; set; }
+        public virtual string Info { get; set; }
+        public virtual int Ordinal { get; set; }
 
         private List<Link> _links;
 
