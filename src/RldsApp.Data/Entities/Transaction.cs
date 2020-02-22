@@ -2,7 +2,7 @@
 
 namespace RldsApp.Data.Entities
 {
-	class Transaction : IVersionedEntity
+	public class Transaction : IVersionedEntity
 	{
 		public virtual long TransactionId { get; set; }
 
@@ -12,7 +12,7 @@ namespace RldsApp.Data.Entities
 
 		public virtual Account TargetAccount { get; set; }
 
-		public virtual TransactionStatus TransactionState { get; set; }
+		public virtual TransactionStatus TransactionStatus { get; set; }
 
 		public virtual Category Category { get; set; }
 
