@@ -9,6 +9,9 @@ namespace RldsApp.Web.Api.AutoMappingConfiguration
 		{
 			CreateMap<Currency, Data.Entities.Currency>()
 				.ForMember(dest => dest.Version, opt => opt.Ignore());
+
+			CreateMap<Data.Entities.Currency, Currency>()
+				.ForMember(dest => dest.Links, opt => opt.Ignore());
 		}
 	}
 }
