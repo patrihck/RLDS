@@ -11,11 +11,11 @@ namespace RldsApp.Web.Api.Models
 
 		public int AccountId { get; set; }
 
-		//public Currency Currency { get; set; }
+		public Currency Currency { get; set; }
 
-		//public Group Group { get; set; }
+		public Group Group { get; set; }
 
-		//public AccountType AccountType { get; set; }
+		public AccountType AccountType { get; set; }
 
 		public decimal StartAmount { get; set; }
 
