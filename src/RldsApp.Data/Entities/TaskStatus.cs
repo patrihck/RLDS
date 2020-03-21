@@ -1,8 +1,8 @@
 ﻿namespace RldsApp.Data.Entities
 {
-    public class Status : IVersionedEntity
+    public class TaskStatus : IVersionedEntity
     {
-        public virtual long StatusId { get; set; }
+        public virtual long TaskStatusId { get; set; }
 
         public virtual string Name { get; set; }
 

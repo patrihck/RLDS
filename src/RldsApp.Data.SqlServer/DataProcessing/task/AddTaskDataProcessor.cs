@@ -24,7 +24,7 @@ namespace RldsApp.Data.SqlServer.DataProcessing.task
         public void AddTask(Task task)
         {
             task.CreatedDate = _dateTime.UtcNow;
-            task.Status = _session.QueryOver<Status>().Where(x => x.Name == "Not Started").SingleOrDefault();
+            task.Status = _session.QueryOver<TaskStatus>().Where(x => x.Name == "Not Started").SingleOrDefault();
             task.CreatedBy = _session.QueryOver<User>().Where(x => x.Login == _userSession.Login).SingleOrDefault();
 
             if (task.Users != null && task.Users.Any())

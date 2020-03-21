@@ -12,10 +12,10 @@ namespace RldsApp.Web.Api.AutoMappingConfiguration
     {
         public StatusProfile()
         {
-            CreateMap<Status, Data.Entities.Status>()
+            CreateMap<Status, Data.Entities.TaskStatus>()
                 .ForMember(dest => dest.Version, opt => opt.Ignore());
 
-            CreateMap<Data.Entities.Status, Status>()
+            CreateMap<Data.Entities.TaskStatus, Status>()
                 .ForMember(dest => dest.Links, opt => opt.Ignore());
 
         }
