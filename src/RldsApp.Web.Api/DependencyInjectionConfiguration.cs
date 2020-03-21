@@ -45,7 +45,7 @@ namespace RldsApp.Web.Api
 			services.AddScoped<IAllUsersDataProcessor, AllUsersDataProcessor>();
 			services.AddScoped<IAllUsersInquiryProcessor, AllUsersInquiryProcessor>();
 
-			services.AddScoped<IAddUserDataProcessor, AddUserDataProcessor>();
+			services.AddScoped<IAddCurrencyDataProcessor, AddUserDataProcessor>();
 			services.AddScoped<IAddUserMaintenanceProcessor, AddUserMaintenanceProcessor>();
 
 			services.AddScoped<IUpdateUserDataProcessor, UpdateUserDataProcessor>();

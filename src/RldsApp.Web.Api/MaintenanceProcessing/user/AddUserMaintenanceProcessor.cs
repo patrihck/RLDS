@@ -9,10 +9,10 @@ namespace RldsApp.Web.Api.MaintenanceProcessing
 	public class AddUserMaintenanceProcessor : IAddUserMaintenanceProcessor
 	{
 		private readonly IMapper _autoMapper;
-		private readonly IAddUserDataProcessor _dataProcessor;
+		private readonly IAddCurrencyDataProcessor _dataProcessor;
 		private readonly IUserLinkService _userLinkService;
 
-		public AddUserMaintenanceProcessor(IAddUserDataProcessor dataProcessor, IMapper autoMapper, IUserLinkService userLinkService)
+		public AddUserMaintenanceProcessor(IAddCurrencyDataProcessor dataProcessor, IMapper autoMapper, IUserLinkService userLinkService)
 		{
 			_dataProcessor = dataProcessor;
 			_autoMapper = autoMapper;

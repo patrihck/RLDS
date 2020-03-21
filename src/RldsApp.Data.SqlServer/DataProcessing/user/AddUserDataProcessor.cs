@@ -7,7 +7,7 @@ using RldsApp.Data.Exceptions;
 
 namespace RldsApp.Data.SqlServer.DataProcessing.user
 {
-	public class AddUserDataProcessor : IAddUserDataProcessor
+	public class AddUserDataProcessor : IAddCurrencyDataProcessor
 	{
 		private readonly ISession _session;
 
@@ -16,7 +16,7 @@ namespace RldsApp.Data.SqlServer.DataProcessing.user
 			_session = session;
 		}
 
-		public void AddUser(User user)
+		public void AddCurrency(User user)
 		{
 			if (user.Roles != null && user.Roles.Any())
 			{
