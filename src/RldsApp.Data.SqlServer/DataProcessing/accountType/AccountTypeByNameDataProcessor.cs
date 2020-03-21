@@ -16,7 +16,7 @@ namespace RldsApp.Data.SqlServer.DataProcessing.accountTypes
 
 		public AccountType GetAccountTypeByName(string name)
 		{
-			return _session.Query<AccountType>().Where(x => x.Name == name).SingleOrDefault();
+			return _session.Query<AccountType>().Where(x => x.Name == name)..SingleOrDefault();
 		}
 	}
 }

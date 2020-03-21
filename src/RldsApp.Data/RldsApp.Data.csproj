@@ -14,7 +14,6 @@
     <Folder Include="DataProcessing\group\" />
     <Folder Include="DataProcessing\category\" />
     <Folder Include="DataProcessing\transactionStatus\" />
-    <Folder Include="DataProcessing\transactionState\" />
     <Folder Include="DataProcessing\role\" />
     <Folder Include="DataProcessing\status\" />
     <Folder Include="DataProcessing\transaction\" />
