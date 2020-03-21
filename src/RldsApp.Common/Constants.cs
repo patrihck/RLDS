@@ -63,7 +63,7 @@
 			public const string UnauthorizedMessage = "Unauthorized request";
 			public const string TokenCreatedMessage = "JWT Token created successfuly";
 			public const string NotReadyMessage = "Incorrect project status. Expected status of 'Ready'. Update your project data to continue.";
-			public const string NotFoundValidGroup = "Valid Group is not found";
+			public const string NotFoundValidGroupMessage = "Valid Group is not found";
 		}
 
 		//--------------------

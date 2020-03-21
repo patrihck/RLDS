@@ -43,7 +43,7 @@ namespace RldsApp.Data.SqlServer.DataProcessing.group
 
 			if (user == null)
 			{
-				throw new RootObjectNotFoundException(Constants.Messages.NotFoundValidGroup);
+				throw new RootObjectNotFoundException(Constants.Messages.NotFoundValidGroupMessage);
 			}
 
 			return user;
