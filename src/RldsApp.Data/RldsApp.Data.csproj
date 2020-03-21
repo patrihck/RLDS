@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
@@ -15,9 +15,7 @@
     <Folder Include="DataProcessing\group\" />
     <Folder Include="DataProcessing\category\" />
     <Folder Include="DataProcessing\currency\" />
-    <Folder Include="DataProcessing\transactionStatus\" />
     <Folder Include="DataProcessing\role\" />
-    <Folder Include="DataProcessing\transaction\" />
   </ItemGroup>
 
 </Project>

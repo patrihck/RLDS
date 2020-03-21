@@ -21,9 +21,6 @@
     <Folder Include="DataProcessing\currency\" />
     <Folder Include="DataProcessing\group\" />
     <Folder Include="DataProcessing\role\" />
-    <Folder Include="DataProcessing\transactionState\" />
-    <Folder Include="DataProcessing\transactionStatus\" />
-    <Folder Include="DataProcessing\transaction\" />
   </ItemGroup>
 
 </Project>
