@@ -9,4 +9,17 @@
     <ProjectReference Include="..\RldsApp.Common\RldsApp.Common.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="DataProcessing\account\" />
+    <Folder Include="DataProcessing\accountType\" />
+    <Folder Include="DataProcessing\group\" />
+    <Folder Include="DataProcessing\currency\" />
+    <Folder Include="DataProcessing\category\" />
+    <Folder Include="DataProcessing\transactionStatus\" />
+    <Folder Include="DataProcessing\transactionState\" />
+    <Folder Include="DataProcessing\role\" />
+    <Folder Include="DataProcessing\status\" />
+    <Folder Include="DataProcessing\transaction\" />
+  </ItemGroup>
+
 </Project>
