@@ -16,7 +16,6 @@
     <Folder Include="DataProcessing\category\" />
     <Folder Include="DataProcessing\currency\" />
     <Folder Include="DataProcessing\transactionStatus\" />
-    <Folder Include="DataProcessing\transactionState\" />
     <Folder Include="DataProcessing\role\" />
     <Folder Include="DataProcessing\transaction\" />
   </ItemGroup>
