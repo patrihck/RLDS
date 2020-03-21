@@ -11,7 +11,6 @@
 
   <ItemGroup>
     <Folder Include="DataProcessing\account\" />
-    <Folder Include="DataProcessing\accountType\" />
     <Folder Include="DataProcessing\group\" />
     <Folder Include="DataProcessing\category\" />
     <Folder Include="DataProcessing\transactionStatus\" />
