@@ -1,6 +1,8 @@
 ﻿using NHibernate;
 using RldsApp.Data.DataProcessing.currency;
 using RldsApp.Data.Entities;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace RldsApp.Data.SqlServer.DataProcessing.currency
 {
@@ -13,15 +15,9 @@ namespace RldsApp.Data.SqlServer.DataProcessing.currency
 			_session = session;
 		}
 
-		public QueryResult<Currency> GetCurrencies(PagedDataRequest requestInfo)
+		public List<Currency> GetCurrencies()
 		{
-			var query = _session.QueryOver<Currency>();
-			var totalItemCount = query.ToRowCountQuery().RowCount();
-			var startIndex = ResultsPagingUtility.CalculateStartIndex(requestInfo.PageNumber, requestInfo.PageSize);
-			var currencies = query.Skip(startIndex).Take(requestInfo.PageSize).List();
-			var queryResult = new QueryResult<Currency>(currencies, totalItemCount, requestInfo.PageSize);
-
-			return queryResult;
+			return _session.Query<Currency>().ToList();
 		}
 	}
 }

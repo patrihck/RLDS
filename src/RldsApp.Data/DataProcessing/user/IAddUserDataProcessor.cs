@@ -4,6 +4,6 @@ namespace RldsApp.Data.DataProcessing.user
 {
 	public interface IAddUserDataProcessor
 	{
-		void AddCurrency(User user);
+		void AddUser(User user);
 	}
 }
