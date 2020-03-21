@@ -2,14 +2,11 @@
 using RldsApp.Data.Entities;
 using PropertyValueMapType = System.Collections.Generic.Dictionary<string, object>;
 
-namespace RldsApp.Data.DataProcessing.group
+namespace RldsApp.Data.DataProcessing.role
 {
-	public interface IUpdateGroupDataProcessor
+	public interface IUpdateRoleDataProcessor
 	{
-		Group GetUpdatedGroup(long GroupId, PropertyValueMapType updatedPropertyValueMap);
-		Group UpdateName(long groupId, string name);
-		Group UpdateInfo(long groupId, string info);
-		Group UpdateOrdinal(long groupId, int ordinal);
-
+		Role GetUpdatedRole(long roleId, PropertyValueMapType updatedPropertyValueMap);
+		Role UpdateName(long roleId, string name);
 	}
 }
