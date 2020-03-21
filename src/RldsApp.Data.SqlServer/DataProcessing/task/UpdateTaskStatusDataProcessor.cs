@@ -13,10 +13,17 @@ namespace RldsApp.Data.SqlServer.DataProcessing.task
             _session = session;
         }
 
-        public void UpdateTaskStatus(Task taskToUpdate, string statusName)
+        public void UpdateTaskStatus(Task taskToUpdate, long taskStatusId)
         {
-            var status = _session.QueryOver<Status>().Where(x => x.Name == statusName).SingleOrDefault();
-            taskToUpdate.Status = status;
+            var taskStatus = _session.QueryOver<TaskStatus>().Where(x => x.TaskStatusId == taskStatusId).SingleOrDefault();
+            taskToUpdate.Status = taskStatus;
+            _session.SaveOrUpdate(taskToUpdate);
+        }
+
+        public void UpdateTaskStatus(Task taskToUpdate, string taskStatusName)
+        {
+            var taskStatus = _session.QueryOver<TaskStatus>().Where(x => x.Name == taskStatusName).SingleOrDefault();
+            taskToUpdate.Status = taskStatus;
             _session.SaveOrUpdate(taskToUpdate);
         }
     }
