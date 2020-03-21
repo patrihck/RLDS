@@ -2,11 +2,11 @@
 
 namespace RldsApp.Data.SqlServer.Mapping
 {
-    public class StatusMap : VersionedClassMap<Status>
+    public class StatusMap : VersionedClassMap<TaskStatus>
     {
         public StatusMap()
         {
-            Id(x => x.StatusId);
+            Id(x => x.TaskStatusId);
             Map(x => x.Name).Not.Nullable();
             Map(x => x.Ordinal).Not.Nullable();
         }

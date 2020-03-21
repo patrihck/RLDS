@@ -14,7 +14,7 @@ namespace RldsApp.Data.SqlServer.Mapping
             Map(x => x.CompletedDate).Nullable();
             Map(x => x.CreatedDate).Not.Nullable();
 
-            References(x => x.Status, "StatusId");
+            References(x => x.Status, "TaskStatusId");
             References(x => x.CreatedBy, "CreatedUserId");
 
             HasManyToMany(x => x.Users)

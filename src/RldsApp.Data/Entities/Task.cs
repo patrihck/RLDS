@@ -19,7 +19,7 @@ namespace RldsApp.Data.Entities
 
         public virtual DateTime? CompletedDate { get; set; }
 
-        public virtual Status Status { get; set; }
+        public virtual TaskStatus Status { get; set; }
 
         public virtual DateTime CreatedDate { get; set; }
 
