@@ -10,7 +10,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="DataProcessing\account\" />
     <Folder Include="DataProcessing\accountType\" />
     <Folder Include="DataProcessing\group\" />
     <Folder Include="DataProcessing\category\" />
