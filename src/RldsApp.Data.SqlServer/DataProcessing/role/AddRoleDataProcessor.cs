@@ -18,6 +18,18 @@ namespace RldsApp.Data.SqlServer.DataProcessing.role
 
 		public void AddRole(Role role)
 		{
+			
+			if (role.Users != null && role.Users.Any())
+			{
+				for (var i = 0; i < role.Users.Count; ++i)
+				{
+					var user = role.Users[i];
+					var persistedUser = _session.Get<User>(user.UserId);
+
+					role.Users[i] = persistedUser ?? throw new ChildObjectNotFoundException(Constants.Messages.UserNotFound);
+				}
+			}
+
 			_session.SaveOrUpdate(role);
 		}
 	}
