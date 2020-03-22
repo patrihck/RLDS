@@ -39,14 +39,14 @@ namespace RldsApp.Data.SqlServer.DataProcessing.group
 
 		public virtual Group GetValidGroup(long groupId)
 		{
-			var user = _session.Get<Group>(groupId);
+			var group = _session.Get<Group>(groupId);
 
-			if (user == null)
+			if (group == null)
 			{
-				throw new RootObjectNotFoundException(Constants.Messages.NotFoundValidGroupMessage);
+				throw new ChildObjectNotFoundException(Constants.Messages.ValidGroupNotFoundMessage);
 			}
 
-			return user;
+			return group;
 		}
 
 		public Group UpdateInfo(long groupId, string info)

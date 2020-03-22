@@ -4,11 +4,11 @@ using RldsApp.Data.Entities;
 
 namespace RldsApp.Data.SqlServer.DataProcessing.group
 {
-	public class UserByIdDataProcessor : IGroupByIdDataProcessor
+	public class GroupByIdDataProcessor : IGroupByIdDataProcessor
 	{
 		private readonly ISession _session;
 
-		public UserByIdDataProcessor(ISession session)
+		public GroupByIdDataProcessor(ISession session)
 		{
 			_session = session;
 		}
