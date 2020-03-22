@@ -43,7 +43,7 @@ namespace RldsApp.Data.SqlServer.DataProcessing.group
 
 			if (group == null)
 			{
-				throw new RootObjectNotFoundException(Constants.Messages.ValidGroupNotFoundMessage);
+				throw new ChildObjectNotFoundException(Constants.Messages.ValidGroupNotFoundMessage);
 			}
 
 			return group;

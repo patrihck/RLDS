@@ -45,7 +45,7 @@ namespace RldsApp.Data.SqlServer.DataProcessing.role
 
 			if (role == null)
 			{
-				throw new RootObjectNotFoundException(Constants.Messages.ValidRoleNotFound);
+				throw new ChildObjectNotFoundException(Constants.Messages.ValidRoleNotFound);
 			}
 
 			return role;
