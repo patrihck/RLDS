@@ -65,6 +65,7 @@
 			public const string NotReadyMessage = "Incorrect project status. Expected status of 'Ready'. Update your project data to continue.";
 			public const string ValidGroupNotFoundMessage = "Valid Group is not found";
 			public const string ValidRoleNotFound = "Valid Role is not found";
+			public const string GroupNotFound = "Group not found";
 		}
 
 		//--------------------
