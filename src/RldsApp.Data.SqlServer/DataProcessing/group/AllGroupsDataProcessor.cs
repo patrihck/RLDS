@@ -4,7 +4,7 @@ using RldsApp.Data.Entities;
 
 namespace RldsApp.Data.SqlServer.DataProcessing.group
 {
-	public class AllGroupsDataProcessor : IAllGroupDataProcessor
+	public class AllGroupsDataProcessor : IAllGroupsDataProcessor
 	{
 		private readonly ISession _session;
 

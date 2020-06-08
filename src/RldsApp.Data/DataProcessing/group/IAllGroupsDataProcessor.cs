@@ -2,7 +2,7 @@
 
 namespace RldsApp.Data.DataProcessing.group
 {
-	public interface IAllGroupDataProcessor
+	public interface IAllGroupsDataProcessor
 	{
 		QueryResult<Group> GetGroups(PagedDataRequest requestInfo);
 	}
