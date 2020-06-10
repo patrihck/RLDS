@@ -1,4 +1,5 @@
-﻿using RldsApp.Data.Entities;
+﻿using FluentNHibernate.Mapping;
+using RldsApp.Data.Entities;
 
 namespace RldsApp.Data.SqlServer.Mapping
 {
@@ -6,8 +7,14 @@ namespace RldsApp.Data.SqlServer.Mapping
 	{
 		public RoleMap()
 		{
-			Id(x => x.RoleId);
+			Id(x => x.Id, "RoleId");
 			Map(x => x.RoleName).Not.Nullable();
+
+			HasManyToMany(x => x.Users)
+				.Access.ReadOnlyPropertyThroughCamelCaseField(Prefix.Underscore)
+				.Table("UserRole")
+				.ParentKeyColumn("RoleId")
+				.ChildKeyColumn("UserId");
 		}
 	}
 }

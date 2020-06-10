@@ -12,8 +12,3 @@ Post-Deployment Script Template
 
 :r .\DictionaryData.sql
 :r .\InitialData.sql
-
-
-
-
-

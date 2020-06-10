@@ -1,27 +1,32 @@
-﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
 
 namespace RldsApp.Web.Api.Models
 {
 	public class Account : ILinkContaining
 	{
-		private readonly IList<User> _users = new List<User>();
+		private List<Link> _links;
 
-		public int AccountId { get; set; }
+		[Key]
+		public long Id { get; set; }
 
+		[Editable(true)]
+		public string Name { get; set; }
+
+		[Editable(true)]
+		public User User { get; set; }
+
+		[Editable(false)]
 		public Currency Currency { get; set; }
 
+		[Editable(true)]
 		public Group Group { get; set; }
 
-		public AccountType AccountType { get; set; }
-
+		[Editable(false)]
 		public decimal StartAmount { get; set; }
 
-		public IList<User> Users => _users;
-
-		private List<Link> _links;
+		[Editable(false)]
+		public byte[] Version { get; set; }
 
 		[Editable(false)]
 		public List<Link> Links

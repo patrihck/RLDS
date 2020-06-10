@@ -53,6 +53,7 @@
 			public const string LoggerInfoError = "Something went wrong. Status code is other than 200";
 			public const string UserNotFound = "User not found";
 			public const string RoleNotFound = "Role not found";
+			public const string CurrencyNotFound = "Currency not found";
 			public const string StatusNotFound = "Status not found";
 			public const string ProjectNotFound = "Project not found";
 			public const string JobNotFound = "Job not found or access denied";
@@ -63,9 +64,13 @@
 			public const string UnauthorizedMessage = "Unauthorized request";
 			public const string TokenCreatedMessage = "JWT Token created successfuly";
 			public const string NotReadyMessage = "Incorrect project status. Expected status of 'Ready'. Update your project data to continue.";
-			public const string ValidGroupNotFoundMessage = "Valid Group is not found";
-			public const string ValidRoleNotFound = "Valid Role is not found";
+			public const string TransactionNotFound = "Transaction not found.";
+			public const string TransactionStatusNotFound = "Transaction Status has not been founded.";
+			public const string AccountNotFound = "Account not found";
 			public const string GroupNotFound = "Group not found";
+			public const string TransactionCategoryNotFound = "Transaction category not found";
+			public const string TransactionTypeNotFound = "Transaction type not found";
+			public const string CurrencyRateNotFound = "Currency rate not found";
 		}
 
 		//--------------------

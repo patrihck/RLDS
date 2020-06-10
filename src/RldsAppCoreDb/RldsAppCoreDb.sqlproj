@@ -6,8 +6,8 @@
     <Name>RldsAppCoreDb</Name>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
-    <ProjectGuid>{b4063b51-312d-4a01-84fd-a720d374fc66}</ProjectGuid>
-    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
+    <ProjectGuid>{114bbf3a-0beb-41de-bdfd-d7b665e1ec76}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql110DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
     <RootPath>
     </RootPath>
@@ -64,22 +64,23 @@
     <Build Include="Tables\Role.sql" />
     <Build Include="Tables\UserRole.sql" />
     <Build Include="Tables\Transaction.sql" />
-    <Build Include="Tables\Category.sql" />
-    <Build Include="Tables\TransactionStatus.sql" />
     <Build Include="Tables\Currency.sql" />
+    <Build Include="Tables\TransactionStatus.sql" />
+    <Build Include="Tables\TransactionType.sql" />
     <Build Include="Tables\Account.sql" />
-    <Build Include="Tables\AccountType.sql" />
-    <Build Include="Tables\UserAccount.sql" />
+    <Build Include="Tables\CurrencyRate.sql" />
+    <Build Include="Tables\TransactionCategory.sql" />
     <Build Include="Tables\Group.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="RldsAppCoreDb.refactorlog" />
   </ItemGroup>
   <ItemGroup>
-    <PostDeploy Include="Scripts\Script.PostDeployment.sql" />
+    <None Include="RldsAppCoreDb.publish.xml" />
+    <None Include="Scripts\DictionaryData.sql" />
+    <None Include="Scripts\InitialData.sql" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Scripts\InitialData.sql" />
-    <None Include="Scripts\DictionaryData.sql" />
+    <PostDeploy Include="Scripts\Script.PostDeployment.sql" />
   </ItemGroup>
 </Project>

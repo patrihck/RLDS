@@ -1,25 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.ComponentModel.DataAnnotations;
+
 namespace RldsApp.Web.Api.Models
 {
-	public class AccountType : ILinkContaining
+	public class CurrencyRate : ILinkContaining
 	{
 		private List<Link> _links;
 
-		[Required(AllowEmptyStrings = false)]
-		public long AccountTypeId { get; set; }
-	
-		[Editable(false)]
-		public int? UserId { get; set; }
-		
-		[Required(AllowEmptyStrings = false)]
-		public string Name { get; set; }
-	
+		[Key]
+		public Currency SourceCurrency { get; set; }
+
+		[Key]
+		public Currency TargetCurrency { get; set; }
+
+		[Key]
+		public DateTime Date { get; set; }
+
 		[Editable(true)]
-		public string Description { get; set; }
-	
+		public decimal Rate { get; set; }
+
+		public virtual byte[] Version { get; set; }
+
+		[Editable(false)]
 		public List<Link> Links
 		{
 			get { return _links ?? (_links = new List<Link>()); }

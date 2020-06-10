@@ -12,6 +12,7 @@ namespace RldsApp.Web.Api.AutoMappingConfiguration
 
 			CreateMap<Data.Entities.User, User>()
 				.ForMember(dest => dest.Links, opt => opt.Ignore());
+
 		}
 	}
 }

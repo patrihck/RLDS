@@ -1,16 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace RldsApp.Web.Api.Models
 {
 	public class NewGroup
 	{
-		[Required]
+		[Required(AllowEmptyStrings = false)]
 		public string Name { get; set; }
-		public string Info { get; set; }
-		public string Ordinal { get; set; }
 
+		[Required(AllowEmptyStrings = false)]
+		public string Info { get; set; }
+
+		[Required(AllowEmptyStrings = false)]
+		public int Ordinal { get; set; }
 	}
 }
