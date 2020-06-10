@@ -3,16 +3,15 @@ using RldsApp.Web.Api.Models;
 
 namespace RldsApp.Web.Api.AutoMappingConfiguration
 {
-	public class UserProfile : Profile
+	public class CurrencyRateProfile : Profile
 	{
-		public UserProfile()
+		public CurrencyRateProfile()
 		{
-			CreateMap<User, Data.Entities.User>()
+			CreateMap<CurrencyRate, Data.Entities.CurrencyRate>()
 				.ForMember(dest => dest.Version, opt => opt.Ignore());
 
-			CreateMap<Data.Entities.User, User>()
+			CreateMap<Data.Entities.CurrencyRate, CurrencyRate>()
 				.ForMember(dest => dest.Links, opt => opt.Ignore());
-
 		}
 	}
 }

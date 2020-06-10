@@ -6,16 +6,18 @@ namespace RldsApp.Data.SqlServer.Mapping
 	{
 		public TransactionMap()
 		{
-			Id(x => x.TransactionId);
+			Id(x => x.Id, "TransactionId");
 			Map(x => x.Date).Not.Nullable();
-			Map(x => x.Description).Not.Nullable();
+			Map(x => x.Description).Nullable();
 			Map(x => x.Amount).Not.Nullable();
 
-			References(x => x.Category, "CategoryId");
-			References(x => x.SourceAccount, "SourceAccountId");
-			References(x => x.TargetAccount, "TargetAccountId");
-			References(x => x.TransactionStatus, "TransactionStateId");
 			References(x => x.User, "UserId");
+			References(x => x.Sender, "SenderId");
+			References(x => x.Receiver, "ReceiverId");
+			References(x => x.Type, "TypeId");
+			References(x => x.Category, "CategoryId");
+			References(x => x.Status, "StatusId");
+			References(x => x.Currency, "CurrencyId");
 		}
 	}
 }

@@ -1,16 +1,15 @@
-﻿using AutoMapper;
-using RldsApp.Data.Entities;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using User = RldsApp.Web.Api.Models.User;
+using AutoMapper;
+using RldsApp.Data.Entities; 
 
 namespace RldsApp.Web.Api.AutoMappingConfiguration
 {
-	public class TaskAssigneesResolver : IValueResolver<Task, Models.Task, List<User>>
+	public class TaskAssigneesResolver : IValueResolver<Task, Models.Task, List<Models.User>>
 	{
-		public List<User> Resolve(Task source, Models.Task destination, List<User> users, ResolutionContext context)
+		public List<Models.User> Resolve(Task source, Models.Task destination, List<Models.User> destMember, ResolutionContext context)
 		{
-			return source.Users.Select(x => context.Mapper.Map<User>(x)).ToList();
+			return source.Assignees.Select(x => context.Mapper.Map<Models.User>(x)).ToList();
 		}
 	}
 }

@@ -8,7 +8,7 @@ namespace RldsApp.Web.Api.AutoMappingConfiguration
 		public NewUserProfile()
 		{
 			CreateMap<NewUser, Data.Entities.User>()
-				.ForMember(dest => dest.UserId, opt => opt.Ignore())
+				.ForMember(dest => dest.Id, opt => opt.Ignore())
 				.ForMember(dest => dest.Version, opt => opt.Ignore())
 				.ForMember(dest => dest.Roles, opt => opt.Ignore());
 		}

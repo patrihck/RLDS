@@ -1,14 +1,16 @@
-﻿using RldsApp.Data.Entities;
+﻿using FluentNHibernate.Mapping;
+using RldsApp.Common;
+using RldsApp.Data.Entities;
 
 namespace RldsApp.Data.SqlServer.Mapping
 {
-    public class TransactionStatusMap : VersionedClassMap<TransactionStatus>
-    {
-        public TransactionStatusMap()
-        {
-            Id(x => x.TransactionStatusId);
-            Map(x => x.Name).Not.Nullable();
-            Map(x => x.Ordinal).Not.Nullable();
-        }
-    }
+	public class TransactionStatusMap : ClassMap<TransactionStatus>
+	{
+		public TransactionStatusMap()
+		{
+			Id(x => x.Id, "TransactionStatusId").CustomType<TransactionStatusValue>();
+			Map(x => x.Name).Not.Nullable();
+			Map(x => x.Ordinal).Not.Nullable();
+		}
+	}
 }

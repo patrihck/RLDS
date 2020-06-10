@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using RldsApp.Web.Api.Models;
+using AutoMapper;
 
 namespace RldsApp.Web.Api.AutoMappingConfiguration
 {
@@ -7,11 +6,11 @@ namespace RldsApp.Web.Api.AutoMappingConfiguration
 	{
 		public AccountProfile()
 		{
-			CreateMap<Account, Data.Entities.Account>()
-					.ForMember(dest => dest.Version, opt => opt.Ignore());
+			CreateMap<Models.Account, Data.Entities.Account>()
+				.ForMember(dest => dest.Version, opt => opt.Ignore());
 
-			CreateMap<Data.Entities.Account, Account>()
-					.ForMember(dest => dest.Links, opt => opt.Ignore());
+			CreateMap<Data.Entities.Account, Models.Account>()
+				.ForMember(dest => dest.Links, opt => opt.Ignore());
 		}
 	}
 }
