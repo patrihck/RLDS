@@ -1,23 +1,22 @@
-﻿-- Role table --
+﻿-- TransactionStatus table --
+IF NOT EXISTS(SELECT * FROM [dbo].[TransactionStatus] WHERE [Name] = 'Planned')
+	INSERT INTO [dbo].[TransactionStatus]([TransactionStatusId], [Name], [Ordinal]) VALUES (100, 'Planned', 1);
 
-if not exists(select * from dbo.Role where RoleName = 'User')
-insert into dbo.Role(RoleName) values(N'User');
+IF NOT EXISTS(SELECT * FROM [dbo].[TransactionStatus] WHERE [Name] = 'Awaiting')
+	INSERT INTO [dbo].[TransactionStatus]([TransactionStatusId], [Name], [Ordinal]) VALUES (200, 'Awaiting', 2);
 
-if not exists(select * from dbo.Role where RoleName = 'SuperUser')
-insert into dbo.Role(RoleName) values(N'SuperUser');
+IF NOT EXISTS(SELECT * FROM [dbo].[TransactionStatus] WHERE [Name] = 'Paid')
+	INSERT INTO [dbo].[TransactionStatus]([TransactionStatusId], [Name], [Ordinal]) VALUES (300, 'Paid', 3);
 
-if not exists(select * from dbo.Role where RoleName = 'Admin')
-insert into dbo.Role(RoleName) values(N'Admin');
+IF NOT EXISTS(SELECT * FROM [dbo].[TransactionStatus] WHERE [Name] = 'Outdated')
+	INSERT INTO [dbo].[TransactionStatus]([TransactionStatusId], [Name], [Ordinal]) VALUES (400, 'Outdated', 4);
 
+-- TransactionType table --
+IF NOT EXISTS(SELECT * FROM [dbo].[TransactionType] WHERE [Name] = 'Incoming transfer')
+	INSERT INTO [dbo].[TransactionType]([TransactionTypeId], [Name]) VALUES (100, 'Incomming transfer');
 
--- State Table --
+IF NOT EXISTS(SELECT * FROM [dbo].[TransactionType] WHERE [Name] = 'Outgoing transfer')
+	INSERT INTO [dbo].[TransactionType]([TransactionTypeId], [Name]) VALUES (200, 'Outgoing transfer');
 
-
-if not exists(select * from dbo.TransactionStatus where Name = 'PLANNED') insert into dbo.TransactionStatus(Name, Ordinal) values(N'PLANNED', 0);
-
-if not exists(select * from dbo.TransactionStatus where Name = 'AWAITING') insert into dbo.TransactionStatus(Name, Ordinal) values(N'AWAITING', 0);
-
-if not exists(select * from dbo.TransactionStatus where Name = 'PAID') insert into dbo.TransactionStatus(Name, Ordinal) values(N'PAID', 0);
-
-if not exists(select * from dbo.TransactionStatus where Name = 'OUTDATED') insert into dbo.TransactionStatus(Name, Ordinal) values(N'OUTDATED', 0);
-
+IF NOT EXISTS(SELECT * FROM [dbo].[TransactionType] WHERE [Name] = 'Transfer')
+	INSERT INTO [dbo].[TransactionType]([TransactionTypeId], [Name]) VALUES (300, 'Transfer');

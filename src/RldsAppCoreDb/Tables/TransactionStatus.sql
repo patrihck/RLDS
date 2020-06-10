@@ -1,7 +1,9 @@
 ﻿CREATE TABLE [dbo].[TransactionStatus]
 (
-	[TransactionStatusId] BIGINT IDENTITY(1,1) NOT NULL PRIMARY KEY, 
-    [Name] VARCHAR(50) NOT NULL, 
-    [ts] ROWVERSION NOT NULL, 
-    [Ordinal] INT NULL
-)
+	[TransactionStatusId] [bigint] NOT NULL,
+	[Name] [nvarchar](50) NOT NULL,
+	[Ordinal] INT NOT NULL,
+	CONSTRAINT [PK_TransactionStatus]
+		PRIMARY KEY ([TransactionStatusId])
+);
+GO

@@ -3,26 +3,32 @@ using System.ComponentModel.DataAnnotations;
 
 namespace RldsApp.Web.Api.Models
 {
-    public class Role : ILinkContaining
-    {
-        private List<Link> _links;
+	public class Role : ILinkContaining
+	{
+		private List<Link> _links;
 
-        [Key]
-        public long? RoleId { get; set; }
+		[Key]
+		public long Id { get; set; }
 
-        [Editable(true)]
-        public string RoleName { get; set; }
+		[Editable(true)]
+		public string RoleName { get; set; }
 
-        [Editable(false)]
-        public List<Link> Links
-        {
-            get { return _links ?? (_links = new List<Link>()); }
-            set { _links = value; }
-        }
+		[Editable(false)]
+		public List<User> Users { get; set; }
 
-        public void AddLink(Link link)
-        {
-            Links.Add(link);
-        }
-    }
+		[Editable(false)]
+		public virtual byte[] Version { get; set; }
+
+		[Editable(false)]
+		public List<Link> Links
+		{
+			get { return _links ?? (_links = new List<Link>()); }
+			set { _links = value; }
+		}
+
+		public void AddLink(Link link)
+		{
+			Links.Add(link);
+		}
+	}
 }

@@ -3,16 +3,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <Name>RldsAppCoreDb</Name>
+    <Name>RldsApp.Database</Name>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
-    <ProjectGuid>{114bbf3a-0beb-41de-bdfd-d7b665e1ec76}</ProjectGuid>
-    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql110DatabaseSchemaProvider</DSP>
+    <ProjectGuid>{7cf7cf9f-7431-40b8-b8e9-f40ab8962148}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
     <RootPath>
     </RootPath>
-    <RootNamespace>RldsAppCoreDb</RootNamespace>
-    <AssemblyName>RldsAppCoreDb</AssemblyName>
+    <RootNamespace>RldsApp.Database</RootNamespace>
+    <AssemblyName>RldsApp.Database</AssemblyName>
     <ModelCollation>1033, CI</ModelCollation>
     <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
     <DeployToDatabase>True</DeployToDatabase>
@@ -56,31 +56,5 @@
   <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
-    <Folder Include="Tables" />
-    <Folder Include="Scripts" />
-  </ItemGroup>
-  <ItemGroup>
-    <Build Include="Tables\User.sql" />
-    <Build Include="Tables\Role.sql" />
-    <Build Include="Tables\UserRole.sql" />
-    <Build Include="Tables\Transaction.sql" />
-    <Build Include="Tables\Currency.sql" />
-    <Build Include="Tables\TransactionStatus.sql" />
-    <Build Include="Tables\TransactionType.sql" />
-    <Build Include="Tables\Account.sql" />
-    <Build Include="Tables\CurrencyRate.sql" />
-    <Build Include="Tables\TransactionCategory.sql" />
-    <Build Include="Tables\Group.sql" />
-  </ItemGroup>
-  <ItemGroup>
-    <RefactorLog Include="RldsAppCoreDb.refactorlog" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="RldsAppCoreDb.publish.xml" />
-    <None Include="Scripts\DictionaryData.sql" />
-    <None Include="Scripts\InitialData.sql" />
-  </ItemGroup>
-  <ItemGroup>
-    <PostDeploy Include="Scripts\Script.PostDeployment.sql" />
   </ItemGroup>
 </Project>

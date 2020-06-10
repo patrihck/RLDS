@@ -1,8 +1,10 @@
 ﻿CREATE TABLE [dbo].[Group]
 (
-    [GroupId] INT NOT NULL PRIMARY KEY, 
-    [Name] NVARCHAR(50) NULL, 
-    [Info] NVARCHAR(128) NULL, 
-    [Ordinal] INT NULL, 
-    [ts] ROWVERSION NULL
+	[GroupId] [bigint] IDENTITY NOT NULL,
+	[Name] [nvarchar](50) NOT NULL,
+	[Info] [nvarchar](250) NOT NULL,
+	[Ordinal] [int] NOT NULL,
+	[ts] [rowversion] NOT NULL,
+	CONSTRAINT [PK_Group]
+		PRIMARY KEY ([GroupId])
 )

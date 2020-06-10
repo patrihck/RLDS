@@ -1,9 +1,10 @@
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace RldsApp.Web.Api.Models
 {
-	public class Account : ILinkContaining
+	public class Transaction : ILinkContaining
 	{
 		private List<Link> _links;
 
@@ -11,19 +12,34 @@ namespace RldsApp.Web.Api.Models
 		public long Id { get; set; }
 
 		[Editable(true)]
-		public string Name { get; set; }
+		public DateTime Date { get; set; }
 
 		[Editable(true)]
 		public User User { get; set; }
 
-		[Editable(false)]
+		[Editable(true)]
+		public Account Sender { get; set;}
+
+		[Editable(true)]
+		public Account Receiver { get; set; }
+
+		[Editable(true)]
+		public TransactionType Type { get; set; }
+
+		[Editable(true)]
+		public TransactionCategory Category { get; set; }
+
+		[Editable(true)]
+		public TransactionStatus Status { get; set; }
+
+		[Editable(true)]
 		public Currency Currency { get; set; }
 
 		[Editable(true)]
-		public Group Group { get; set; }
+		public string Description { get; set; }
 
-		[Editable(false)]
-		public decimal StartAmount { get; set; }
+		[Editable(true)]
+		public decimal Amount { get; set; }
 
 		[Editable(false)]
 		public byte[] Version { get; set; }

@@ -1,25 +1,24 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace RldsApp.Web.Api.Models
 {
-	public class Group : ILinkContaining
+	public class TransactionCategory : ILinkContaining
 	{
 		private List<Link> _links;
 
 		[Key]
 		public long Id { get; set; }
 
+		[Required(AllowEmptyStrings = false)]
 		[Editable(true)]
 		public string Name { get; set; }
 
 		[Editable(true)]
-		public string Info { get; set; }
+		public long? RootId { get; set; }
 
-		[Editable(true)]
-		public int Ordinal { get; set; }
-
-		public virtual byte[] Version { get; set; }
+		[Editable(false)]
+		public byte[] Version { get; set; }
 
 		[Editable(false)]
 		public List<Link> Links

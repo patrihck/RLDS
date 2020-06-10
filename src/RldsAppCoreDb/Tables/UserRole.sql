@@ -1,11 +1,14 @@
 ﻿CREATE TABLE [dbo].[UserRole]
 (
-	[UserId] BIGINT NOT NULL, 
-    [RoleId] BIGINT NOT NULL, 
-    [ts] ROWVERSION NOT NULL,
-	PRIMARY KEY (UserId, RoleId),
-	CONSTRAINT FK_User 
-      FOREIGN KEY (UserId) REFERENCES dbo.[User] (UserId),
-	CONSTRAINT FK_Role 
-      FOREIGN KEY (RoleId) REFERENCES dbo.[Role] (RoleId)
-)
+	[UserId] [bigint] NOT NULL,
+	[RoleId] [bigint] NOT NULL,
+	CONSTRAINT [PK_UserRole]
+		PRIMARY KEY ([UserId], [RoleId]),
+	CONSTRAINT [FK_UserRole_User]
+		FOREIGN KEY ([UserId])
+		REFERENCES [User] ([UserId]),
+	CONSTRAINT [FK_UserRole_Role]
+		FOREIGN KEY ([RoleId])
+		REFERENCES [Role] ([RoleId])
+);
+GO
