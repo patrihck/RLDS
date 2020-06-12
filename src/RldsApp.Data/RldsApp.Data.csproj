@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
@@ -7,15 +7,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\RldsApp.Common\RldsApp.Common.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="DataProcessing\account\" />
-    <Folder Include="DataProcessing\accountType\" />
-    <Folder Include="DataProcessing\group\" />
-    <Folder Include="DataProcessing\category\" />
-    <Folder Include="DataProcessing\currency\" />
-    <Folder Include="DataProcessing\role\" />
   </ItemGroup>
 
 </Project>

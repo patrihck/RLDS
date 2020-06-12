@@ -1,5 +1,5 @@
-﻿using RldsApp.Data;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
+using RldsApp.Data;
 
 namespace RldsApp.Web.Api.InquiryProcessing
 {

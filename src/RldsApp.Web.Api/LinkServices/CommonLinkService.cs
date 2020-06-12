@@ -1,9 +1,9 @@
-﻿using RldsApp.Common;
+﻿using System;
+using System.Net.Http;
+using RldsApp.Common;
 using RldsApp.Common.Extensions;
 using RldsApp.Web.Api.Models;
 using RldsApp.Web.Common.Security;
-using System;
-using System.Net.Http;
 
 namespace RldsApp.Web.Api.LinkServices
 {

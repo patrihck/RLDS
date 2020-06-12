@@ -9,10 +9,12 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using NHibernate;
 using RldsApp.Data.SqlServer.Mapping;
 using RldsApp.Web.Common.ErrorHandling;
+
 using CoreLogger = Microsoft.Extensions.Logging;
 
 namespace RldsApp.Web.Api
@@ -30,15 +32,21 @@ namespace RldsApp.Web.Api
 		{
 			services.AddMvc()
 				.SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
-				.AddJsonOptions(opt => opt.SerializerSettings.ContractResolver = new DefaultContractResolver());
+				.AddJsonOptions(JsonConfiguration);
 
-			services.AddAutoMapper();
+			services.AddAutoMapper(conf => conf.AddProfiles(typeof(Startup).Assembly));
 			services.AddApiVersioning();
 			services.AddHttpContextAccessor();
 
 			ConfigureNHibernate(services);
 			DependencyInjectionConfiguration.AddBindings(services);
 			ConfigureAuthentication(services);
+		}
+
+		private void JsonConfiguration(MvcJsonOptions opt)
+		{
+			opt.SerializerSettings.ContractResolver = new DefaultContractResolver();
+			opt.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
 		}
 
 		public void Configure(IApplicationBuilder app, IHostingEnvironment env, CoreLogger.ILoggerFactory loggerFactory)
@@ -59,7 +67,8 @@ namespace RldsApp.Web.Api
 
 		private void ConfigureNHibernate(IServiceCollection services)
 		{
-			services.AddSingleton((provider) => {
+			services.AddSingleton((provider) =>
+			{
 				var config = Fluently.Configure()
 				.Database(MsSqlConfiguration.MsSql2012.ConnectionString(Configuration["AppConfig:ConnectionString"]))
 				.CurrentSessionContext("web")
@@ -68,7 +77,8 @@ namespace RldsApp.Web.Api
 				return config.BuildSessionFactory();
 			});
 
-			services.AddScoped((provider) => {
+			services.AddScoped((provider) =>
+			{
 				var factory = provider.GetService<ISessionFactory>();
 				return factory.OpenSession();
 			});

@@ -1,7 +1,7 @@
-﻿using RldsApp.Web.Api.MaintenanceProcessing;
-using RldsApp.Web.Api.Models;
+﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
+using RldsApp.Web.Api.MaintenanceProcessing;
+using RldsApp.Web.Api.Models;
 
 namespace RldsApp.Web.Api.Controllers.V1
 {

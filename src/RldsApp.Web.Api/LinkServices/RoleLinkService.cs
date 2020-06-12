@@ -1,6 +1,6 @@
-﻿using RldsApp.Common;
+﻿using System.Net.Http;
+using RldsApp.Common;
 using RldsApp.Web.Api.Models;
-using System.Net.Http;
 
 namespace RldsApp.Web.Api.LinkServices
 {
@@ -15,7 +15,7 @@ namespace RldsApp.Web.Api.LinkServices
 
 		public void AddSelfLink(Role role)
 		{
-			role.AddLink(GetSelfLink(role.RoleId.Value));
+			role.AddLink(GetSelfLink(role.Id));
 		}
 
 		public virtual Link GetAllRolesLink()
