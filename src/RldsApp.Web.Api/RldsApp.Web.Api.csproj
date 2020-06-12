@@ -13,7 +13,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
-    <PackageReference Include="NHibernate" Version="5.2.4" />
+    <PackageReference Include="NHibernate" Version="5.2.6" />
     <PackageReference Include="Serilog.Extensions.Logging.File" Version="1.1.0" />
   </ItemGroup>
 
@@ -23,13 +23,6 @@
     <ProjectReference Include="..\RldsApp.Data\RldsApp.Data.csproj" />
     <ProjectReference Include="..\RldsApp.Web.Api.Models\RldsApp.Web.Api.Models.csproj" />
     <ProjectReference Include="..\RldsApp.Web.Common\RldsApp.Web.Common.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="InquiryProcessing\account\" />
-    <Folder Include="InquiryProcessing\transaction\" />
-    <Folder Include="MaintenanceProcessing\account\" />
-    <Folder Include="MaintenanceProcessing\transaction\" />
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties properties_4launchsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>

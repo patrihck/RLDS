@@ -1,12 +1,12 @@
-﻿using RldsApp.Common;
-using RldsApp.Common.Extensions;
-using RldsApp.Data;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Logging;
-using System;
+﻿using System;
 using System.Net;
 using System.Net.Http;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Extensions;
+using Microsoft.Extensions.Logging;
+using RldsApp.Common;
+using RldsApp.Common.Extensions;
+using RldsApp.Data;
 
 namespace RldsApp.Web.Api.InquiryProcessing
 {

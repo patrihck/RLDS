@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RldsApp.Web.Api.Models", "R
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RldsApp.Web.Common", "RldsApp.Web.Common\RldsApp.Web.Common.csproj", "{BBB6F304-1CEE-4E15-ABE7-D9723787BA44}"
 EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "RldsAppCoreDb", "RldsAppCoreDb\RldsAppCoreDb.sqlproj", "{B4063B51-312D-4A01-84FD-A720D374FC66}"
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "RldsAppCoreDb", "RldsAppCoreDb\RldsAppCoreDb.sqlproj", "{114BBF3A-0BEB-41DE-BDFD-D7B665E1EC76}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,12 +47,12 @@ Global
 		{BBB6F304-1CEE-4E15-ABE7-D9723787BA44}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BBB6F304-1CEE-4E15-ABE7-D9723787BA44}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BBB6F304-1CEE-4E15-ABE7-D9723787BA44}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B4063B51-312D-4A01-84FD-A720D374FC66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B4063B51-312D-4A01-84FD-A720D374FC66}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B4063B51-312D-4A01-84FD-A720D374FC66}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{B4063B51-312D-4A01-84FD-A720D374FC66}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B4063B51-312D-4A01-84FD-A720D374FC66}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B4063B51-312D-4A01-84FD-A720D374FC66}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{114BBF3A-0BEB-41DE-BDFD-D7B665E1EC76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{114BBF3A-0BEB-41DE-BDFD-D7B665E1EC76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{114BBF3A-0BEB-41DE-BDFD-D7B665E1EC76}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{114BBF3A-0BEB-41DE-BDFD-D7B665E1EC76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{114BBF3A-0BEB-41DE-BDFD-D7B665E1EC76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{114BBF3A-0BEB-41DE-BDFD-D7B665E1EC76}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

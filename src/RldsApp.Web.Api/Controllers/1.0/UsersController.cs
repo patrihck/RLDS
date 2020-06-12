@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using RldsApp.Common;
 using RldsApp.Data.DataProcessing;
-using RldsApp.Data.DataProcessing.user;
 using RldsApp.Web.Api.InquiryProcessing;
 using RldsApp.Web.Api.MaintenanceProcessing;
 using RldsApp.Web.Api.Models;
@@ -11,9 +10,9 @@ namespace RldsApp.Web.Api.Controllers.V1
 {
 	[ApiVersion("1.0")]
 	[Route("api/{v:apiVersion}/[controller]")]
-    [ApiController]
-    public class UsersController : ControllerBase
-    {
+	[ApiController]
+	public class UsersController : ControllerBase
+	{
 		private readonly IUserByIdInquiryProcessor _userByIdInquiryProcessor;
 		private readonly IUserByNameInquiryProcessor _userByNameInquiryProcessor;
 		private readonly IAllUsersInquiryProcessor _allUsersInquiryProcessor;
@@ -38,17 +37,17 @@ namespace RldsApp.Web.Api.Controllers.V1
 		[HttpGet]
 		[Authorize(Roles = Constants.RoleNames.AllRoles)]
 		public PagedDataInquiryResponse<User> GetUsers()
-        {
+		{
 			var request = _pagedDataRequestFactory.Create(HttpContext);
 			var users = _allUsersInquiryProcessor.GetUsers(request);
 
 			return users;
 		}
 
-        [HttpGet("{id:long}")]
+		[HttpGet("{id:long}")]
 		[Authorize(Roles = Constants.RoleNames.AllRoles)]
-        public User GetUserById(long id)
-        {
+		public User GetUserById(long id)
+		{
 			var user = _userByIdInquiryProcessor.GetUserById(id);
 			return user;
 		}
@@ -64,30 +63,30 @@ namespace RldsApp.Web.Api.Controllers.V1
 		[HttpPost]
 		[Authorize(Roles = Constants.RoleNames.AllRoles)]
 		public ActionResult<User> AddUser(NewUser newUser)
-        {
+		{
 			var user = _addUserMaintenanceProcessor.AddUser(newUser);
-			return CreatedAtAction(nameof(GetUserById), new { id = user.UserId }, user);
+			return CreatedAtAction(nameof(GetUserById), new { id = user.Id }, user);
 		}
 
-        [HttpPut("{id}")]
+		[HttpPut("{id}")]
 		[Authorize(Roles = Constants.RoleNames.AllRoles)]
 		public User UpdateUser(long id, [FromBody] object updatedUser)
-        {
+		{
 			var user = _updateUserMaintenanceProcessor.UpdateUser(id, updatedUser);
 			return user;
 		}
 
-        [HttpDelete("{id}")]
+		[HttpDelete("{id}")]
 		[Authorize(Roles = Constants.RoleNames.AllRoles)]
 		public ActionResult DeleteUser(long id)
-        {
+		{
 			if (_deleteUserDataProcessor.DeleteUser(id))
 			{
 				return Ok();
 			}
-			
+
 			return NoContent();
-        }
+		}
 
 		[HttpPost("authenticate")]
 		[AllowAnonymous]
