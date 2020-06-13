@@ -1,10 +1,8 @@
-﻿using RldsApp.Common;
-using RldsApp.Web.Api.InquiryProcessing;
-using RldsApp.Web.Api.MaintenanceProcessing;
-using RldsApp.Web.Api.Models;
-using System.Net.Http;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using RldsApp.Common;
+using RldsApp.Web.Api.InquiryProcessing;
+using RldsApp.Web.Api.Models;
 
 namespace RldsApp.Web.Api.Controllers.V1
 {
@@ -21,8 +19,8 @@ namespace RldsApp.Web.Api.Controllers.V1
 		//private readonly IUpdateTaskMaintenanceProcessor _updateTaskMaintenanceProcessor;
 
 		public TasksController(ITaskByIdInquiryProcessor taskByIdInquiryProcessor, IAllTasksInquiryProcessor allTasksInquiryProcessor, IPagedDataRequestFactory pagedDataRequestFactory)
-			//IAddTaskMaintenanceProcessor addTaskMaintenanceProcessor,
-			//IUpdateTaskMaintenanceProcessor updateTaskMaintenanceProcessor,
+		//IAddTaskMaintenanceProcessor addTaskMaintenanceProcessor,
+		//IUpdateTaskMaintenanceProcessor updateTaskMaintenanceProcessor,
 		{
 			_taskByIdInquiryProcessor = taskByIdInquiryProcessor;
 			_allTasksInquiryProcessor = allTasksInquiryProcessor;
