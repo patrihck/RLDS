@@ -5,6 +5,7 @@ namespace RldsApp.Web.Api.LinkServices
 	public interface IRoleLinkService
 	{
 		Link GetAllRolesLink();
+
 		void AddSelfLink(Role role);
 	}
 }
