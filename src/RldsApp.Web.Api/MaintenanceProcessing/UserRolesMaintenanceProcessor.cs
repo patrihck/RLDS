@@ -1,8 +1,7 @@
-﻿using AutoMapper;
+﻿using System.Collections.Generic;
+using AutoMapper;
 using RldsApp.Data.DataProcessing;
 using RldsApp.Web.Api.Models;
-using System.Collections.Generic;
-using RldsApp.Data.DataProcessing.user;
 
 namespace RldsApp.Web.Api.MaintenanceProcessing
 {
