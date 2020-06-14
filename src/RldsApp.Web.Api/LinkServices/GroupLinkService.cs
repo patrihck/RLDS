@@ -1,37 +1,37 @@
-﻿using RldsApp.Common;
+﻿using System.Net.Http;
+using RldsApp.Common;
 using RldsApp.Web.Api.Models;
-using System.Net.Http;
 
 namespace RldsApp.Web.Api.LinkServices
 {
 	public class GroupLinkService : IGroupLinkService
 	{
 		private readonly ICommonLinkService _commonLinkService;
-		private readonly IRoleLinkService _roleLinkService;
 
-		public GroupLinkService(ICommonLinkService commonLinkService, IRoleLinkService roleLinkService)
+		public GroupLinkService(ICommonLinkService commonLinkService)
 		{
 			_commonLinkService = commonLinkService;
-			_roleLinkService = roleLinkService;
 		}
 
-		public virtual void AddSelfLink(Group group)
+		public void AddSelfLink(Group group)
 		{
-			group.AddLink(GetSelfLink(group));
-		}
-
-		public virtual Link GetSelfLink(Group group)
-		{
-			var pathFragment = string.Format("groups/{0}", group.GroupId);
-			var link = _commonLinkService.GetLink(pathFragment, Constants.CommonLinkRelValues.Self, HttpMethod.Get);
-
-			return link;
+			if (group != null)
+			{
+				group.AddLink(GetSelfLink(group.Id));
+			}
 		}
 
 		public virtual Link GetAllGroupsLink()
 		{
 			const string pathFragment = "groups";
 			return _commonLinkService.GetLink(pathFragment, Constants.CommonLinkRelValues.All, HttpMethod.Get);
+		}
+
+		public virtual Link GetSelfLink(long groupId)
+		{
+			var pathFragment = string.Format("groups/{0}", groupId);
+			var link = _commonLinkService.GetLink(pathFragment, Constants.CommonLinkRelValues.Self, HttpMethod.Get);
+			return link;
 		}
 	}
 }

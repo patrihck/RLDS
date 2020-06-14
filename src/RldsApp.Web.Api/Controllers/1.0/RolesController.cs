@@ -1,84 +1,55 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RldsApp.Common;
-using RldsApp.Data.DataProcessing;
-using RldsApp.Data.DataProcessing.role;
 using RldsApp.Web.Api.InquiryProcessing;
-using RldsApp.Web.Api.MaintenanceProcessing;
+using RldsApp.Web.Api.InquiryProcessing.RoleInquiryProcessor;
 using RldsApp.Web.Api.Models;
 
-namespace RldsApp.Web.Api.Controllers.V1
+namespace RldsApp.Web.Api.Controllers._1._0
 {
 	[ApiVersion("1.0")]
 	[Route("api/{v:apiVersion}/[controller]")]
-    [ApiController]
-    public class RolesController : ControllerBase
-    {
-		private readonly IRoleByIdInquiryProcessor _userByIdInquiryProcessor;
+	[ApiController]
+	[Authorize(Roles = Constants.RoleNames.AllRoles)]
+	public class RolesController : ControllerBase
+	{
+		private readonly IRoleByIdInquiryProcessor _roleByIdInquiryProcessor;
+		private readonly IRoleByNameInquiryProcessor _roleByNameInquiryProcessor;
 		private readonly IAllRolesInquiryProcessor _allRolesInquiryProcessor;
 		private readonly IPagedDataRequestFactory _pagedDataRequestFactory;
-		private readonly IAddRoleMaintenanceProcessor _addRoleMaintenanceProcessor;
-		private readonly IDeleteRoleDataProcessor _deleteRoleDataProcessor;
-		private readonly IUpdateRoleMaintenanceProcessor _updateRoleMaintenanceProcessor;
-		
 
-		public RolesController(IRoleByIdInquiryProcessor userByIdInquiryProcessor, IAllRolesInquiryProcessor allRolesInquiryProcessor, IPagedDataRequestFactory pagedDataRequestFactory, IAddRoleMaintenanceProcessor addRoleMaintenanceProcessor, IDeleteRoleDataProcessor deleteRoleDataProcessor, IUpdateRoleMaintenanceProcessor updateRoleMaintenanceProcessor)
+		public RolesController(IRoleByIdInquiryProcessor roleByIdInquiryProcessor, IRoleByNameInquiryProcessor roleByNameInquiryProcessor,
+			IAllRolesInquiryProcessor allRolesInquiryProcessor, IPagedDataRequestFactory pagedDataRequestFactory)
 		{
-			_userByIdInquiryProcessor = userByIdInquiryProcessor;
+			_roleByIdInquiryProcessor = roleByIdInquiryProcessor;
+			_roleByNameInquiryProcessor = roleByNameInquiryProcessor;
 			_allRolesInquiryProcessor = allRolesInquiryProcessor;
-			_pagedDataRequestFactory = pagedDataRequestFactory;	
-			_addRoleMaintenanceProcessor = addRoleMaintenanceProcessor;
-			_deleteRoleDataProcessor = deleteRoleDataProcessor;
-			_updateRoleMaintenanceProcessor = updateRoleMaintenanceProcessor;
+			_pagedDataRequestFactory = pagedDataRequestFactory;
 		}
 
 		[HttpGet]
-		[Authorize(Roles = Constants.RoleNames.AllRoles)]
 		public PagedDataInquiryResponse<Role> GetRoles()
-        {
+		{
 			var request = _pagedDataRequestFactory.Create(HttpContext);
-			var users = _allRolesInquiryProcessor.GetRoles(request);
+			var roles = _allRolesInquiryProcessor.GetRoles(request);
 
-			return users;
+			return roles;
 		}
 
-        [HttpGet("{id:long}")]
-		[Authorize(Roles = Constants.RoleNames.AllRoles)]
-        public Role GetRoleById(long id)
-        {
-			var user = _userByIdInquiryProcessor.GetRoleById(id);
-			return user;
+		[HttpGet("{roleId:long}")]
+		public Role GetRoleById(long roleId)
+		{
+			var role = _roleByIdInquiryProcessor.GetRoleById(roleId);
+
+			return role;
 		}
 
+		[HttpGet("{roleName}")]
+		public Role GetRoleByName(string roleName)
+		{
+			var role = _roleByNameInquiryProcessor.GetRoleByName(roleName);
 
-		[HttpPost]
-		[Authorize(Roles = Constants.RoleNames.AllRoles)]
-		public ActionResult<Role> AddRole(NewRole newRole)
-        {
-			var user = _addRoleMaintenanceProcessor.AddRole(newRole);
-			return CreatedAtAction(nameof(GetRoleById), new { id = user.RoleId }, user);
+			return role;
 		}
-
-        [HttpPut("{id}")]
-		[Authorize(Roles = Constants.RoleNames.AllRoles)]
-		public Role UpdateRole(long id, [FromBody] object updatedRole)
-        {
-			var user = _updateRoleMaintenanceProcessor.UpdateRole(id, updatedRole);
-			return user;
-		}
-
-        [HttpDelete("{id}")]
-		[Authorize(Roles = Constants.RoleNames.AllRoles)]
-		public ActionResult DeleteRole(long id)
-        {
-			if (_deleteRoleDataProcessor.DeleteRole(id))
-			{
-				return Ok();
-			}
-			
-			return NoContent();
-        }
-
-
 	}
 }

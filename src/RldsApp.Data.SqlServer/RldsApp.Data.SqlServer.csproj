@@ -7,19 +7,11 @@
 
   <ItemGroup>
     <PackageReference Include="FluentNHibernate" Version="2.1.2" />
-    <PackageReference Include="NHibernate" Version="5.2.4" />
+    <PackageReference Include="NHibernate" Version="5.2.6" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\RldsApp.Data\RldsApp.Data.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="DataProcessing\accountType\" />
-    <Folder Include="DataProcessing\category\" />
-    <Folder Include="DataProcessing\currency\" />
-    <Folder Include="DataProcessing\group\" />
-    <Folder Include="DataProcessing\role\" />
   </ItemGroup>
 
 </Project>
