@@ -3,12 +3,14 @@ using System.ComponentModel.DataAnnotations;
 
 namespace RldsApp.Data.Entities
 {
-	public class Transaction : IVersionedEntity
+	public class PlanningRule
 	{
 		[Key]
 		public virtual long Id { get; set; }
 
-		public virtual DateTime Date { get; set; }
+		public virtual DateTime DateFrom { get; set; }
+
+		public virtual DateTime DateTo { get; set; }
 
 		public virtual User User { get; set; }
 
@@ -16,11 +18,7 @@ namespace RldsApp.Data.Entities
 
 		public virtual Account Receiver { get; set; }
 
-		public virtual TransactionType Type { get; set; }
-
 		public virtual TransactionCategory Category { get; set; }
-
-		public virtual TransactionStatus Status { get; set; }
 
 		public virtual Currency Currency { get; set; }
 
@@ -28,9 +26,8 @@ namespace RldsApp.Data.Entities
 
 		public virtual decimal Amount { get; set; }
 
-		public virtual byte[] Version { get; set; }
+		public virtual Period Period { get; set; }
 
-		public virtual string Group { get; set; }
-		
+		public virtual byte[] Version { get; set; }
 	}
 }
