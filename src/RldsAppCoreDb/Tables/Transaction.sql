@@ -12,15 +12,17 @@
 	[Description] [nvarchar](255) NULL,
 	[Amount] [money] NOT NULL,
 	[ts] [rowversion] NOT NULL,
-	CONSTRAINT [PK_Transaction]
+	[Group] VARCHAR(64) NULL, 
+
+    CONSTRAINT [PK_Transaction]
 		PRIMARY KEY ([TransactionId]),
 	CONSTRAINT [FK_Transaction_User]
 		FOREIGN KEY ([UserId])
 		REFERENCES [User] ([UserId]),
-	CONSTRAINT [FK_Transaction_Account_Sender]
+	CONSTRAINT [FK_Transaction_AccountSender]
 		FOREIGN KEY ([SenderId])
 		REFERENCES [Account] ([AccountId]),
-	CONSTRAINT [FK_Transaction_Account_Receiver]
+	CONSTRAINT [FK_Transaction_AccountReceiver]
 		FOREIGN KEY ([ReceiverId])
 		REFERENCES [Account] ([AccountId]),
 	CONSTRAINT [FK_Transaction_TransactionType]
