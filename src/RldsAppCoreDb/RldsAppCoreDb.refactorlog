@@ -56,11 +56,18 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="RootId" />
   </Operation>
-    <Operation Name="Rename Refactor" Key="fe4c971c-0665-481e-bc75-37aa1d5b06be" ChangeDateTime="12/15/2019 09:15:07">
+  <Operation Name="Rename Refactor" Key="fe4c971c-0665-481e-bc75-37aa1d5b06be" ChangeDateTime="12/15/2019 09:15:07">
     <Property Name="ElementName" Value="[dbo].[Account].[rowversion]" />
     <Property Name="ElementType" Value="SqlSimpleColumn" />
     <Property Name="ParentElementName" Value="[dbo].[Account]" />
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="ts" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="c8530056-af9f-457d-8637-45514143797e" ChangeDateTime="12/05/2020 12:54:58">
+    <Property Name="ElementName" Value="[dbo].[Monthly].[Month]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Monthly]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Day" />
   </Operation>
 </Operations>

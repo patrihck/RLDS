@@ -71,6 +71,11 @@
     <Build Include="Tables\CurrencyRate.sql" />
     <Build Include="Tables\TransactionCategory.sql" />
     <Build Include="Tables\Group.sql" />
+    <Build Include="Tables\PlanningRule.sql" />
+    <Build Include="Tables\Period.sql" />
+    <Build Include="Tables\Monthly.sql" />
+    <Build Include="Tables\Daily.sql" />
+    <Build Include="Tables\Weekly.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="RldsAppCoreDb.refactorlog" />
