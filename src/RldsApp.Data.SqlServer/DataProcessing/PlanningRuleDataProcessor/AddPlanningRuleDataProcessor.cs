@@ -5,7 +5,7 @@ using RldsApp.Common;
 using RldsApp.Data.DataProcessing;
 using RldsApp.Data.DataProcessing.PlanningRuleDataProcessor;
 using RldsApp.Data.Entities;
-
+using RldsApp.Web.Api.Models;
 
 namespace RldsApp.Data.SqlServer.DataProcessing.PlanningRuleDataProcessor
 {
