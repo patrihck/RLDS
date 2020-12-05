@@ -56,11 +56,123 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="RootId" />
   </Operation>
-    <Operation Name="Rename Refactor" Key="fe4c971c-0665-481e-bc75-37aa1d5b06be" ChangeDateTime="12/15/2019 09:15:07">
+  <Operation Name="Rename Refactor" Key="fe4c971c-0665-481e-bc75-37aa1d5b06be" ChangeDateTime="12/15/2019 09:15:07">
     <Property Name="ElementName" Value="[dbo].[Account].[rowversion]" />
     <Property Name="ElementType" Value="SqlSimpleColumn" />
     <Property Name="ParentElementName" Value="[dbo].[Account]" />
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="ts" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="5e09df9a-4fce-4359-a254-2e1118a58866" ChangeDateTime="12/05/2020 14:54:40">
+    <Property Name="ElementName" Value="[dbo].[Daily].[DailyId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Daily]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="DailyPeriodId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="a5f7ea03-a3bc-4412-b386-72cf1c139653" ChangeDateTime="12/05/2020 14:58:12">
+    <Property Name="ElementName" Value="[dbo].[Monthly].[Month]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Monthly]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Feb" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="63f93cd1-ba01-4f92-9227-d50f9b488251" ChangeDateTime="12/05/2020 14:58:44">
+    <Property Name="ElementName" Value="[dbo].[Monthly].[Feb]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Monthly]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Jan" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="0662d3b3-aca7-47f3-aa4d-add595739dc4" ChangeDateTime="12/05/2020 14:59:17">
+    <Property Name="ElementName" Value="[dbo].[Monthly].[Jan]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Monthly]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="January" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="e8189e81-a2dd-49cb-98f4-3b4e47d95505" ChangeDateTime="12/05/2020 14:59:23">
+    <Property Name="ElementName" Value="[dbo].[Monthly].[Feb]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Monthly]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="February" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="0a23f246-8496-4134-8f87-5419f9ea5b84" ChangeDateTime="12/05/2020 14:59:27">
+    <Property Name="ElementName" Value="[dbo].[Monthly].[Mar]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Monthly]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="March" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="0d029f97-7214-4a62-acc5-307eb14d8438" ChangeDateTime="12/05/2020 14:59:30">
+    <Property Name="ElementName" Value="[dbo].[Monthly].[Apr]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Monthly]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="April" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="7fa223f0-cc99-4235-84ae-f23feb6bc355" ChangeDateTime="12/05/2020 15:00:19">
+    <Property Name="ElementName" Value="[dbo].[Weekly].[Day]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Weekly]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Monday" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="f386d4f7-cba6-4988-ba33-c292aa7f1e46" ChangeDateTime="12/05/2020 15:01:14">
+    <Property Name="ElementName" Value="[dbo].[Weekly].[WeeklyId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Weekly]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="WeeklyRecurrenceId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="69410fbd-f1f1-4304-97a0-555baa863fe8" ChangeDateTime="12/05/2020 15:03:58">
+    <Property Name="ElementName" Value="[dbo].[Daily].[Hour]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Daily]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="One" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="281b1eb9-c049-4256-a755-ce59859e382e" ChangeDateTime="12/05/2020 15:04:55">
+    <Property Name="ElementName" Value="[dbo].[Daily].[One]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Daily]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Time" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="5781c31f-4b9c-4ac3-a4f3-26165ca8fec2" ChangeDateTime="12/05/2020 15:05:52">
+    <Property Name="ElementName" Value="[dbo].[Period].[PeriodId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Period]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="RecurrenceId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="e8da32df-99dc-4577-a6da-6c35580fa9e1" ChangeDateTime="12/05/2020 15:06:32">
+    <Property Name="ElementName" Value="[dbo].[Monthly].[MonthlyId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Monthly]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="AnnualRecurrence" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="46001feb-397b-42b9-93c4-1b5604994f58" ChangeDateTime="12/05/2020 15:06:35">
+    <Property Name="ElementName" Value="[dbo].[Monthly].[AnnualRecurrence]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Monthly]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="AnnualRecurrenceId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="6482ce39-eab8-45a7-96b1-5b1b88487219" ChangeDateTime="12/05/2020 15:06:45">
+    <Property Name="ElementName" Value="[dbo].[Daily].[DailyPeriodId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Daily]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="DailyRecurrenceId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="6e1acfc3-3eed-4df1-a68c-68d982257f9e" ChangeDateTime="12/05/2020 15:29:23">
+    <Property Name="ElementName" Value="[dbo].[PlanningRule].[PlanningRuleId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[PlanningRule]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="TransactionRuleId" />
   </Operation>
 </Operations>

@@ -71,6 +71,11 @@
     <Build Include="Tables\CurrencyRate.sql" />
     <Build Include="Tables\TransactionCategory.sql" />
     <Build Include="Tables\Group.sql" />
+    <Build Include="Tables\DailyRecurrence.sql" />
+    <Build Include="Tables\TransactionRule.sql" />
+    <Build Include="Tables\Recurrence.sql" />
+    <Build Include="Tables\AnnualRecurrence.sql" />
+    <Build Include="Tables\WeeklyRecurrence.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="RldsAppCoreDb.refactorlog" />
@@ -79,6 +84,8 @@
     <None Include="RldsAppCoreDb.publish.xml" />
     <None Include="Scripts\DictionaryData.sql" />
     <None Include="Scripts\InitialData.sql" />
+    <None Include="RldsAppCoreDb.dbmdl" />
+    <None Include="RldsAppCoreDb.jfm" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Scripts\Script.PostDeployment.sql" />

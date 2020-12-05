@@ -1,10 +1,10 @@
 ﻿using NHibernate;
-using RldsApp.Data.DataProcessing.TransactionDataProcessor;
+using RldsApp.Data.DataProcessing.TransactionRuleDataProcessor;
 using RldsApp.Data.Entities;
 
 namespace RldsApp.Data.SqlServer.DataProcessing.TransactionDataProcessor
 {
-	public class AllTransactionsDataProcessor : IAllTransactionsDataProcessor
+	public class AllTransactionsDataProcessor : IAllTransactionRulesDataProcessor
 	{
 		private readonly ISession _session;
 
@@ -13,13 +13,13 @@ namespace RldsApp.Data.SqlServer.DataProcessing.TransactionDataProcessor
 			_session = session;
 		}
 
-		public QueryResult<Transaction> GetTransactions(PagedDataRequest requestInfo)
+		public QueryResult<TransactionRule> GetTransactionRules(PagedDataRequest requestInfo)
 		{
-			var query = _session.QueryOver<Transaction>();
+			var query = _session.QueryOver<TransactionRule>();
 			var totalItemCount = query.ToRowCountQuery().RowCount();
 			var startIndex = ResultsPagingUtility.CalculateStartIndex(requestInfo.PageNumber, requestInfo.PageSize);
 			var transactions = query.Skip(startIndex).Take(requestInfo.PageSize).List();
-			var queryResult = new QueryResult<Transaction>(transactions, totalItemCount, requestInfo.PageSize);
+			var queryResult = new QueryResult<TransactionRule>(transactions, totalItemCount, requestInfo.PageSize);
 
 			return queryResult;
 		}

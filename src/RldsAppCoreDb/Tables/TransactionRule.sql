@@ -1,6 +1,6 @@
-﻿CREATE TABLE [dbo].[PlanningRule]
+﻿CREATE TABLE [dbo].[TransactionRule]
 (
-	[PlanningRuleId] [bigint] IDENTITY NOT NULL,
+	[TransactionRuleId] [bigint] IDENTITY NOT NULL,
 	[DateFrom] [datetime] NOT NULL,
 	[DateTo] [datetime] NOT NULL,
 	[UserId] [bigint] NOT NULL,
@@ -14,30 +14,30 @@
 	[ts] [rowversion] NOT NULL,
 	[Group] VARCHAR(64) NULL, 
    
-   CONSTRAINT [PK_PlanningRule]
-		PRIMARY KEY ([PlanningRuleId]),
+   CONSTRAINT [PK_TransactionRule]
+		PRIMARY KEY ([TransactionRuleId]),
 	
-	CONSTRAINT [FK_PlanningRule_User]
+	CONSTRAINT [FK_TransactionRule_User]
 		FOREIGN KEY ([UserId])
 		REFERENCES [User] ([UserId]),
 
-	CONSTRAINT [FK_PlanningRule_TransactionCategory]
+	CONSTRAINT [FK_TransactionRule_TransactionCategory]
 		FOREIGN KEY ([CategoryId])
 		REFERENCES [TransactionCategory] ([TransactionCategoryId]),
 
-	CONSTRAINT [FK_PlanningRule_Currency]
+	CONSTRAINT [FK_TransactionRule_Currency]
 		FOREIGN KEY ([CurrencyId])
 		REFERENCES [Currency] ([CurrencyId]),
 
-	CONSTRAINT [FK_PlanningRule_PeriodId]
-		FOREIGN KEY ([PeriodId])
-		REFERENCES [Period] ([PeriodId]),
+	CONSTRAINT [FK_TransactionRule_TransactionRuleId]
+		FOREIGN KEY ([TransactionRuleId])
+		REFERENCES [TransactionRule] ([TransactionRuleId]),
 
-	CONSTRAINT [FK_PlanningRule_AccountSender]
+	CONSTRAINT [FK_TransactionRule_AccountSender]
 		FOREIGN KEY ([SenderId])
 		REFERENCES [Account] ([AccountId]),
 
-	CONSTRAINT [FK_PlanningRule_AccountReceiver]
+	CONSTRAINT [FK_TransactionRule_AccountReceiver]
 		FOREIGN KEY ([ReceiverId])
 		REFERENCES [Account] ([AccountId])
 );
