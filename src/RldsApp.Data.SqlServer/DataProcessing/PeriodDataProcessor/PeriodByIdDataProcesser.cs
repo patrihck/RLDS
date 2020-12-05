@@ -4,7 +4,7 @@ using RldsApp.Data.Entities;
 
 namespace RldsApp.Data.SqlServer.DataProcessing.PeriodDataProcessor
 {
-    public class PeriodByIdDataProcesser
+    public class PeriodByIdDataProcesser : IPeriodByIdDataProcessor
 	{
 		private readonly ISession _session;
 
@@ -13,11 +13,11 @@ namespace RldsApp.Data.SqlServer.DataProcessing.PeriodDataProcessor
 			_session = session;
 		}
 
-		public Period GetTaskById(long taskId)
+		public Period GetPeriodById(long periodId)
 		{
-			var period = _session.Get<Period>(taskId);
+			var period = _session.Get<Period>(periodId);
 			return period;
 		}
 	}
 }
-}
+

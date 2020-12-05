@@ -1,9 +1,9 @@
 ﻿using RldsApp.Data.Entities;
 
-namespace RldsApp.Data.DataProcessing.PeriodDataProcessor
+namespace RldsApp.Data.DataProcessing
 {
     public interface IAllPeriodsDataProcessor
 	{
-		QueryResult<Period> GetCurrencies(PagedDataRequest requestInfo);
+		QueryResult<Period> GetPeriods(PagedDataRequest requestInfo);
 	}
 }

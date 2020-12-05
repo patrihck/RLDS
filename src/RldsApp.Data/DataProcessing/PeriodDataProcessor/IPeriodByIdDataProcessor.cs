@@ -1,9 +1,9 @@
 ﻿using RldsApp.Data.Entities;
 
-namespace RldsApp.Data.DataProcessing.PeriodDataProcessor
+namespace RldsApp.Data.DataProcessing
 {
-	interface IPeriodByIdDataProcessor
+	public interface IPeriodByIdDataProcessor
 	{
-		Period GetCurrencyById(long currencyId);
+		Period GetPeriodById(long currencyId);
 	}
 }
