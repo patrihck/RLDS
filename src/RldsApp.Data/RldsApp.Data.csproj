@@ -7,6 +7,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\RldsApp.Common\RldsApp.Common.csproj" />
+    <ProjectReference Include="..\RldsApp.Web.Api.Models\RldsApp.Web.Api.Models.csproj" />
   </ItemGroup>
 
 </Project>

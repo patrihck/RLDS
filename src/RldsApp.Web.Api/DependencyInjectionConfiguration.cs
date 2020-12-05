@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using RldsApp.Common;
 using RldsApp.Common.Security;
 using RldsApp.Data.SqlServer.DataProcessing;
+using RldsApp.Data.SqlServer.DataProcessing.PlanningRuleDataProcessor;
 using RldsApp.Web.Api.InquiryProcessing;
 using RldsApp.Web.Api.Security;
 using RldsApp.Web.Common;
@@ -12,7 +13,7 @@ using RldsApp.Web.Common.Security;
 
 namespace RldsApp.Web.Api
 {
-	public static class DependencyInjectionConfiguration
+    public static class DependencyInjectionConfiguration
 	{
 		public static void AddBindings(IServiceCollection services)
 		{
