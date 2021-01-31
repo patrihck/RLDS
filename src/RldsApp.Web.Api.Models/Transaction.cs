@@ -15,7 +15,7 @@ namespace RldsApp.Web.Api.Models
 		public DateTime Date { get; set; }
 
 		[Editable(true)]
-		public User User { get; set; }
+		public UserLeaf User { get; set; }
 
 		[Editable(true)]
 		public Account Sender { get; set;}
@@ -43,6 +43,9 @@ namespace RldsApp.Web.Api.Models
 
 		[Editable(false)]
 		public byte[] Version { get; set; }
+
+		[Editable(true)]
+		public RecurringTransaction RecurringTransaction { get; set; }
 
 		[Editable(false)]
 		public List<Link> Links

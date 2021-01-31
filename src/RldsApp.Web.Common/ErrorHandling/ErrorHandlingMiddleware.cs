@@ -1,5 +1,6 @@
 ﻿using RldsApp.Common;
 using RldsApp.Data.Exceptions;
+using System.Diagnostics;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
@@ -29,6 +30,10 @@ namespace RldsApp.Web.Common.ErrorHandling
 			catch (Exception ex)
 			{
 				_logger.LogError(ex.Message);
+
+				if (Debugger.IsAttached)
+					Debugger.Break();
+
 				await HandleExceptionAsync(context, ex);
 			}
 

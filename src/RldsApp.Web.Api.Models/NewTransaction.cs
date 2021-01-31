@@ -3,13 +3,13 @@ using System.ComponentModel.DataAnnotations;
 
 namespace RldsApp.Web.Api.Models
 {
-	public class NewTransaction
+    public class NewTransaction
 	{
 		[Required]
 		public DateTime Date { get; set; }
 
 		[Required]
-		public User User { get; set; }
+		public UserLeaf User { get; set; }
 
 		[Required]
 		public Account Sender { get; set; }
@@ -34,5 +34,7 @@ namespace RldsApp.Web.Api.Models
 
 		[Required]
 		public decimal Amount { get; set; }
+
+		public RecurringTransaction RecurringTransaction { get; set; }
 	}
 }

@@ -5,7 +5,7 @@ using RldsApp.Web.Api.Models;
 
 namespace RldsApp.Web.Api.MaintenanceProcessing.TransactionCategoryMaintenanceProcessor
 {
-	public class AddTransactionCategoryMaintenanceProcessor : IAddTransactionCategoryMaintenanceProcessor
+    public class AddTransactionCategoryMaintenanceProcessor : IAddTransactionCategoryMaintenanceProcessor
 	{
 		private readonly IMapper _autoMapper;
 		private readonly IAddTransactionCategoryDataProcessor _dataProcessor;
@@ -24,6 +24,7 @@ namespace RldsApp.Web.Api.MaintenanceProcessing.TransactionCategoryMaintenancePr
 			_dataProcessor.AddTransactionCategory(transactionCategoryEntity);
 			var transactionCategory = _autoMapper.Map<TransactionCategory>(transactionCategoryEntity);
 			_linkService.AddSelfLink(transactionCategory);
+			_linkService.AddLinksToChildObjects(transactionCategory);
 
 			return transactionCategory;
 		}

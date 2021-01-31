@@ -1,4 +1,5 @@
 ﻿using NHibernate;
+using RldsApp.Common;
 using RldsApp.Data.DataProcessing.TransactionStatusDataProcessor;
 using RldsApp.Data.Entities;
 
@@ -13,10 +14,9 @@ namespace RldsApp.Data.SqlServer.DataProcessing.TransactionStatusDataProcessor
 			_session = session;
 		}
 
-		public TransactionStatus GetTransactionStatusById(long transactionStatusId)
-		{
-			var status = _session.Get<TransactionStatus>(transactionStatusId);
-			return status;
-		}
-	}
+        public TransactionStatus GetTransactionStatusById(long transactionStatusId)
+        {
+            throw new System.NotImplementedException();
+        }
+    }
 }

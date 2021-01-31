@@ -23,9 +23,12 @@ namespace RldsApp.Data.SqlServer.DataProcessing
 
 			foreach (var propertyValuePair in updatedPropertyValueMap)
 			{
-				propertyInfos.Single(x => x.Name == propertyValuePair.Key)
+				propertyInfos
+					.Single(x => x.Name == propertyValuePair.Key)
 					.SetValue(transactionCategory, propertyValuePair.Value);
 			}
+
+			AddTransactionCategoryDataProcessor.GetChildEntities(_session, transactionCategory);
 
 			_session.SaveOrUpdate(transactionCategory);
 			_session.Flush();

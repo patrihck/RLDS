@@ -5,7 +5,7 @@ using RldsApp.Web.Api.Models;
 
 namespace RldsApp.Web.Api.LinkServices
 {
-	public class TransactionCategoryLinkService : ITransactionCategoryLinkService
+    public class TransactionCategoryLinkService : ITransactionCategoryLinkService
 	{
 		private readonly ICommonLinkService _commonLinkService;
 
@@ -21,6 +21,8 @@ namespace RldsApp.Web.Api.LinkServices
 		public void AddSelfLink(TransactionCategory transactionCategory)
 		{
 			transactionCategory.AddLink(GetSelfLink(transactionCategory.Id));
+			if (transactionCategory.Root != null)
+				transactionCategory.Root.AddLink(GetSelfLink(transactionCategory.Root.Id));
 		}
 
 		public Link GetAllTransactionCategoriesLink()

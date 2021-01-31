@@ -7,6 +7,6 @@ namespace RldsApp.Web.Api.Models
 		[Required(AllowEmptyStrings = false)]
 		public string Name { get; set; }
 
-		public long? RootId { get; set; }
+		public TransactionCategoryLeaf Root { get; set; }
 	}
 }

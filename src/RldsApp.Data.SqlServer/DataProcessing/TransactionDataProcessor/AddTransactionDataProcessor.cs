@@ -19,6 +19,7 @@ namespace RldsApp.Data.SqlServer.DataProcessing.TransactionDataProcessor
 			GetChildEntities(_session, transaction);
 
 			_session.SaveOrUpdate(transaction);
+			_session.Flush();
 
 			return transaction;
 		}

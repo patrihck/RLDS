@@ -13,42 +13,42 @@ namespace RldsApp.Web.Api.Controllers.V1
 	[Authorize(Roles = Constants.RoleNames.AllRoles)]
 	public class TransactionStatusController : ControllerBase
 	{
-		private readonly ITransactionStatusByIdInquiryProcess _transactionStatusByIdInquiryProcessor;
+		private readonly ITransactionStatusByIdInquiryProcessor _transactionStatusByIdInquiryProcessor;
 		private readonly ITransactionStatusByNameInquiryProcessor _transactionStatusByNameInquiryProcessor;
-		private readonly IAllTransactionStatusInquiryProcessor _allTransactionsInquiryProcessor;
+		private readonly IAllTransactionStatusesInquiryProcessor _allTransactionStatusesInquiryProcessor;
 		private readonly IPagedDataRequestFactory _pagedDataRequestFactory;
 
 		public TransactionStatusController(
-			ITransactionStatusByIdInquiryProcess transactionStatusByIdInquiryProcessor,
+			ITransactionStatusByIdInquiryProcessor transactionStatusByIdInquiryProcessor,
 			ITransactionStatusByNameInquiryProcessor transactionStatusByNameInquiryProcessor,
-			IAllTransactionStatusInquiryProcessor allTransactionsStatusInquiryProcessor,
+			IAllTransactionStatusesInquiryProcessor allTransactionStatusesInquiryProcessor,
 			IPagedDataRequestFactory pagedDataRequestFactory)
 		{
 			_transactionStatusByIdInquiryProcessor = transactionStatusByIdInquiryProcessor;
 			_transactionStatusByNameInquiryProcessor = transactionStatusByNameInquiryProcessor;
-			_allTransactionsInquiryProcessor = allTransactionsStatusInquiryProcessor;
+			_allTransactionStatusesInquiryProcessor = allTransactionStatusesInquiryProcessor;
 			_pagedDataRequestFactory = pagedDataRequestFactory;
 		}
 
 		[HttpGet("{id:long}")]
-		public TransactionStatus GetTransactionStatusById(long id)
+		public TransactionStatus GetTransactionStatusById(TransactionStatusValue id)
 		{
-			var transaction = _transactionStatusByIdInquiryProcessor.GetTransactionStatusById(id);
-			return transaction;
+			var status = _transactionStatusByIdInquiryProcessor.GetTransactionStatusById(id);
+			return status;
 		}
 
 		[HttpGet("{name}")]
 		public TransactionStatus GetTransactionStatusByName(string name)
 		{
-			var transaction = _transactionStatusByNameInquiryProcessor.GetTransactionStatusByName(name);
-			return transaction;
+			var status = _transactionStatusByNameInquiryProcessor.GetTransactionStatusByName(name);
+			return status;
 		}
 
 		[HttpGet]
 		public PagedDataInquiryResponse<TransactionStatus> GetTransactionStatus()
 		{
 			var request = _pagedDataRequestFactory.Create(HttpContext);
-			var status = _allTransactionsInquiryProcessor.GetTransactionsStatus(request);
+			var status = _allTransactionStatusesInquiryProcessor.GetTransactionTypes(request);
 
 			return status;
 		}

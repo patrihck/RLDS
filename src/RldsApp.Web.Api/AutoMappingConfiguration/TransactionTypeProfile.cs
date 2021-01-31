@@ -3,7 +3,7 @@ using RldsApp.Web.Api.Models;
 
 namespace RldsApp.Web.Api.AutoMappingConfiguration
 {
-	public class TransactionTypeProfile : Profile
+    public class TransactionTypeProfile : Profile
 	{
 		public TransactionTypeProfile()
 		{

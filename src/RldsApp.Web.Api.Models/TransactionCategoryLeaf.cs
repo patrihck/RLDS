@@ -3,22 +3,19 @@ using System.ComponentModel.DataAnnotations;
 
 namespace RldsApp.Web.Api.Models
 {
-	public class TransactionCategory : ILinkContaining
+    public class TransactionCategoryLeaf
 	{
 		private List<Link> _links;
 
 		[Key]
+		[Editable(true)]
 		public long Id { get; set; }
 
-		[Required(AllowEmptyStrings = false)]
-		[Editable(true)]
+		[Editable(false)]
 		public string Name { get; set; }
 
-		[Editable(true)]
-		public TransactionCategoryLeaf Root { get; set; }
-
 		[Editable(false)]
-		public byte[] Version { get; set; }
+		public long? RootId { get; set; }
 
 		[Editable(false)]
 		public List<Link> Links

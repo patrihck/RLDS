@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using RldsApp.Common;
 using RldsApp.Data.DataProcessing.TransactionDataProcessor;
-using RldsApp.Data.DataProcessing.TransactionRuleDataProcessor;
 using RldsApp.Data.Exceptions;
 using RldsApp.Web.Api.LinkServices;
 using RldsApp.Web.Api.Models;

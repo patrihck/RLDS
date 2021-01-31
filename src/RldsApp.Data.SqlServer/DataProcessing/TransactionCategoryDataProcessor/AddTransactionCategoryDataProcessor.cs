@@ -1,7 +1,6 @@
 ﻿using NHibernate;
 using RldsApp.Data.DataProcessing;
 using RldsApp.Data.Entities;
-using RldsApp.Data.Exceptions;
 using static RldsApp.Common.Constants;
 
 namespace RldsApp.Data.SqlServer.DataProcessing
@@ -17,13 +16,15 @@ namespace RldsApp.Data.SqlServer.DataProcessing
 
 		public void AddTransactionCategory(TransactionCategory transactionCategory)
 		{
-			if (transactionCategory.Root != null)
-			{
-				var root = _session.Get<TransactionCategory>(transactionCategory.Root.Id);
-				transactionCategory.Root = root ?? throw new ChildObjectNotFoundException(Messages.TransactionCategoryNotFound);
-			}
+			GetChildEntities(_session, transactionCategory);
 
 			_session.SaveOrUpdate(transactionCategory);
+			_session.Flush();
+		}
+
+		internal static void GetChildEntities(ISession session, TransactionCategory transactionCategory)
+		{
+			transactionCategory.Root = session.GetChildEntity(transactionCategory.Root, q => q.Id, () => Messages.TransactionCategoryNotFound);
 		}
 	}
 }

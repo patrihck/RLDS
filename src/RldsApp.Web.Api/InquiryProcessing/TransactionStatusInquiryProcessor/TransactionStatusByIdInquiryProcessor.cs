@@ -6,7 +6,7 @@ using RldsApp.Web.Api.Models;
 
 namespace RldsApp.Web.Api.InquiryProcessing.TransactionStatusInquiryProcessor
 {
-	public class TransactionStatusByIdInquiryProcessor : ITransactionStatusByIdInquiryProcess
+	public class TransactionStatusByIdInquiryProcessor : ITransactionStatusByIdInquiryProcessor
 	{
 		private readonly IMapper _autoMapper;
 		private readonly ITransactionStatusByIdDataProcessor _queryProcessor;
@@ -17,9 +17,9 @@ namespace RldsApp.Web.Api.InquiryProcessing.TransactionStatusInquiryProcessor
 			_autoMapper = autoMapper;
 		}
 
-		public TransactionStatus GetTransactionStatusById(long statusId)
+		public TransactionStatus GetTransactionStatusById(TransactionStatusValue statusId)
 		{
-			var transactionStatusEntity = _queryProcessor.GetTransactionStatusById(statusId);
+			var transactionStatusEntity = _queryProcessor.GetTransactionStatusById((long)statusId);
 
 			if (transactionStatusEntity == null)
 			{
