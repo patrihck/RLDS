@@ -2,12 +2,11 @@
 
 namespace RldsApp.Data.SqlServer.Mapping
 {
-	public class TransactionMap : VersionedClassMap<Transaction>
+	public class RecurringTransactionMap : VersionedClassMap<RecurringTransaction>
 	{
-		public TransactionMap()
+		public RecurringTransactionMap()
 		{
-			Id(x => x.Id, "TransactionId");
-			Map(x => x.Date).Not.Nullable();
+			Id(x => x.Id, "RecurringTransactionId");
 			Map(x => x.Description).Nullable();
 			Map(x => x.Amount).Not.Nullable();
 
@@ -16,9 +15,11 @@ namespace RldsApp.Data.SqlServer.Mapping
 			References(x => x.Receiver, "ReceiverId");
 			References(x => x.Type, "TypeId");
 			References(x => x.Category, "CategoryId");
-			References(x => x.Status, "StatusId");
 			References(x => x.Currency, "CurrencyId");
-			References(x => x.RecurringTransaction, "RecurringTransactionId").Nullable();
+
+			HasMany(x => x.RecurringTransactionDayRules).KeyColumn("RecurringTransactionId");
+			HasMany(x => x.RecurringTransactionWeekRules).KeyColumn("RecurringTransactionId");
+			HasMany(x => x.RecurringTransactionMonthRules).KeyColumn("RecurringTransactionId");
 		}
 	}
 }
