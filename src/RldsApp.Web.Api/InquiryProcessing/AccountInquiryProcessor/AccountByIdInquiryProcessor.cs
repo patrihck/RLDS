@@ -37,6 +37,7 @@ namespace RldsApp.Web.Api.InquiryProcessing.AccountInquiryProcessor
 		{
 			var account = _automapper.Map<Account>(accountEntity);
 			_accountLinkService.AddSelfLink(account);
+			_accountLinkService.AddLinksToChildObjects(account);
 
 			return account;
 		}

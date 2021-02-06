@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace RldsApp.Web.Api.Models
 {
-	public class Account : ILinkContaining
+    public class Account : ILinkContaining
 	{
 		private List<Link> _links;
 
@@ -14,7 +14,7 @@ namespace RldsApp.Web.Api.Models
 		public string Name { get; set; }
 
 		[Editable(true)]
-		public User User { get; set; }
+		public UserLeaf User { get; set; }
 
 		[Editable(false)]
 		public Currency Currency { get; set; }

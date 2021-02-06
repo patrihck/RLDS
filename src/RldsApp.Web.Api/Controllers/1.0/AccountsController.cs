@@ -1,9 +1,8 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RldsApp.Common;
-using RldsApp.Data.DataProcessing.AccountDataProcessor;
-using RldsApp.Web.Api.InquiryProcessing.AccountInquiryProcessor;
 using RldsApp.Web.Api.InquiryProcessing;
+using RldsApp.Web.Api.InquiryProcessing.AccountInquiryProcessor;
 using RldsApp.Web.Api.MaintenanceProcessing.AccountMaintenanceProcessor;
 using RldsApp.Web.Api.Models;
 
@@ -19,26 +18,31 @@ namespace RldsApp.Web.Api.Controllers.V1
 		private readonly IAllAccountsInquiryProcessor _allAccountsInquiryProcessor;
 		private readonly IPagedDataRequestFactory _pagedDataRequestFactory;
 		private readonly IAddAccountMaintenanceProcessor _addAccountMaintenanceProcessor;
-		private readonly IDeleteAccountDataProcessor _deleteAccountDataProcessor;
+		private readonly IDeleteAccountMaintenanceProcessor _deleteAccountMaintenanceProcessor;
 		private readonly IUpdateAccountMaintenanceProcessor _updateAccountMaintenanceProcessor;
 
-		public AccountsController(IAccountByIdInquiryProcessor accountByIdInquiryProcessor, IAllAccountsInquiryProcessor allAccountsInquiryProcessor, IPagedDataRequestFactory pagedDataRequestFactory, IAddAccountMaintenanceProcessor addAccountMaintenanceProcessor, IDeleteAccountDataProcessor deleteAccountDataProcessor, IUpdateAccountMaintenanceProcessor updateAccountDataProcessor)
+		public AccountsController(
+			IAccountByIdInquiryProcessor accountByIdInquiryProcessor,
+			IAllAccountsInquiryProcessor allAccountsInquiryProcessor,
+			IPagedDataRequestFactory pagedDataRequestFactory,
+			IAddAccountMaintenanceProcessor addAccountMaintenanceProcessor,
+			IDeleteAccountMaintenanceProcessor deleteAccountMaintenanceProcessor,
+			IUpdateAccountMaintenanceProcessor updateAccountDataProcessor)
 		{
 			_accountByIdInquiryProcessor = accountByIdInquiryProcessor;
 			_allAccountsInquiryProcessor = allAccountsInquiryProcessor;
 			_pagedDataRequestFactory = pagedDataRequestFactory;
 			_addAccountMaintenanceProcessor = addAccountMaintenanceProcessor;
-			_deleteAccountDataProcessor = deleteAccountDataProcessor;
+			_deleteAccountMaintenanceProcessor = deleteAccountMaintenanceProcessor;
 			_updateAccountMaintenanceProcessor = updateAccountDataProcessor;
 		}
 
-		[HttpGet("GetAccount")]
-		[AllowAnonymous] // TODO Do wywalenia
+		[HttpGet]
 		public PagedDataInquiryResponse<Account> GetAccount()
 		{
 			var request = _pagedDataRequestFactory.Create(HttpContext);
 			var accounts = _allAccountsInquiryProcessor.GetAccounts(request);
-			
+
 			return accounts;
 		}
 
@@ -46,7 +50,7 @@ namespace RldsApp.Web.Api.Controllers.V1
 		public Account GetAccountById(long id)
 		{
 			var account = _accountByIdInquiryProcessor.GetAccountById(id);
-			
+
 			return account;
 		}
 
@@ -55,7 +59,7 @@ namespace RldsApp.Web.Api.Controllers.V1
 		public ActionResult<Account> AddAccount(NewAccount newAccount)
 		{
 			var account = _addAccountMaintenanceProcessor.AddAccount(newAccount);
-			
+
 			return CreatedAtAction(nameof(GetAccountById), new { id = account.Id }, account);
 		}
 
@@ -64,7 +68,7 @@ namespace RldsApp.Web.Api.Controllers.V1
 		public Account UpdateAccount(long id, [FromBody] object updatedAccount)
 		{
 			var account = _updateAccountMaintenanceProcessor.UpdateAccount(id, updatedAccount);
-			
+
 			return account;
 		}
 
@@ -72,12 +76,12 @@ namespace RldsApp.Web.Api.Controllers.V1
 		[Authorize(Roles = Constants.RoleNames.AllRoles)]
 		public ActionResult DeleteAccount(long id)
 		{
-			if (_deleteAccountDataProcessor.DeleteAccount(id))
+			if (_deleteAccountMaintenanceProcessor.DeleteAccount(id))
 			{
 				return Ok();
 			}
 
-			return NoContent();
+			return NotFound();
 		}
 	}
 }
