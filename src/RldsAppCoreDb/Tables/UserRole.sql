@@ -12,3 +12,24 @@
 		REFERENCES [Role] ([RoleId])
 );
 GO
+
+EXEC sp_addextendedproperty @name = N'MS_Description',
+	@value = N'Junction table between users and roles',
+	@level0type = N'SCHEMA', @level0name = N'dbo',
+	@level1type = N'TABLE', @level1name = N'UserRole',
+	@level2type = NULL, @level2name = NULL;
+GO
+
+EXEC sp_addextendedproperty @name = N'MS_Description',
+	@value = N'User identifier',
+	@level0type = N'SCHEMA', @level0name = N'dbo',
+	@level1type = N'TABLE', @level1name = N'UserRole',
+	@level2type = N'COLUMN', @level2name = N'UserId';
+GO
+
+EXEC sp_addextendedproperty @name = N'MS_Description',
+	@value = N'Role identifier',
+	@level0type = N'SCHEMA', @level0name = N'dbo',
+	@level1type = N'TABLE', @level1name = N'UserRole',
+	@level2type = N'COLUMN', @level2name = N'RoleId';
+GO

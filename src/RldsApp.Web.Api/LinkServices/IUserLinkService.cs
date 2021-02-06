@@ -6,7 +6,7 @@ namespace RldsApp.Web.Api.LinkServices
 	{
 		Link GetAllUsersLink();
 
-		void AddSelfLink(User user);
+		void AddSelfLink(UserLeaf user);
 
 		void AddLinksToChildObjects(User user);
 	}

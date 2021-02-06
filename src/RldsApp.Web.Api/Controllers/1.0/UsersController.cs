@@ -60,6 +60,14 @@ namespace RldsApp.Web.Api.Controllers.V1
 			return user;
 		}
 
+		[AllowAnonymous]
+		[HttpPost("register")]
+		public ActionResult<User> RegisterUser(NewUser newUser)
+		{
+			var user = _addUserMaintenanceProcessor.AddUser(newUser);
+			return CreatedAtAction(nameof(GetUserById), new { id = user.Id }, user);
+		}
+
 		[HttpPost]
 		[Authorize(Roles = Constants.RoleNames.AllRoles)]
 		public ActionResult<User> AddUser(NewUser newUser)
@@ -85,7 +93,7 @@ namespace RldsApp.Web.Api.Controllers.V1
 				return Ok();
 			}
 
-			return NoContent();
+			return NotFound();
 		}
 
 		[HttpPost("authenticate")]
