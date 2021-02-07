@@ -21,6 +21,7 @@ namespace RldsApp.Data.SqlServer.DataProcessing.CurrencyRateDataProcessor
 			currencyRate.TargetCurrency = GetValidCurrency(currencyRate.TargetCurrency.Id);
 
 			_session.SaveOrUpdate(currencyRate);
+			_session.Flush();
 		}
 
 		public virtual Currency GetValidCurrency(long currencyId)

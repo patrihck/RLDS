@@ -4,7 +4,7 @@ using RldsApp.Data.Entities;
 
 namespace RldsApp.Data.SqlServer.DataProcessing.CurrencyDataProcessor
 {
-	public class AddCurrencyDataProcessor : IAddCurrencyDataProcessor
+    public class AddCurrencyDataProcessor : IAddCurrencyDataProcessor
 	{
 		private readonly ISession _session;
 
@@ -16,6 +16,7 @@ namespace RldsApp.Data.SqlServer.DataProcessing.CurrencyDataProcessor
 		public void AddCurrency(Currency currency)
 		{
 			_session.SaveOrUpdate(currency);
+			_session.Flush();
 		}
 	}
 }
