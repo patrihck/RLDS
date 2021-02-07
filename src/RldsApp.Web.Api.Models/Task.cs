@@ -31,7 +31,7 @@ namespace RldsApp.Web.Api.Models
 		public TransactionStatus TransactionStatus { get; set; }
 
 		[Editable(false)]
-		public List<User> Assignees { get; set; }
+		public List<UserLeaf> Assignees { get; set; }
 
 		[Editable(false)]
 		public virtual byte[] Version { get; set; }
@@ -50,12 +50,12 @@ namespace RldsApp.Web.Api.Models
 
 		public void SetShouldSerializeAssignees(bool shouldSerialize)
 		{
-			_shouldSerializeAssignees = shouldSerialize;
+			_shouldSerializeAssignees = true; //shouldSerialize;
 		}
 
 		public bool ShouldSerializeAssignees()
 		{
-			return _shouldSerializeAssignees;
+			return true; //_shouldSerializeAssignees;
 		}
 	}
 }

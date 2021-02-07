@@ -18,6 +18,7 @@ namespace RldsApp.Data.SqlServer.DataProcessing
 			var status = _session.QueryOver<TransactionStatus>().Where(x => x.Name == statusName).SingleOrDefault();
 			taskToUpdate.Status = status;
 			_session.SaveOrUpdate(taskToUpdate);
+			_session.Flush();
 		}
 	}
 }
