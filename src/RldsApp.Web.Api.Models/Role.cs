@@ -14,7 +14,7 @@ namespace RldsApp.Web.Api.Models
 		public string RoleName { get; set; }
 
 		[Editable(false)]
-		public List<User> Users { get; set; }
+		public List<UserLeaf> Users { get; set; }
 
 		[Editable(false)]
 		public virtual byte[] Version { get; set; }
