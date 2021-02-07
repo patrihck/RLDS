@@ -1,9 +1,9 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace RldsApp.Web.Api.Models
 {
-    public class Account : ILinkContaining
+    public class UserLeaf : ILinkContaining
 	{
 		private List<Link> _links;
 
@@ -11,22 +11,22 @@ namespace RldsApp.Web.Api.Models
 		public long Id { get; set; }
 
 		[Editable(true)]
-		public string Name { get; set; }
+		public string Login { get; set; }
 
 		[Editable(true)]
-		public UserLeaf User { get; set; }
-
-		[Editable(false)]
-		public Currency Currency { get; set; }
+		public string Password { get; set; }
 
 		[Editable(true)]
-		public Group Group { get; set; }
+		public string Firstname { get; set; }
+
+		[Editable(true)]
+		public string Lastname { get; set; }
+
+		[Editable(true)]
+		public string Email { get; set; }
 
 		[Editable(false)]
-		public decimal StartAmount { get; set; }
-
-		[Editable(false)]
-		public byte[] Version { get; set; }
+		public virtual byte[] Version { get; set; }
 
 		[Editable(false)]
 		public List<Link> Links

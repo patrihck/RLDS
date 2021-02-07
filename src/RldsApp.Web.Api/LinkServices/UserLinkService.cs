@@ -21,12 +21,12 @@ namespace RldsApp.Web.Api.LinkServices
 			user.Roles.ForEach(x => _roleLinkService.AddSelfLink(x));
 		}
 
-		public virtual void AddSelfLink(User user)
+		public virtual void AddSelfLink(UserLeaf user)
 		{
 			user.AddLink(GetSelfLink(user));
 		}
 
-		public virtual Link GetSelfLink(User user)
+		public virtual Link GetSelfLink(UserLeaf user)
 		{
 			var pathFragment = String.Format("users/{0}", user.Id);
 			var link = _commonLinkService.GetLink(pathFragment, Constants.CommonLinkRelValues.Self, HttpMethod.Get);

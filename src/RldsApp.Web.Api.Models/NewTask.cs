@@ -11,6 +11,6 @@ namespace RldsApp.Web.Api.Models
 
 		public DateTime? StartDate { get; set; }
 		public DateTime? DueDate { get; set; }
-		public List<User> Assignees { get; set; }
+		public List<UserLeaf> Assignees { get; set; }
 	}
 }

@@ -2,13 +2,13 @@ using System.ComponentModel.DataAnnotations;
 
 namespace RldsApp.Web.Api.Models
 {
-	public class NewAccount
+    public class NewAccount
 	{
 		[Required]
 		public string Name { get; set; }
 
 		[Required]
-		public User User { get; set; }
+		public UserLeaf User { get; set; }
 
 		[Required]
 		public Currency Currency { get; set; }

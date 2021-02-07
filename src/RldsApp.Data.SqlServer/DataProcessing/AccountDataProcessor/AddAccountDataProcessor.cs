@@ -19,6 +19,7 @@ namespace RldsApp.Data.SqlServer.DataProcessing
 			GetChildEntities(_session, account);
 
 			_session.SaveOrUpdate(account);
+			_session.Flush();
 		}
 
 		internal static void GetChildEntities(ISession session, Account account)

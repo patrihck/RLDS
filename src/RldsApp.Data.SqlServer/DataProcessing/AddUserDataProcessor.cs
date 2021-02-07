@@ -31,6 +31,7 @@ namespace RldsApp.Data.SqlServer.DataProcessing
 			}
 
 			_session.SaveOrUpdate(user);
+			_session.Flush();
 		}
 	}
 }

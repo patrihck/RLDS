@@ -10,9 +10,14 @@ namespace RldsApp.Web.Api.AutoMappingConfiguration
 			CreateMap<User, Data.Entities.User>()
 				.ForMember(dest => dest.Version, opt => opt.Ignore());
 
+			CreateMap<UserLeaf, Data.Entities.User>()
+				.ForMember(dest => dest.Version, opt => opt.Ignore());
+
 			CreateMap<Data.Entities.User, User>()
 				.ForMember(dest => dest.Links, opt => opt.Ignore());
 
+			CreateMap<Data.Entities.User, UserLeaf>()
+				.ForMember(dest => dest.Links, opt => opt.Ignore());
 		}
 	}
 }

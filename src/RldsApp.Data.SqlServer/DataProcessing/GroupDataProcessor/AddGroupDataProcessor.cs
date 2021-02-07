@@ -16,6 +16,7 @@ namespace RldsApp.Data.SqlServer.DataProcessing.GroupDataProcessor
 		public void AddGroup(Group group)
 		{
 			_session.SaveOrUpdate(group);
+			_session.Flush();
 		}
 	}
 }

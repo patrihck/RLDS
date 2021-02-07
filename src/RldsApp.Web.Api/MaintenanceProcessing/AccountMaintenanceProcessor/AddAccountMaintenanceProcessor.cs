@@ -9,13 +9,13 @@ namespace RldsApp.Web.Api.MaintenanceProcessing.AccountMaintenanceProcessor
 	{
 		private readonly IMapper _autoMapper;
 		private readonly IAddAccountDataProcessor _dataProcessor;
-		private readonly IAccountLinkService _accountLinkService;
+		private readonly IAccountLinkService _linkService;
 
 		public AddAccountMaintenanceProcessor(IAddAccountDataProcessor dataProcessor, IMapper autoMapper, IAccountLinkService accountLinkService)
 		{
 			_dataProcessor = dataProcessor;
 			_autoMapper = autoMapper;
-			_accountLinkService = accountLinkService;
+			_linkService = accountLinkService;
 		}
 
 		public Account AddAccount(NewAccount newAccount)
@@ -23,7 +23,8 @@ namespace RldsApp.Web.Api.MaintenanceProcessing.AccountMaintenanceProcessor
 			var accountEntity = _autoMapper.Map<Data.Entities.Account>(newAccount);
 			_dataProcessor.AddAccount(accountEntity);
 			var account = _autoMapper.Map<Account>(accountEntity);
-			_accountLinkService.AddSelfLink(account);
+			_linkService.AddSelfLink(account);
+			_linkService.AddLinksToChildObjects(account);
 
 			return account;
 		}
