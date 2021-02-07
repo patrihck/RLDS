@@ -29,6 +29,8 @@ namespace RldsApp.Data.SqlServer.DataProcessing
 			}
 
 			_session.SaveOrUpdate(task);
+			_session.Flush();
+
 			return task;
 		}
 
@@ -37,6 +39,7 @@ namespace RldsApp.Data.SqlServer.DataProcessing
 			var task = GetValidTask(taskId);
 			UpdateTaskUsers(task, userIds, false);
 			_session.SaveOrUpdate(task);
+			_session.Flush();
 
 			return task;
 		}
@@ -46,6 +49,7 @@ namespace RldsApp.Data.SqlServer.DataProcessing
 			var task = GetValidTask(taskId);
 			UpdateTaskUsers(task, null, false);
 			_session.SaveOrUpdate(task);
+			_session.Flush();
 
 			return task;
 		}
@@ -55,6 +59,7 @@ namespace RldsApp.Data.SqlServer.DataProcessing
 			var task = GetValidTask(taskId);
 			UpdateTaskUsers(task, new[] { userId }, true);
 			_session.SaveOrUpdate(task);
+			_session.Flush();
 
 			return task;
 		}
@@ -69,6 +74,7 @@ namespace RldsApp.Data.SqlServer.DataProcessing
 			{
 				task.Assignees.Remove(user);
 				_session.SaveOrUpdate(task);
+				_session.Flush();
 			}
 
 			return task;
