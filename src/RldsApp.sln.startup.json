@@ -1,0 +1,27 @@
+/*
+    This is a configuration file for the SwitchStartupProject Visual Studio Extension
+    See https://heptapod.host/thirteen/switchstartupproject/blob/branch/current/Configuration.md
+*/
+{
+    "Version": 3,
+    "ListAllProjects": false,
+
+    "MultiProjectConfigurations": {
+        "API + FRONT": {
+            "Projects": {
+                "RldsApp.Web": {},
+                "RldsApp.Web.Api": {}
+            }
+        },
+        "API": {
+            "Projects": {
+                "RldsApp.Web.Api": {}
+            }
+        },
+        "FRONT": {
+            "Projects": {
+                "RldsApp.Web": {},
+            }
+        }
+    }
+}
