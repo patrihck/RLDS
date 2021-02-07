@@ -2,7 +2,7 @@
 
 namespace RldsApp.Web.Api.Models
 {
-	public class NewCurrency
+    public class NewCurrency
 	{
 		[Required(AllowEmptyStrings = false)]
 		public string Name { get; set; }
