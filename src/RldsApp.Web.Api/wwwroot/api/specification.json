@@ -1,0 +1,3953 @@
+{
+  "x-generator": "NSwag v13.10.2.0 (NJsonSchema v10.3.4.0 (Newtonsoft.Json v12.0.0.0))",
+  "swagger": "2.0",
+  "info": {
+    "title": "My Title",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/api/{v}/Roles": {
+      "get": {
+        "tags": [
+          "Roles"
+        ],
+        "operationId": "Roles_GetRoles",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "v",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/PagedDataInquiryResponseOfRole"
+            }
+          }
+        }
+      }
+    },
+    "/api/{v}/Roles/{roleId}": {
+      "get": {
+        "tags": [
+          "Roles"
+        ],
+        "operationId": "Roles_GetRoleById",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "roleId",
+            "in": "path",
+            "required": true,
+            "format": "int64",
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "v",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Role"
+            }
+          }
+        }
+      }
+    },
+    "/api/{v}/Roles/{roleName}": {
+      "get": {
+        "tags": [
+          "Roles"
+        ],
+        "operationId": "Roles_GetRoleByName",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "roleName",
+            "in": "path",
+            "required": true,
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "v",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Role"
+            }
+          }
+        }
+      }
+    },
+    "/api/{v}/Accounts": {
+      "get": {
+        "tags": [
+          "Accounts"
+        ],
+        "operationId": "Accounts_GetAccount",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "v",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/PagedDataInquiryResponseOfAccount"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Accounts"
+        ],
+        "operationId": "Accounts_AddAccount",
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "newAccount",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/NewAccount"
+            },
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "v",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Account"
+            }
+          }
+        }
+      }
+    },
+    "/api/{v}/Accounts/{id}": {
+      "get": {
+        "tags": [
+          "Accounts"
+        ],
+        "operationId": "Accounts_GetAccountById",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "format": "int64",
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "v",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Account"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Accounts"
+        ],
+        "operationId": "Accounts_UpdateAccount",
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "format": "int64",
+            "x-nullable": false
+          },
+          {
+            "name": "updatedAccount",
+            "in": "body",
+            "required": true,
+            "schema": {},
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "v",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Account"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Accounts"
+        ],
+        "operationId": "Accounts_DeleteAccount",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "format": "int64",
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "v",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      }
+    },
+    "/api/{v}/currencies": {
+      "get": {
+        "tags": [
+          "Currency"
+        ],
+        "operationId": "Currency_GetCurrencies",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "v",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/PagedDataInquiryResponseOfCurrency"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Currency"
+        ],
+        "operationId": "Currency_AddCurrency",
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "newCurrency",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/NewCurrency"
+            },
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "v",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Currency"
+            }
+          }
+        }
+      }
+    },
+    "/api/{v}/currencies/{id}": {
+      "get": {
+        "tags": [
+          "Currency"
+        ],
+        "operationId": "Currency_GetCurrencyById",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "format": "int64",
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "v",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Currency"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Currency"
+        ],
+        "operationId": "Currency_UpdateCurrency",
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "format": "int64",
+            "x-nullable": false
+          },
+          {
+            "name": "updatedCurrency",
+            "in": "body",
+            "required": true,
+            "schema": {},
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "v",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Currency"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Currency"
+        ],
+        "operationId": "Currency_DeleteCurrency",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "format": "int64",
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "v",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      }
+    },
+    "/api/{v}/currencies/{acronym}": {
+      "get": {
+        "tags": [
+          "Currency"
+        ],
+        "operationId": "Currency_GetCurrencyByAcronym",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "acronym",
+            "in": "path",
+            "required": true,
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "v",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Currency"
+            }
+          }
+        }
+      }
+    },
+    "/api/{v}/currency-rates/{sourceCurrencyId}/{targetCurrencyId}": {
+      "get": {
+        "tags": [
+          "CurrencyRates"
+        ],
+        "operationId": "CurrencyRates_GetCurrencyRates",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "sourceCurrencyId",
+            "in": "path",
+            "required": true,
+            "format": "int64",
+            "x-nullable": false
+          },
+          {
+            "type": "integer",
+            "name": "targetCurrencyId",
+            "in": "path",
+            "required": true,
+            "format": "int64",
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "v",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/PagedDataInquiryResponseOfCurrencyRate"
+            }
+          }
+        }
+      }
+    },
+    "/api/{v}/currency-rates/{sourceCurrencyId}/{targetCurrencyId}/{date}": {
+      "get": {
+        "tags": [
+          "CurrencyRates"
+        ],
+        "operationId": "CurrencyRates_GetCurrencyRateByDate",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "sourceCurrencyId",
+            "in": "path",
+            "required": true,
+            "format": "int64",
+            "x-nullable": false
+          },
+          {
+            "type": "integer",
+            "name": "targetCurrencyId",
+            "in": "path",
+            "required": true,
+            "format": "int64",
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "date",
+            "in": "path",
+            "required": true,
+            "format": "date-time",
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "v",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/CurrencyRate"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "CurrencyRates"
+        ],
+        "operationId": "CurrencyRates_UpdateCurrencyRate",
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "sourceCurrencyId",
+            "in": "path",
+            "required": true,
+            "format": "int64",
+            "x-nullable": false
+          },
+          {
+            "type": "integer",
+            "name": "targetCurrencyId",
+            "in": "path",
+            "required": true,
+            "format": "int64",
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "date",
+            "in": "path",
+            "required": true,
+            "format": "date-time",
+            "x-nullable": false
+          },
+          {
+            "name": "updatedCurrencyRate",
+            "in": "body",
+            "required": true,
+            "schema": {},
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "v",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/CurrencyRate"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "CurrencyRates"
+        ],
+        "operationId": "CurrencyRates_DeleteCurrencyRate",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "sourceCurrencyId",
+            "in": "path",
+            "required": true,
+            "format": "int64",
+            "x-nullable": false
+          },
+          {
+            "type": "integer",
+            "name": "targetCurrencyId",
+            "in": "path",
+            "required": true,
+            "format": "int64",
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "date",
+            "in": "path",
+            "required": true,
+            "format": "date-time",
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "v",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      }
+    },
+    "/api/{v}/currency-rates": {
+      "post": {
+        "tags": [
+          "CurrencyRates"
+        ],
+        "operationId": "CurrencyRates_AddCurrencyRate",
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "newCurrencyRate",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/NewCurrencyRate"
+            },
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "v",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/CurrencyRate"
+            }
+          }
+        }
+      }
+    },
+    "/api/{v}/Groups": {
+      "get": {
+        "tags": [
+          "Groups"
+        ],
+        "operationId": "Groups_GetGroup",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "v",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/PagedDataInquiryResponseOfGroup"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Groups"
+        ],
+        "operationId": "Groups_AddGroup",
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "newGroup",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/NewGroup"
+            },
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "v",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Group"
+            }
+          }
+        }
+      }
+    },
+    "/api/{v}/Groups/{groupId}": {
+      "get": {
+        "tags": [
+          "Groups"
+        ],
+        "operationId": "Groups_GetGroupById",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "groupId",
+            "in": "path",
+            "required": true,
+            "format": "int64",
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "v",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Group"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Groups"
+        ],
+        "operationId": "Groups_UpdateGroup",
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "groupId",
+            "in": "path",
+            "required": true,
+            "format": "int64",
+            "x-nullable": false
+          },
+          {
+            "name": "updatedGroup",
+            "in": "body",
+            "required": true,
+            "schema": {},
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "v",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Group"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Groups"
+        ],
+        "operationId": "Groups_DeleteGroup",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "groupId",
+            "in": "path",
+            "required": true,
+            "format": "int64",
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "v",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      }
+    },
+    "/api/{v}/PlannedTransactions": {
+      "get": {
+        "tags": [
+          "PlannedTransactions"
+        ],
+        "operationId": "PlannedTransactions_GetPlannedTransactions",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "dateFrom",
+            "in": "query",
+            "format": "date-time",
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "dateTo",
+            "in": "query",
+            "format": "date-time",
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "v",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/PagedDataInquiryResponseOfTransaction"
+            }
+          }
+        }
+      }
+    },
+    "/api/{v}/RecurringTransactions/{id}": {
+      "get": {
+        "tags": [
+          "RecurringTransactions"
+        ],
+        "operationId": "RecurringTransactions_GetRecurringTransactionById",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "format": "int64",
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "v",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/RecurringTransaction"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "RecurringTransactions"
+        ],
+        "operationId": "RecurringTransactions_UpdateRecurringTransaction",
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "format": "int64",
+            "x-nullable": false
+          },
+          {
+            "name": "updatedRecurringTransaction",
+            "in": "body",
+            "required": true,
+            "schema": {},
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "v",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/RecurringTransaction"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "RecurringTransactions"
+        ],
+        "operationId": "RecurringTransactions_DeleteRecurringTransaction",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "format": "int64",
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "v",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      }
+    },
+    "/api/{v}/RecurringTransactions": {
+      "get": {
+        "tags": [
+          "RecurringTransactions"
+        ],
+        "operationId": "RecurringTransactions_GetRecurringTransactions",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "v",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/PagedDataInquiryResponseOfRecurringTransaction"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "RecurringTransactions"
+        ],
+        "operationId": "RecurringTransactions_AddRecurringTransaction",
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "newRecurringTransaction",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/NewRecurringTransaction"
+            },
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "v",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/RecurringTransaction"
+            }
+          }
+        }
+      }
+    },
+    "/api/{v}/Tasks/{id}": {
+      "get": {
+        "tags": [
+          "Tasks"
+        ],
+        "operationId": "Tasks_GetTaskById",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "format": "int64",
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "v",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Task"
+            }
+          }
+        }
+      }
+    },
+    "/api/{v}/Tasks": {
+      "get": {
+        "tags": [
+          "Tasks"
+        ],
+        "operationId": "Tasks_GetTasks",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "v",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/PagedDataInquiryResponseOfTask"
+            }
+          }
+        }
+      }
+    },
+    "/api/{v}/TaskUsers/{taskId}/users": {
+      "put": {
+        "tags": [
+          "TaskUsers"
+        ],
+        "operationId": "TaskUsers_ReplaceTaskUsers",
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "taskId",
+            "in": "path",
+            "required": true,
+            "format": "int64",
+            "x-nullable": false
+          },
+          {
+            "name": "userIds",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "format": "int64"
+              }
+            },
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "v",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Task"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "TaskUsers"
+        ],
+        "operationId": "TaskUsers_DeleteTaskUsers",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "taskId",
+            "in": "path",
+            "required": true,
+            "format": "int64",
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "v",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Task"
+            }
+          }
+        }
+      }
+    },
+    "/api/{v}/TaskUsers/{taskId}/users/{userId}": {
+      "put": {
+        "tags": [
+          "TaskUsers"
+        ],
+        "operationId": "TaskUsers_AddTaskUser",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "taskId",
+            "in": "path",
+            "required": true,
+            "format": "int64",
+            "x-nullable": false
+          },
+          {
+            "type": "integer",
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "format": "int64",
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "v",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Task"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "TaskUsers"
+        ],
+        "operationId": "TaskUsers_DeleteTaskUser",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "taskId",
+            "in": "path",
+            "required": true,
+            "format": "int64",
+            "x-nullable": false
+          },
+          {
+            "type": "integer",
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "format": "int64",
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "v",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Task"
+            }
+          }
+        }
+      }
+    },
+    "/api/{v}/TaskWorkflow/tasks/{taskId}/activations": {
+      "post": {
+        "tags": [
+          "TaskWorkflow"
+        ],
+        "operationId": "TaskWorkflow_StartTask",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "taskId",
+            "in": "path",
+            "required": true,
+            "format": "int64",
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "v",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Task"
+            }
+          }
+        }
+      }
+    },
+    "/api/{v}/TaskWorkflow/tasks/{taskId}/completions": {
+      "post": {
+        "tags": [
+          "TaskWorkflow"
+        ],
+        "operationId": "TaskWorkflow_CompleteTask",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "taskId",
+            "in": "path",
+            "required": true,
+            "format": "int64",
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "v",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Task"
+            }
+          }
+        }
+      }
+    },
+    "/api/{v}/TaskWorkflow/tasks/{taskId}/reactivations": {
+      "post": {
+        "tags": [
+          "TaskWorkflow"
+        ],
+        "operationId": "TaskWorkflow_ReactivateTask",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "taskId",
+            "in": "path",
+            "required": true,
+            "format": "int64",
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "v",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Task"
+            }
+          }
+        }
+      }
+    },
+    "/api/{v}/transaction-categories": {
+      "post": {
+        "tags": [
+          "TransactionCategory"
+        ],
+        "operationId": "TransactionCategory_AddTransactionCategory",
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "newTransactionCategory",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/NewTransactionCategory"
+            },
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "v",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/TransactionCategory"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "TransactionCategory"
+        ],
+        "operationId": "TransactionCategory_GetTransactionCategories",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "v",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/PagedDataInquiryResponseOfTransactionCategory"
+            }
+          }
+        }
+      }
+    },
+    "/api/{v}/transaction-categories/{id}": {
+      "delete": {
+        "tags": [
+          "TransactionCategory"
+        ],
+        "operationId": "TransactionCategory_DeleteTransactionCategory",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "format": "int64",
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "v",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "TransactionCategory"
+        ],
+        "operationId": "TransactionCategory_GetTransactionCategoryById",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "format": "int64",
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "v",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/TransactionCategory"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "TransactionCategory"
+        ],
+        "operationId": "TransactionCategory_UpdateTransactionCategory",
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "format": "int64",
+            "x-nullable": false
+          },
+          {
+            "name": "updatedTransactionCategory",
+            "in": "body",
+            "required": true,
+            "schema": {},
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "v",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/TransactionCategory"
+            }
+          }
+        }
+      }
+    },
+    "/api/{v}/Transactions/{id}": {
+      "get": {
+        "tags": [
+          "Transactions"
+        ],
+        "operationId": "Transactions_GetTransactionById",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "format": "int64",
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "v",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Transaction"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Transactions"
+        ],
+        "operationId": "Transactions_UpdateTransaction",
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "format": "int64",
+            "x-nullable": false
+          },
+          {
+            "name": "updatedTransaction",
+            "in": "body",
+            "required": true,
+            "schema": {},
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "v",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Transaction"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Transactions"
+        ],
+        "operationId": "Transactions_DeleteTransaction",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "format": "int64",
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "v",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      }
+    },
+    "/api/{v}/Transactions": {
+      "get": {
+        "tags": [
+          "Transactions"
+        ],
+        "operationId": "Transactions_GetTransactions",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "v",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/PagedDataInquiryResponseOfTransaction"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Transactions"
+        ],
+        "operationId": "Transactions_AddTransaction",
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "newTransaction",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/NewTransaction"
+            },
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "v",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Transaction"
+            }
+          }
+        }
+      }
+    },
+    "/api/{v}/TransactionStatus/{id}": {
+      "get": {
+        "tags": [
+          "TransactionStatus"
+        ],
+        "operationId": "TransactionStatus_GetTransactionStatusById",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "x-schema": {
+              "$ref": "#/definitions/TransactionStatusValue"
+            },
+            "x-nullable": false,
+            "enum": [
+              100,
+              200,
+              300,
+              400
+            ]
+          },
+          {
+            "type": "string",
+            "name": "v",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/TransactionStatus"
+            }
+          }
+        }
+      }
+    },
+    "/api/{v}/TransactionStatus/{name}": {
+      "get": {
+        "tags": [
+          "TransactionStatus"
+        ],
+        "operationId": "TransactionStatus_GetTransactionStatusByName",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "v",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/TransactionStatus"
+            }
+          }
+        }
+      }
+    },
+    "/api/{v}/TransactionStatus": {
+      "get": {
+        "tags": [
+          "TransactionStatus"
+        ],
+        "operationId": "TransactionStatus_GetTransactionStatus",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "v",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/PagedDataInquiryResponseOfTransactionStatus"
+            }
+          }
+        }
+      }
+    },
+    "/api/{v}/TransactionTypes": {
+      "get": {
+        "tags": [
+          "TransactionTypes"
+        ],
+        "operationId": "TransactionTypes_GetTransactionTypes",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "v",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/PagedDataInquiryResponseOfTransactionType"
+            }
+          }
+        }
+      }
+    },
+    "/api/{v}/TransactionTypes/{id}": {
+      "get": {
+        "tags": [
+          "TransactionTypes"
+        ],
+        "operationId": "TransactionTypes_GetTransactionTypeById",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "x-schema": {
+              "$ref": "#/definitions/TransactionTypeValue"
+            },
+            "x-nullable": false,
+            "enum": [
+              100,
+              200,
+              300
+            ]
+          },
+          {
+            "type": "string",
+            "name": "v",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/TransactionType"
+            }
+          }
+        }
+      }
+    },
+    "/api/{v}/TransactionTypes/{name}": {
+      "get": {
+        "tags": [
+          "TransactionTypes"
+        ],
+        "operationId": "TransactionTypes_GetTransactionTypeByName",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "v",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/TransactionType"
+            }
+          }
+        }
+      }
+    },
+    "/api/{v}/users/{userId}/roles": {
+      "put": {
+        "tags": [
+          "UserRoles"
+        ],
+        "operationId": "UserRoles_ReplaceUserRoles",
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "format": "int64",
+            "x-nullable": false
+          },
+          {
+            "name": "roleIds",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "format": "int64"
+              }
+            },
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "v",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "UserRoles"
+        ],
+        "operationId": "UserRoles_DeleteUserRoles",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "format": "int64",
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "v",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        }
+      }
+    },
+    "/api/{v}/users/{userId}/roles/{roleId}": {
+      "put": {
+        "tags": [
+          "UserRoles"
+        ],
+        "operationId": "UserRoles_AddUserRole",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "format": "int64",
+            "x-nullable": false
+          },
+          {
+            "type": "integer",
+            "name": "roleId",
+            "in": "path",
+            "required": true,
+            "format": "int64",
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "v",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "UserRoles"
+        ],
+        "operationId": "UserRoles_DeleteUserRole",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "format": "int64",
+            "x-nullable": false
+          },
+          {
+            "type": "integer",
+            "name": "roleId",
+            "in": "path",
+            "required": true,
+            "format": "int64",
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "v",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        }
+      }
+    },
+    "/api/{v}/Users": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "operationId": "Users_GetUsers",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "v",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/PagedDataInquiryResponseOfUser"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "operationId": "Users_AddUser",
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "newUser",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/NewUser"
+            },
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "v",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        }
+      }
+    },
+    "/api/{v}/Users/{id}": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "operationId": "Users_GetUserById",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "format": "int64",
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "v",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Users"
+        ],
+        "operationId": "Users_UpdateUser",
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "format": "int64",
+            "x-nullable": false
+          },
+          {
+            "name": "updatedUser",
+            "in": "body",
+            "required": true,
+            "schema": {},
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "v",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Users"
+        ],
+        "operationId": "Users_DeleteUser",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "format": "int64",
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "v",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      }
+    },
+    "/api/{v}/Users/{name}": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "operationId": "Users_GetUserByName",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "v",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        }
+      }
+    },
+    "/api/{v}/Users/register": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "operationId": "Users_RegisterUser",
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "newUser",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/NewUser"
+            },
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "v",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        }
+      }
+    },
+    "/api/{v}/Users/authenticate": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "operationId": "Users_AuthenticateUser",
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "loginData",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/LoginData"
+            },
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "v",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/AuthenticatedData"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "PagedDataInquiryResponseOfRole": {
+      "type": "object",
+      "required": [
+        "PageSize",
+        "PageNumber",
+        "PageCount"
+      ],
+      "properties": {
+        "Items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Role"
+          }
+        },
+        "PageSize": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "Links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Link"
+          }
+        },
+        "PageNumber": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "PageCount": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "Role": {
+      "type": "object",
+      "required": [
+        "Id"
+      ],
+      "properties": {
+        "Id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "RoleName": {
+          "type": "string"
+        },
+        "Users": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/UserLeaf"
+          }
+        },
+        "Version": {
+          "type": "string",
+          "format": "byte"
+        },
+        "Links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Link"
+          }
+        }
+      }
+    },
+    "UserLeaf": {
+      "type": "object",
+      "required": [
+        "Id"
+      ],
+      "properties": {
+        "Id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "Login": {
+          "type": "string"
+        },
+        "Password": {
+          "type": "string"
+        },
+        "Firstname": {
+          "type": "string"
+        },
+        "Lastname": {
+          "type": "string"
+        },
+        "Email": {
+          "type": "string"
+        },
+        "Version": {
+          "type": "string",
+          "format": "byte"
+        },
+        "Links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Link"
+          }
+        }
+      }
+    },
+    "Link": {
+      "type": "object",
+      "properties": {
+        "Rel": {
+          "type": "string"
+        },
+        "Href": {
+          "type": "string"
+        },
+        "Method": {
+          "type": "string"
+        }
+      }
+    },
+    "PagedDataInquiryResponseOfAccount": {
+      "type": "object",
+      "required": [
+        "PageSize",
+        "PageNumber",
+        "PageCount"
+      ],
+      "properties": {
+        "Items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Account"
+          }
+        },
+        "PageSize": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "Links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Link"
+          }
+        },
+        "PageNumber": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "PageCount": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "Account": {
+      "type": "object",
+      "required": [
+        "Id",
+        "StartAmount"
+      ],
+      "properties": {
+        "Id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "User": {
+          "$ref": "#/definitions/UserLeaf"
+        },
+        "Currency": {
+          "$ref": "#/definitions/Currency"
+        },
+        "Group": {
+          "$ref": "#/definitions/Group"
+        },
+        "StartAmount": {
+          "type": "number",
+          "format": "decimal"
+        },
+        "Version": {
+          "type": "string",
+          "format": "byte"
+        },
+        "Links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Link"
+          }
+        }
+      }
+    },
+    "Currency": {
+      "type": "object",
+      "required": [
+        "Id",
+        "IsPrefix"
+      ],
+      "properties": {
+        "Id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "Acronym": {
+          "type": "string"
+        },
+        "Symbol": {
+          "type": "string"
+        },
+        "IsPrefix": {
+          "type": "boolean"
+        },
+        "Version": {
+          "type": "string",
+          "format": "byte"
+        },
+        "Links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Link"
+          }
+        }
+      }
+    },
+    "Group": {
+      "type": "object",
+      "required": [
+        "Id",
+        "Ordinal"
+      ],
+      "properties": {
+        "Id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "Info": {
+          "type": "string"
+        },
+        "Ordinal": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "Version": {
+          "type": "string",
+          "format": "byte"
+        },
+        "Links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Link"
+          }
+        }
+      }
+    },
+    "NewAccount": {
+      "type": "object",
+      "required": [
+        "Name",
+        "User",
+        "Currency",
+        "StartAmount"
+      ],
+      "properties": {
+        "Name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "User": {
+          "$ref": "#/definitions/UserLeaf"
+        },
+        "Currency": {
+          "$ref": "#/definitions/Currency"
+        },
+        "Group": {
+          "$ref": "#/definitions/Group"
+        },
+        "StartAmount": {
+          "type": "number",
+          "format": "decimal"
+        }
+      }
+    },
+    "PagedDataInquiryResponseOfCurrency": {
+      "type": "object",
+      "required": [
+        "PageSize",
+        "PageNumber",
+        "PageCount"
+      ],
+      "properties": {
+        "Items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Currency"
+          }
+        },
+        "PageSize": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "Links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Link"
+          }
+        },
+        "PageNumber": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "PageCount": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "NewCurrency": {
+      "type": "object",
+      "required": [
+        "Name",
+        "Acronym",
+        "Symbol",
+        "IsPrefix"
+      ],
+      "properties": {
+        "Name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "Acronym": {
+          "type": "string",
+          "minLength": 1
+        },
+        "Symbol": {
+          "type": "string",
+          "minLength": 1
+        },
+        "IsPrefix": {
+          "type": "boolean"
+        }
+      }
+    },
+    "PagedDataInquiryResponseOfCurrencyRate": {
+      "type": "object",
+      "required": [
+        "PageSize",
+        "PageNumber",
+        "PageCount"
+      ],
+      "properties": {
+        "Items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CurrencyRate"
+          }
+        },
+        "PageSize": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "Links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Link"
+          }
+        },
+        "PageNumber": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "PageCount": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "CurrencyRate": {
+      "type": "object",
+      "required": [
+        "Date",
+        "Rate"
+      ],
+      "properties": {
+        "SourceCurrency": {
+          "$ref": "#/definitions/Currency"
+        },
+        "TargetCurrency": {
+          "$ref": "#/definitions/Currency"
+        },
+        "Date": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "Rate": {
+          "type": "number",
+          "format": "decimal"
+        },
+        "Version": {
+          "type": "string",
+          "format": "byte"
+        },
+        "Links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Link"
+          }
+        }
+      }
+    },
+    "NewCurrencyRate": {
+      "type": "object",
+      "required": [
+        "SourceCurrency",
+        "TargetCurrency",
+        "Date",
+        "Rate"
+      ],
+      "properties": {
+        "SourceCurrency": {
+          "$ref": "#/definitions/Currency"
+        },
+        "TargetCurrency": {
+          "$ref": "#/definitions/Currency"
+        },
+        "Date": {
+          "type": "string",
+          "format": "date-time",
+          "minLength": 1
+        },
+        "Rate": {
+          "type": "number",
+          "format": "decimal"
+        }
+      }
+    },
+    "PagedDataInquiryResponseOfGroup": {
+      "type": "object",
+      "required": [
+        "PageSize",
+        "PageNumber",
+        "PageCount"
+      ],
+      "properties": {
+        "Items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Group"
+          }
+        },
+        "PageSize": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "Links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Link"
+          }
+        },
+        "PageNumber": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "PageCount": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "NewGroup": {
+      "type": "object",
+      "required": [
+        "Name",
+        "Info",
+        "Ordinal"
+      ],
+      "properties": {
+        "Name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "Info": {
+          "type": "string",
+          "minLength": 1
+        },
+        "Ordinal": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "PagedDataInquiryResponseOfTransaction": {
+      "type": "object",
+      "required": [
+        "PageSize",
+        "PageNumber",
+        "PageCount"
+      ],
+      "properties": {
+        "Items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Transaction"
+          }
+        },
+        "PageSize": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "Links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Link"
+          }
+        },
+        "PageNumber": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "PageCount": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "Transaction": {
+      "type": "object",
+      "required": [
+        "Id",
+        "Date",
+        "Amount"
+      ],
+      "properties": {
+        "Id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "Date": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "User": {
+          "$ref": "#/definitions/UserLeaf"
+        },
+        "Sender": {
+          "$ref": "#/definitions/Account"
+        },
+        "Receiver": {
+          "$ref": "#/definitions/Account"
+        },
+        "Type": {
+          "$ref": "#/definitions/TransactionType"
+        },
+        "Category": {
+          "$ref": "#/definitions/TransactionCategory"
+        },
+        "Status": {
+          "$ref": "#/definitions/TransactionStatus"
+        },
+        "Currency": {
+          "$ref": "#/definitions/Currency"
+        },
+        "Description": {
+          "type": "string"
+        },
+        "Amount": {
+          "type": "number",
+          "format": "decimal"
+        },
+        "Version": {
+          "type": "string",
+          "format": "byte"
+        },
+        "RecurringTransaction": {
+          "$ref": "#/definitions/RecurringTransaction"
+        },
+        "Links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Link"
+          }
+        }
+      }
+    },
+    "TransactionType": {
+      "type": "object",
+      "required": [
+        "Id"
+      ],
+      "properties": {
+        "Id": {
+          "$ref": "#/definitions/TransactionTypeValue"
+        },
+        "Name": {
+          "type": "string"
+        }
+      }
+    },
+    "TransactionTypeValue": {
+      "type": "integer",
+      "description": "",
+      "x-enumNames": [
+        "IncomingTransfer",
+        "OutgoingTransfer",
+        "Transfer"
+      ],
+      "enum": [
+        100,
+        200,
+        300
+      ]
+    },
+    "TransactionCategory": {
+      "type": "object",
+      "required": [
+        "Id",
+        "Name"
+      ],
+      "properties": {
+        "Id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "Name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "Root": {
+          "$ref": "#/definitions/TransactionCategoryLeaf"
+        },
+        "Version": {
+          "type": "string",
+          "format": "byte"
+        },
+        "Links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Link"
+          }
+        }
+      }
+    },
+    "TransactionCategoryLeaf": {
+      "type": "object",
+      "required": [
+        "Id"
+      ],
+      "properties": {
+        "Id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "RootId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "Links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Link"
+          }
+        }
+      }
+    },
+    "TransactionStatus": {
+      "type": "object",
+      "required": [
+        "Id",
+        "Ordinal"
+      ],
+      "properties": {
+        "Id": {
+          "$ref": "#/definitions/TransactionStatusValue"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "Ordinal": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "TransactionStatusValue": {
+      "type": "integer",
+      "description": "",
+      "x-enumNames": [
+        "Planned",
+        "Awaiting",
+        "Paid",
+        "Outdated"
+      ],
+      "enum": [
+        100,
+        200,
+        300,
+        400
+      ]
+    },
+    "RecurringTransaction": {
+      "type": "object",
+      "required": [
+        "Id",
+        "Amount"
+      ],
+      "properties": {
+        "Id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "User": {
+          "$ref": "#/definitions/UserLeaf"
+        },
+        "Sender": {
+          "$ref": "#/definitions/Account"
+        },
+        "Receiver": {
+          "$ref": "#/definitions/Account"
+        },
+        "Type": {
+          "type": "string"
+        },
+        "Category": {
+          "$ref": "#/definitions/TransactionCategory"
+        },
+        "Currency": {
+          "$ref": "#/definitions/Currency"
+        },
+        "Description": {
+          "type": "string"
+        },
+        "Amount": {
+          "type": "number",
+          "format": "decimal"
+        },
+        "Version": {
+          "type": "string",
+          "format": "byte"
+        },
+        "Links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Link"
+          }
+        }
+      }
+    },
+    "PagedDataInquiryResponseOfRecurringTransaction": {
+      "type": "object",
+      "required": [
+        "PageSize",
+        "PageNumber",
+        "PageCount"
+      ],
+      "properties": {
+        "Items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RecurringTransaction"
+          }
+        },
+        "PageSize": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "Links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Link"
+          }
+        },
+        "PageNumber": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "PageCount": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "NewRecurringTransaction": {
+      "type": "object",
+      "required": [
+        "User",
+        "Sender",
+        "Receiver",
+        "Type",
+        "Category",
+        "Currency",
+        "Description",
+        "Amount"
+      ],
+      "properties": {
+        "User": {
+          "$ref": "#/definitions/User"
+        },
+        "Sender": {
+          "$ref": "#/definitions/Account"
+        },
+        "Receiver": {
+          "$ref": "#/definitions/Account"
+        },
+        "Type": {
+          "$ref": "#/definitions/TransactionType"
+        },
+        "Category": {
+          "$ref": "#/definitions/TransactionCategory"
+        },
+        "Currency": {
+          "$ref": "#/definitions/Currency"
+        },
+        "Description": {
+          "type": "string"
+        },
+        "Amount": {
+          "type": "number",
+          "format": "decimal"
+        }
+      }
+    },
+    "User": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/UserLeaf"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "Roles": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Role"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "Task": {
+      "type": "object",
+      "required": [
+        "Id"
+      ],
+      "properties": {
+        "Id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "Subject": {
+          "type": "string"
+        },
+        "StartDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "DueDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "CreatedDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "CompletedDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "TransactionStatus": {
+          "$ref": "#/definitions/TransactionStatus"
+        },
+        "Assignees": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/UserLeaf"
+          }
+        },
+        "Version": {
+          "type": "string",
+          "format": "byte"
+        },
+        "Links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Link"
+          }
+        }
+      }
+    },
+    "PagedDataInquiryResponseOfTask": {
+      "type": "object",
+      "required": [
+        "PageSize",
+        "PageNumber",
+        "PageCount"
+      ],
+      "properties": {
+        "Items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Task"
+          }
+        },
+        "PageSize": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "Links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Link"
+          }
+        },
+        "PageNumber": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "PageCount": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "NewTransactionCategory": {
+      "type": "object",
+      "required": [
+        "Name"
+      ],
+      "properties": {
+        "Name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "Root": {
+          "$ref": "#/definitions/TransactionCategoryLeaf"
+        }
+      }
+    },
+    "PagedDataInquiryResponseOfTransactionCategory": {
+      "type": "object",
+      "required": [
+        "PageSize",
+        "PageNumber",
+        "PageCount"
+      ],
+      "properties": {
+        "Items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TransactionCategory"
+          }
+        },
+        "PageSize": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "Links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Link"
+          }
+        },
+        "PageNumber": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "PageCount": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "NewTransaction": {
+      "type": "object",
+      "required": [
+        "Date",
+        "User",
+        "Sender",
+        "Receiver",
+        "Type",
+        "Category",
+        "Status",
+        "Currency",
+        "Description",
+        "Amount"
+      ],
+      "properties": {
+        "Date": {
+          "type": "string",
+          "format": "date-time",
+          "minLength": 1
+        },
+        "User": {
+          "$ref": "#/definitions/UserLeaf"
+        },
+        "Sender": {
+          "$ref": "#/definitions/Account"
+        },
+        "Receiver": {
+          "$ref": "#/definitions/Account"
+        },
+        "Type": {
+          "$ref": "#/definitions/TransactionType"
+        },
+        "Category": {
+          "$ref": "#/definitions/TransactionCategory"
+        },
+        "Status": {
+          "$ref": "#/definitions/TransactionStatus"
+        },
+        "Currency": {
+          "$ref": "#/definitions/Currency"
+        },
+        "Description": {
+          "type": "string"
+        },
+        "Amount": {
+          "type": "number",
+          "format": "decimal"
+        },
+        "RecurringTransaction": {
+          "$ref": "#/definitions/RecurringTransaction"
+        }
+      }
+    },
+    "PagedDataInquiryResponseOfTransactionStatus": {
+      "type": "object",
+      "required": [
+        "PageSize",
+        "PageNumber",
+        "PageCount"
+      ],
+      "properties": {
+        "Items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TransactionStatus"
+          }
+        },
+        "PageSize": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "Links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Link"
+          }
+        },
+        "PageNumber": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "PageCount": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "PagedDataInquiryResponseOfTransactionType": {
+      "type": "object",
+      "required": [
+        "PageSize",
+        "PageNumber",
+        "PageCount"
+      ],
+      "properties": {
+        "Items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TransactionType"
+          }
+        },
+        "PageSize": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "Links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Link"
+          }
+        },
+        "PageNumber": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "PageCount": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "PagedDataInquiryResponseOfUser": {
+      "type": "object",
+      "required": [
+        "PageSize",
+        "PageNumber",
+        "PageCount"
+      ],
+      "properties": {
+        "Items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/User"
+          }
+        },
+        "PageSize": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "Links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Link"
+          }
+        },
+        "PageNumber": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "PageCount": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "NewUser": {
+      "type": "object",
+      "required": [
+        "Login",
+        "Password",
+        "Firstname",
+        "Lastname",
+        "Email"
+      ],
+      "properties": {
+        "Login": {
+          "type": "string",
+          "minLength": 1
+        },
+        "Password": {
+          "type": "string",
+          "minLength": 1
+        },
+        "Firstname": {
+          "type": "string"
+        },
+        "Lastname": {
+          "type": "string"
+        },
+        "Email": {
+          "type": "string",
+          "minLength": 1
+        },
+        "Roles": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Role"
+          }
+        }
+      }
+    },
+    "AuthenticatedData": {
+      "type": "object",
+      "properties": {
+        "Token": {
+          "type": "string"
+        }
+      }
+    },
+    "LoginData": {
+      "type": "object",
+      "required": [
+        "Login",
+        "Password"
+      ],
+      "properties": {
+        "Login": {
+          "type": "string",
+          "minLength": 1
+        },
+        "Password": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  }
+}

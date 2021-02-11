@@ -46,6 +46,11 @@ namespace RldsApp.Web.Api
 
 			app.UseAuthentication();
 			app.UseStaticFiles();
+
+			app.UseOpenApi();
+			app.UseSwaggerUi3();
+
+			app.UseCors("MyPolicy");
 			app.UseMvc();
 		}
 
@@ -58,12 +63,20 @@ namespace RldsApp.Web.Api
 			services.AddAutoMapper(conf => conf.AddProfiles(typeof(Startup).Assembly));
 			services.AddApiVersioning();
 			services.AddHttpContextAccessor();
+			services.AddSwaggerDocument();
 
 			ConfigureNHibernate(services);
 			DependencyInjectionConfiguration.AddBindings(services);
 			ConfigureAuthentication(services);
 
 			services.AddSingleton(PrepareTransactionRuleProcessorProvider);
+
+			services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
+			{
+				builder.AllowAnyOrigin()
+					   .AllowAnyMethod()
+					   .AllowAnyHeader();
+			}));
 		}
 
 		private void ConfigureAuthentication(IServiceCollection services)

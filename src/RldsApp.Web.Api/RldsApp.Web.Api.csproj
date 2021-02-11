@@ -14,6 +14,15 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
     <PackageReference Include="NHibernate" Version="5.2.6" />
+    <PackageReference Include="NSwag.AspNetCore" Version="13.10.2" />
+    <PackageReference Include="NSwag.CodeGeneration" Version="13.10.2" />
+    <PackageReference Include="NSwag.CodeGeneration.CSharp" Version="13.10.2" />
+    <PackageReference Include="NSwag.CodeGeneration.TypeScript" Version="13.10.2" />
+    <PackageReference Include="NSwag.Generation.WebApi" Version="13.10.2" />
+    <PackageReference Include="NSwag.MSBuild" Version="13.10.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Serilog.Extensions.Logging.File" Version="1.1.0" />
     <PackageReference Include="System.Data.SqlClient" Version="4.5.1" />
   </ItemGroup>
@@ -25,6 +34,16 @@
     <ProjectReference Include="..\RldsApp.Web.Api.Models\RldsApp.Web.Api.Models.csproj" />
     <ProjectReference Include="..\RldsApp.Web.Common\RldsApp.Web.Common.csproj" />
   </ItemGroup>
+  
+   <Target Name="NSwag" BeforeTargets="AfterBuild" Condition="'$(TF_BUILD)'!='True'">
+    <Exec ConsoleToMSBuild="true" ContinueOnError="true" Command="$(NSwagExe_Core21) run nswag.json">
+      <Output TaskParameter="ExitCode" PropertyName="NSwagExitCode" />
+      <Output TaskParameter="ConsoleOutput" PropertyName="NSwagOutput" />
+    </Exec>
+
+    <Message Text="$(NSwagOutput)" Condition="'$(NSwagExitCode)' == '0'" Importance="low" />
+    <Error Text="$(NSwagOutput)" Condition="'$(NSwagExitCode)' != '0'" />
+  </Target>
 
   <ProjectExtensions><VisualStudio><UserProperties properties_4launchsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
 

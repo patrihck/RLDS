@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MessageService } from 'primeng/api';
+import { AccountsClient, LoginData, UsersClient } from '../../infrastructure/services-api/rlds-api';
 
 // https://www.primefaces.org/primeng/showcase/#/setup
 @Component({
@@ -17,7 +18,32 @@ export class HomeComponent {
 
   visibleSidebar5;
 
-  constructor(private messageService: MessageService) { }
+  constructor(private messageService: MessageService, private readonly userClient: UsersClient) {
+
+  }
+
+  test() {
+
+    let loginData = new LoginData();
+    loginData.login = "";
+    loginData.password = "";
+
+    this.userClient.authenticateUser(loginData, "1.0").subscribe(result => {
+      console.log("LOGIN RESULT", result);
+    }, error => {
+      console.log("LOGIN ERROR", error);
+    });
+
+
+    loginData.login = "Alan";
+    loginData.password = "Biegun";
+
+    this.userClient.authenticateUser(loginData, "1.0").subscribe(result => {
+      console.log("LOGIN RESULT", result);
+    }, error => {
+      console.log("LOGIN ERROR", error);
+    })
+  }
 
   selectedState: any = null;
 
