@@ -1,0 +1,13 @@
+<div [routerLink]="item.url" routerLinkActive="active" class="menu-item p-grid" [ngClass]="item.classes">
+
+  <div class="p-col-1"></div>
+  <div class="p-col-3 p-d-flex p-align-center">
+    <div class="circle-size-40 icon-background">
+      <i [ngClass]="item.icon"></i>
+    </div>
+  </div>
+  <div class="p-col-8 p-d-flex p-align-center">
+    <span [innerText]="item.name"></span>
+  </div>
+
+</div>

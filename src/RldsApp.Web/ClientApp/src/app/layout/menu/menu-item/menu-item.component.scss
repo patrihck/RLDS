@@ -1,0 +1,30 @@
+@import '../../../../styles/variables.scss';
+
+.menu-item {
+  cursor: pointer;
+  height: 60px;
+  font: 16px/27px Roboto;
+  letter-spacing: 0px;
+  color: $white;
+  border-radius: 0 40px 40px 0;
+  color: $dark;
+
+  &.active {
+    background: $pink;
+    box-shadow: 3px 0px 6px $silver;
+    color: $white;
+  }
+}
+
+.icon-background {
+  text-align: center;
+  display: inline-block;
+  background: $light;
+  font-size: 15pt;
+  border-radius: 50px;
+  color: $pink;
+
+  i {
+    margin-top: 11px;
+  }
+}

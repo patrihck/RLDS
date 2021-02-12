@@ -1,0 +1,25 @@
+<div class="p-d-flex p-flex-grow-1">
+  <div class="p-grid p-col-12">
+
+    <div class="p-col-6 p-d-flex p-align-center">
+      <span class="header view-name" [innerHtml]="viewName"></span>
+    </div>
+
+    <div class="p-col-5 p-d-flex p-align-center p-justify-flex-end">
+        <span [routerLink]="['/user/profile']" class="header user-name cursor-pointer" [innerHtml]="userName"></span>
+    </div>
+
+    <div class="p-col-1 p-d-flex p-text-center">
+      <div [routerLink]="['/user/profile']" class="circle-size-60 avatar-background cursor-pointer">
+        <ng-container *ngIf="userAvatar; else defaultAvatar">
+          <img [attr.src]="userAvatar" />
+        </ng-container>
+
+        <ng-template #defaultAvatar>
+          <i class="header avatar pi pi-user"></i>
+        </ng-template>
+      </div>
+    </div>
+
+  </div>
+</div>

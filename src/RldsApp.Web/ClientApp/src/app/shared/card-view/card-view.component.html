@@ -1,0 +1,19 @@
+<div class="component container" [ngClass]="cardSize">
+  <div class="component card">
+    <div class="card-body">
+
+      <div class="row">
+        <div class="col-6">
+          <h5 class="card-title font-weight-bold" [innerText]="cardTitle"></h5>
+        </div>
+
+        <div class="col-6 text-right">
+          <ng-content select="[cardButtons]"></ng-content>
+        </div>        
+      </div>
+
+      <ng-content select="[cardBody]"></ng-content>
+
+    </div>
+  </div>
+</div>
