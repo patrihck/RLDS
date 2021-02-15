@@ -20,56 +20,33 @@ export class MenuComponent implements OnInit {
     this.menuItems.push(new MainMenuItem(opts => {
       opts.name = 'Strona główna';
       opts.icon = 'fa fa-th-large';
-      opts.url = '/veolia/dashboard'
+      opts.url = 'rlds/home'
     }));
 
     this.menuItems.push(new MainMenuItem(opts => {
-      opts.name = 'Planowanie';
-      opts.icon = 'fa fa-code-branch';
-      opts.url = '/veolia/planning'
+      opts.name = 'Logowanie';
+      opts.icon = 'fa fa-th-large';
+      opts.url = 'user/login'
     }));
 
     this.menuItems.push(new MainMenuItem(opts => {
-      opts.name = 'Awizacje';
-      opts.icon = 'fa fa-check-circle';
-      opts.url = '/veolia/monitory-note'
+      opts.name = 'Profil';
+      opts.icon = 'fa fa-th-large';
+      opts.url = 'user/profil'
     }));
 
     this.menuItems.push(new MainMenuItem(opts => {
-      opts.name = 'Kierowcy';
-      opts.icon = 'fa fa-id-card';
-      opts.url = '/veolia/drivers'
+      opts.name = 'Konta';
+      opts.icon = 'fa fa-th-large';
+      opts.url = 'rlds/account'
     }));
 
     this.menuItems.push(new MainMenuItem(opts => {
-      opts.name = 'Pojazdy';
-      opts.icon = 'fa fa-truck';
-      opts.url = '/veolia/vehicles'
+      opts.name = 'Użytkownicy';
+      opts.icon = 'fa fa-th-large';
+      opts.url = 'rlds/users'
     }));
 
-    this.menuItems.push(new MainMenuItem(opts => {
-      opts.name = 'Kontrahenci';
-      opts.icon = 'fa fa-users';
-      opts.url = '/veolia/contractors'
-    }));
-
-    this.menuItems.push(new MainMenuItem(opts => {
-      opts.name = 'Asortyment';
-      opts.icon = 'fa fa-archive';
-      opts.url = '/veolia/asortment'
-    }));
-
-    this.menuItems.push(new MainMenuItem(opts => {
-      opts.name = 'Raporty';
-      opts.icon = 'fa fa-chart-bar';
-      opts.url = '/veolia/raports'
-    }));
-
-    this.menuItems.push(new MainMenuItem(opts => {
-      opts.name = 'Panel administracyjny';
-      opts.icon = 'fa fa-sliders';
-      opts.url = '/administration'
-    }));
   }
 
   ngOnInit(): void {

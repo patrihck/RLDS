@@ -36,7 +36,7 @@ export class LayoutService {
     return this.viewName;
   }
   setAppTitle(title: string) {
-    this.titleService.setTitle(`Veolia ${Helper.IsNullOrEmpty(title) ? '' : '-'} ${title}`);
+    this.titleService.setTitle(`RldsApp ${Helper.IsNullOrEmpty(title) ? '' : '-'} ${title}`);
     this.setViewName(title);
   }
 

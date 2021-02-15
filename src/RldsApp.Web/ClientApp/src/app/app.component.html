@@ -1,17 +1,11 @@
-<ng-container *ngIf="isAuthenticated; else anonymous">
-  <p-sidebar [visible]="true" position="left" [closeOnEscape]="false" [dismissible]="false" [showCloseIcon]="false" [modal]="false" [style]="{width:'300px'}" class="p-d-flex p-pl-0">
-    <app-menu></app-menu>
-  </p-sidebar>
+<p-sidebar [visible]="true" position="left" [closeOnEscape]="false" [dismissible]="false" [showCloseIcon]="false" [modal]="false" [style]="{width:'300px'}" class="p-d-flex p-pl-0">
+  <app-menu></app-menu>
+</p-sidebar>
 
-  <div id="app-body" class="p-flex-grow-1">
-    <app-header class="p-d-flex p-flex-grow-1"></app-header>
+<div id="app-body" class="p-flex-grow-1">
+  <app-header class="p-d-flex p-flex-grow-1"></app-header>
 
-    <router-outlet></router-outlet>
-  </div>
-</ng-container>
-
-<ng-template #anonymous>
   <router-outlet></router-outlet>
-</ng-template>
+</div>
 
 <p-toast position="bottom-right"></p-toast>

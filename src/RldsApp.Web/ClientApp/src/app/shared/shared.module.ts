@@ -21,7 +21,6 @@ import { CardModule } from 'primeng/card';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InputTextModule } from 'primeng/inputtext';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 
@@ -39,7 +38,6 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
     TableModule,
     ToastModule,
     BlockUIModule,
-    BrowserAnimationsModule,
     ListboxModule,
     ConfirmDialogModule,
     TabViewModule,
@@ -60,7 +58,6 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
     InputSwitchModule,
     ListboxModule,
     EditorModule,
-    BrowserAnimationsModule,
     SidebarModule,
     BreadcrumbModule,
     BlockUIModule,
