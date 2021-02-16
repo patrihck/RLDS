@@ -6,6 +6,8 @@ export class MainMenuItem {
   id: string;
   icon: string;
   active: boolean;
+  onClick: () => void;
+  displayCondition: () => boolean;
 
   subItems: Array<MainMenuItem>;
 

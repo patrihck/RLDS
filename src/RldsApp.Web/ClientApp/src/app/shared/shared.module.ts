@@ -21,8 +21,9 @@ import { CardModule } from 'primeng/card';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { InputTextModule } from 'primeng/inputtext';
+import { InputTextModule } from 'primeng/inputtext'; 
 import { InputTextareaModule } from 'primeng/inputtextarea';
+import { PasswordModule } from 'primeng/password';
 
 // https://www.primefaces.org/primeng/showcase/#/setup
 @NgModule({
@@ -43,6 +44,7 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
     TabViewModule,
     ReactiveFormsModule,
     SidebarModule,
+    PasswordModule,
     FormsModule,
     CheckboxModule,
     RadioButtonModule,
@@ -63,6 +65,7 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
     BlockUIModule,
     PanelModule,
     CommonModule,
+    PasswordModule,
     TabViewModule,
     InputTextareaModule,
     ConfirmDialogModule,

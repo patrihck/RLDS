@@ -1,1 +1,12 @@
-<p>login works!</p>
+<div class="p-fluid">
+  <div class="p-field">
+    <label for="firstname1">Login</label>
+    <input pInputText [(ngModel)]="loginData.login" placeholder="Login" />
+  </div>
+  <div class="p-field">
+    <label for="lastname1">Hasło</label>
+    <input type="password" pPassword  [(ngModel)]="loginData.password" placeholder="Hasło" [feedback]="false"/>
+  </div>
+</div>
+
+<p-button label="Zaloguj" (click)="onLogin()"></p-button> 

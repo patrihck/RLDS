@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Helper } from '../../../infrastructure/helpers/helper';
+import { User, UsersClient } from '../../../infrastructure/services-api/rlds-api';
+import { LayoutService } from '../../../infrastructure/services/layout/layout.service';
 
 @Component({
   selector: 'app-profil',
@@ -7,9 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfilComponent implements OnInit {
 
-  constructor() { }
+  userData: User;
+
+  constructor(private readonly layoutService: LayoutService, private readonly authClient: UsersClient) { }
 
   ngOnInit(): void {
+    this.layoutService.setAppTitle("Profil");
+    this.authClient.getUserById(Helper.GetSessionValueOfType<number>('userId'), '1.0').subscribe(result => {
+      this.userData = result;
+      console.log(result)
+    });
   }
 
 }

@@ -58,7 +58,11 @@ namespace RldsApp.Web.Api
 		{
 			services.AddMvc()
 				.SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
-				.AddJsonOptions(JsonConfiguration);
+				.AddJsonOptions(opt=> {
+					opt.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+					opt.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+					opt.SerializerSettings.MaxDepth = 4; 
+				});
 
 			services.AddAutoMapper(conf => conf.AddProfiles(typeof(Startup).Assembly));
 			services.AddApiVersioning();
@@ -107,13 +111,7 @@ namespace RldsApp.Web.Api
 			services.AddSingleton<ISessionFactory>(config.BuildSessionFactory());
 
 			services.AddScoped(provider => provider.GetRequiredService<ISessionFactory>().OpenSession());
-		}
-
-		private void JsonConfiguration(MvcJsonOptions opt)
-		{
-			opt.SerializerSettings.ContractResolver = new DefaultContractResolver();
-			opt.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
-		}
+		} 
 
 		private TransactionRuleProcessorProvider PrepareTransactionRuleProcessorProvider(IServiceProvider sp)
 		{

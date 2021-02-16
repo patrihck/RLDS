@@ -1,4 +1,4 @@
-<div [routerLink]="item.url" routerLinkActive="active" class="menu-item p-grid" [ngClass]="item.classes">
+<div (click)="onClick()" routerLinkActive="active" class="menu-item p-grid" [ngClass]="item.classes">
 
   <div class="p-col-1"></div>
   <div class="p-col-3 p-d-flex p-align-center">

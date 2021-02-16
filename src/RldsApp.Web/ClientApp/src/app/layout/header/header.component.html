@@ -5,12 +5,12 @@
       <span class="header view-name" [innerHtml]="viewName"></span>
     </div>
 
-    <div class="p-col-5 p-d-flex p-align-center p-justify-flex-end">
+    <div *ngIf="showUserName()" class="p-col-5 p-d-flex p-align-center p-justify-flex-end">
         <span [routerLink]="['/user/profile']" class="header user-name cursor-pointer" [innerHtml]="userName"></span>
     </div>
 
-    <div class="p-col-1 p-d-flex p-text-center">
-      <div [routerLink]="['/user/profile']" class="circle-size-60 avatar-background cursor-pointer">
+    <div *ngIf="showUserName()" class="p-col-1 p-d-flex p-text-center">
+      <div class="circle-size-60 avatar-background ">
         <ng-container *ngIf="userAvatar; else defaultAvatar">
           <img [attr.src]="userAvatar" />
         </ng-container>

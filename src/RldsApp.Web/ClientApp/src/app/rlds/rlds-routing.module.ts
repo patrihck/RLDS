@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { SharedModule } from '../shared/shared.module';
 import { AccountComponent } from './account/account.component';
 import { HomeComponent } from './home/home.component';
 import { UsersComponent } from './users/users.component';
@@ -12,7 +13,8 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  declarations: [HomeComponent, AccountComponent, UsersComponent],
+  imports: [SharedModule, RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
 export class RldsRoutingModule { }

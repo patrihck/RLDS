@@ -18,19 +18,48 @@
 
   <ItemGroup>
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
+    <Compile Remove="ClientApp\dist\**" />
     <Compile Remove="ClientApp\src\app\infrastructure\**" />
     <Content Remove="$(SpaRoot)**" />
+    <Content Remove="ClientApp\dist\**" />
     <Content Remove="ClientApp\src\app\infrastructure\**" />
+    <EmbeddedResource Remove="ClientApp\dist\**" />
     <EmbeddedResource Remove="ClientApp\src\app\infrastructure\**" />
     <None Remove="$(SpaRoot)**" />
+    <None Remove="ClientApp\dist\**" />
     <None Remove="ClientApp\src\app\infrastructure\**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\dist\3rdpartylicenses.txt" />
+    <None Remove="ClientApp\dist\color.6441e63a57ccc5105bad.png" />
+    <None Remove="ClientApp\dist\fontawesome-webfont.1e59d2330b4c6deb84b3.ttf" />
+    <None Remove="ClientApp\dist\fontawesome-webfont.20fd1704ea223900efa9.woff2" />
+    <None Remove="ClientApp\dist\fontawesome-webfont.8b43027f47b20503057d.eot" />
+    <None Remove="ClientApp\dist\fontawesome-webfont.c1e38fd9e0e74ba58f7a.svg" />
+    <None Remove="ClientApp\dist\fontawesome-webfont.f691f37e57f04c152e23.woff" />
+    <None Remove="ClientApp\dist\hue.f8505bd4d6f3e3aa435b.png" />
+    <None Remove="ClientApp\dist\index.html" />
+    <None Remove="ClientApp\dist\main-es2015.861207d8fe4ab154128d.js" />
+    <None Remove="ClientApp\dist\main-es5.861207d8fe4ab154128d.js" />
+    <None Remove="ClientApp\dist\password-meter.eea288d50533d7995ec1.png" />
+    <None Remove="ClientApp\dist\polyfills-es2015.61453aece985628de441.js" />
+    <None Remove="ClientApp\dist\polyfills-es5.974386d92fc222c504c7.js" />
+    <None Remove="ClientApp\dist\primeicons.3a0d4a58da62cf7c55bb.ttf" />
+    <None Remove="ClientApp\dist\primeicons.c55d94a248721abbd220.svg" />
+    <None Remove="ClientApp\dist\primeicons.dfbfef2de4bfb34e9722.eot" />
+    <None Remove="ClientApp\dist\primeicons.e61f3495a7ecd3d571a4.woff" />
+    <None Remove="ClientApp\dist\Roboto-Regular.e02e9d6ff5547f7e9962.woff" />
+    <None Remove="ClientApp\dist\runtime-es2015.a4dadbc03350107420a4.js" />
+    <None Remove="ClientApp\dist\runtime-es5.a4dadbc03350107420a4.js" />
+    <None Remove="ClientApp\dist\scripts.568694a568f45ab03c95.js" />
+    <None Remove="ClientApp\dist\styles.cd12e3283b173a2f8330.css" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="ClientApp\src\infrastructure\enums\" />
     <Folder Include="ClientApp\src\infrastructure\guards\" />
-    <Folder Include="ClientApp\src\infrastructure\interceptors\" />
     <Folder Include="ClientApp\src\infrastructure\interfaces\" />
     <Folder Include="ClientApp\src\infrastructure\models\" />
     <Folder Include="ClientApp\src\infrastructure\pipes\" />

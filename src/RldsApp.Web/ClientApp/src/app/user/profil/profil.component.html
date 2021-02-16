@@ -1,1 +1,48 @@
-<p>profil works!</p>
+<div *ngIf="userData" class="p-fluid">
+
+  <div class="p-field">
+    <label for="userData.id">Id</label>
+    <input id="userData.id" type="text" readonly disabled pInputText [(ngModel)]="userData.id">
+  </div>
+
+  <div class="p-field">
+    <label for="userData.login">Login</label>
+    <input id="userData.login" type="text" readonly disabled pInputText [(ngModel)]="userData.login">
+  </div>
+
+  <div class="p-field">
+    <label for="userData.password">Password</label>
+    <input id="userData.password" type="text" readonly disabled pInputText [(ngModel)]="userData.password">
+  </div>
+
+  <div class="p-field">
+    <label for="userData.firstname">Firstname</label>
+    <input id="userData.firstname" type="text" readonly disabled pInputText [(ngModel)]="userData.firstname">
+  </div>
+
+  <div class="p-field">
+    <label for="userData.lastname">Lastname</label>
+    <input id="userData.lastname" type="text" readonly disabled pInputText [(ngModel)]="userData.lastname">
+  </div>
+
+  <div class="p-field">
+    <label for="userData.email">Email</label>
+    <input id="userData.email" type="text" readonly disabled pInputText [(ngModel)]="userData.email">
+  </div>
+
+  <div class="p-field">
+    <label for="userData.version">Version</label>
+    <input id="userData.version" type="text" readonly disabled pInputText [(ngModel)]="userData.version">
+  </div>
+
+  <div class="p-field">
+    <label for="userData.links">Links</label>
+    <input id="userData.links" type="text" readonly disabled pInputText [(ngModel)]="userData.links">
+  </div>
+
+  <div class="p-field">
+    <label for="userData.roles">Roles</label>
+    <input id="userData.roles" type="text" readonly disabled pInputText [(ngModel)]="userData.roles">
+  </div>
+
+</div>

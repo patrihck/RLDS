@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component'; 
@@ -15,6 +15,7 @@ import { registerLocaleData } from '@angular/common';
 import { RldsModule } from './rlds/rlds.module';
 
 import PL_LOCALE from '@angular/common/locales/pl'; 
+import { AuthInterceptor } from '../infrastructure/interceptors/auth-interceptor';
 registerLocaleData(PL_LOCALE, 'pl');
 
 const routes = [
@@ -43,6 +44,11 @@ const routes = [
     ConfirmationService,
     MessageService,
     { provide: LOCALE_ID, useValue: 'pl' },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
     {
       provide: API_BASE_URL,
       useFactory: () => {

@@ -1,4 +1,24 @@
+import { AuthenticatedData, User } from "../services-api/rlds-api";
+
 export class Helper {
+  static SetUserData(authData: AuthenticatedData, user: User) {
+    Helper.SetSessionValueOfType<number>('userId', authData.userId);
+    Helper.SetSessionValue('token', authData.token);
+    Helper.SetSessionValue('userFirstName', user.firstname);
+    Helper.SetSessionValue('userLastName', user.lastname);
+    Helper.SetSessionValueOfType<Array<string>>('roles', user.roles.map(role => role.roleName));
+  }
+  static RemoveUserData() {
+    Helper.RemoveSession('userId');
+    Helper.RemoveSession('token');
+    Helper.RemoveSession('roles');
+    Helper.RemoveSession('userFirstName');
+    Helper.RemoveSession('userLastName');
+  }
+  static IsUserLogedIn() {
+    return !Helper.IsNullOrEmpty(Helper.GetSessionValue('token'))
+  }
+
   // STRING
   static IsNullOrEmpty(text: string): boolean {
     return text == null || text == "";

@@ -4028,19 +4028,19 @@ export class PagedDataInquiryResponseOfRole implements IPagedDataInquiryResponse
 
     init(_data?: any) {
         if (_data) {
-            if (Array.isArray(_data["Items"])) {
+            if (Array.isArray(_data["items"])) {
                 this.items = [] as any;
-                for (let item of _data["Items"])
+                for (let item of _data["items"])
                     this.items!.push(Role.fromJS(item));
             }
-            this.pageSize = _data["PageSize"];
-            if (Array.isArray(_data["Links"])) {
+            this.pageSize = _data["pageSize"];
+            if (Array.isArray(_data["links"])) {
                 this.links = [] as any;
-                for (let item of _data["Links"])
+                for (let item of _data["links"])
                     this.links!.push(Link.fromJS(item));
             }
-            this.pageNumber = _data["PageNumber"];
-            this.pageCount = _data["PageCount"];
+            this.pageNumber = _data["pageNumber"];
+            this.pageCount = _data["pageCount"];
         }
     }
 
@@ -4054,18 +4054,18 @@ export class PagedDataInquiryResponseOfRole implements IPagedDataInquiryResponse
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         if (Array.isArray(this.items)) {
-            data["Items"] = [];
+            data["items"] = [];
             for (let item of this.items)
-                data["Items"].push(item.toJSON());
+                data["items"].push(item.toJSON());
         }
-        data["PageSize"] = this.pageSize;
+        data["pageSize"] = this.pageSize;
         if (Array.isArray(this.links)) {
-            data["Links"] = [];
+            data["links"] = [];
             for (let item of this.links)
-                data["Links"].push(item.toJSON());
+                data["links"].push(item.toJSON());
         }
-        data["PageNumber"] = this.pageNumber;
-        data["PageCount"] = this.pageCount;
+        data["pageNumber"] = this.pageNumber;
+        data["pageCount"] = this.pageCount;
         return data; 
     }
 }
@@ -4096,17 +4096,17 @@ export class Role implements IRole {
 
     init(_data?: any) {
         if (_data) {
-            this.id = _data["Id"];
-            this.roleName = _data["RoleName"];
-            if (Array.isArray(_data["Users"])) {
+            this.id = _data["id"];
+            this.roleName = _data["roleName"];
+            if (Array.isArray(_data["users"])) {
                 this.users = [] as any;
-                for (let item of _data["Users"])
+                for (let item of _data["users"])
                     this.users!.push(UserLeaf.fromJS(item));
             }
-            this.version = _data["Version"];
-            if (Array.isArray(_data["Links"])) {
+            this.version = _data["version"];
+            if (Array.isArray(_data["links"])) {
                 this.links = [] as any;
-                for (let item of _data["Links"])
+                for (let item of _data["links"])
                     this.links!.push(Link.fromJS(item));
             }
         }
@@ -4121,18 +4121,18 @@ export class Role implements IRole {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        data["Id"] = this.id;
-        data["RoleName"] = this.roleName;
+        data["id"] = this.id;
+        data["roleName"] = this.roleName;
         if (Array.isArray(this.users)) {
-            data["Users"] = [];
+            data["users"] = [];
             for (let item of this.users)
-                data["Users"].push(item.toJSON());
+                data["users"].push(item.toJSON());
         }
-        data["Version"] = this.version;
+        data["version"] = this.version;
         if (Array.isArray(this.links)) {
-            data["Links"] = [];
+            data["links"] = [];
             for (let item of this.links)
-                data["Links"].push(item.toJSON());
+                data["links"].push(item.toJSON());
         }
         return data; 
     }
@@ -4167,16 +4167,16 @@ export class UserLeaf implements IUserLeaf {
 
     init(_data?: any) {
         if (_data) {
-            this.id = _data["Id"];
-            this.login = _data["Login"];
-            this.password = _data["Password"];
-            this.firstname = _data["Firstname"];
-            this.lastname = _data["Lastname"];
-            this.email = _data["Email"];
-            this.version = _data["Version"];
-            if (Array.isArray(_data["Links"])) {
+            this.id = _data["id"];
+            this.login = _data["login"];
+            this.password = _data["password"];
+            this.firstname = _data["firstname"];
+            this.lastname = _data["lastname"];
+            this.email = _data["email"];
+            this.version = _data["version"];
+            if (Array.isArray(_data["links"])) {
                 this.links = [] as any;
-                for (let item of _data["Links"])
+                for (let item of _data["links"])
                     this.links!.push(Link.fromJS(item));
             }
         }
@@ -4191,17 +4191,17 @@ export class UserLeaf implements IUserLeaf {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        data["Id"] = this.id;
-        data["Login"] = this.login;
-        data["Password"] = this.password;
-        data["Firstname"] = this.firstname;
-        data["Lastname"] = this.lastname;
-        data["Email"] = this.email;
-        data["Version"] = this.version;
+        data["id"] = this.id;
+        data["login"] = this.login;
+        data["password"] = this.password;
+        data["firstname"] = this.firstname;
+        data["lastname"] = this.lastname;
+        data["email"] = this.email;
+        data["version"] = this.version;
         if (Array.isArray(this.links)) {
-            data["Links"] = [];
+            data["links"] = [];
             for (let item of this.links)
-                data["Links"].push(item.toJSON());
+                data["links"].push(item.toJSON());
         }
         return data; 
     }
@@ -4234,9 +4234,9 @@ export class Link implements ILink {
 
     init(_data?: any) {
         if (_data) {
-            this.rel = _data["Rel"];
-            this.href = _data["Href"];
-            this.method = _data["Method"];
+            this.rel = _data["rel"];
+            this.href = _data["href"];
+            this.method = _data["method"];
         }
     }
 
@@ -4249,9 +4249,9 @@ export class Link implements ILink {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        data["Rel"] = this.rel;
-        data["Href"] = this.href;
-        data["Method"] = this.method;
+        data["rel"] = this.rel;
+        data["href"] = this.href;
+        data["method"] = this.method;
         return data; 
     }
 }
@@ -4280,19 +4280,19 @@ export class PagedDataInquiryResponseOfAccount implements IPagedDataInquiryRespo
 
     init(_data?: any) {
         if (_data) {
-            if (Array.isArray(_data["Items"])) {
+            if (Array.isArray(_data["items"])) {
                 this.items = [] as any;
-                for (let item of _data["Items"])
+                for (let item of _data["items"])
                     this.items!.push(Account.fromJS(item));
             }
-            this.pageSize = _data["PageSize"];
-            if (Array.isArray(_data["Links"])) {
+            this.pageSize = _data["pageSize"];
+            if (Array.isArray(_data["links"])) {
                 this.links = [] as any;
-                for (let item of _data["Links"])
+                for (let item of _data["links"])
                     this.links!.push(Link.fromJS(item));
             }
-            this.pageNumber = _data["PageNumber"];
-            this.pageCount = _data["PageCount"];
+            this.pageNumber = _data["pageNumber"];
+            this.pageCount = _data["pageCount"];
         }
     }
 
@@ -4306,18 +4306,18 @@ export class PagedDataInquiryResponseOfAccount implements IPagedDataInquiryRespo
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         if (Array.isArray(this.items)) {
-            data["Items"] = [];
+            data["items"] = [];
             for (let item of this.items)
-                data["Items"].push(item.toJSON());
+                data["items"].push(item.toJSON());
         }
-        data["PageSize"] = this.pageSize;
+        data["pageSize"] = this.pageSize;
         if (Array.isArray(this.links)) {
-            data["Links"] = [];
+            data["links"] = [];
             for (let item of this.links)
-                data["Links"].push(item.toJSON());
+                data["links"].push(item.toJSON());
         }
-        data["PageNumber"] = this.pageNumber;
-        data["PageCount"] = this.pageCount;
+        data["pageNumber"] = this.pageNumber;
+        data["pageCount"] = this.pageCount;
         return data; 
     }
 }
@@ -4351,16 +4351,16 @@ export class Account implements IAccount {
 
     init(_data?: any) {
         if (_data) {
-            this.id = _data["Id"];
-            this.name = _data["Name"];
-            this.user = _data["User"] ? UserLeaf.fromJS(_data["User"]) : <any>undefined;
-            this.currency = _data["Currency"] ? Currency.fromJS(_data["Currency"]) : <any>undefined;
-            this.group = _data["Group"] ? Group.fromJS(_data["Group"]) : <any>undefined;
-            this.startAmount = _data["StartAmount"];
-            this.version = _data["Version"];
-            if (Array.isArray(_data["Links"])) {
+            this.id = _data["id"];
+            this.name = _data["name"];
+            this.user = _data["user"] ? UserLeaf.fromJS(_data["user"]) : <any>undefined;
+            this.currency = _data["currency"] ? Currency.fromJS(_data["currency"]) : <any>undefined;
+            this.group = _data["group"] ? Group.fromJS(_data["group"]) : <any>undefined;
+            this.startAmount = _data["startAmount"];
+            this.version = _data["version"];
+            if (Array.isArray(_data["links"])) {
                 this.links = [] as any;
-                for (let item of _data["Links"])
+                for (let item of _data["links"])
                     this.links!.push(Link.fromJS(item));
             }
         }
@@ -4375,17 +4375,17 @@ export class Account implements IAccount {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        data["Id"] = this.id;
-        data["Name"] = this.name;
-        data["User"] = this.user ? this.user.toJSON() : <any>undefined;
-        data["Currency"] = this.currency ? this.currency.toJSON() : <any>undefined;
-        data["Group"] = this.group ? this.group.toJSON() : <any>undefined;
-        data["StartAmount"] = this.startAmount;
-        data["Version"] = this.version;
+        data["id"] = this.id;
+        data["name"] = this.name;
+        data["user"] = this.user ? this.user.toJSON() : <any>undefined;
+        data["currency"] = this.currency ? this.currency.toJSON() : <any>undefined;
+        data["group"] = this.group ? this.group.toJSON() : <any>undefined;
+        data["startAmount"] = this.startAmount;
+        data["version"] = this.version;
         if (Array.isArray(this.links)) {
-            data["Links"] = [];
+            data["links"] = [];
             for (let item of this.links)
-                data["Links"].push(item.toJSON());
+                data["links"].push(item.toJSON());
         }
         return data; 
     }
@@ -4422,15 +4422,15 @@ export class Currency implements ICurrency {
 
     init(_data?: any) {
         if (_data) {
-            this.id = _data["Id"];
-            this.name = _data["Name"];
-            this.acronym = _data["Acronym"];
-            this.symbol = _data["Symbol"];
-            this.isPrefix = _data["IsPrefix"];
-            this.version = _data["Version"];
-            if (Array.isArray(_data["Links"])) {
+            this.id = _data["id"];
+            this.name = _data["name"];
+            this.acronym = _data["acronym"];
+            this.symbol = _data["symbol"];
+            this.isPrefix = _data["isPrefix"];
+            this.version = _data["version"];
+            if (Array.isArray(_data["links"])) {
                 this.links = [] as any;
-                for (let item of _data["Links"])
+                for (let item of _data["links"])
                     this.links!.push(Link.fromJS(item));
             }
         }
@@ -4445,16 +4445,16 @@ export class Currency implements ICurrency {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        data["Id"] = this.id;
-        data["Name"] = this.name;
-        data["Acronym"] = this.acronym;
-        data["Symbol"] = this.symbol;
-        data["IsPrefix"] = this.isPrefix;
-        data["Version"] = this.version;
+        data["id"] = this.id;
+        data["name"] = this.name;
+        data["acronym"] = this.acronym;
+        data["symbol"] = this.symbol;
+        data["isPrefix"] = this.isPrefix;
+        data["version"] = this.version;
         if (Array.isArray(this.links)) {
-            data["Links"] = [];
+            data["links"] = [];
             for (let item of this.links)
-                data["Links"].push(item.toJSON());
+                data["links"].push(item.toJSON());
         }
         return data; 
     }
@@ -4489,14 +4489,14 @@ export class Group implements IGroup {
 
     init(_data?: any) {
         if (_data) {
-            this.id = _data["Id"];
-            this.name = _data["Name"];
-            this.info = _data["Info"];
-            this.ordinal = _data["Ordinal"];
-            this.version = _data["Version"];
-            if (Array.isArray(_data["Links"])) {
+            this.id = _data["id"];
+            this.name = _data["name"];
+            this.info = _data["info"];
+            this.ordinal = _data["ordinal"];
+            this.version = _data["version"];
+            if (Array.isArray(_data["links"])) {
                 this.links = [] as any;
-                for (let item of _data["Links"])
+                for (let item of _data["links"])
                     this.links!.push(Link.fromJS(item));
             }
         }
@@ -4511,15 +4511,15 @@ export class Group implements IGroup {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        data["Id"] = this.id;
-        data["Name"] = this.name;
-        data["Info"] = this.info;
-        data["Ordinal"] = this.ordinal;
-        data["Version"] = this.version;
+        data["id"] = this.id;
+        data["name"] = this.name;
+        data["info"] = this.info;
+        data["ordinal"] = this.ordinal;
+        data["version"] = this.version;
         if (Array.isArray(this.links)) {
-            data["Links"] = [];
+            data["links"] = [];
             for (let item of this.links)
-                data["Links"].push(item.toJSON());
+                data["links"].push(item.toJSON());
         }
         return data; 
     }
@@ -4556,11 +4556,11 @@ export class NewAccount implements INewAccount {
 
     init(_data?: any) {
         if (_data) {
-            this.name = _data["Name"];
-            this.user = _data["User"] ? UserLeaf.fromJS(_data["User"]) : new UserLeaf();
-            this.currency = _data["Currency"] ? Currency.fromJS(_data["Currency"]) : new Currency();
-            this.group = _data["Group"] ? Group.fromJS(_data["Group"]) : <any>undefined;
-            this.startAmount = _data["StartAmount"];
+            this.name = _data["name"];
+            this.user = _data["user"] ? UserLeaf.fromJS(_data["user"]) : new UserLeaf();
+            this.currency = _data["currency"] ? Currency.fromJS(_data["currency"]) : new Currency();
+            this.group = _data["group"] ? Group.fromJS(_data["group"]) : <any>undefined;
+            this.startAmount = _data["startAmount"];
         }
     }
 
@@ -4573,11 +4573,11 @@ export class NewAccount implements INewAccount {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        data["Name"] = this.name;
-        data["User"] = this.user ? this.user.toJSON() : <any>undefined;
-        data["Currency"] = this.currency ? this.currency.toJSON() : <any>undefined;
-        data["Group"] = this.group ? this.group.toJSON() : <any>undefined;
-        data["StartAmount"] = this.startAmount;
+        data["name"] = this.name;
+        data["user"] = this.user ? this.user.toJSON() : <any>undefined;
+        data["currency"] = this.currency ? this.currency.toJSON() : <any>undefined;
+        data["group"] = this.group ? this.group.toJSON() : <any>undefined;
+        data["startAmount"] = this.startAmount;
         return data; 
     }
 }
@@ -4608,19 +4608,19 @@ export class PagedDataInquiryResponseOfCurrency implements IPagedDataInquiryResp
 
     init(_data?: any) {
         if (_data) {
-            if (Array.isArray(_data["Items"])) {
+            if (Array.isArray(_data["items"])) {
                 this.items = [] as any;
-                for (let item of _data["Items"])
+                for (let item of _data["items"])
                     this.items!.push(Currency.fromJS(item));
             }
-            this.pageSize = _data["PageSize"];
-            if (Array.isArray(_data["Links"])) {
+            this.pageSize = _data["pageSize"];
+            if (Array.isArray(_data["links"])) {
                 this.links = [] as any;
-                for (let item of _data["Links"])
+                for (let item of _data["links"])
                     this.links!.push(Link.fromJS(item));
             }
-            this.pageNumber = _data["PageNumber"];
-            this.pageCount = _data["PageCount"];
+            this.pageNumber = _data["pageNumber"];
+            this.pageCount = _data["pageCount"];
         }
     }
 
@@ -4634,18 +4634,18 @@ export class PagedDataInquiryResponseOfCurrency implements IPagedDataInquiryResp
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         if (Array.isArray(this.items)) {
-            data["Items"] = [];
+            data["items"] = [];
             for (let item of this.items)
-                data["Items"].push(item.toJSON());
+                data["items"].push(item.toJSON());
         }
-        data["PageSize"] = this.pageSize;
+        data["pageSize"] = this.pageSize;
         if (Array.isArray(this.links)) {
-            data["Links"] = [];
+            data["links"] = [];
             for (let item of this.links)
-                data["Links"].push(item.toJSON());
+                data["links"].push(item.toJSON());
         }
-        data["PageNumber"] = this.pageNumber;
-        data["PageCount"] = this.pageCount;
+        data["pageNumber"] = this.pageNumber;
+        data["pageCount"] = this.pageCount;
         return data; 
     }
 }
@@ -4675,10 +4675,10 @@ export class NewCurrency implements INewCurrency {
 
     init(_data?: any) {
         if (_data) {
-            this.name = _data["Name"];
-            this.acronym = _data["Acronym"];
-            this.symbol = _data["Symbol"];
-            this.isPrefix = _data["IsPrefix"];
+            this.name = _data["name"];
+            this.acronym = _data["acronym"];
+            this.symbol = _data["symbol"];
+            this.isPrefix = _data["isPrefix"];
         }
     }
 
@@ -4691,10 +4691,10 @@ export class NewCurrency implements INewCurrency {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        data["Name"] = this.name;
-        data["Acronym"] = this.acronym;
-        data["Symbol"] = this.symbol;
-        data["IsPrefix"] = this.isPrefix;
+        data["name"] = this.name;
+        data["acronym"] = this.acronym;
+        data["symbol"] = this.symbol;
+        data["isPrefix"] = this.isPrefix;
         return data; 
     }
 }
@@ -4724,19 +4724,19 @@ export class PagedDataInquiryResponseOfCurrencyRate implements IPagedDataInquiry
 
     init(_data?: any) {
         if (_data) {
-            if (Array.isArray(_data["Items"])) {
+            if (Array.isArray(_data["items"])) {
                 this.items = [] as any;
-                for (let item of _data["Items"])
+                for (let item of _data["items"])
                     this.items!.push(CurrencyRate.fromJS(item));
             }
-            this.pageSize = _data["PageSize"];
-            if (Array.isArray(_data["Links"])) {
+            this.pageSize = _data["pageSize"];
+            if (Array.isArray(_data["links"])) {
                 this.links = [] as any;
-                for (let item of _data["Links"])
+                for (let item of _data["links"])
                     this.links!.push(Link.fromJS(item));
             }
-            this.pageNumber = _data["PageNumber"];
-            this.pageCount = _data["PageCount"];
+            this.pageNumber = _data["pageNumber"];
+            this.pageCount = _data["pageCount"];
         }
     }
 
@@ -4750,18 +4750,18 @@ export class PagedDataInquiryResponseOfCurrencyRate implements IPagedDataInquiry
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         if (Array.isArray(this.items)) {
-            data["Items"] = [];
+            data["items"] = [];
             for (let item of this.items)
-                data["Items"].push(item.toJSON());
+                data["items"].push(item.toJSON());
         }
-        data["PageSize"] = this.pageSize;
+        data["pageSize"] = this.pageSize;
         if (Array.isArray(this.links)) {
-            data["Links"] = [];
+            data["links"] = [];
             for (let item of this.links)
-                data["Links"].push(item.toJSON());
+                data["links"].push(item.toJSON());
         }
-        data["PageNumber"] = this.pageNumber;
-        data["PageCount"] = this.pageCount;
+        data["pageNumber"] = this.pageNumber;
+        data["pageCount"] = this.pageCount;
         return data; 
     }
 }
@@ -4793,14 +4793,14 @@ export class CurrencyRate implements ICurrencyRate {
 
     init(_data?: any) {
         if (_data) {
-            this.sourceCurrency = _data["SourceCurrency"] ? Currency.fromJS(_data["SourceCurrency"]) : <any>undefined;
-            this.targetCurrency = _data["TargetCurrency"] ? Currency.fromJS(_data["TargetCurrency"]) : <any>undefined;
-            this.date = _data["Date"];
-            this.rate = _data["Rate"];
-            this.version = _data["Version"];
-            if (Array.isArray(_data["Links"])) {
+            this.sourceCurrency = _data["sourceCurrency"] ? Currency.fromJS(_data["sourceCurrency"]) : <any>undefined;
+            this.targetCurrency = _data["targetCurrency"] ? Currency.fromJS(_data["targetCurrency"]) : <any>undefined;
+            this.date = _data["date"];
+            this.rate = _data["rate"];
+            this.version = _data["version"];
+            if (Array.isArray(_data["links"])) {
                 this.links = [] as any;
-                for (let item of _data["Links"])
+                for (let item of _data["links"])
                     this.links!.push(Link.fromJS(item));
             }
         }
@@ -4815,15 +4815,15 @@ export class CurrencyRate implements ICurrencyRate {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        data["SourceCurrency"] = this.sourceCurrency ? this.sourceCurrency.toJSON() : <any>undefined;
-        data["TargetCurrency"] = this.targetCurrency ? this.targetCurrency.toJSON() : <any>undefined;
-        data["Date"] = this.date;
-        data["Rate"] = this.rate;
-        data["Version"] = this.version;
+        data["sourceCurrency"] = this.sourceCurrency ? this.sourceCurrency.toJSON() : <any>undefined;
+        data["targetCurrency"] = this.targetCurrency ? this.targetCurrency.toJSON() : <any>undefined;
+        data["date"] = this.date;
+        data["rate"] = this.rate;
+        data["version"] = this.version;
         if (Array.isArray(this.links)) {
-            data["Links"] = [];
+            data["links"] = [];
             for (let item of this.links)
-                data["Links"].push(item.toJSON());
+                data["links"].push(item.toJSON());
         }
         return data; 
     }
@@ -4859,10 +4859,10 @@ export class NewCurrencyRate implements INewCurrencyRate {
 
     init(_data?: any) {
         if (_data) {
-            this.sourceCurrency = _data["SourceCurrency"] ? Currency.fromJS(_data["SourceCurrency"]) : new Currency();
-            this.targetCurrency = _data["TargetCurrency"] ? Currency.fromJS(_data["TargetCurrency"]) : new Currency();
-            this.date = _data["Date"];
-            this.rate = _data["Rate"];
+            this.sourceCurrency = _data["sourceCurrency"] ? Currency.fromJS(_data["sourceCurrency"]) : new Currency();
+            this.targetCurrency = _data["targetCurrency"] ? Currency.fromJS(_data["targetCurrency"]) : new Currency();
+            this.date = _data["date"];
+            this.rate = _data["rate"];
         }
     }
 
@@ -4875,10 +4875,10 @@ export class NewCurrencyRate implements INewCurrencyRate {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        data["SourceCurrency"] = this.sourceCurrency ? this.sourceCurrency.toJSON() : <any>undefined;
-        data["TargetCurrency"] = this.targetCurrency ? this.targetCurrency.toJSON() : <any>undefined;
-        data["Date"] = this.date;
-        data["Rate"] = this.rate;
+        data["sourceCurrency"] = this.sourceCurrency ? this.sourceCurrency.toJSON() : <any>undefined;
+        data["targetCurrency"] = this.targetCurrency ? this.targetCurrency.toJSON() : <any>undefined;
+        data["date"] = this.date;
+        data["rate"] = this.rate;
         return data; 
     }
 }
@@ -4908,19 +4908,19 @@ export class PagedDataInquiryResponseOfGroup implements IPagedDataInquiryRespons
 
     init(_data?: any) {
         if (_data) {
-            if (Array.isArray(_data["Items"])) {
+            if (Array.isArray(_data["items"])) {
                 this.items = [] as any;
-                for (let item of _data["Items"])
+                for (let item of _data["items"])
                     this.items!.push(Group.fromJS(item));
             }
-            this.pageSize = _data["PageSize"];
-            if (Array.isArray(_data["Links"])) {
+            this.pageSize = _data["pageSize"];
+            if (Array.isArray(_data["links"])) {
                 this.links = [] as any;
-                for (let item of _data["Links"])
+                for (let item of _data["links"])
                     this.links!.push(Link.fromJS(item));
             }
-            this.pageNumber = _data["PageNumber"];
-            this.pageCount = _data["PageCount"];
+            this.pageNumber = _data["pageNumber"];
+            this.pageCount = _data["pageCount"];
         }
     }
 
@@ -4934,18 +4934,18 @@ export class PagedDataInquiryResponseOfGroup implements IPagedDataInquiryRespons
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         if (Array.isArray(this.items)) {
-            data["Items"] = [];
+            data["items"] = [];
             for (let item of this.items)
-                data["Items"].push(item.toJSON());
+                data["items"].push(item.toJSON());
         }
-        data["PageSize"] = this.pageSize;
+        data["pageSize"] = this.pageSize;
         if (Array.isArray(this.links)) {
-            data["Links"] = [];
+            data["links"] = [];
             for (let item of this.links)
-                data["Links"].push(item.toJSON());
+                data["links"].push(item.toJSON());
         }
-        data["PageNumber"] = this.pageNumber;
-        data["PageCount"] = this.pageCount;
+        data["pageNumber"] = this.pageNumber;
+        data["pageCount"] = this.pageCount;
         return data; 
     }
 }
@@ -4974,9 +4974,9 @@ export class NewGroup implements INewGroup {
 
     init(_data?: any) {
         if (_data) {
-            this.name = _data["Name"];
-            this.info = _data["Info"];
-            this.ordinal = _data["Ordinal"];
+            this.name = _data["name"];
+            this.info = _data["info"];
+            this.ordinal = _data["ordinal"];
         }
     }
 
@@ -4989,9 +4989,9 @@ export class NewGroup implements INewGroup {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        data["Name"] = this.name;
-        data["Info"] = this.info;
-        data["Ordinal"] = this.ordinal;
+        data["name"] = this.name;
+        data["info"] = this.info;
+        data["ordinal"] = this.ordinal;
         return data; 
     }
 }
@@ -5020,19 +5020,19 @@ export class PagedDataInquiryResponseOfTransaction implements IPagedDataInquiryR
 
     init(_data?: any) {
         if (_data) {
-            if (Array.isArray(_data["Items"])) {
+            if (Array.isArray(_data["items"])) {
                 this.items = [] as any;
-                for (let item of _data["Items"])
+                for (let item of _data["items"])
                     this.items!.push(Transaction.fromJS(item));
             }
-            this.pageSize = _data["PageSize"];
-            if (Array.isArray(_data["Links"])) {
+            this.pageSize = _data["pageSize"];
+            if (Array.isArray(_data["links"])) {
                 this.links = [] as any;
-                for (let item of _data["Links"])
+                for (let item of _data["links"])
                     this.links!.push(Link.fromJS(item));
             }
-            this.pageNumber = _data["PageNumber"];
-            this.pageCount = _data["PageCount"];
+            this.pageNumber = _data["pageNumber"];
+            this.pageCount = _data["pageCount"];
         }
     }
 
@@ -5046,18 +5046,18 @@ export class PagedDataInquiryResponseOfTransaction implements IPagedDataInquiryR
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         if (Array.isArray(this.items)) {
-            data["Items"] = [];
+            data["items"] = [];
             for (let item of this.items)
-                data["Items"].push(item.toJSON());
+                data["items"].push(item.toJSON());
         }
-        data["PageSize"] = this.pageSize;
+        data["pageSize"] = this.pageSize;
         if (Array.isArray(this.links)) {
-            data["Links"] = [];
+            data["links"] = [];
             for (let item of this.links)
-                data["Links"].push(item.toJSON());
+                data["links"].push(item.toJSON());
         }
-        data["PageNumber"] = this.pageNumber;
-        data["PageCount"] = this.pageCount;
+        data["pageNumber"] = this.pageNumber;
+        data["pageCount"] = this.pageCount;
         return data; 
     }
 }
@@ -5097,22 +5097,22 @@ export class Transaction implements ITransaction {
 
     init(_data?: any) {
         if (_data) {
-            this.id = _data["Id"];
-            this.date = _data["Date"];
-            this.user = _data["User"] ? UserLeaf.fromJS(_data["User"]) : <any>undefined;
-            this.sender = _data["Sender"] ? Account.fromJS(_data["Sender"]) : <any>undefined;
-            this.receiver = _data["Receiver"] ? Account.fromJS(_data["Receiver"]) : <any>undefined;
-            this.type = _data["Type"] ? TransactionType.fromJS(_data["Type"]) : <any>undefined;
-            this.category = _data["Category"] ? TransactionCategory.fromJS(_data["Category"]) : <any>undefined;
-            this.status = _data["Status"] ? TransactionStatus.fromJS(_data["Status"]) : <any>undefined;
-            this.currency = _data["Currency"] ? Currency.fromJS(_data["Currency"]) : <any>undefined;
-            this.description = _data["Description"];
-            this.amount = _data["Amount"];
-            this.version = _data["Version"];
-            this.recurringTransaction = _data["RecurringTransaction"] ? RecurringTransaction.fromJS(_data["RecurringTransaction"]) : <any>undefined;
-            if (Array.isArray(_data["Links"])) {
+            this.id = _data["id"];
+            this.date = _data["date"];
+            this.user = _data["user"] ? UserLeaf.fromJS(_data["user"]) : <any>undefined;
+            this.sender = _data["sender"] ? Account.fromJS(_data["sender"]) : <any>undefined;
+            this.receiver = _data["receiver"] ? Account.fromJS(_data["receiver"]) : <any>undefined;
+            this.type = _data["type"] ? TransactionType.fromJS(_data["type"]) : <any>undefined;
+            this.category = _data["category"] ? TransactionCategory.fromJS(_data["category"]) : <any>undefined;
+            this.status = _data["status"] ? TransactionStatus.fromJS(_data["status"]) : <any>undefined;
+            this.currency = _data["currency"] ? Currency.fromJS(_data["currency"]) : <any>undefined;
+            this.description = _data["description"];
+            this.amount = _data["amount"];
+            this.version = _data["version"];
+            this.recurringTransaction = _data["recurringTransaction"] ? RecurringTransaction.fromJS(_data["recurringTransaction"]) : <any>undefined;
+            if (Array.isArray(_data["links"])) {
                 this.links = [] as any;
-                for (let item of _data["Links"])
+                for (let item of _data["links"])
                     this.links!.push(Link.fromJS(item));
             }
         }
@@ -5127,23 +5127,23 @@ export class Transaction implements ITransaction {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        data["Id"] = this.id;
-        data["Date"] = this.date;
-        data["User"] = this.user ? this.user.toJSON() : <any>undefined;
-        data["Sender"] = this.sender ? this.sender.toJSON() : <any>undefined;
-        data["Receiver"] = this.receiver ? this.receiver.toJSON() : <any>undefined;
-        data["Type"] = this.type ? this.type.toJSON() : <any>undefined;
-        data["Category"] = this.category ? this.category.toJSON() : <any>undefined;
-        data["Status"] = this.status ? this.status.toJSON() : <any>undefined;
-        data["Currency"] = this.currency ? this.currency.toJSON() : <any>undefined;
-        data["Description"] = this.description;
-        data["Amount"] = this.amount;
-        data["Version"] = this.version;
-        data["RecurringTransaction"] = this.recurringTransaction ? this.recurringTransaction.toJSON() : <any>undefined;
+        data["id"] = this.id;
+        data["date"] = this.date;
+        data["user"] = this.user ? this.user.toJSON() : <any>undefined;
+        data["sender"] = this.sender ? this.sender.toJSON() : <any>undefined;
+        data["receiver"] = this.receiver ? this.receiver.toJSON() : <any>undefined;
+        data["type"] = this.type ? this.type.toJSON() : <any>undefined;
+        data["category"] = this.category ? this.category.toJSON() : <any>undefined;
+        data["status"] = this.status ? this.status.toJSON() : <any>undefined;
+        data["currency"] = this.currency ? this.currency.toJSON() : <any>undefined;
+        data["description"] = this.description;
+        data["amount"] = this.amount;
+        data["version"] = this.version;
+        data["recurringTransaction"] = this.recurringTransaction ? this.recurringTransaction.toJSON() : <any>undefined;
         if (Array.isArray(this.links)) {
-            data["Links"] = [];
+            data["links"] = [];
             for (let item of this.links)
-                data["Links"].push(item.toJSON());
+                data["links"].push(item.toJSON());
         }
         return data; 
     }
@@ -5181,8 +5181,8 @@ export class TransactionType implements ITransactionType {
 
     init(_data?: any) {
         if (_data) {
-            this.id = _data["Id"];
-            this.name = _data["Name"];
+            this.id = _data["id"];
+            this.name = _data["name"];
         }
     }
 
@@ -5195,8 +5195,8 @@ export class TransactionType implements ITransactionType {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        data["Id"] = this.id;
-        data["Name"] = this.name;
+        data["id"] = this.id;
+        data["name"] = this.name;
         return data; 
     }
 }
@@ -5230,13 +5230,13 @@ export class TransactionCategory implements ITransactionCategory {
 
     init(_data?: any) {
         if (_data) {
-            this.id = _data["Id"];
-            this.name = _data["Name"];
-            this.root = _data["Root"] ? TransactionCategoryLeaf.fromJS(_data["Root"]) : <any>undefined;
-            this.version = _data["Version"];
-            if (Array.isArray(_data["Links"])) {
+            this.id = _data["id"];
+            this.name = _data["name"];
+            this.root = _data["root"] ? TransactionCategoryLeaf.fromJS(_data["root"]) : <any>undefined;
+            this.version = _data["version"];
+            if (Array.isArray(_data["links"])) {
                 this.links = [] as any;
-                for (let item of _data["Links"])
+                for (let item of _data["links"])
                     this.links!.push(Link.fromJS(item));
             }
         }
@@ -5251,14 +5251,14 @@ export class TransactionCategory implements ITransactionCategory {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        data["Id"] = this.id;
-        data["Name"] = this.name;
-        data["Root"] = this.root ? this.root.toJSON() : <any>undefined;
-        data["Version"] = this.version;
+        data["id"] = this.id;
+        data["name"] = this.name;
+        data["root"] = this.root ? this.root.toJSON() : <any>undefined;
+        data["version"] = this.version;
         if (Array.isArray(this.links)) {
-            data["Links"] = [];
+            data["links"] = [];
             for (let item of this.links)
-                data["Links"].push(item.toJSON());
+                data["links"].push(item.toJSON());
         }
         return data; 
     }
@@ -5289,12 +5289,12 @@ export class TransactionCategoryLeaf implements ITransactionCategoryLeaf {
 
     init(_data?: any) {
         if (_data) {
-            this.id = _data["Id"];
-            this.name = _data["Name"];
-            this.rootId = _data["RootId"];
-            if (Array.isArray(_data["Links"])) {
+            this.id = _data["id"];
+            this.name = _data["name"];
+            this.rootId = _data["rootId"];
+            if (Array.isArray(_data["links"])) {
                 this.links = [] as any;
-                for (let item of _data["Links"])
+                for (let item of _data["links"])
                     this.links!.push(Link.fromJS(item));
             }
         }
@@ -5309,13 +5309,13 @@ export class TransactionCategoryLeaf implements ITransactionCategoryLeaf {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        data["Id"] = this.id;
-        data["Name"] = this.name;
-        data["RootId"] = this.rootId;
+        data["id"] = this.id;
+        data["name"] = this.name;
+        data["rootId"] = this.rootId;
         if (Array.isArray(this.links)) {
-            data["Links"] = [];
+            data["links"] = [];
             for (let item of this.links)
-                data["Links"].push(item.toJSON());
+                data["links"].push(item.toJSON());
         }
         return data; 
     }
@@ -5344,9 +5344,9 @@ export class TransactionStatus implements ITransactionStatus {
 
     init(_data?: any) {
         if (_data) {
-            this.id = _data["Id"];
-            this.name = _data["Name"];
-            this.ordinal = _data["Ordinal"];
+            this.id = _data["id"];
+            this.name = _data["name"];
+            this.ordinal = _data["ordinal"];
         }
     }
 
@@ -5359,9 +5359,9 @@ export class TransactionStatus implements ITransactionStatus {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        data["Id"] = this.id;
-        data["Name"] = this.name;
-        data["Ordinal"] = this.ordinal;
+        data["id"] = this.id;
+        data["name"] = this.name;
+        data["ordinal"] = this.ordinal;
         return data; 
     }
 }
@@ -5403,19 +5403,19 @@ export class RecurringTransaction implements IRecurringTransaction {
 
     init(_data?: any) {
         if (_data) {
-            this.id = _data["Id"];
-            this.user = _data["User"] ? UserLeaf.fromJS(_data["User"]) : <any>undefined;
-            this.sender = _data["Sender"] ? Account.fromJS(_data["Sender"]) : <any>undefined;
-            this.receiver = _data["Receiver"] ? Account.fromJS(_data["Receiver"]) : <any>undefined;
-            this.type = _data["Type"];
-            this.category = _data["Category"] ? TransactionCategory.fromJS(_data["Category"]) : <any>undefined;
-            this.currency = _data["Currency"] ? Currency.fromJS(_data["Currency"]) : <any>undefined;
-            this.description = _data["Description"];
-            this.amount = _data["Amount"];
-            this.version = _data["Version"];
-            if (Array.isArray(_data["Links"])) {
+            this.id = _data["id"];
+            this.user = _data["user"] ? UserLeaf.fromJS(_data["user"]) : <any>undefined;
+            this.sender = _data["sender"] ? Account.fromJS(_data["sender"]) : <any>undefined;
+            this.receiver = _data["receiver"] ? Account.fromJS(_data["receiver"]) : <any>undefined;
+            this.type = _data["type"];
+            this.category = _data["category"] ? TransactionCategory.fromJS(_data["category"]) : <any>undefined;
+            this.currency = _data["currency"] ? Currency.fromJS(_data["currency"]) : <any>undefined;
+            this.description = _data["description"];
+            this.amount = _data["amount"];
+            this.version = _data["version"];
+            if (Array.isArray(_data["links"])) {
                 this.links = [] as any;
-                for (let item of _data["Links"])
+                for (let item of _data["links"])
                     this.links!.push(Link.fromJS(item));
             }
         }
@@ -5430,20 +5430,20 @@ export class RecurringTransaction implements IRecurringTransaction {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        data["Id"] = this.id;
-        data["User"] = this.user ? this.user.toJSON() : <any>undefined;
-        data["Sender"] = this.sender ? this.sender.toJSON() : <any>undefined;
-        data["Receiver"] = this.receiver ? this.receiver.toJSON() : <any>undefined;
-        data["Type"] = this.type;
-        data["Category"] = this.category ? this.category.toJSON() : <any>undefined;
-        data["Currency"] = this.currency ? this.currency.toJSON() : <any>undefined;
-        data["Description"] = this.description;
-        data["Amount"] = this.amount;
-        data["Version"] = this.version;
+        data["id"] = this.id;
+        data["user"] = this.user ? this.user.toJSON() : <any>undefined;
+        data["sender"] = this.sender ? this.sender.toJSON() : <any>undefined;
+        data["receiver"] = this.receiver ? this.receiver.toJSON() : <any>undefined;
+        data["type"] = this.type;
+        data["category"] = this.category ? this.category.toJSON() : <any>undefined;
+        data["currency"] = this.currency ? this.currency.toJSON() : <any>undefined;
+        data["description"] = this.description;
+        data["amount"] = this.amount;
+        data["version"] = this.version;
         if (Array.isArray(this.links)) {
-            data["Links"] = [];
+            data["links"] = [];
             for (let item of this.links)
-                data["Links"].push(item.toJSON());
+                data["links"].push(item.toJSON());
         }
         return data; 
     }
@@ -5481,19 +5481,19 @@ export class PagedDataInquiryResponseOfRecurringTransaction implements IPagedDat
 
     init(_data?: any) {
         if (_data) {
-            if (Array.isArray(_data["Items"])) {
+            if (Array.isArray(_data["items"])) {
                 this.items = [] as any;
-                for (let item of _data["Items"])
+                for (let item of _data["items"])
                     this.items!.push(RecurringTransaction.fromJS(item));
             }
-            this.pageSize = _data["PageSize"];
-            if (Array.isArray(_data["Links"])) {
+            this.pageSize = _data["pageSize"];
+            if (Array.isArray(_data["links"])) {
                 this.links = [] as any;
-                for (let item of _data["Links"])
+                for (let item of _data["links"])
                     this.links!.push(Link.fromJS(item));
             }
-            this.pageNumber = _data["PageNumber"];
-            this.pageCount = _data["PageCount"];
+            this.pageNumber = _data["pageNumber"];
+            this.pageCount = _data["pageCount"];
         }
     }
 
@@ -5507,18 +5507,18 @@ export class PagedDataInquiryResponseOfRecurringTransaction implements IPagedDat
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         if (Array.isArray(this.items)) {
-            data["Items"] = [];
+            data["items"] = [];
             for (let item of this.items)
-                data["Items"].push(item.toJSON());
+                data["items"].push(item.toJSON());
         }
-        data["PageSize"] = this.pageSize;
+        data["pageSize"] = this.pageSize;
         if (Array.isArray(this.links)) {
-            data["Links"] = [];
+            data["links"] = [];
             for (let item of this.links)
-                data["Links"].push(item.toJSON());
+                data["links"].push(item.toJSON());
         }
-        data["PageNumber"] = this.pageNumber;
-        data["PageCount"] = this.pageCount;
+        data["pageNumber"] = this.pageNumber;
+        data["pageCount"] = this.pageCount;
         return data; 
     }
 }
@@ -5560,14 +5560,14 @@ export class NewRecurringTransaction implements INewRecurringTransaction {
 
     init(_data?: any) {
         if (_data) {
-            this.user = _data["User"] ? User.fromJS(_data["User"]) : new User();
-            this.sender = _data["Sender"] ? Account.fromJS(_data["Sender"]) : new Account();
-            this.receiver = _data["Receiver"] ? Account.fromJS(_data["Receiver"]) : new Account();
-            this.type = _data["Type"] ? TransactionType.fromJS(_data["Type"]) : new TransactionType();
-            this.category = _data["Category"] ? TransactionCategory.fromJS(_data["Category"]) : new TransactionCategory();
-            this.currency = _data["Currency"] ? Currency.fromJS(_data["Currency"]) : new Currency();
-            this.description = _data["Description"];
-            this.amount = _data["Amount"];
+            this.user = _data["user"] ? User.fromJS(_data["user"]) : new User();
+            this.sender = _data["sender"] ? Account.fromJS(_data["sender"]) : new Account();
+            this.receiver = _data["receiver"] ? Account.fromJS(_data["receiver"]) : new Account();
+            this.type = _data["type"] ? TransactionType.fromJS(_data["type"]) : new TransactionType();
+            this.category = _data["category"] ? TransactionCategory.fromJS(_data["category"]) : new TransactionCategory();
+            this.currency = _data["currency"] ? Currency.fromJS(_data["currency"]) : new Currency();
+            this.description = _data["description"];
+            this.amount = _data["amount"];
         }
     }
 
@@ -5580,14 +5580,14 @@ export class NewRecurringTransaction implements INewRecurringTransaction {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        data["User"] = this.user ? this.user.toJSON() : <any>undefined;
-        data["Sender"] = this.sender ? this.sender.toJSON() : <any>undefined;
-        data["Receiver"] = this.receiver ? this.receiver.toJSON() : <any>undefined;
-        data["Type"] = this.type ? this.type.toJSON() : <any>undefined;
-        data["Category"] = this.category ? this.category.toJSON() : <any>undefined;
-        data["Currency"] = this.currency ? this.currency.toJSON() : <any>undefined;
-        data["Description"] = this.description;
-        data["Amount"] = this.amount;
+        data["user"] = this.user ? this.user.toJSON() : <any>undefined;
+        data["sender"] = this.sender ? this.sender.toJSON() : <any>undefined;
+        data["receiver"] = this.receiver ? this.receiver.toJSON() : <any>undefined;
+        data["type"] = this.type ? this.type.toJSON() : <any>undefined;
+        data["category"] = this.category ? this.category.toJSON() : <any>undefined;
+        data["currency"] = this.currency ? this.currency.toJSON() : <any>undefined;
+        data["description"] = this.description;
+        data["amount"] = this.amount;
         return data; 
     }
 }
@@ -5613,9 +5613,9 @@ export class User extends UserLeaf implements IUser {
     init(_data?: any) {
         super.init(_data);
         if (_data) {
-            if (Array.isArray(_data["Roles"])) {
+            if (Array.isArray(_data["roles"])) {
                 this.roles = [] as any;
-                for (let item of _data["Roles"])
+                for (let item of _data["roles"])
                     this.roles!.push(Role.fromJS(item));
             }
         }
@@ -5631,9 +5631,9 @@ export class User extends UserLeaf implements IUser {
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         if (Array.isArray(this.roles)) {
-            data["Roles"] = [];
+            data["roles"] = [];
             for (let item of this.roles)
-                data["Roles"].push(item.toJSON());
+                data["roles"].push(item.toJSON());
         }
         super.toJSON(data);
         return data; 
@@ -5667,22 +5667,22 @@ export class Task implements ITask {
 
     init(_data?: any) {
         if (_data) {
-            this.id = _data["Id"];
-            this.subject = _data["Subject"];
-            this.startDate = _data["StartDate"];
-            this.dueDate = _data["DueDate"];
-            this.createdDate = _data["CreatedDate"];
-            this.completedDate = _data["CompletedDate"];
-            this.transactionStatus = _data["TransactionStatus"] ? TransactionStatus.fromJS(_data["TransactionStatus"]) : <any>undefined;
-            if (Array.isArray(_data["Assignees"])) {
+            this.id = _data["id"];
+            this.subject = _data["subject"];
+            this.startDate = _data["startDate"];
+            this.dueDate = _data["dueDate"];
+            this.createdDate = _data["createdDate"];
+            this.completedDate = _data["completedDate"];
+            this.transactionStatus = _data["transactionStatus"] ? TransactionStatus.fromJS(_data["transactionStatus"]) : <any>undefined;
+            if (Array.isArray(_data["assignees"])) {
                 this.assignees = [] as any;
-                for (let item of _data["Assignees"])
+                for (let item of _data["assignees"])
                     this.assignees!.push(UserLeaf.fromJS(item));
             }
-            this.version = _data["Version"];
-            if (Array.isArray(_data["Links"])) {
+            this.version = _data["version"];
+            if (Array.isArray(_data["links"])) {
                 this.links = [] as any;
-                for (let item of _data["Links"])
+                for (let item of _data["links"])
                     this.links!.push(Link.fromJS(item));
             }
         }
@@ -5697,23 +5697,23 @@ export class Task implements ITask {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        data["Id"] = this.id;
-        data["Subject"] = this.subject;
-        data["StartDate"] = this.startDate;
-        data["DueDate"] = this.dueDate;
-        data["CreatedDate"] = this.createdDate;
-        data["CompletedDate"] = this.completedDate;
-        data["TransactionStatus"] = this.transactionStatus ? this.transactionStatus.toJSON() : <any>undefined;
+        data["id"] = this.id;
+        data["subject"] = this.subject;
+        data["startDate"] = this.startDate;
+        data["dueDate"] = this.dueDate;
+        data["createdDate"] = this.createdDate;
+        data["completedDate"] = this.completedDate;
+        data["transactionStatus"] = this.transactionStatus ? this.transactionStatus.toJSON() : <any>undefined;
         if (Array.isArray(this.assignees)) {
-            data["Assignees"] = [];
+            data["assignees"] = [];
             for (let item of this.assignees)
-                data["Assignees"].push(item.toJSON());
+                data["assignees"].push(item.toJSON());
         }
-        data["Version"] = this.version;
+        data["version"] = this.version;
         if (Array.isArray(this.links)) {
-            data["Links"] = [];
+            data["links"] = [];
             for (let item of this.links)
-                data["Links"].push(item.toJSON());
+                data["links"].push(item.toJSON());
         }
         return data; 
     }
@@ -5750,19 +5750,19 @@ export class PagedDataInquiryResponseOfTask implements IPagedDataInquiryResponse
 
     init(_data?: any) {
         if (_data) {
-            if (Array.isArray(_data["Items"])) {
+            if (Array.isArray(_data["items"])) {
                 this.items = [] as any;
-                for (let item of _data["Items"])
+                for (let item of _data["items"])
                     this.items!.push(Task.fromJS(item));
             }
-            this.pageSize = _data["PageSize"];
-            if (Array.isArray(_data["Links"])) {
+            this.pageSize = _data["pageSize"];
+            if (Array.isArray(_data["links"])) {
                 this.links = [] as any;
-                for (let item of _data["Links"])
+                for (let item of _data["links"])
                     this.links!.push(Link.fromJS(item));
             }
-            this.pageNumber = _data["PageNumber"];
-            this.pageCount = _data["PageCount"];
+            this.pageNumber = _data["pageNumber"];
+            this.pageCount = _data["pageCount"];
         }
     }
 
@@ -5776,18 +5776,18 @@ export class PagedDataInquiryResponseOfTask implements IPagedDataInquiryResponse
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         if (Array.isArray(this.items)) {
-            data["Items"] = [];
+            data["items"] = [];
             for (let item of this.items)
-                data["Items"].push(item.toJSON());
+                data["items"].push(item.toJSON());
         }
-        data["PageSize"] = this.pageSize;
+        data["pageSize"] = this.pageSize;
         if (Array.isArray(this.links)) {
-            data["Links"] = [];
+            data["links"] = [];
             for (let item of this.links)
-                data["Links"].push(item.toJSON());
+                data["links"].push(item.toJSON());
         }
-        data["PageNumber"] = this.pageNumber;
-        data["PageCount"] = this.pageCount;
+        data["pageNumber"] = this.pageNumber;
+        data["pageCount"] = this.pageCount;
         return data; 
     }
 }
@@ -5815,8 +5815,8 @@ export class NewTransactionCategory implements INewTransactionCategory {
 
     init(_data?: any) {
         if (_data) {
-            this.name = _data["Name"];
-            this.root = _data["Root"] ? TransactionCategoryLeaf.fromJS(_data["Root"]) : <any>undefined;
+            this.name = _data["name"];
+            this.root = _data["root"] ? TransactionCategoryLeaf.fromJS(_data["root"]) : <any>undefined;
         }
     }
 
@@ -5829,8 +5829,8 @@ export class NewTransactionCategory implements INewTransactionCategory {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        data["Name"] = this.name;
-        data["Root"] = this.root ? this.root.toJSON() : <any>undefined;
+        data["name"] = this.name;
+        data["root"] = this.root ? this.root.toJSON() : <any>undefined;
         return data; 
     }
 }
@@ -5858,19 +5858,19 @@ export class PagedDataInquiryResponseOfTransactionCategory implements IPagedData
 
     init(_data?: any) {
         if (_data) {
-            if (Array.isArray(_data["Items"])) {
+            if (Array.isArray(_data["items"])) {
                 this.items = [] as any;
-                for (let item of _data["Items"])
+                for (let item of _data["items"])
                     this.items!.push(TransactionCategory.fromJS(item));
             }
-            this.pageSize = _data["PageSize"];
-            if (Array.isArray(_data["Links"])) {
+            this.pageSize = _data["pageSize"];
+            if (Array.isArray(_data["links"])) {
                 this.links = [] as any;
-                for (let item of _data["Links"])
+                for (let item of _data["links"])
                     this.links!.push(Link.fromJS(item));
             }
-            this.pageNumber = _data["PageNumber"];
-            this.pageCount = _data["PageCount"];
+            this.pageNumber = _data["pageNumber"];
+            this.pageCount = _data["pageCount"];
         }
     }
 
@@ -5884,18 +5884,18 @@ export class PagedDataInquiryResponseOfTransactionCategory implements IPagedData
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         if (Array.isArray(this.items)) {
-            data["Items"] = [];
+            data["items"] = [];
             for (let item of this.items)
-                data["Items"].push(item.toJSON());
+                data["items"].push(item.toJSON());
         }
-        data["PageSize"] = this.pageSize;
+        data["pageSize"] = this.pageSize;
         if (Array.isArray(this.links)) {
-            data["Links"] = [];
+            data["links"] = [];
             for (let item of this.links)
-                data["Links"].push(item.toJSON());
+                data["links"].push(item.toJSON());
         }
-        data["PageNumber"] = this.pageNumber;
-        data["PageCount"] = this.pageCount;
+        data["pageNumber"] = this.pageNumber;
+        data["pageCount"] = this.pageCount;
         return data; 
     }
 }
@@ -5941,17 +5941,17 @@ export class NewTransaction implements INewTransaction {
 
     init(_data?: any) {
         if (_data) {
-            this.date = _data["Date"];
-            this.user = _data["User"] ? UserLeaf.fromJS(_data["User"]) : new UserLeaf();
-            this.sender = _data["Sender"] ? Account.fromJS(_data["Sender"]) : new Account();
-            this.receiver = _data["Receiver"] ? Account.fromJS(_data["Receiver"]) : new Account();
-            this.type = _data["Type"] ? TransactionType.fromJS(_data["Type"]) : new TransactionType();
-            this.category = _data["Category"] ? TransactionCategory.fromJS(_data["Category"]) : new TransactionCategory();
-            this.status = _data["Status"] ? TransactionStatus.fromJS(_data["Status"]) : new TransactionStatus();
-            this.currency = _data["Currency"] ? Currency.fromJS(_data["Currency"]) : new Currency();
-            this.description = _data["Description"];
-            this.amount = _data["Amount"];
-            this.recurringTransaction = _data["RecurringTransaction"] ? RecurringTransaction.fromJS(_data["RecurringTransaction"]) : <any>undefined;
+            this.date = _data["date"];
+            this.user = _data["user"] ? UserLeaf.fromJS(_data["user"]) : new UserLeaf();
+            this.sender = _data["sender"] ? Account.fromJS(_data["sender"]) : new Account();
+            this.receiver = _data["receiver"] ? Account.fromJS(_data["receiver"]) : new Account();
+            this.type = _data["type"] ? TransactionType.fromJS(_data["type"]) : new TransactionType();
+            this.category = _data["category"] ? TransactionCategory.fromJS(_data["category"]) : new TransactionCategory();
+            this.status = _data["status"] ? TransactionStatus.fromJS(_data["status"]) : new TransactionStatus();
+            this.currency = _data["currency"] ? Currency.fromJS(_data["currency"]) : new Currency();
+            this.description = _data["description"];
+            this.amount = _data["amount"];
+            this.recurringTransaction = _data["recurringTransaction"] ? RecurringTransaction.fromJS(_data["recurringTransaction"]) : <any>undefined;
         }
     }
 
@@ -5964,17 +5964,17 @@ export class NewTransaction implements INewTransaction {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        data["Date"] = this.date;
-        data["User"] = this.user ? this.user.toJSON() : <any>undefined;
-        data["Sender"] = this.sender ? this.sender.toJSON() : <any>undefined;
-        data["Receiver"] = this.receiver ? this.receiver.toJSON() : <any>undefined;
-        data["Type"] = this.type ? this.type.toJSON() : <any>undefined;
-        data["Category"] = this.category ? this.category.toJSON() : <any>undefined;
-        data["Status"] = this.status ? this.status.toJSON() : <any>undefined;
-        data["Currency"] = this.currency ? this.currency.toJSON() : <any>undefined;
-        data["Description"] = this.description;
-        data["Amount"] = this.amount;
-        data["RecurringTransaction"] = this.recurringTransaction ? this.recurringTransaction.toJSON() : <any>undefined;
+        data["date"] = this.date;
+        data["user"] = this.user ? this.user.toJSON() : <any>undefined;
+        data["sender"] = this.sender ? this.sender.toJSON() : <any>undefined;
+        data["receiver"] = this.receiver ? this.receiver.toJSON() : <any>undefined;
+        data["type"] = this.type ? this.type.toJSON() : <any>undefined;
+        data["category"] = this.category ? this.category.toJSON() : <any>undefined;
+        data["status"] = this.status ? this.status.toJSON() : <any>undefined;
+        data["currency"] = this.currency ? this.currency.toJSON() : <any>undefined;
+        data["description"] = this.description;
+        data["amount"] = this.amount;
+        data["recurringTransaction"] = this.recurringTransaction ? this.recurringTransaction.toJSON() : <any>undefined;
         return data; 
     }
 }
@@ -6011,19 +6011,19 @@ export class PagedDataInquiryResponseOfTransactionStatus implements IPagedDataIn
 
     init(_data?: any) {
         if (_data) {
-            if (Array.isArray(_data["Items"])) {
+            if (Array.isArray(_data["items"])) {
                 this.items = [] as any;
-                for (let item of _data["Items"])
+                for (let item of _data["items"])
                     this.items!.push(TransactionStatus.fromJS(item));
             }
-            this.pageSize = _data["PageSize"];
-            if (Array.isArray(_data["Links"])) {
+            this.pageSize = _data["pageSize"];
+            if (Array.isArray(_data["links"])) {
                 this.links = [] as any;
-                for (let item of _data["Links"])
+                for (let item of _data["links"])
                     this.links!.push(Link.fromJS(item));
             }
-            this.pageNumber = _data["PageNumber"];
-            this.pageCount = _data["PageCount"];
+            this.pageNumber = _data["pageNumber"];
+            this.pageCount = _data["pageCount"];
         }
     }
 
@@ -6037,18 +6037,18 @@ export class PagedDataInquiryResponseOfTransactionStatus implements IPagedDataIn
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         if (Array.isArray(this.items)) {
-            data["Items"] = [];
+            data["items"] = [];
             for (let item of this.items)
-                data["Items"].push(item.toJSON());
+                data["items"].push(item.toJSON());
         }
-        data["PageSize"] = this.pageSize;
+        data["pageSize"] = this.pageSize;
         if (Array.isArray(this.links)) {
-            data["Links"] = [];
+            data["links"] = [];
             for (let item of this.links)
-                data["Links"].push(item.toJSON());
+                data["links"].push(item.toJSON());
         }
-        data["PageNumber"] = this.pageNumber;
-        data["PageCount"] = this.pageCount;
+        data["pageNumber"] = this.pageNumber;
+        data["pageCount"] = this.pageCount;
         return data; 
     }
 }
@@ -6079,19 +6079,19 @@ export class PagedDataInquiryResponseOfTransactionType implements IPagedDataInqu
 
     init(_data?: any) {
         if (_data) {
-            if (Array.isArray(_data["Items"])) {
+            if (Array.isArray(_data["items"])) {
                 this.items = [] as any;
-                for (let item of _data["Items"])
+                for (let item of _data["items"])
                     this.items!.push(TransactionType.fromJS(item));
             }
-            this.pageSize = _data["PageSize"];
-            if (Array.isArray(_data["Links"])) {
+            this.pageSize = _data["pageSize"];
+            if (Array.isArray(_data["links"])) {
                 this.links = [] as any;
-                for (let item of _data["Links"])
+                for (let item of _data["links"])
                     this.links!.push(Link.fromJS(item));
             }
-            this.pageNumber = _data["PageNumber"];
-            this.pageCount = _data["PageCount"];
+            this.pageNumber = _data["pageNumber"];
+            this.pageCount = _data["pageCount"];
         }
     }
 
@@ -6105,18 +6105,18 @@ export class PagedDataInquiryResponseOfTransactionType implements IPagedDataInqu
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         if (Array.isArray(this.items)) {
-            data["Items"] = [];
+            data["items"] = [];
             for (let item of this.items)
-                data["Items"].push(item.toJSON());
+                data["items"].push(item.toJSON());
         }
-        data["PageSize"] = this.pageSize;
+        data["pageSize"] = this.pageSize;
         if (Array.isArray(this.links)) {
-            data["Links"] = [];
+            data["links"] = [];
             for (let item of this.links)
-                data["Links"].push(item.toJSON());
+                data["links"].push(item.toJSON());
         }
-        data["PageNumber"] = this.pageNumber;
-        data["PageCount"] = this.pageCount;
+        data["pageNumber"] = this.pageNumber;
+        data["pageCount"] = this.pageCount;
         return data; 
     }
 }
@@ -6147,19 +6147,19 @@ export class PagedDataInquiryResponseOfUser implements IPagedDataInquiryResponse
 
     init(_data?: any) {
         if (_data) {
-            if (Array.isArray(_data["Items"])) {
+            if (Array.isArray(_data["items"])) {
                 this.items = [] as any;
-                for (let item of _data["Items"])
+                for (let item of _data["items"])
                     this.items!.push(User.fromJS(item));
             }
-            this.pageSize = _data["PageSize"];
-            if (Array.isArray(_data["Links"])) {
+            this.pageSize = _data["pageSize"];
+            if (Array.isArray(_data["links"])) {
                 this.links = [] as any;
-                for (let item of _data["Links"])
+                for (let item of _data["links"])
                     this.links!.push(Link.fromJS(item));
             }
-            this.pageNumber = _data["PageNumber"];
-            this.pageCount = _data["PageCount"];
+            this.pageNumber = _data["pageNumber"];
+            this.pageCount = _data["pageCount"];
         }
     }
 
@@ -6173,18 +6173,18 @@ export class PagedDataInquiryResponseOfUser implements IPagedDataInquiryResponse
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         if (Array.isArray(this.items)) {
-            data["Items"] = [];
+            data["items"] = [];
             for (let item of this.items)
-                data["Items"].push(item.toJSON());
+                data["items"].push(item.toJSON());
         }
-        data["PageSize"] = this.pageSize;
+        data["pageSize"] = this.pageSize;
         if (Array.isArray(this.links)) {
-            data["Links"] = [];
+            data["links"] = [];
             for (let item of this.links)
-                data["Links"].push(item.toJSON());
+                data["links"].push(item.toJSON());
         }
-        data["PageNumber"] = this.pageNumber;
-        data["PageCount"] = this.pageCount;
+        data["pageNumber"] = this.pageNumber;
+        data["pageCount"] = this.pageCount;
         return data; 
     }
 }
@@ -6216,14 +6216,14 @@ export class NewUser implements INewUser {
 
     init(_data?: any) {
         if (_data) {
-            this.login = _data["Login"];
-            this.password = _data["Password"];
-            this.firstname = _data["Firstname"];
-            this.lastname = _data["Lastname"];
-            this.email = _data["Email"];
-            if (Array.isArray(_data["Roles"])) {
+            this.login = _data["login"];
+            this.password = _data["password"];
+            this.firstname = _data["firstname"];
+            this.lastname = _data["lastname"];
+            this.email = _data["email"];
+            if (Array.isArray(_data["roles"])) {
                 this.roles = [] as any;
-                for (let item of _data["Roles"])
+                for (let item of _data["roles"])
                     this.roles!.push(Role.fromJS(item));
             }
         }
@@ -6238,15 +6238,15 @@ export class NewUser implements INewUser {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        data["Login"] = this.login;
-        data["Password"] = this.password;
-        data["Firstname"] = this.firstname;
-        data["Lastname"] = this.lastname;
-        data["Email"] = this.email;
+        data["login"] = this.login;
+        data["password"] = this.password;
+        data["firstname"] = this.firstname;
+        data["lastname"] = this.lastname;
+        data["email"] = this.email;
         if (Array.isArray(this.roles)) {
-            data["Roles"] = [];
+            data["roles"] = [];
             for (let item of this.roles)
-                data["Roles"].push(item.toJSON());
+                data["roles"].push(item.toJSON());
         }
         return data; 
     }
@@ -6262,6 +6262,7 @@ export interface INewUser {
 }
 
 export class AuthenticatedData implements IAuthenticatedData {
+    userId!: number;
     token?: string | undefined;
 
     constructor(data?: IAuthenticatedData) {
@@ -6275,7 +6276,8 @@ export class AuthenticatedData implements IAuthenticatedData {
 
     init(_data?: any) {
         if (_data) {
-            this.token = _data["Token"];
+            this.userId = _data["userId"];
+            this.token = _data["token"];
         }
     }
 
@@ -6288,12 +6290,14 @@ export class AuthenticatedData implements IAuthenticatedData {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        data["Token"] = this.token;
+        data["userId"] = this.userId;
+        data["token"] = this.token;
         return data; 
     }
 }
 
 export interface IAuthenticatedData {
+    userId: number;
     token?: string | undefined;
 }
 
@@ -6312,8 +6316,8 @@ export class LoginData implements ILoginData {
 
     init(_data?: any) {
         if (_data) {
-            this.login = _data["Login"];
-            this.password = _data["Password"];
+            this.login = _data["login"];
+            this.password = _data["password"];
         }
     }
 
@@ -6326,8 +6330,8 @@ export class LoginData implements ILoginData {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        data["Login"] = this.login;
-        data["Password"] = this.password;
+        data["login"] = this.login;
+        data["password"] = this.password;
         return data; 
     }
 }

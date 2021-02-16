@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Helper } from '../../../infrastructure/helpers/helper';
 import { LayoutService } from '../../../infrastructure/services/layout/layout.service';
 
 @Component({
@@ -17,10 +18,15 @@ export class HeaderComponent implements OnInit {
     return this.layoutService.getViewName;
   }
   get userName() {
-    return "Anna Koryniowska";
+    return `${Helper.GetSessionValue('userFirstName')} ${Helper.GetSessionValue('userLastName')}`;
   }
   get userAvatar(): string {
     return null;
+  }
+
+
+  showUserName() {
+    return Helper.IsUserLogedIn();
   }
 
 }

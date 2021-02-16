@@ -2758,32 +2758,32 @@
     "PagedDataInquiryResponseOfRole": {
       "type": "object",
       "required": [
-        "PageSize",
-        "PageNumber",
-        "PageCount"
+        "pageSize",
+        "pageNumber",
+        "pageCount"
       ],
       "properties": {
-        "Items": {
+        "items": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/Role"
           }
         },
-        "PageSize": {
+        "pageSize": {
           "type": "integer",
           "format": "int32"
         },
-        "Links": {
+        "links": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/Link"
           }
         },
-        "PageNumber": {
+        "pageNumber": {
           "type": "integer",
           "format": "int32"
         },
-        "PageCount": {
+        "pageCount": {
           "type": "integer",
           "format": "int32"
         }
@@ -2792,27 +2792,27 @@
     "Role": {
       "type": "object",
       "required": [
-        "Id"
+        "id"
       ],
       "properties": {
-        "Id": {
+        "id": {
           "type": "integer",
           "format": "int64"
         },
-        "RoleName": {
+        "roleName": {
           "type": "string"
         },
-        "Users": {
+        "users": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/UserLeaf"
           }
         },
-        "Version": {
+        "version": {
           "type": "string",
           "format": "byte"
         },
-        "Links": {
+        "links": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/Link"
@@ -2823,33 +2823,33 @@
     "UserLeaf": {
       "type": "object",
       "required": [
-        "Id"
+        "id"
       ],
       "properties": {
-        "Id": {
+        "id": {
           "type": "integer",
           "format": "int64"
         },
-        "Login": {
+        "login": {
           "type": "string"
         },
-        "Password": {
+        "password": {
           "type": "string"
         },
-        "Firstname": {
+        "firstname": {
           "type": "string"
         },
-        "Lastname": {
+        "lastname": {
           "type": "string"
         },
-        "Email": {
+        "email": {
           "type": "string"
         },
-        "Version": {
+        "version": {
           "type": "string",
           "format": "byte"
         },
-        "Links": {
+        "links": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/Link"
@@ -2860,13 +2860,13 @@
     "Link": {
       "type": "object",
       "properties": {
-        "Rel": {
+        "rel": {
           "type": "string"
         },
-        "Href": {
+        "href": {
           "type": "string"
         },
-        "Method": {
+        "method": {
           "type": "string"
         }
       }
@@ -2874,32 +2874,32 @@
     "PagedDataInquiryResponseOfAccount": {
       "type": "object",
       "required": [
-        "PageSize",
-        "PageNumber",
-        "PageCount"
+        "pageSize",
+        "pageNumber",
+        "pageCount"
       ],
       "properties": {
-        "Items": {
+        "items": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/Account"
           }
         },
-        "PageSize": {
+        "pageSize": {
           "type": "integer",
           "format": "int32"
         },
-        "Links": {
+        "links": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/Link"
           }
         },
-        "PageNumber": {
+        "pageNumber": {
           "type": "integer",
           "format": "int32"
         },
-        "PageCount": {
+        "pageCount": {
           "type": "integer",
           "format": "int32"
         }
@@ -2908,35 +2908,35 @@
     "Account": {
       "type": "object",
       "required": [
-        "Id",
-        "StartAmount"
+        "id",
+        "startAmount"
       ],
       "properties": {
-        "Id": {
+        "id": {
           "type": "integer",
           "format": "int64"
         },
-        "Name": {
+        "name": {
           "type": "string"
         },
-        "User": {
+        "user": {
           "$ref": "#/definitions/UserLeaf"
         },
-        "Currency": {
+        "currency": {
           "$ref": "#/definitions/Currency"
         },
-        "Group": {
+        "group": {
           "$ref": "#/definitions/Group"
         },
-        "StartAmount": {
+        "startAmount": {
           "type": "number",
           "format": "decimal"
         },
-        "Version": {
+        "version": {
           "type": "string",
           "format": "byte"
         },
-        "Links": {
+        "links": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/Link"
@@ -2947,31 +2947,31 @@
     "Currency": {
       "type": "object",
       "required": [
-        "Id",
-        "IsPrefix"
+        "id",
+        "isPrefix"
       ],
       "properties": {
-        "Id": {
+        "id": {
           "type": "integer",
           "format": "int64"
         },
-        "Name": {
+        "name": {
           "type": "string"
         },
-        "Acronym": {
+        "acronym": {
           "type": "string"
         },
-        "Symbol": {
+        "symbol": {
           "type": "string"
         },
-        "IsPrefix": {
+        "isPrefix": {
           "type": "boolean"
         },
-        "Version": {
+        "version": {
           "type": "string",
           "format": "byte"
         },
-        "Links": {
+        "links": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/Link"
@@ -2982,29 +2982,29 @@
     "Group": {
       "type": "object",
       "required": [
-        "Id",
-        "Ordinal"
+        "id",
+        "ordinal"
       ],
       "properties": {
-        "Id": {
+        "id": {
           "type": "integer",
           "format": "int64"
         },
-        "Name": {
+        "name": {
           "type": "string"
         },
-        "Info": {
+        "info": {
           "type": "string"
         },
-        "Ordinal": {
+        "ordinal": {
           "type": "integer",
           "format": "int32"
         },
-        "Version": {
+        "version": {
           "type": "string",
           "format": "byte"
         },
-        "Links": {
+        "links": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/Link"
@@ -3015,26 +3015,26 @@
     "NewAccount": {
       "type": "object",
       "required": [
-        "Name",
-        "User",
-        "Currency",
-        "StartAmount"
+        "name",
+        "user",
+        "currency",
+        "startAmount"
       ],
       "properties": {
-        "Name": {
+        "name": {
           "type": "string",
           "minLength": 1
         },
-        "User": {
+        "user": {
           "$ref": "#/definitions/UserLeaf"
         },
-        "Currency": {
+        "currency": {
           "$ref": "#/definitions/Currency"
         },
-        "Group": {
+        "group": {
           "$ref": "#/definitions/Group"
         },
-        "StartAmount": {
+        "startAmount": {
           "type": "number",
           "format": "decimal"
         }
@@ -3043,32 +3043,32 @@
     "PagedDataInquiryResponseOfCurrency": {
       "type": "object",
       "required": [
-        "PageSize",
-        "PageNumber",
-        "PageCount"
+        "pageSize",
+        "pageNumber",
+        "pageCount"
       ],
       "properties": {
-        "Items": {
+        "items": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/Currency"
           }
         },
-        "PageSize": {
+        "pageSize": {
           "type": "integer",
           "format": "int32"
         },
-        "Links": {
+        "links": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/Link"
           }
         },
-        "PageNumber": {
+        "pageNumber": {
           "type": "integer",
           "format": "int32"
         },
-        "PageCount": {
+        "pageCount": {
           "type": "integer",
           "format": "int32"
         }
@@ -3077,25 +3077,25 @@
     "NewCurrency": {
       "type": "object",
       "required": [
-        "Name",
-        "Acronym",
-        "Symbol",
-        "IsPrefix"
+        "name",
+        "acronym",
+        "symbol",
+        "isPrefix"
       ],
       "properties": {
-        "Name": {
+        "name": {
           "type": "string",
           "minLength": 1
         },
-        "Acronym": {
+        "acronym": {
           "type": "string",
           "minLength": 1
         },
-        "Symbol": {
+        "symbol": {
           "type": "string",
           "minLength": 1
         },
-        "IsPrefix": {
+        "isPrefix": {
           "type": "boolean"
         }
       }
@@ -3103,32 +3103,32 @@
     "PagedDataInquiryResponseOfCurrencyRate": {
       "type": "object",
       "required": [
-        "PageSize",
-        "PageNumber",
-        "PageCount"
+        "pageSize",
+        "pageNumber",
+        "pageCount"
       ],
       "properties": {
-        "Items": {
+        "items": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/CurrencyRate"
           }
         },
-        "PageSize": {
+        "pageSize": {
           "type": "integer",
           "format": "int32"
         },
-        "Links": {
+        "links": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/Link"
           }
         },
-        "PageNumber": {
+        "pageNumber": {
           "type": "integer",
           "format": "int32"
         },
-        "PageCount": {
+        "pageCount": {
           "type": "integer",
           "format": "int32"
         }
@@ -3137,29 +3137,29 @@
     "CurrencyRate": {
       "type": "object",
       "required": [
-        "Date",
-        "Rate"
+        "date",
+        "rate"
       ],
       "properties": {
-        "SourceCurrency": {
+        "sourceCurrency": {
           "$ref": "#/definitions/Currency"
         },
-        "TargetCurrency": {
+        "targetCurrency": {
           "$ref": "#/definitions/Currency"
         },
-        "Date": {
+        "date": {
           "type": "string",
           "format": "date-time"
         },
-        "Rate": {
+        "rate": {
           "type": "number",
           "format": "decimal"
         },
-        "Version": {
+        "version": {
           "type": "string",
           "format": "byte"
         },
-        "Links": {
+        "links": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/Link"
@@ -3170,24 +3170,24 @@
     "NewCurrencyRate": {
       "type": "object",
       "required": [
-        "SourceCurrency",
-        "TargetCurrency",
-        "Date",
-        "Rate"
+        "sourceCurrency",
+        "targetCurrency",
+        "date",
+        "rate"
       ],
       "properties": {
-        "SourceCurrency": {
+        "sourceCurrency": {
           "$ref": "#/definitions/Currency"
         },
-        "TargetCurrency": {
+        "targetCurrency": {
           "$ref": "#/definitions/Currency"
         },
-        "Date": {
+        "date": {
           "type": "string",
           "format": "date-time",
           "minLength": 1
         },
-        "Rate": {
+        "rate": {
           "type": "number",
           "format": "decimal"
         }
@@ -3196,32 +3196,32 @@
     "PagedDataInquiryResponseOfGroup": {
       "type": "object",
       "required": [
-        "PageSize",
-        "PageNumber",
-        "PageCount"
+        "pageSize",
+        "pageNumber",
+        "pageCount"
       ],
       "properties": {
-        "Items": {
+        "items": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/Group"
           }
         },
-        "PageSize": {
+        "pageSize": {
           "type": "integer",
           "format": "int32"
         },
-        "Links": {
+        "links": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/Link"
           }
         },
-        "PageNumber": {
+        "pageNumber": {
           "type": "integer",
           "format": "int32"
         },
-        "PageCount": {
+        "pageCount": {
           "type": "integer",
           "format": "int32"
         }
@@ -3230,20 +3230,20 @@
     "NewGroup": {
       "type": "object",
       "required": [
-        "Name",
-        "Info",
-        "Ordinal"
+        "name",
+        "info",
+        "ordinal"
       ],
       "properties": {
-        "Name": {
+        "name": {
           "type": "string",
           "minLength": 1
         },
-        "Info": {
+        "info": {
           "type": "string",
           "minLength": 1
         },
-        "Ordinal": {
+        "ordinal": {
           "type": "integer",
           "format": "int32"
         }
@@ -3252,32 +3252,32 @@
     "PagedDataInquiryResponseOfTransaction": {
       "type": "object",
       "required": [
-        "PageSize",
-        "PageNumber",
-        "PageCount"
+        "pageSize",
+        "pageNumber",
+        "pageCount"
       ],
       "properties": {
-        "Items": {
+        "items": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/Transaction"
           }
         },
-        "PageSize": {
+        "pageSize": {
           "type": "integer",
           "format": "int32"
         },
-        "Links": {
+        "links": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/Link"
           }
         },
-        "PageNumber": {
+        "pageNumber": {
           "type": "integer",
           "format": "int32"
         },
-        "PageCount": {
+        "pageCount": {
           "type": "integer",
           "format": "int32"
         }
@@ -3286,55 +3286,55 @@
     "Transaction": {
       "type": "object",
       "required": [
-        "Id",
-        "Date",
-        "Amount"
+        "id",
+        "date",
+        "amount"
       ],
       "properties": {
-        "Id": {
+        "id": {
           "type": "integer",
           "format": "int64"
         },
-        "Date": {
+        "date": {
           "type": "string",
           "format": "date-time"
         },
-        "User": {
+        "user": {
           "$ref": "#/definitions/UserLeaf"
         },
-        "Sender": {
+        "sender": {
           "$ref": "#/definitions/Account"
         },
-        "Receiver": {
+        "receiver": {
           "$ref": "#/definitions/Account"
         },
-        "Type": {
+        "type": {
           "$ref": "#/definitions/TransactionType"
         },
-        "Category": {
+        "category": {
           "$ref": "#/definitions/TransactionCategory"
         },
-        "Status": {
+        "status": {
           "$ref": "#/definitions/TransactionStatus"
         },
-        "Currency": {
+        "currency": {
           "$ref": "#/definitions/Currency"
         },
-        "Description": {
+        "description": {
           "type": "string"
         },
-        "Amount": {
+        "amount": {
           "type": "number",
           "format": "decimal"
         },
-        "Version": {
+        "version": {
           "type": "string",
           "format": "byte"
         },
-        "RecurringTransaction": {
+        "recurringTransaction": {
           "$ref": "#/definitions/RecurringTransaction"
         },
-        "Links": {
+        "links": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/Link"
@@ -3345,13 +3345,13 @@
     "TransactionType": {
       "type": "object",
       "required": [
-        "Id"
+        "id"
       ],
       "properties": {
-        "Id": {
+        "id": {
           "$ref": "#/definitions/TransactionTypeValue"
         },
-        "Name": {
+        "name": {
           "type": "string"
         }
       }
@@ -3373,26 +3373,26 @@
     "TransactionCategory": {
       "type": "object",
       "required": [
-        "Id",
-        "Name"
+        "id",
+        "name"
       ],
       "properties": {
-        "Id": {
+        "id": {
           "type": "integer",
           "format": "int64"
         },
-        "Name": {
+        "name": {
           "type": "string",
           "minLength": 1
         },
-        "Root": {
+        "root": {
           "$ref": "#/definitions/TransactionCategoryLeaf"
         },
-        "Version": {
+        "version": {
           "type": "string",
           "format": "byte"
         },
-        "Links": {
+        "links": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/Link"
@@ -3403,21 +3403,21 @@
     "TransactionCategoryLeaf": {
       "type": "object",
       "required": [
-        "Id"
+        "id"
       ],
       "properties": {
-        "Id": {
+        "id": {
           "type": "integer",
           "format": "int64"
         },
-        "Name": {
+        "name": {
           "type": "string"
         },
-        "RootId": {
+        "rootId": {
           "type": "integer",
           "format": "int64"
         },
-        "Links": {
+        "links": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/Link"
@@ -3428,17 +3428,17 @@
     "TransactionStatus": {
       "type": "object",
       "required": [
-        "Id",
-        "Ordinal"
+        "id",
+        "ordinal"
       ],
       "properties": {
-        "Id": {
+        "id": {
           "$ref": "#/definitions/TransactionStatusValue"
         },
-        "Name": {
+        "name": {
           "type": "string"
         },
-        "Ordinal": {
+        "ordinal": {
           "type": "integer",
           "format": "int32"
         }
@@ -3463,44 +3463,44 @@
     "RecurringTransaction": {
       "type": "object",
       "required": [
-        "Id",
-        "Amount"
+        "id",
+        "amount"
       ],
       "properties": {
-        "Id": {
+        "id": {
           "type": "integer",
           "format": "int64"
         },
-        "User": {
+        "user": {
           "$ref": "#/definitions/UserLeaf"
         },
-        "Sender": {
+        "sender": {
           "$ref": "#/definitions/Account"
         },
-        "Receiver": {
+        "receiver": {
           "$ref": "#/definitions/Account"
         },
-        "Type": {
+        "type": {
           "type": "string"
         },
-        "Category": {
+        "category": {
           "$ref": "#/definitions/TransactionCategory"
         },
-        "Currency": {
+        "currency": {
           "$ref": "#/definitions/Currency"
         },
-        "Description": {
+        "description": {
           "type": "string"
         },
-        "Amount": {
+        "amount": {
           "type": "number",
           "format": "decimal"
         },
-        "Version": {
+        "version": {
           "type": "string",
           "format": "byte"
         },
-        "Links": {
+        "links": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/Link"
@@ -3511,32 +3511,32 @@
     "PagedDataInquiryResponseOfRecurringTransaction": {
       "type": "object",
       "required": [
-        "PageSize",
-        "PageNumber",
-        "PageCount"
+        "pageSize",
+        "pageNumber",
+        "pageCount"
       ],
       "properties": {
-        "Items": {
+        "items": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/RecurringTransaction"
           }
         },
-        "PageSize": {
+        "pageSize": {
           "type": "integer",
           "format": "int32"
         },
-        "Links": {
+        "links": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/Link"
           }
         },
-        "PageNumber": {
+        "pageNumber": {
           "type": "integer",
           "format": "int32"
         },
-        "PageCount": {
+        "pageCount": {
           "type": "integer",
           "format": "int32"
         }
@@ -3545,38 +3545,38 @@
     "NewRecurringTransaction": {
       "type": "object",
       "required": [
-        "User",
-        "Sender",
-        "Receiver",
-        "Type",
-        "Category",
-        "Currency",
-        "Description",
-        "Amount"
+        "user",
+        "sender",
+        "receiver",
+        "type",
+        "category",
+        "currency",
+        "description",
+        "amount"
       ],
       "properties": {
-        "User": {
+        "user": {
           "$ref": "#/definitions/User"
         },
-        "Sender": {
+        "sender": {
           "$ref": "#/definitions/Account"
         },
-        "Receiver": {
+        "receiver": {
           "$ref": "#/definitions/Account"
         },
-        "Type": {
+        "type": {
           "$ref": "#/definitions/TransactionType"
         },
-        "Category": {
+        "category": {
           "$ref": "#/definitions/TransactionCategory"
         },
-        "Currency": {
+        "currency": {
           "$ref": "#/definitions/Currency"
         },
-        "Description": {
+        "description": {
           "type": "string"
         },
-        "Amount": {
+        "amount": {
           "type": "number",
           "format": "decimal"
         }
@@ -3590,7 +3590,7 @@
         {
           "type": "object",
           "properties": {
-            "Roles": {
+            "roles": {
               "type": "array",
               "items": {
                 "$ref": "#/definitions/Role"
@@ -3603,46 +3603,46 @@
     "Task": {
       "type": "object",
       "required": [
-        "Id"
+        "id"
       ],
       "properties": {
-        "Id": {
+        "id": {
           "type": "integer",
           "format": "int64"
         },
-        "Subject": {
+        "subject": {
           "type": "string"
         },
-        "StartDate": {
+        "startDate": {
           "type": "string",
           "format": "date-time"
         },
-        "DueDate": {
+        "dueDate": {
           "type": "string",
           "format": "date-time"
         },
-        "CreatedDate": {
+        "createdDate": {
           "type": "string",
           "format": "date-time"
         },
-        "CompletedDate": {
+        "completedDate": {
           "type": "string",
           "format": "date-time"
         },
-        "TransactionStatus": {
+        "transactionStatus": {
           "$ref": "#/definitions/TransactionStatus"
         },
-        "Assignees": {
+        "assignees": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/UserLeaf"
           }
         },
-        "Version": {
+        "version": {
           "type": "string",
           "format": "byte"
         },
-        "Links": {
+        "links": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/Link"
@@ -3653,32 +3653,32 @@
     "PagedDataInquiryResponseOfTask": {
       "type": "object",
       "required": [
-        "PageSize",
-        "PageNumber",
-        "PageCount"
+        "pageSize",
+        "pageNumber",
+        "pageCount"
       ],
       "properties": {
-        "Items": {
+        "items": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/Task"
           }
         },
-        "PageSize": {
+        "pageSize": {
           "type": "integer",
           "format": "int32"
         },
-        "Links": {
+        "links": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/Link"
           }
         },
-        "PageNumber": {
+        "pageNumber": {
           "type": "integer",
           "format": "int32"
         },
-        "PageCount": {
+        "pageCount": {
           "type": "integer",
           "format": "int32"
         }
@@ -3687,14 +3687,14 @@
     "NewTransactionCategory": {
       "type": "object",
       "required": [
-        "Name"
+        "name"
       ],
       "properties": {
-        "Name": {
+        "name": {
           "type": "string",
           "minLength": 1
         },
-        "Root": {
+        "root": {
           "$ref": "#/definitions/TransactionCategoryLeaf"
         }
       }
@@ -3702,32 +3702,32 @@
     "PagedDataInquiryResponseOfTransactionCategory": {
       "type": "object",
       "required": [
-        "PageSize",
-        "PageNumber",
-        "PageCount"
+        "pageSize",
+        "pageNumber",
+        "pageCount"
       ],
       "properties": {
-        "Items": {
+        "items": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/TransactionCategory"
           }
         },
-        "PageSize": {
+        "pageSize": {
           "type": "integer",
           "format": "int32"
         },
-        "Links": {
+        "links": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/Link"
           }
         },
-        "PageNumber": {
+        "pageNumber": {
           "type": "integer",
           "format": "int32"
         },
-        "PageCount": {
+        "pageCount": {
           "type": "integer",
           "format": "int32"
         }
@@ -3736,52 +3736,52 @@
     "NewTransaction": {
       "type": "object",
       "required": [
-        "Date",
-        "User",
-        "Sender",
-        "Receiver",
-        "Type",
-        "Category",
-        "Status",
-        "Currency",
-        "Description",
-        "Amount"
+        "date",
+        "user",
+        "sender",
+        "receiver",
+        "type",
+        "category",
+        "status",
+        "currency",
+        "description",
+        "amount"
       ],
       "properties": {
-        "Date": {
+        "date": {
           "type": "string",
           "format": "date-time",
           "minLength": 1
         },
-        "User": {
+        "user": {
           "$ref": "#/definitions/UserLeaf"
         },
-        "Sender": {
+        "sender": {
           "$ref": "#/definitions/Account"
         },
-        "Receiver": {
+        "receiver": {
           "$ref": "#/definitions/Account"
         },
-        "Type": {
+        "type": {
           "$ref": "#/definitions/TransactionType"
         },
-        "Category": {
+        "category": {
           "$ref": "#/definitions/TransactionCategory"
         },
-        "Status": {
+        "status": {
           "$ref": "#/definitions/TransactionStatus"
         },
-        "Currency": {
+        "currency": {
           "$ref": "#/definitions/Currency"
         },
-        "Description": {
+        "description": {
           "type": "string"
         },
-        "Amount": {
+        "amount": {
           "type": "number",
           "format": "decimal"
         },
-        "RecurringTransaction": {
+        "recurringTransaction": {
           "$ref": "#/definitions/RecurringTransaction"
         }
       }
@@ -3789,32 +3789,32 @@
     "PagedDataInquiryResponseOfTransactionStatus": {
       "type": "object",
       "required": [
-        "PageSize",
-        "PageNumber",
-        "PageCount"
+        "pageSize",
+        "pageNumber",
+        "pageCount"
       ],
       "properties": {
-        "Items": {
+        "items": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/TransactionStatus"
           }
         },
-        "PageSize": {
+        "pageSize": {
           "type": "integer",
           "format": "int32"
         },
-        "Links": {
+        "links": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/Link"
           }
         },
-        "PageNumber": {
+        "pageNumber": {
           "type": "integer",
           "format": "int32"
         },
-        "PageCount": {
+        "pageCount": {
           "type": "integer",
           "format": "int32"
         }
@@ -3823,32 +3823,32 @@
     "PagedDataInquiryResponseOfTransactionType": {
       "type": "object",
       "required": [
-        "PageSize",
-        "PageNumber",
-        "PageCount"
+        "pageSize",
+        "pageNumber",
+        "pageCount"
       ],
       "properties": {
-        "Items": {
+        "items": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/TransactionType"
           }
         },
-        "PageSize": {
+        "pageSize": {
           "type": "integer",
           "format": "int32"
         },
-        "Links": {
+        "links": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/Link"
           }
         },
-        "PageNumber": {
+        "pageNumber": {
           "type": "integer",
           "format": "int32"
         },
-        "PageCount": {
+        "pageCount": {
           "type": "integer",
           "format": "int32"
         }
@@ -3857,32 +3857,32 @@
     "PagedDataInquiryResponseOfUser": {
       "type": "object",
       "required": [
-        "PageSize",
-        "PageNumber",
-        "PageCount"
+        "pageSize",
+        "pageNumber",
+        "pageCount"
       ],
       "properties": {
-        "Items": {
+        "items": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/User"
           }
         },
-        "PageSize": {
+        "pageSize": {
           "type": "integer",
           "format": "int32"
         },
-        "Links": {
+        "links": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/Link"
           }
         },
-        "PageNumber": {
+        "pageNumber": {
           "type": "integer",
           "format": "int32"
         },
-        "PageCount": {
+        "pageCount": {
           "type": "integer",
           "format": "int32"
         }
@@ -3891,32 +3891,32 @@
     "NewUser": {
       "type": "object",
       "required": [
-        "Login",
-        "Password",
-        "Firstname",
-        "Lastname",
-        "Email"
+        "login",
+        "password",
+        "firstname",
+        "lastname",
+        "email"
       ],
       "properties": {
-        "Login": {
+        "login": {
           "type": "string",
           "minLength": 1
         },
-        "Password": {
+        "password": {
           "type": "string",
           "minLength": 1
         },
-        "Firstname": {
+        "firstname": {
           "type": "string"
         },
-        "Lastname": {
+        "lastname": {
           "type": "string"
         },
-        "Email": {
+        "email": {
           "type": "string",
           "minLength": 1
         },
-        "Roles": {
+        "roles": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/Role"
@@ -3926,8 +3926,15 @@
     },
     "AuthenticatedData": {
       "type": "object",
+      "required": [
+        "userId"
+      ],
       "properties": {
-        "Token": {
+        "userId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "token": {
           "type": "string"
         }
       }
@@ -3935,15 +3942,15 @@
     "LoginData": {
       "type": "object",
       "required": [
-        "Login",
-        "Password"
+        "login",
+        "password"
       ],
       "properties": {
-        "Login": {
+        "login": {
           "type": "string",
           "minLength": 1
         },
-        "Password": {
+        "password": {
           "type": "string",
           "minLength": 1
         }
