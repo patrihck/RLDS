@@ -189,6 +189,45 @@
         }
       }
     },
+    "/api/{v}/Accounts/GetAccountByUserId/{id}": {
+      "get": {
+        "tags": [
+          "Accounts"
+        ],
+        "operationId": "Accounts_GetAccountByUserId",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "format": "int64",
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "v",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/PagedDataInquiryResponseOfAccount"
+            }
+          }
+        }
+      }
+    },
     "/api/{v}/Accounts/{id}": {
       "get": {
         "tags": [

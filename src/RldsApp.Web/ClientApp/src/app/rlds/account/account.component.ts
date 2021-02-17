@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Helper } from '../../../infrastructure/helpers/helper';
 import { defaultRequestErrorHandler } from '../../../infrastructure/interceptors/error-interceptor';
 import { PrimengTableColumn } from '../../../infrastructure/models/layout/primeng-table.model';
 import { AccountsClient, PagedDataInquiryResponseOfAccount } from '../../../infrastructure/services-api/rlds-api';
@@ -19,7 +20,7 @@ export class AccountComponent implements OnInit {
   ngOnInit(): void {
     this.layoutService.setAppTitle("Konta");
     this.createTable();
-    this.accountsClient.getAccount('1.0').subscribe(result => {
+    this.accountsClient.getAccountByUserId(Helper.GetSessionValueOfType<number>('userId'), '1.0').subscribe(result => {
       this.accounts = result;
     }, error => defaultRequestErrorHandler(this.layoutService, error))
   }

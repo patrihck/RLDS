@@ -20,6 +20,7 @@ namespace RldsApp.Web.Api.Controllers.V1
 		private readonly IAddAccountMaintenanceProcessor _addAccountMaintenanceProcessor;
 		private readonly IDeleteAccountMaintenanceProcessor _deleteAccountMaintenanceProcessor;
 		private readonly IUpdateAccountMaintenanceProcessor _updateAccountMaintenanceProcessor;
+		private readonly IAllAccountsByUserIdInquiryProcessor _allAccountsByUserIdInquiryProcessor;
 
 		public AccountsController(
 			IAccountByIdInquiryProcessor accountByIdInquiryProcessor,
@@ -27,7 +28,8 @@ namespace RldsApp.Web.Api.Controllers.V1
 			IPagedDataRequestFactory pagedDataRequestFactory,
 			IAddAccountMaintenanceProcessor addAccountMaintenanceProcessor,
 			IDeleteAccountMaintenanceProcessor deleteAccountMaintenanceProcessor,
-			IUpdateAccountMaintenanceProcessor updateAccountDataProcessor)
+			IUpdateAccountMaintenanceProcessor updateAccountDataProcessor,
+			IAllAccountsByUserIdInquiryProcessor allAccountsByUserIdInquiryProcessor)
 		{
 			_accountByIdInquiryProcessor = accountByIdInquiryProcessor;
 			_allAccountsInquiryProcessor = allAccountsInquiryProcessor;
@@ -35,6 +37,7 @@ namespace RldsApp.Web.Api.Controllers.V1
 			_addAccountMaintenanceProcessor = addAccountMaintenanceProcessor;
 			_deleteAccountMaintenanceProcessor = deleteAccountMaintenanceProcessor;
 			_updateAccountMaintenanceProcessor = updateAccountDataProcessor;
+			_allAccountsByUserIdInquiryProcessor = allAccountsByUserIdInquiryProcessor;
 		}
 
 		[HttpGet]
@@ -42,6 +45,16 @@ namespace RldsApp.Web.Api.Controllers.V1
 		{
 			var request = _pagedDataRequestFactory.Create(HttpContext);
 			var accounts = _allAccountsInquiryProcessor.GetAccounts(request);
+
+			return accounts;
+		}
+
+		[HttpGet("GetAccountByUserId/{id:long}")]
+		[Authorize(Roles = Constants.RoleNames.AllRoles)]
+		public PagedDataInquiryResponse<Account> GetAccountByUserId(long id)
+		{
+			var request = _pagedDataRequestFactory.Create(HttpContext);
+			var accounts = _allAccountsByUserIdInquiryProcessor.GetAccountsByUserId(request, id);
 
 			return accounts;
 		}

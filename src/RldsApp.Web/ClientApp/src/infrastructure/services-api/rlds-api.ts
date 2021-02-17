@@ -196,6 +196,7 @@ export class RolesClient implements IRolesClient {
 export interface IAccountsClient {
     getAccount(v: string): Observable<PagedDataInquiryResponseOfAccount>;
     addAccount(newAccount: NewAccount, v: string): Observable<Account>;
+    getAccountByUserId(id: number, v: string): Observable<PagedDataInquiryResponseOfAccount>;
     getAccountById(id: number, v: string): Observable<Account>;
     updateAccount(id: number, updatedAccount: any, v: string): Observable<Account>;
     deleteAccount(id: number, v: string): Observable<FileResponse | null>;
@@ -318,6 +319,60 @@ export class AccountsClient implements IAccountsClient {
             }));
         }
         return _observableOf<Account>(<any>null);
+    }
+
+    getAccountByUserId(id: number, v: string): Observable<PagedDataInquiryResponseOfAccount> {
+        let url_ = this.baseUrl + "/api/{v}/Accounts/GetAccountByUserId/{id}";
+        if (id === undefined || id === null)
+            throw new Error("The parameter 'id' must be defined.");
+        url_ = url_.replace("{id}", encodeURIComponent("" + id));
+        if (v === undefined || v === null)
+            throw new Error("The parameter 'v' must be defined.");
+        url_ = url_.replace("{v}", encodeURIComponent("" + v));
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetAccountByUserId(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetAccountByUserId(<any>response_);
+                } catch (e) {
+                    return <Observable<PagedDataInquiryResponseOfAccount>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<PagedDataInquiryResponseOfAccount>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetAccountByUserId(response: HttpResponseBase): Observable<PagedDataInquiryResponseOfAccount> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = PagedDataInquiryResponseOfAccount.fromJS(resultData200);
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<PagedDataInquiryResponseOfAccount>(<any>null);
     }
 
     getAccountById(id: number, v: string): Observable<Account> {
