@@ -11,7 +11,7 @@ import { LayoutModule } from '../../layout/layout.module';
   templateUrl: './account.component.html',
   styleUrls: ['./account.component.css']
 })
-export class AccountComponent implements OnInit {
+export class AccountsComponent implements OnInit {
 
   accounts: PagedDataInquiryResponseOfAccount;
   cols: Array<PrimengTableColumn>;

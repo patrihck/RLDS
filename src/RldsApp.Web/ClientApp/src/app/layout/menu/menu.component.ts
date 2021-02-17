@@ -35,7 +35,7 @@ export class MenuComponent {
     this.menuItems.push(new MainMenuItem(opts => {
       opts.name = 'Konta';
       opts.icon = 'fa fa-th-large';
-      opts.url = 'rlds/account'
+      opts.url = 'rlds/accounts'
       opts.displayCondition = () => { return !Helper.IsNullOrEmpty(Helper.GetSessionValue('token')) }
     }));
 
