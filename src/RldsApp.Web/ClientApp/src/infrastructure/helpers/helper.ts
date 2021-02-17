@@ -15,6 +15,16 @@ export class Helper {
     Helper.RemoveSession('userFirstName');
     Helper.RemoveSession('userLastName');
   }
+
+  static GetCurrentUser() {
+    return {
+      id: Helper.GetSessionValueOfType<number>('userId'),
+      token: Helper.GetSessionValue('token'),
+      userFirstName: Helper.GetSessionValue('userFirstName'),
+      userLastName: Helper.GetSessionValue('userLastName'),
+      roles: Helper.GetSessionValueOfType<Array<string>>('roles'),
+    };
+  }
   static IsUserLogedIn() {
     return !Helper.IsNullOrEmpty(Helper.GetSessionValue('token'))
   }
