@@ -21,10 +21,15 @@
             {{item.currency.name}}
           </span>
         </div>
+
         <div *ngSwitchCase="'group'">
           <span *ngIf="item.group">
             {{item.group.name}}
           </span>
+        </div>
+        <div *ngSwitchCase="'options'">
+          <button pButton type="button" icon="pi pi-ban" label="Podgląd" iconPos="left"  [routerLink]="['/rlds/account/view',item.id]"></button>
+          <button pButton type="button" icon="pi pi-ban" label="Usuń" iconPos="left" (click)="removeAccount(item.id)"></button>
         </div>
 
         <div *ngSwitchDefault>

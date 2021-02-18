@@ -3,7 +3,7 @@ import { Helper } from '../../../infrastructure/helpers/helper';
 import { defaultRequestErrorHandler } from '../../../infrastructure/interceptors/error-interceptor';
 import { PrimengTableColumn } from '../../../infrastructure/models/layout/primeng-table.model';
 import { AccountsClient, PagedDataInquiryResponseOfAccount } from '../../../infrastructure/services-api/rlds-api';
-import { LayoutService } from '../../../infrastructure/services/layout/layout.service';
+import { LayoutService, MessageSeverity } from '../../../infrastructure/services/layout/layout.service';
 import { LayoutModule } from '../../layout/layout.module';
 
 @Component({
@@ -20,9 +20,20 @@ export class AccountsComponent implements OnInit {
   ngOnInit(): void {
     this.layoutService.setAppTitle("Konta");
     this.createTable();
+    this.getData();
+  }
+
+  getData() {
     this.accountsClient.getAccountByUserId(Helper.GetSessionValueOfType<number>('userId'), '1.0').subscribe(result => {
       this.accounts = result;
     }, error => defaultRequestErrorHandler(this.layoutService, error))
+  }
+
+  removeAccount(id) {
+    this.accountsClient.deleteAccount(id, "1.0").subscribe(a => {
+      this.layoutService.showPopover(MessageSeverity.success, "Usunięto konto");
+      this.getData();
+    });
   }
 
   createTable() {
@@ -52,8 +63,8 @@ export class AccountsComponent implements OnInit {
       o.field = 'startAmount';
     }));
     this.cols.push(new PrimengTableColumn(o => {
-      o.header = 'version';
-      o.field = 'version';
+      o.header = '';
+      o.field = 'options';
     }));
   }
 }

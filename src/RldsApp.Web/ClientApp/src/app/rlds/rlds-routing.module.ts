@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SharedModule } from '../shared/shared.module'; 
+import { AccountViewComponent } from './accounts/account-view/account-view.component';
 import { AccountsComponent } from './accounts/accounts.component';
 import { AddAccountComponent } from './accounts/add-account/add-account.component';
 import { EditAccountComponent } from './accounts/edit-account/edit-account.component';
@@ -14,12 +15,13 @@ const routes: Routes = [
   { path: 'accounts', component: AccountsComponent, pathMatch: 'full' },
   { path: 'accounts/add', component: AddAccountComponent, pathMatch: 'full' },
   { path: 'accounts/edit/:id', component: EditAccountComponent, pathMatch: 'full' },
+  { path: 'account/view/:id', component: AccountViewComponent, pathMatch: 'full' },
 
   { path: 'users', component: UsersComponent, pathMatch: 'full' },
 ];
 
 @NgModule({
-  declarations: [HomeComponent, AccountsComponent, UsersComponent, AddAccountComponent, EditAccountComponent],
+  declarations: [HomeComponent, AccountsComponent, UsersComponent, AddAccountComponent, EditAccountComponent, AccountViewComponent],
   imports: [SharedModule, RouterModule.forChild(routes)],
   exports: [RouterModule]
 })

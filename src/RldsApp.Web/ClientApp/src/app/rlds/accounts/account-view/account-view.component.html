@@ -1,0 +1,87 @@
+<div *ngIf="account" class="p-fluid">
+
+  <div class="p-field">
+    <label for="account.name">Nazwa konta</label>
+    <input id="account.name" type="text" pInputText readonly disabled [(ngModel)]="account.name">
+  </div>
+
+  <div class="p-field">
+    <label for="account.startAmount">Wartośc początkowa</label>
+    <input id="account.startAmount" type="text" pInputText readonly disabled [(ngModel)]="account.startAmount">
+  </div>
+
+  <div class="p-field">
+    <label for="account.currency">Waluta</label>
+    <p-dropdown id="account.currency" [options]="currencies" readonly [(ngModel)]="account.currency.id" optionLabel="name" optionValue="id" [showClear]="true" placeholder="Wybierz walutę"></p-dropdown>
+  </div>
+
+</div>
+
+<button pButton type="button" icon="pi pi-check" label="Anuluj" iconPos="left" [routerLink]="['/rlds/accounts']"></button>
+
+<h2>Transakcje</h2>
+<p-table *ngIf="transactions && transactions.items" [columns]="cols" [value]="transactions.items">
+  <ng-template pTemplate="header" let-columns>
+    <tr>
+      <th *ngFor="let col of columns">
+        {{col.header}}
+      </th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-item let-columns="columns">
+    <tr>
+      <td *ngFor="let col of columns" [ngSwitch]="col.field">
+
+        <div *ngSwitchCase="'user'">
+          {{item.user.firstname}} {{item.user.lastname}}
+        </div>
+        <div *ngSwitchCase="'currency'">
+          <span *ngIf="item.currency">
+            {{item.currency.name}}
+          </span>
+        </div>
+        <div *ngSwitchCase="'sender'">
+          <span *ngIf="item.sender">
+            {{item.sender.name}}
+          </span>
+        </div>
+        <div *ngSwitchCase="'receiver'">
+          <span *ngIf="item.receiver">
+            {{item.receiver.name}}
+          </span>
+        </div>
+        <div *ngSwitchCase="'type'">
+          <span *ngIf="item.type">
+            {{item.type.name}}
+          </span>
+        </div>
+        <div *ngSwitchCase="'type'">
+          <span *ngIf="item.type">
+            {{item.type.name}}
+          </span>
+        </div>
+        <div *ngSwitchCase="'category'">
+          <span *ngIf="category.type">
+            {{item.category.name}}
+          </span>
+        </div>
+        <div *ngSwitchCase="'status'">
+          <span *ngIf="status.type">
+            {{item.status.name}}
+          </span>
+        </div>
+        <div *ngSwitchCase="'recurringTransaction'">
+          <span *ngIf="recurringTransaction.type">
+            {{item.recurringTransaction.id}}
+          </span>
+        </div>
+
+
+        <div *ngSwitchDefault>
+          {{item[col.field]}}
+        </div>
+
+      </td>
+    </tr>
+  </ng-template>
+</p-table>

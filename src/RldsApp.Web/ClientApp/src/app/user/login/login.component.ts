@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { Helper } from '../../../infrastructure/helpers/helper';
 import { defaultRequestErrorHandler } from '../../../infrastructure/interceptors/error-interceptor';
@@ -13,7 +14,9 @@ import { LayoutService, MessageSeverity } from '../../../infrastructure/services
 export class LoginComponent implements OnInit {
   loginData: LoginData = null;
 
-  constructor(private readonly authClient: UsersClient, private readonly layoutService: LayoutService) { }
+  constructor(private readonly authClient: UsersClient,
+    private readonly router: Router,
+    private readonly layoutService: LayoutService) { }
 
   ngOnInit(): void {
     this.loginData = new LoginData();
@@ -25,7 +28,8 @@ export class LoginComponent implements OnInit {
 
       Helper.SetSessionValue('token', result.token);
       this.authClient.getUserById(result.userId, '1.0').subscribe(user => {
-        Helper.SetUserData(result, user);   
+        Helper.SetUserData(result, user);
+        this.router.navigate(['/']);
       }, error => defaultRequestErrorHandler(this.layoutService, error));
 
     }, error => defaultRequestErrorHandler(this.layoutService, error));
