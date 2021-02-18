@@ -189,12 +189,12 @@
         }
       }
     },
-    "/api/{v}/Accounts/GetAccountByUserId/{id}": {
+    "/api/{v}/Accounts/GetAccountsByUserId/{id}": {
       "get": {
         "tags": [
           "Accounts"
         ],
-        "operationId": "Accounts_GetAccountByUserId",
+        "operationId": "Accounts_GetAccountsByUserId",
         "produces": [
           "text/plain",
           "application/json",
@@ -1968,6 +1968,45 @@
             "description": "",
             "schema": {
               "type": "file"
+            }
+          }
+        }
+      }
+    },
+    "/api/{v}/Transactions/GetTransactionsByAccountId/{id}": {
+      "get": {
+        "tags": [
+          "Transactions"
+        ],
+        "operationId": "Transactions_GetTransactionsByAccountId",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "format": "int64",
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "v",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/PagedDataInquiryResponseOfTransaction"
             }
           }
         }

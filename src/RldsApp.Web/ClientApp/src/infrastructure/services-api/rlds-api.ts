@@ -196,7 +196,7 @@ export class RolesClient implements IRolesClient {
 export interface IAccountsClient {
     getAccount(v: string): Observable<PagedDataInquiryResponseOfAccount>;
     addAccount(newAccount: NewAccount, v: string): Observable<Account>;
-    getAccountByUserId(id: number, v: string): Observable<PagedDataInquiryResponseOfAccount>;
+    getAccountsByUserId(id: number, v: string): Observable<PagedDataInquiryResponseOfAccount>;
     getAccountById(id: number, v: string): Observable<Account>;
     updateAccount(id: number, updatedAccount: any, v: string): Observable<Account>;
     deleteAccount(id: number, v: string): Observable<FileResponse | null>;
@@ -321,8 +321,8 @@ export class AccountsClient implements IAccountsClient {
         return _observableOf<Account>(<any>null);
     }
 
-    getAccountByUserId(id: number, v: string): Observable<PagedDataInquiryResponseOfAccount> {
-        let url_ = this.baseUrl + "/api/{v}/Accounts/GetAccountByUserId/{id}";
+    getAccountsByUserId(id: number, v: string): Observable<PagedDataInquiryResponseOfAccount> {
+        let url_ = this.baseUrl + "/api/{v}/Accounts/GetAccountsByUserId/{id}";
         if (id === undefined || id === null)
             throw new Error("The parameter 'id' must be defined.");
         url_ = url_.replace("{id}", encodeURIComponent("" + id));
@@ -340,11 +340,11 @@ export class AccountsClient implements IAccountsClient {
         };
 
         return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processGetAccountByUserId(response_);
+            return this.processGetAccountsByUserId(response_);
         })).pipe(_observableCatch((response_: any) => {
             if (response_ instanceof HttpResponseBase) {
                 try {
-                    return this.processGetAccountByUserId(<any>response_);
+                    return this.processGetAccountsByUserId(<any>response_);
                 } catch (e) {
                     return <Observable<PagedDataInquiryResponseOfAccount>><any>_observableThrow(e);
                 }
@@ -353,7 +353,7 @@ export class AccountsClient implements IAccountsClient {
         }));
     }
 
-    protected processGetAccountByUserId(response: HttpResponseBase): Observable<PagedDataInquiryResponseOfAccount> {
+    protected processGetAccountsByUserId(response: HttpResponseBase): Observable<PagedDataInquiryResponseOfAccount> {
         const status = response.status;
         const responseBlob =
             response instanceof HttpResponse ? response.body :
@@ -2713,6 +2713,7 @@ export interface ITransactionsClient {
     getTransactionById(id: number, v: string): Observable<Transaction>;
     updateTransaction(id: number, updatedTransaction: any, v: string): Observable<Transaction>;
     deleteTransaction(id: number, v: string): Observable<FileResponse | null>;
+    getTransactionsByAccountId(id: number, v: string): Observable<PagedDataInquiryResponseOfTransaction>;
     getTransactions(v: string): Observable<PagedDataInquiryResponseOfTransaction>;
     addTransaction(newTransaction: NewTransaction, v: string): Observable<Transaction>;
 }
@@ -2892,6 +2893,60 @@ export class TransactionsClient implements ITransactionsClient {
             }));
         }
         return _observableOf<FileResponse | null>(<any>null);
+    }
+
+    getTransactionsByAccountId(id: number, v: string): Observable<PagedDataInquiryResponseOfTransaction> {
+        let url_ = this.baseUrl + "/api/{v}/Transactions/GetTransactionsByAccountId/{id}";
+        if (id === undefined || id === null)
+            throw new Error("The parameter 'id' must be defined.");
+        url_ = url_.replace("{id}", encodeURIComponent("" + id));
+        if (v === undefined || v === null)
+            throw new Error("The parameter 'v' must be defined.");
+        url_ = url_.replace("{v}", encodeURIComponent("" + v));
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetTransactionsByAccountId(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetTransactionsByAccountId(<any>response_);
+                } catch (e) {
+                    return <Observable<PagedDataInquiryResponseOfTransaction>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<PagedDataInquiryResponseOfTransaction>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetTransactionsByAccountId(response: HttpResponseBase): Observable<PagedDataInquiryResponseOfTransaction> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = PagedDataInquiryResponseOfTransaction.fromJS(resultData200);
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<PagedDataInquiryResponseOfTransaction>(<any>null);
     }
 
     getTransactions(v: string): Observable<PagedDataInquiryResponseOfTransaction> {

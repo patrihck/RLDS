@@ -49,9 +49,9 @@ namespace RldsApp.Web.Api.Controllers.V1
 			return accounts;
 		}
 
-		[HttpGet("GetAccountByUserId/{id:long}")]
+		[HttpGet("GetAccountsByUserId/{id:long}")]
 		[Authorize(Roles = Constants.RoleNames.AllRoles)]
-		public PagedDataInquiryResponse<Account> GetAccountByUserId(long id)
+		public PagedDataInquiryResponse<Account> GetAccountsByUserId(long id)
 		{
 			var request = _pagedDataRequestFactory.Create(HttpContext);
 			var accounts = _allAccountsByUserIdInquiryProcessor.GetAccountsByUserId(request, id);

@@ -16,10 +16,12 @@ namespace RldsApp.Web.Api.Controllers.V1
 	{
 		private readonly ITransactionByIdInquiryProcessor _transactionByIdInquiryProcessor;
 		private readonly IAllTransactionsInquiryProcessor _allTransactionsInquiryProcessor;
+		private readonly IAllTransactionsByAccountIdInquiryProcessor _allTransactionsByAccountIdInquiryProcessor;
 		private readonly IPagedDataRequestFactory _pagedDataRequestFactory;
 		private readonly IAddTransactionMaintenanceProcessor _addTransactionMaintenanceProcessor;
 		private readonly IUpdateTransactionMaintenanceProcessor _updateTransactionMaintenanceProcessor;
 		private readonly IDeleteTransactionMaintenanceProcessor _deleteTransactionDataProcessor;
+		
 
 		public TransactionsController(
 			ITransactionByIdInquiryProcessor transactionByIdInquiryProcessor,
@@ -27,7 +29,8 @@ namespace RldsApp.Web.Api.Controllers.V1
 			IPagedDataRequestFactory pagedDataRequestFactory,
 			IAddTransactionMaintenanceProcessor addTransactionMaintenanceProcessor,
 			IUpdateTransactionMaintenanceProcessor updateTransactionMaintenanceProcessor,
-			IDeleteTransactionMaintenanceProcessor deleteTransactionDataProcessor)
+			IDeleteTransactionMaintenanceProcessor deleteTransactionDataProcessor,
+			IAllTransactionsByAccountIdInquiryProcessor allTransactionsByAccountIdInquiryProcessor)
 		{
 			_transactionByIdInquiryProcessor = transactionByIdInquiryProcessor;
 			_allTransactionsInquiryProcessor = allTransactionsInquiryProcessor;
@@ -35,6 +38,7 @@ namespace RldsApp.Web.Api.Controllers.V1
 			_addTransactionMaintenanceProcessor = addTransactionMaintenanceProcessor;
 			_updateTransactionMaintenanceProcessor = updateTransactionMaintenanceProcessor;
 			_deleteTransactionDataProcessor = deleteTransactionDataProcessor;
+			_allTransactionsByAccountIdInquiryProcessor = allTransactionsByAccountIdInquiryProcessor;
 		}
 
 		[HttpGet("{id:long}")]
@@ -43,6 +47,15 @@ namespace RldsApp.Web.Api.Controllers.V1
 		{
 			var transaction = _transactionByIdInquiryProcessor.GetTransactionById(id);
 			return transaction;
+		}
+
+		[HttpGet("GetTransactionsByAccountId/{id:long}")]
+		public PagedDataInquiryResponse<Transaction> GetTransactionsByAccountId(long id)
+		{
+			var request = _pagedDataRequestFactory.Create(HttpContext);
+			var transactions = _allTransactionsByAccountIdInquiryProcessor.GetAllTransactionsByAccountId(request, id);
+
+			return transactions;
 		}
 
 		[HttpGet]

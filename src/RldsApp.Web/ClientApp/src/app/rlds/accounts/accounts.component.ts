@@ -24,7 +24,7 @@ export class AccountsComponent implements OnInit {
   }
 
   getData() {
-    this.accountsClient.getAccountByUserId(Helper.GetSessionValueOfType<number>('userId'), '1.0').subscribe(result => {
+    this.accountsClient.getAccountsByUserId(Helper.GetSessionValueOfType<number>('userId'), '1.0').subscribe(result => {
       this.accounts = result;
     }, error => defaultRequestErrorHandler(this.layoutService, error))
   }

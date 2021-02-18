@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PrimengTableColumn } from '../../../../infrastructure/models/layout/primeng-table.model';
-import { Account, AccountsClient, Currency, CurrencyClient, RecurringTransaction, Transaction, TransactionsClient } from '../../../../infrastructure/services-api/rlds-api';
+import { Account, AccountsClient, Currency, CurrencyClient, PagedDataInquiryResponseOfTransaction, RecurringTransaction, Transaction, TransactionsClient } from '../../../../infrastructure/services-api/rlds-api';
 import { LayoutService } from '../../../../infrastructure/services/layout/layout.service';
 
 @Component({
@@ -14,7 +14,7 @@ export class AccountViewComponent implements OnInit {
   id: number;
   account: Account;
   currencies: Array<Currency>;
-  transactions: Array<Transaction>;
+  transactions: PagedDataInquiryResponseOfTransaction;
 
   recurringTransaction?: RecurringTransaction | undefined;
 
@@ -99,7 +99,7 @@ export class AccountViewComponent implements OnInit {
     });
 
     this.transactionClient.getTransactionsByAccountId(this.id, "1.0").subscribe(r => {
-      this.transactions = r.items;
+      this.transactions = r;
     })
   }
 
