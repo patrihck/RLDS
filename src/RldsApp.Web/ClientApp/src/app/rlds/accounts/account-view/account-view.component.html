@@ -65,6 +65,9 @@
             {{item.status.name}}
           </span>
         </div>
+        <div *ngSwitchCase="'date'">
+          {{item.date}}
+        </div>
         <div *ngSwitchCase="'recurringTransaction'">
           <span *ngIf="item.recurringTransaction">
             {{item.recurringTransaction.id}}

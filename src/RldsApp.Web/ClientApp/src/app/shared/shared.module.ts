@@ -24,6 +24,8 @@ import { RouterModule } from '@angular/router';
 import { InputTextModule } from 'primeng/inputtext'; 
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { PasswordModule } from 'primeng/password';
+import { ChartModule } from 'primeng/chart';
+import { CarouselModule } from 'primeng/carousel';
 
 // https://www.primefaces.org/primeng/showcase/#/setup
 @NgModule({
@@ -32,7 +34,9 @@ import { PasswordModule } from 'primeng/password';
     CommonModule,
     EditorModule,
     BreadcrumbModule,
+    CarouselModule,
     PanelModule,
+    ChartModule,
     InputTextModule,
     CommonModule,
     InputSwitchModule,
@@ -60,9 +64,11 @@ import { PasswordModule } from 'primeng/password';
     InputSwitchModule,
     ListboxModule,
     EditorModule,
+    ChartModule,
     SidebarModule,
     BreadcrumbModule,
     BlockUIModule,
+    CarouselModule,
     PanelModule,
     CommonModule,
     PasswordModule,

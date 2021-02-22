@@ -46,10 +46,6 @@ export class UsersComponent implements OnInit {
       o.field = 'email';
     }));
     this.cols.push(new PrimengTableColumn(o => {
-      o.header = 'startAmount';
-      o.field = 'startAmount';
-    }));
-    this.cols.push(new PrimengTableColumn(o => {
       o.header = 'roles';
       o.field = 'roles';
     }));
