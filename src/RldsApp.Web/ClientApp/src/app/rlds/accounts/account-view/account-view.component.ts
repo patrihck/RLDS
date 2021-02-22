@@ -84,11 +84,13 @@ export class AccountViewComponent implements OnInit {
       o.header = 'amount';
       o.field = 'amount';
     }));
-    this.cols.push(new PrimengTableColumn(o => {
-      o.header = 'recurringTransaction';
-      o.field = 'recurringTransaction';
-    }));
+    //this.cols.push(new PrimengTableColumn(o => {
+    //  o.header = 'recurringTransaction';
+    //  o.field = 'recurringTransaction';
+    //}));
   }
+
+  cl(a) { console.log(a)}
 
   getData() {
     this.accountsClient.getAccountById(this.id, "1.0").subscribe(r => {
