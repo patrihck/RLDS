@@ -1,0 +1,38 @@
+<div *ngIf="newUser" class="p-fluid">
+  
+    <div class="p-field">
+      <label for="newUser.login">Login</label>
+      <input id="newUser.login" type="text" pInputText [(ngModel)]="newUser.login">
+    </div>
+
+    <div class="p-field">
+      <label for="newUser.password">Password</label>
+      <input id="newUser.password" type="text" pInputText [(ngModel)]="newUser.password">
+    </div>    
+
+    <div class="p-field">
+      <label for="newUser.firstname">First name</label>
+      <input id="newUser.firstname" type="text" pInputText [(ngModel)]="newUser.firstname">
+    </div>
+
+    <div class="p-field">
+      <label for="newUser.lastname">Last name</label>
+      <input id="newUser.lastname" type="text" pInputText [(ngModel)]="newUser.lastname">
+    </div>
+
+    <div class="p-field">
+      <label for="newUser.email">E-mail</label>
+      <input id="newUser.email" type="text" pInputText [(ngModel)]="newUser.email">
+    </div>
+
+    <div class="p-field">
+      <label >Roles</label>
+      <p-radioButton label="User" value="User" [(ngModel)]="newUser.roles" ></p-radioButton>
+      <p-radioButton label="SuperUser" value="SuperUser" [(ngModel)]="newUser.roles" ></p-radioButton>
+      <p-radioButton label="Admin" value="Admin" [(ngModel)]="newUser.roles" ></p-radioButton>
+    </div>
+
+    <button pButton type="button" icon="pi pi-check" label="Dodaj" iconPos="left" (click)="save()"></button>
+
+  </div>
+  
