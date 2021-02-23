@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { UIChart } from 'primeng/chart';
+import { defaultRequestErrorHandler } from '../../../infrastructure/interceptors/error-interceptor';
+import { BarChart, DoughnutChart, HomeClient } from '../../../infrastructure/services-api/rlds-api';
 import { LayoutService } from '../../../infrastructure/services/layout/layout.service';
 
 @Component({
@@ -8,19 +11,62 @@ import { LayoutService } from '../../../infrastructure/services/layout/layout.se
 })
 export class HomeComponent implements OnInit {
 
-  dataBar: any;
-  dataDo: any;
+  @ViewChild("barChart") barChart: UIChart;
+
+  dataBar: BarChart;
+  dataDo: DoughnutChart;
   products: CarouselItem[];
   responsiveOptions;
 
-  constructor(private readonly layoutService: LayoutService) { }
+  constructor(private readonly layoutService: LayoutService,
+    private readonly homeClient: HomeClient,
+  ) { }
 
   ngOnInit(): void {
     this.layoutService.setAppTitle("Strona główna");
     this.getChartData();
   }
 
+  test() {
+    let a = this.barChart.getBase64Image();
+    console.log(a);
+  }
+
   getChartData() {
+
+    this.homeClient.getGroup(new Date().toUTCString(), "1.0").subscribe(r => {
+
+      r.doughnut['datasets'] = [{
+        data: r.doughnut.dataSet,
+        backgroundColor: [
+          "#FF6384",
+          "#36A2EB",
+        ],
+        hoverBackgroundColor: [
+          "#FF6384",
+          "#36A2EB",
+        ]
+      }];
+
+      r.bar['datasets'] = [{
+        label: 'Przychody',
+        backgroundColor: '#42A5F5',
+        borderColor: '#1E88E5',
+        data: r.bar.dataSets[0].data
+      }, {
+        label: 'Odchody',
+        backgroundColor: '#9CCC65',
+        borderColor: '#7CB342',
+        data: r.bar.dataSets[1].data
+      }];
+
+
+      this.dataDo = r.doughnut;
+      this.dataBar = r.bar;
+
+
+    }, error => defaultRequestErrorHandler(this.layoutService, error));
+
     this.responsiveOptions = [
       {
         breakpoint: '1024px',
@@ -48,41 +94,6 @@ export class HomeComponent implements OnInit {
       { name: "6", image: "https://primefaces.org/primeng/showcase/assets/showcase/images/demo/product/black-watch.jpg", inventoryStatus: "Elder Scrolls", price: 125 },
     ]
 
-    this.dataBar = {
-      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-      datasets: [
-        {
-          label: 'My First dataset',
-          backgroundColor: '#42A5F5',
-          borderColor: '#1E88E5',
-          data: [65, 59, 80, 81, 56, 55, 40]
-        },
-        {
-          label: 'My Second dataset',
-          backgroundColor: '#9CCC65',
-          borderColor: '#7CB342',
-          data: [28, 48, 40, 19, 86, 27, 90]
-        }
-      ]
-    };
-
-    this.dataDo = {
-      labels: ['A', 'B', 'C'],
-      datasets: [
-        {
-          data: [300, 50, 100],
-          backgroundColor: [
-            "#FF6384",
-            "#36A2EB",
-            "#FFCE56"
-          ],
-          hoverBackgroundColor: [
-            "#FF6384",
-            "#36A2EB",
-            "#FFCE56"
-          ]
-        }]
-    };
   }
 }
 

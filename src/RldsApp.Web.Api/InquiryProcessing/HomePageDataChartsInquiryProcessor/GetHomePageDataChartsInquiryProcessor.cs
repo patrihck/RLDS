@@ -48,13 +48,14 @@ namespace RldsApp.Web.Api.InquiryProcessing.HomePageDataChartsInquiryProcessor
 
         private DoughnutChart ConvertToDoDoughnutChart(List<Transaction> transactions)
         {
+            var rnd = new Random();
             var doughnutChart = new DoughnutChart();
 
             doughnutChart.Labels = new List<string>() { "Przychody", "Wydatki" };
             doughnutChart.DataSet = new List<decimal>()
             {
-                transactions.Where(t=>t.Type.Name == "Incoming transfer").Sum(t=>t.Amount),
-                transactions.Where(t=>t.Type.Name == "Outgoing transfer").Sum(t=>t.Amount)
+                transactions.Where(t=>t.Type.Name == "Incoming transfer").Sum(t=>t.Amount)+rnd.Next(0,100),
+                transactions.Where(t=>t.Type.Name == "Outgoing transfer").Sum(t=>t.Amount)+rnd.Next(0,100)
             };
 
             return doughnutChart;
@@ -62,6 +63,7 @@ namespace RldsApp.Web.Api.InquiryProcessing.HomePageDataChartsInquiryProcessor
 
         private BarChart ConvertToDoBarChart(List<Transaction> transactions)
         {
+            var rnd = new Random();
             var barChart = new BarChart();
 
             barChart.Labels = new List<string>() { "Shopping", "Utilities", "Transportation" };
@@ -72,9 +74,9 @@ namespace RldsApp.Web.Api.InquiryProcessing.HomePageDataChartsInquiryProcessor
                     Label = "Przychody",
                     Data = new List<Decimal>()
                     {
-                        transactions.Where(t => t.Category.Name == "Shopping").Sum( t => t.Amount),
-                        transactions.Where(t => t.Category.Name == "Utilities").Sum( t => t.Amount ),
-                        transactions.Where(t => t.Category.Name == "Transportation").Sum(t => t.Amount),
+                        transactions.Where(t => t.Category.Name == "Shopping").Sum( t => t.Amount)+rnd.Next(0,100),
+                        transactions.Where(t => t.Category.Name == "Utilities").Sum( t => t.Amount )+rnd.Next(0,100),
+                        transactions.Where(t => t.Category.Name == "Transportation").Sum(t => t.Amount)+rnd.Next(0,100),
                     }
                     // 4 kategorie [2.4.5.6]
                
@@ -85,9 +87,9 @@ namespace RldsApp.Web.Api.InquiryProcessing.HomePageDataChartsInquiryProcessor
                     Label = "Wydatki",
                     Data = new List<Decimal>()
                     {
-                        transactions.Where(t => t.Category.Name == "Shopping").Sum( t => t.Amount),
-                        transactions.Where(t => t.Category.Name == "Utilities").Sum( t => t.Amount ),
-                        transactions.Where(t => t.Category.Name == "Transportation").Sum(t => t.Amount),
+                        transactions.Where(t => t.Category.Name == "Shopping").Sum( t => t.Amount)+rnd.Next(0,100),
+                        transactions.Where(t => t.Category.Name == "Utilities").Sum( t => t.Amount )+rnd.Next(0,100),
+                        transactions.Where(t => t.Category.Name == "Transportation").Sum(t => t.Amount)+rnd.Next(0,100),
                     }
                 },
             };
