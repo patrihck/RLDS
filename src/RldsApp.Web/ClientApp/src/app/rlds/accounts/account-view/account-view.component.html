@@ -55,23 +55,21 @@
             {{item.type.name}}
           </span>
         </div>
-        <div *ngSwitchCase="'type'">
-          <span *ngIf="item.type">
-            {{item.type.name}}
-          </span>
-        </div>
         <div *ngSwitchCase="'category'">
-          <span *ngIf="category.type">
+          <span *ngIf="item.category">
             {{item.category.name}}
           </span>
         </div>
         <div *ngSwitchCase="'status'">
-          <span *ngIf="status.type">
+          <span *ngIf="item.status">
             {{item.status.name}}
           </span>
         </div>
+        <div *ngSwitchCase="'date'">
+          {{item.date}}
+        </div>
         <div *ngSwitchCase="'recurringTransaction'">
-          <span *ngIf="recurringTransaction.type">
+          <span *ngIf="item.recurringTransaction">
             {{item.recurringTransaction.id}}
           </span>
         </div>
@@ -83,5 +81,6 @@
 
       </td>
     </tr>
+    {{cl(item)}}
   </ng-template>
 </p-table>
