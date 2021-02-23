@@ -70,8 +70,12 @@ namespace RldsApp.Web.Api.InquiryProcessing.HomePageDataChartsInquiryProcessor
                 new DataSet()
                 {
                     Label = "Przychody",
-                    Data = transactions.Where(t=>t.Type.Name == "Incoming transfer").Sum(t=>t.Amount),
-                    
+                    Data = new List<Decimal>()
+                    {
+                        transactions.Where(t => t.Category.Name == "Shopping").Sum( t => t.Amount),
+                        transactions.Where(t => t.Category.Name == "Utilities").Sum( t => t.Amount ),
+                        transactions.Where(t => t.Category.Name == "Transportation").Sum(t => t.Amount),
+                    }
                     // 4 kategorie [2.4.5.6]
                
                     // Lista 
@@ -79,7 +83,12 @@ namespace RldsApp.Web.Api.InquiryProcessing.HomePageDataChartsInquiryProcessor
                 new DataSet()
                 {
                     Label = "Wydatki",
-                    Data = transactions.Where(t=>t.Type.Name == "Incoming transfer").Sum(t=>t.Amount),
+                    Data = new List<Decimal>()
+                    {
+                        transactions.Where(t => t.Category.Name == "Shopping").Sum( t => t.Amount),
+                        transactions.Where(t => t.Category.Name == "Utilities").Sum( t => t.Amount ),
+                        transactions.Where(t => t.Category.Name == "Transportation").Sum(t => t.Amount),
+                    }
                 },
             };
             return barChart;

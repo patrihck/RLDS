@@ -6,6 +6,53 @@
     "version": "1.0.0"
   },
   "paths": {
+    "/api/{v}/Home/GetCharts": {
+      "post": {
+        "tags": [
+          "Home"
+        ],
+        "operationId": "Home_GetGroup",
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "dateTime",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "v",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/HomePageCharts"
+            }
+          }
+        }
+      }
+    },
     "/api/{v}/Roles": {
       "get": {
         "tags": [
@@ -2833,6 +2880,84 @@
     }
   },
   "definitions": {
+    "HomePageCharts": {
+      "type": "object",
+      "required": [
+        "bar",
+        "doughnut"
+      ],
+      "properties": {
+        "bar": {
+          "$ref": "#/definitions/BarChart"
+        },
+        "doughnut": {
+          "$ref": "#/definitions/DoughnutChart"
+        }
+      }
+    },
+    "BarChart": {
+      "type": "object",
+      "required": [
+        "labels",
+        "dataSets"
+      ],
+      "properties": {
+        "labels": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "dataSets": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DataSet"
+          }
+        }
+      }
+    },
+    "DataSet": {
+      "type": "object",
+      "required": [
+        "label",
+        "data"
+      ],
+      "properties": {
+        "label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "format": "decimal"
+          }
+        }
+      }
+    },
+    "DoughnutChart": {
+      "type": "object",
+      "required": [
+        "labels",
+        "dataSet"
+      ],
+      "properties": {
+        "labels": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "dataSet": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "format": "decimal"
+          }
+        }
+      }
+    },
     "PagedDataInquiryResponseOfRole": {
       "type": "object",
       "required": [

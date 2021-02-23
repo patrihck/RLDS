@@ -14,6 +14,79 @@ import { HttpClient, HttpHeaders, HttpResponse, HttpResponseBase } from '@angula
 
 export const API_BASE_URL = new InjectionToken<string>('API_BASE_URL');
 
+export interface IHomeClient {
+    getGroup(dateTime: string, v: string): Observable<HomePageCharts>;
+}
+
+@Injectable({
+    providedIn: 'root'
+})
+export class HomeClient implements IHomeClient {
+    private http: HttpClient;
+    private baseUrl: string;
+    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
+
+    constructor(@Inject(HttpClient) http: HttpClient, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
+        this.http = http;
+        this.baseUrl = baseUrl !== undefined && baseUrl !== null ? baseUrl : "";
+    }
+
+    getGroup(dateTime: string, v: string): Observable<HomePageCharts> {
+        let url_ = this.baseUrl + "/api/{v}/Home/GetCharts";
+        if (v === undefined || v === null)
+            throw new Error("The parameter 'v' must be defined.");
+        url_ = url_.replace("{v}", encodeURIComponent("" + v));
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(dateTime);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetGroup(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetGroup(<any>response_);
+                } catch (e) {
+                    return <Observable<HomePageCharts>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<HomePageCharts>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetGroup(response: HttpResponseBase): Observable<HomePageCharts> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = HomePageCharts.fromJS(resultData200);
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<HomePageCharts>(<any>null);
+    }
+}
+
 export interface IRolesClient {
     getRoles(v: string): Observable<PagedDataInquiryResponseOfRole>;
     getRoleById(roleId: number, v: string): Observable<Role>;
@@ -4118,6 +4191,221 @@ export class UsersClient implements IUsersClient {
         }
         return _observableOf<AuthenticatedData>(<any>null);
     }
+}
+
+export class HomePageCharts implements IHomePageCharts {
+    bar!: BarChart;
+    doughnut!: DoughnutChart;
+
+    constructor(data?: IHomePageCharts) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+        if (!data) {
+            this.bar = new BarChart();
+            this.doughnut = new DoughnutChart();
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.bar = _data["bar"] ? BarChart.fromJS(_data["bar"]) : new BarChart();
+            this.doughnut = _data["doughnut"] ? DoughnutChart.fromJS(_data["doughnut"]) : new DoughnutChart();
+        }
+    }
+
+    static fromJS(data: any): HomePageCharts {
+        data = typeof data === 'object' ? data : {};
+        let result = new HomePageCharts();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["bar"] = this.bar ? this.bar.toJSON() : <any>undefined;
+        data["doughnut"] = this.doughnut ? this.doughnut.toJSON() : <any>undefined;
+        return data; 
+    }
+}
+
+export interface IHomePageCharts {
+    bar: BarChart;
+    doughnut: DoughnutChart;
+}
+
+export class BarChart implements IBarChart {
+    labels!: string[];
+    dataSets!: DataSet[];
+
+    constructor(data?: IBarChart) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+        if (!data) {
+            this.labels = [];
+            this.dataSets = [];
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            if (Array.isArray(_data["labels"])) {
+                this.labels = [] as any;
+                for (let item of _data["labels"])
+                    this.labels!.push(item);
+            }
+            if (Array.isArray(_data["dataSets"])) {
+                this.dataSets = [] as any;
+                for (let item of _data["dataSets"])
+                    this.dataSets!.push(DataSet.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): BarChart {
+        data = typeof data === 'object' ? data : {};
+        let result = new BarChart();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        if (Array.isArray(this.labels)) {
+            data["labels"] = [];
+            for (let item of this.labels)
+                data["labels"].push(item);
+        }
+        if (Array.isArray(this.dataSets)) {
+            data["dataSets"] = [];
+            for (let item of this.dataSets)
+                data["dataSets"].push(item.toJSON());
+        }
+        return data; 
+    }
+}
+
+export interface IBarChart {
+    labels: string[];
+    dataSets: DataSet[];
+}
+
+export class DataSet implements IDataSet {
+    label!: string;
+    data!: number[];
+
+    constructor(data?: IDataSet) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+        if (!data) {
+            this.data = [];
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.label = _data["label"];
+            if (Array.isArray(_data["data"])) {
+                this.data = [] as any;
+                for (let item of _data["data"])
+                    this.data!.push(item);
+            }
+        }
+    }
+
+    static fromJS(data: any): DataSet {
+        data = typeof data === 'object' ? data : {};
+        let result = new DataSet();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["label"] = this.label;
+        if (Array.isArray(this.data)) {
+            data["data"] = [];
+            for (let item of this.data)
+                data["data"].push(item);
+        }
+        return data; 
+    }
+}
+
+export interface IDataSet {
+    label: string;
+    data: number[];
+}
+
+export class DoughnutChart implements IDoughnutChart {
+    labels!: string[];
+    dataSet!: number[];
+
+    constructor(data?: IDoughnutChart) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+        if (!data) {
+            this.labels = [];
+            this.dataSet = [];
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            if (Array.isArray(_data["labels"])) {
+                this.labels = [] as any;
+                for (let item of _data["labels"])
+                    this.labels!.push(item);
+            }
+            if (Array.isArray(_data["dataSet"])) {
+                this.dataSet = [] as any;
+                for (let item of _data["dataSet"])
+                    this.dataSet!.push(item);
+            }
+        }
+    }
+
+    static fromJS(data: any): DoughnutChart {
+        data = typeof data === 'object' ? data : {};
+        let result = new DoughnutChart();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        if (Array.isArray(this.labels)) {
+            data["labels"] = [];
+            for (let item of this.labels)
+                data["labels"].push(item);
+        }
+        if (Array.isArray(this.dataSet)) {
+            data["dataSet"] = [];
+            for (let item of this.dataSet)
+                data["dataSet"].push(item);
+        }
+        return data; 
+    }
+}
+
+export interface IDoughnutChart {
+    labels: string[];
+    dataSet: number[];
 }
 
 export class PagedDataInquiryResponseOfRole implements IPagedDataInquiryResponseOfRole {
