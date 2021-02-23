@@ -7,6 +7,7 @@ import { AddAccountComponent } from './accounts/add-account/add-account.componen
 import { EditAccountComponent } from './accounts/edit-account/edit-account.component';
 import { HomeComponent } from './home/home.component';
 import { UsersComponent } from './users/users.component';
+import { AddTransactionComponent } from './accounts/add-transaction/add-transaction.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -18,10 +19,12 @@ const routes: Routes = [
   { path: 'account/view/:id', component: AccountViewComponent, pathMatch: 'full' },
 
   { path: 'users', component: UsersComponent, pathMatch: 'full' },
+  { path: 'transactions/add', component: AddTransactionComponent, pathMatch: 'full' },
+
 ];
 
 @NgModule({
-  declarations: [HomeComponent, AccountsComponent, UsersComponent, AddAccountComponent, EditAccountComponent, AccountViewComponent],
+  declarations: [HomeComponent, AccountsComponent, UsersComponent, AddAccountComponent, EditAccountComponent, AccountViewComponent, AddTransactionComponent],
   imports: [SharedModule, RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
