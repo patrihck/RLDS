@@ -52,7 +52,7 @@ const routes = [
     {
       provide: API_BASE_URL,
       useFactory: () => {
-        return 'https://localhost:44304';
+        return 'https://localhost:44378';
        }
     }
   ],
