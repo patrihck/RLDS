@@ -44,12 +44,7 @@
       <label for="transactionData.amount">Amount</label>
       <input id="transactionData.amount" type="text" pInputText [(ngModel)]="transactionData.amount">
     </div>
-
-    <div class="p-field">
-      <label for="transactionData.recurringTransaction">Recurring Transaction</label>
-      <p-dropdown id="transactionData.recurringTransaction" [options]="recurringTransactions" [(ngModel)]="transactionData.recurringTransaction.id" optionLabel="name" optionValue="id" [showClear]="true" placeholder="Wybierz transakcję"></p-dropdown>
-    </div>
-
+    
     <button pButton type="button" icon="pi pi-check" label="Dodaj" iconPos="left" (click)="save()"></button>
 
   </div>

@@ -71,10 +71,6 @@ export class AddTransactionComponent implements OnInit {
     this.usersClient.getUsers( "1.0").subscribe(r => {
       this.users = r.items;
     });
-
-    this.recuringTransactionClient.getRecurringTransactions( "1.0").subscribe(r => {
-      this.recuringTransactions = r.items;
-    });
   }
 
   save() {
