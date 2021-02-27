@@ -1,1 +1,27 @@
-<p>currency works!</p>
+<button pButton type="button" icon="pi pi-check" label="Dodaj" iconPos="left" [routerLink]="['/dictionary/currency/add']"></button>
+
+<p-table *ngIf="currencies && currencies.items" [columns]="columns" [value]="currencies.items">
+  <ng-template pTemplate="header" let-columns>
+    <tr>
+      <th *ngFor="let col of columns">
+        {{col.header}}
+      </th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-item let-columns="columns">
+    <tr>
+      <td *ngFor="let col of columns" [ngSwitch]="col.field">
+
+        <div *ngSwitchCase="'options'">
+          <button pButton type="button" icon="pi pi-ban" label="Edytuj" iconPos="left" [routerLink]="['/dictionary/currency/edit',item.id]"></button>
+          <button pButton type="button" icon="pi pi-ban" label="Usuń" iconPos="left" (click)="remove(item.id)"></button>
+        </div>
+
+        <div *ngSwitchDefault>
+          {{item[col.field]}}
+        </div>
+
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
