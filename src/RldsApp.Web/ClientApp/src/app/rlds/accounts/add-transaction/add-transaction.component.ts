@@ -35,14 +35,16 @@ export class AddTransactionComponent implements OnInit {
   ngOnInit(): void {
     this.transactionData = new NewTransaction();
     this.transactionData.receiver = new Account();
-    this.transactionData.recurringTransaction = new RecurringTransaction();
+    //this.transactionData.recurringTransaction = new RecurringTransaction();
     this.transactionData.sender = new Account();
+    this.transactionData.sender.id = Helper.GetCurrentUser().id;
     this.transactionData.user = new UserLeaf();
     this.transactionData.user.id = Helper.GetCurrentUser().id;
     this.transactionData.type = new TransactionType();
     this.transactionData.status = new TransactionStatus();
     this.transactionData.currency = new Currency();
     this.transactionData.category = new TransactionCategory();
+    this.transactionData.category.name = "PLACEHOLDER";
 
     this.getData();
     this.layoutService.setAppTitle("Add Transaction");

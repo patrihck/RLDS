@@ -54,7 +54,7 @@ export class HomeComponent implements OnInit {
         borderColor: '#1E88E5',
         data: r.bar.dataSets[0].data
       }, {
-        label: 'Odchody',
+        label: 'Wydatki',
         backgroundColor: '#9CCC65',
         borderColor: '#7CB342',
         data: r.bar.dataSets[1].data
