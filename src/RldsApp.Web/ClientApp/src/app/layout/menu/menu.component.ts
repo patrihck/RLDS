@@ -49,6 +49,21 @@ export class MenuComponent {
 
 
     this.menuItems.push(new MainMenuItem(opts => {
+      opts.name = 'Słownik walut';
+      opts.icon = 'fa fa-th-large';
+      opts.url = 'dictionary/currencies'
+      opts.displayCondition = () => { return !Helper.IsNullOrEmpty(Helper.GetSessionValue('token')) }
+    }));
+    this.menuItems.push(new MainMenuItem(opts => {
+      opts.name = 'Słownik typów transakcji';
+      opts.icon = 'fa fa-th-large';
+      opts.url = 'dictionary/transaction-categories'
+      opts.displayCondition = () => { return !Helper.IsNullOrEmpty(Helper.GetSessionValue('token')) }
+    }));
+
+
+
+    this.menuItems.push(new MainMenuItem(opts => {
       opts.name = 'Logowanie';
       opts.icon = 'fa fa-th-large';
       opts.url = 'user/login'

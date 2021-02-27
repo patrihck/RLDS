@@ -8,11 +8,13 @@ import { AddCurrencyComponent } from './currency/add-currency/add-currency.compo
 import { EditCurrencyComponent } from './currency/edit-currency/edit-currency.component';
 import { AddTransactionCategoryComponent } from './transaction-category/add-transaction-category/add-transaction-category.component';
 import { EditTransactionCategoryComponent } from './transaction-category/edit-transaction-category/edit-transaction-category.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
   declarations: [CurrencyComponent, TransactionCategoryComponent, AddCurrencyComponent, EditCurrencyComponent, AddTransactionCategoryComponent, EditTransactionCategoryComponent],
   imports: [
+    SharedModule,
     CommonModule,
     DictionaryRoutingModule
   ]

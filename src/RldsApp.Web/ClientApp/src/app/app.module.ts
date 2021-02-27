@@ -16,12 +16,14 @@ import { RldsModule } from './rlds/rlds.module';
 
 import PL_LOCALE from '@angular/common/locales/pl'; 
 import { AuthInterceptor } from '../infrastructure/interceptors/auth-interceptor';
+import { DictionaryModule } from './dictionary/dictionary.module';
 registerLocaleData(PL_LOCALE, 'pl');
 
 const routes = [
   { path: '', loadChildren: () => import('./rlds/rlds.module').then(m => m.RldsModule) },
   { path: 'user', loadChildren: () => import('./user/user.module').then(m => m.UserModule)},
   { path: 'rlds', loadChildren: () => import('./rlds/rlds.module').then(m => m.RldsModule)},
+  { path: 'dictionary', loadChildren: () => import('./dictionary/dictionary.module').then(m => m.DictionaryModule)},
 ];
 
 @NgModule({
@@ -31,8 +33,11 @@ const routes = [
   ],
   imports: [
     BrowserAnimationsModule,
+
     RldsModule,
     UserModule,
+    DictionaryModule,
+
     SharedModule,
     LayoutModule,
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
