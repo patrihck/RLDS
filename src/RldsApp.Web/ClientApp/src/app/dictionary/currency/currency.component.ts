@@ -54,6 +54,7 @@ export class CurrencyComponent implements OnInit {
   remove(id: number) {
     this.currencyClient.deleteCurrency(id, '1.0').subscribe(r => {
       this.layoutService.showPopover(MessageSeverity.success, 'Usunięto walutę');
+      this.getData();
     }, err => defaultRequestErrorHandler(this.layoutService, err));
   }
 }

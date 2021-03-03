@@ -1,1 +1,10 @@
-<p>add-transaction-category works!</p>
+<div class="p-fluid">
+
+  <div class="p-field">
+    <label for="category.name">name</label>
+    <input id="category.name" type="text" pInputText [(ngModel)]="category.name">
+  </div> 
+
+  <button pButton type="button" icon="pi pi-check" label="Dodaj" iconPos="left" (click)="save()"></button>
+
+</div>

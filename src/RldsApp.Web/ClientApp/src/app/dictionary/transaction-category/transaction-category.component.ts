@@ -47,6 +47,7 @@ export class TransactionCategoryComponent implements OnInit {
   remove(id: number) {
     this.transactionCategoryClient.deleteTransactionCategory(id, '1.0').subscribe(r => {
       this.layoutService.showPopover(MessageSeverity.success, 'Usunięto kategorię transakcji');
+      this.getData();
     }, err => defaultRequestErrorHandler(this.layoutService, err));
   }
 }

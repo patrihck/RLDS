@@ -1,1 +1,18 @@
-<p>edit-currency works!</p>
+<div *ngIf="currency" class="p-fluid">
+
+  <div class="p-field">
+    <label for="currency.name">name</label>
+    <input id="currency.name" type="text" pInputText [(ngModel)]="currency.name">
+  </div>
+  <div class="p-field">
+    <label for="currency.acronym">acronym</label>
+    <input id="currency.acronym" type="text" pInputText [(ngModel)]="currency.acronym">
+  </div>
+  <div class="p-field">
+    <label for="currency.symbol">symbol</label>
+    <input id="currency.symbol" type="text" pInputText [(ngModel)]="currency.symbol">
+  </div>
+
+  <button pButton type="button" icon="pi pi-check" label="Zapisz" iconPos="left" (click)="save()"></button>
+
+</div>
