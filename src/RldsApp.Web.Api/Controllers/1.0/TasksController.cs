@@ -32,17 +32,14 @@ namespace RldsApp.Web.Api.Controllers.V1
 		[HttpGet("{id:long}")]
 		public Task GetTaskById(long id)
 		{
-			var task = _taskByIdInquiryProcessor.GetTaskById(id);
-			return task;
+			return _taskByIdInquiryProcessor.GetTaskById(id);
 		}
 
 		[HttpGet]
 		public PagedDataInquiryResponse<Task> GetTasks()
 		{
 			var request = _pagedDataRequestFactory.Create(HttpContext);
-			var tasks = _allTasksInquiryProcessor.GetTasks(request);
-
-			return tasks;
+			return _allTasksInquiryProcessor.GetTasks(request);
 		}
 
 		//[Route("", Name = "AddTaskRoute")]

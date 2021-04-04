@@ -18,7 +18,7 @@ namespace RldsApp.Data.SqlServer.Mapping
 			References(x => x.Category, "CategoryId");
 			References(x => x.Status, "StatusId");
 			References(x => x.Currency, "CurrencyId");
-			References(x => x.RecurringTransaction, "RecurringTransactionId").Nullable();
+			References(x => x.RecurringRule, "RecurringTransactionId").Nullable();
 		}
 	}
 }

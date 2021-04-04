@@ -34,7 +34,5 @@ namespace RldsApp.Web.Api.Models
 
 		[Required]
 		public decimal Amount { get; set; }
-
-		public RecurringTransaction RecurringTransaction { get; set; }
 	}
 }

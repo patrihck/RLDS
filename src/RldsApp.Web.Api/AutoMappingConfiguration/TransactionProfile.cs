@@ -11,7 +11,6 @@ namespace RldsApp.Web.Api.AutoMappingConfiguration
 				.ForMember(dest => dest.Version, opt => opt.Ignore());
 
 			CreateMap<Data.Entities.Transaction, Transaction>()
-				.ForMember(dest => dest.RecurringTransaction, opt => opt.Ignore())
 				.ForMember(dest => dest.Links, opt => opt.Ignore());
 		}
 	}

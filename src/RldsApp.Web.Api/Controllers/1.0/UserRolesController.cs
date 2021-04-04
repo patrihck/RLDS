@@ -20,29 +20,25 @@ namespace RldsApp.Web.Api.Controllers.V1
 		[HttpPut("{userId:long}/roles")]
 		public User ReplaceUserRoles(long userId, [FromBody] IEnumerable<long> roleIds)
 		{
-			var user = _userRolesMaintenanceProcessor.ReplaceUserRoles(userId, roleIds);
-			return user;
+			return _userRolesMaintenanceProcessor.ReplaceUserRoles(userId, roleIds);
 		}
 
 		[HttpDelete("{userId:long}/roles")]
 		public User DeleteUserRoles(long userId)
 		{
-			var user = _userRolesMaintenanceProcessor.DeleteUserRoles(userId);
-			return user;
+			return _userRolesMaintenanceProcessor.DeleteUserRoles(userId);
 		}
 
 		[HttpPut("{userId:long}/roles/{roleId:long}")]
 		public User AddUserRole(long userId, long roleId)
 		{
-			var user = _userRolesMaintenanceProcessor.AddUserRole(userId, roleId);
-			return user;
+			return _userRolesMaintenanceProcessor.AddUserRole(userId, roleId);
 		}
 
 		[HttpDelete("{userId:long}/roles/{roleId:long}")]
 		public User DeleteUserRole(long userId, long roleId)
 		{
-			var user = _userRolesMaintenanceProcessor.DeleteUserRole(userId, roleId);
-			return user;
+			return _userRolesMaintenanceProcessor.DeleteUserRole(userId, roleId);
 		}
 	}
 }

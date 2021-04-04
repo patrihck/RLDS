@@ -51,7 +51,6 @@ namespace RldsApp.Web.Api.Controllers.V1
 			{
 				return Ok();
 			}
-
 			return NoContent();
 		}
 
@@ -60,25 +59,21 @@ namespace RldsApp.Web.Api.Controllers.V1
 		public PagedDataInquiryResponse<TransactionCategory> GetTransactionCategories()
 		{
 			var request = _pagedDataRequestFactory.Create(HttpContext);
-			var transactionCategories = _allTransactionCategoriesInquiryProcessor.GetTransactionCategories(request);
-
-			return transactionCategories;
+			return _allTransactionCategoriesInquiryProcessor.GetTransactionCategories(request);
 		}
 
 		[HttpGet("{id:long}")]
 		[Authorize(Roles = Constants.RoleNames.AllRoles)]
 		public TransactionCategory GetTransactionCategoryById(long id)
 		{
-			var transactionCategory = _transactionCategoryByIdInquiryProcessor.GetTransactionCategoryById(id);
-			return transactionCategory;
+			return _transactionCategoryByIdInquiryProcessor.GetTransactionCategoryById(id);
 		}
 
 		[HttpPut("{id}")]
 		[Authorize(Roles = Constants.RoleNames.AllRoles)]
 		public TransactionCategory UpdateTransactionCategory(long id, [FromBody] object updatedTransactionCategory)
 		{
-			var transactionCategory = _updateTransactionCategoryMaintenanceProcessor.UpdateTransactionCategory(id, updatedTransactionCategory);
-			return transactionCategory;
+			return _updateTransactionCategoryMaintenanceProcessor.UpdateTransactionCategory(id, updatedTransactionCategory);
 		}
 	}
 }

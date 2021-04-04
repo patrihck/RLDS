@@ -44,9 +44,7 @@ namespace RldsApp.Web.Api.Controllers.V1
 		public PagedDataInquiryResponse<Account> GetAccount()
 		{
 			var request = _pagedDataRequestFactory.Create(HttpContext);
-			var accounts = _allAccountsInquiryProcessor.GetAccounts(request);
-
-			return accounts;
+			return _allAccountsInquiryProcessor.GetAccounts(request);
 		}
 
 		[HttpGet("GetAccountsByUserId/{id:long}")]
@@ -54,17 +52,13 @@ namespace RldsApp.Web.Api.Controllers.V1
 		public PagedDataInquiryResponse<Account> GetAccountsByUserId(long id)
 		{
 			var request = _pagedDataRequestFactory.Create(HttpContext);
-			var accounts = _allAccountsByUserIdInquiryProcessor.GetAccountsByUserId(request, id);
-
-			return accounts;
+			return _allAccountsByUserIdInquiryProcessor.GetAccountsByUserId(request, id);
 		}
 
 		[HttpGet("{id:long}")]
 		public Account GetAccountById(long id)
 		{
-			var account = _accountByIdInquiryProcessor.GetAccountById(id);
-
-			return account;
+			return _accountByIdInquiryProcessor.GetAccountById(id);
 		}
 
 		[HttpPost]
@@ -72,17 +66,18 @@ namespace RldsApp.Web.Api.Controllers.V1
 		public ActionResult<Account> AddAccount(NewAccount newAccount)
 		{
 			var account = _addAccountMaintenanceProcessor.AddAccount(newAccount);
-
-			return CreatedAtAction(nameof(GetAccountById), new { id = account.Id }, account);
+			object routeValues = new
+			{
+				id = account.Id
+			};
+			return CreatedAtAction(nameof(GetAccountById), routeValues, account);
 		}
 
 		[HttpPut("{id}")]
 		[Authorize(Roles = Constants.RoleNames.AllRoles)]
 		public Account UpdateAccount(long id, [FromBody] object updatedAccount)
 		{
-			var account = _updateAccountMaintenanceProcessor.UpdateAccount(id, updatedAccount);
-
-			return account;
+			return _updateAccountMaintenanceProcessor.UpdateAccount(id, updatedAccount);
 		}
 
 		[HttpDelete("{id}")]
@@ -93,7 +88,6 @@ namespace RldsApp.Web.Api.Controllers.V1
 			{
 				return Ok();
 			}
-
 			return NotFound();
 		}
 	}

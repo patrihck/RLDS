@@ -71,7 +71,7 @@
 			public const string TransactionCategoryNotFound = "Transaction category not found";
 			public const string TransactionTypeNotFound = "Transaction type not found";
 			public const string CurrencyRateNotFound = "Currency rate not found";
-			public const string RecurringTransactionNotFound = "Recurring transaction not found";
+			public const string RecurringRuleNotFound = "Recurring transaction not found";
 		}
 
 		//--------------------

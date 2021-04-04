@@ -31,25 +31,19 @@ namespace RldsApp.Web.Api.Controllers._1._0
 		public PagedDataInquiryResponse<Role> GetRoles()
 		{
 			var request = _pagedDataRequestFactory.Create(HttpContext);
-			var roles = _allRolesInquiryProcessor.GetRoles(request);
-
-			return roles;
+			return _allRolesInquiryProcessor.GetRoles(request);
 		}
 
 		[HttpGet("{roleId:long}")]
 		public Role GetRoleById(long roleId)
 		{
-			var role = _roleByIdInquiryProcessor.GetRoleById(roleId);
-
-			return role;
+			return _roleByIdInquiryProcessor.GetRoleById(roleId);
 		}
 
 		[HttpGet("{roleName}")]
 		public Role GetRoleByName(string roleName)
 		{
-			var role = _roleByNameInquiryProcessor.GetRoleByName(roleName);
-
-			return role;
+			return _roleByNameInquiryProcessor.GetRoleByName(roleName);
 		}
 	}
 }

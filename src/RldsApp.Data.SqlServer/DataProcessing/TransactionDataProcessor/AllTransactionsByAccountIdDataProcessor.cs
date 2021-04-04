@@ -8,7 +8,6 @@ namespace RldsApp.Data.SqlServer.DataProcessing.TransactionDataProcessor
 {
 	public class AllTransactionsByAccountIdDataProcessor : IAllTransactionsByAccountIdDataProcessor
 	{
-
 		private readonly ISession _session;
 
 		public AllTransactionsByAccountIdDataProcessor(ISession session)

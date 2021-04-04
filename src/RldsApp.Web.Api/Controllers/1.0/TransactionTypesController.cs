@@ -30,25 +30,21 @@ namespace RldsApp.Web.Api.Controllers.V1
 		public PagedDataInquiryResponse<TransactionType> GetTransactionTypes()
 		{
 			var request = _pagedDataRequestFactory.Create(HttpContext);
-			var transactionTypes = _allTransactionTypesInquiryProcessor.GetTransactionTypes(request);
-
-			return transactionTypes;
+			return _allTransactionTypesInquiryProcessor.GetTransactionTypes(request);
 		}
 
 		[HttpGet("{id:int}")]
 		[Authorize(Roles = Constants.RoleNames.AllRoles)]
 		public TransactionType GetTransactionTypeById(TransactionTypeValue id)
 		{
-			var transactionType = _transactionTypeByIdInquiryProcessor.GetTransactionTypeById(id);
-			return transactionType;
+			return _transactionTypeByIdInquiryProcessor.GetTransactionTypeById(id);
 		}
 
 		[HttpGet("{name}")]
 		[Authorize(Roles = Constants.RoleNames.AllRoles)]
 		public TransactionType GetTransactionTypeByName(string name)
 		{
-			var transactionType = _transactionTypeByNameInquiryProcessor.GetTransactionTypeByName(name);
-			return transactionType;
+			return _transactionTypeByNameInquiryProcessor.GetTransactionTypeByName(name);
 		}
 	}
 }

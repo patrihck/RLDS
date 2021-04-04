@@ -39,18 +39,14 @@ namespace RldsApp.Web.Api.Controllers.V1
 		public PagedDataInquiryResponse<CurrencyRate> GetCurrencyRates(long sourceCurrencyId, long targetCurrencyId)
 		{
 			var request = _pagedDataRequestFactory.Create(HttpContext);
-			var currencyRates = _allCurrencyRatesInquiryProcessor.GetCurrencyRates(request, sourceCurrencyId, targetCurrencyId);
-
-			return currencyRates;
+			return _allCurrencyRatesInquiryProcessor.GetCurrencyRates(request, sourceCurrencyId, targetCurrencyId);
 		}
 
 		[HttpGet("{sourceCurrencyId:long}/{targetCurrencyId:long}/{date}")]
 		[Authorize(Roles = Constants.RoleNames.AllRoles)]
 		public CurrencyRate GetCurrencyRateByDate(long sourceCurrencyId, long targetCurrencyId, DateTime date)
 		{
-			var currencyRate = _currencyRateByDateInquiryProcessor.GetCurrencyRateByDate(sourceCurrencyId, targetCurrencyId, date);
-
-			return currencyRate;
+			return _currencyRateByDateInquiryProcessor.GetCurrencyRateByDate(sourceCurrencyId, targetCurrencyId, date);
 		}
 
 		[HttpPost]
@@ -58,22 +54,20 @@ namespace RldsApp.Web.Api.Controllers.V1
 		public ActionResult<CurrencyRate> AddCurrencyRate(NewCurrencyRate newCurrencyRate)
 		{
 			var currencyRate = _addCurrencyRateMaintenanceProcessor.AddCurrencyRate(newCurrencyRate);
-
-			return CreatedAtAction(nameof(GetCurrencyRateByDate), new
+			object routeValues = new
 			{
 				sourceCurrencyId = newCurrencyRate.SourceCurrency.Id,
 				targetCurrencyId = newCurrencyRate.TargetCurrency.Id,
 				date = newCurrencyRate.Date
-			}, currencyRate);
+			};
+			return CreatedAtAction(nameof(GetCurrencyRateByDate), routeValues, currencyRate);
 		}
 
 		[HttpPut("{sourceCurrencyId:long}/{targetCurrencyId:long}/{date}")]
 		[Authorize(Roles = Constants.RoleNames.AllRoles)]
 		public CurrencyRate UpdateCurrencyRate(long sourceCurrencyId, long targetCurrencyId, DateTime date, [FromBody] object updatedCurrencyRate)
 		{
-			var currencyRate = _updateCurrencyRateMaintenanceProcessor.UpdateCurrencyRate(sourceCurrencyId, targetCurrencyId, date, updatedCurrencyRate);
-
-			return currencyRate;
+			return _updateCurrencyRateMaintenanceProcessor.UpdateCurrencyRate(sourceCurrencyId, targetCurrencyId, date, updatedCurrencyRate);
 		}
 
 		[HttpDelete("{sourceCurrencyId:long}/{targetCurrencyId:long}/{date}")]
@@ -84,7 +78,6 @@ namespace RldsApp.Web.Api.Controllers.V1
 			{
 				return Ok();
 			}
-
 			return NoContent();
 		}
 	}

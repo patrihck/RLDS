@@ -46,7 +46,6 @@ namespace RldsApp.Web.Api.InquiryProcessing.TransactionInquiryProcessor
 			};
 
 			AddLinksToInquiryResponse(inquiryResponse);
-
 			return inquiryResponse;
 		}
 
@@ -89,6 +88,5 @@ namespace RldsApp.Web.Api.InquiryProcessing.TransactionInquiryProcessor
 		{
 			return String.Format(QueryStringFormat, inquiryResponse.PageNumber + 1, inquiryResponse.PageSize);
 		}
-
 	}
 }

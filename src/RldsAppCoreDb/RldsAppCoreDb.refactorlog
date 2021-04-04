@@ -56,11 +56,60 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="RootId" />
   </Operation>
-    <Operation Name="Rename Refactor" Key="fe4c971c-0665-481e-bc75-37aa1d5b06be" ChangeDateTime="12/15/2019 09:15:07">
+  <Operation Name="Rename Refactor" Key="fe4c971c-0665-481e-bc75-37aa1d5b06be" ChangeDateTime="12/15/2019 09:15:07">
     <Property Name="ElementName" Value="[dbo].[Account].[rowversion]" />
     <Property Name="ElementType" Value="SqlSimpleColumn" />
     <Property Name="ParentElementName" Value="[dbo].[Account]" />
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="ts" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="5fa7c06e-1c47-42eb-9d00-c021a9180f7e" ChangeDateTime="04/04/2021 10:34:48">
+    <Property Name="ElementName" Value="[dbo].[RecurringTransaction].[RecurringTransactionId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[RecurringTransaction]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="RecurringRuleId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="6fc2afef-0563-4288-8b95-f12c80cec5b5" ChangeDateTime="04/04/2021 10:35:00">
+    <Property Name="ElementName" Value="[dbo].[RecurringTransactionMonthRule].[RecurringTransactionMonthRuleId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[RecurringTransactionMonthRule]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="MonthlyPeriodId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="65d2f35f-aa75-4fb6-957a-3cc1f54f527e" ChangeDateTime="04/04/2021 10:35:06">
+    <Property Name="ElementName" Value="[dbo].[RecurringTransactionMonthRule].[RecurringTransactionId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[RecurringTransactionMonthRule]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="RecurringRuleId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="cdbc8b57-6ebd-45eb-b7b0-092d9166f871" ChangeDateTime="04/04/2021 10:35:24">
+    <Property Name="ElementName" Value="[dbo].[RecurringTransactionWeekRule].[RecurringTransactionWeekRuleId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[RecurringTransactionWeekRule]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="WeeklyPeriodId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="baf909dc-f5e9-4249-b700-57ff74602685" ChangeDateTime="04/04/2021 10:35:29">
+    <Property Name="ElementName" Value="[dbo].[RecurringTransactionWeekRule].[RecurringTransactionId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[RecurringTransactionWeekRule]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="RecurringRuleId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="b79ab61b-ea8e-4bb7-b8b7-c799ef603dba" ChangeDateTime="04/04/2021 10:35:41">
+    <Property Name="ElementName" Value="[dbo].[RecurringTransactionDayRule].[RecurringTransactionDayRuleId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[RecurringTransactionDayRule]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="DailyPeriodId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="d4100fe5-a207-4fcd-bcf5-1b67f6d0e9e4" ChangeDateTime="04/04/2021 10:35:47">
+    <Property Name="ElementName" Value="[dbo].[RecurringTransactionDayRule].[RecurringTransactionId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[RecurringTransactionDayRule]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="RecurringRuleId" />
   </Operation>
 </Operations>

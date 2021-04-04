@@ -33,24 +33,20 @@ namespace RldsApp.Web.Api.Controllers.V1
 		[HttpGet("{id:long}")]
 		public TransactionStatus GetTransactionStatusById(TransactionStatusValue id)
 		{
-			var status = _transactionStatusByIdInquiryProcessor.GetTransactionStatusById(id);
-			return status;
+			return _transactionStatusByIdInquiryProcessor.GetTransactionStatusById(id);
 		}
 
 		[HttpGet("{name}")]
 		public TransactionStatus GetTransactionStatusByName(string name)
 		{
-			var status = _transactionStatusByNameInquiryProcessor.GetTransactionStatusByName(name);
-			return status;
+			return _transactionStatusByNameInquiryProcessor.GetTransactionStatusByName(name);
 		}
 
 		[HttpGet]
 		public PagedDataInquiryResponse<TransactionStatus> GetTransactionStatus()
 		{
 			var request = _pagedDataRequestFactory.Create(HttpContext);
-			var status = _allTransactionStatusesInquiryProcessor.GetTransactionTypes(request);
-
-			return status;
+			return _allTransactionStatusesInquiryProcessor.GetTransactionTypes(request);
 		}
 	}
 }

@@ -12,7 +12,7 @@ namespace RldsApp.Web.Api.LinkServices
 		private readonly IUserLinkService _userLinkService;
 		private readonly ITransactionCategoryLinkService _transactionCategoryLinkService;
 		private readonly ICurrencyLinkService _currencyLinkService;
-		private readonly IRecurringTransactionLinkService _recurringTransactionLinkService;
+		private readonly IRecurringRuleLinkService _recurringRuleLinkService;
 
 		public TransactionLinkService(
 			ICommonLinkService commonLinkService,
@@ -20,14 +20,14 @@ namespace RldsApp.Web.Api.LinkServices
 			IAccountLinkService accountLinkService,
 			ITransactionCategoryLinkService transactionCategoryLinkService,
 			ICurrencyLinkService currencyLinkService,
-			IRecurringTransactionLinkService recurringTransactionLinkService)
+			IRecurringRuleLinkService recurringRuleLinkService)
 		{
 			_commonLinkService = commonLinkService;
 			_userLinkService = userLinkService;
 			_accountLinkService = accountLinkService;
 			_transactionCategoryLinkService = transactionCategoryLinkService;
 			_currencyLinkService = currencyLinkService;
-			_recurringTransactionLinkService = recurringTransactionLinkService;
+			_recurringRuleLinkService = recurringRuleLinkService;
 		}
 
 		public void AddSelfLink(Transaction transaction)
@@ -45,7 +45,6 @@ namespace RldsApp.Web.Api.LinkServices
 			_transactionCategoryLinkService.AddSelfLink(transaction.Category);
 			_transactionCategoryLinkService.AddLinksToChildObjects(transaction.Category);
 			_currencyLinkService.AddSelfLink(transaction.Currency);
-			_recurringTransactionLinkService.AddSelfLink(transaction.RecurringTransaction);
 		}
 
 		public Link GetAllTransactionsLink()

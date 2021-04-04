@@ -39,25 +39,21 @@ namespace RldsApp.Web.Api.Controllers.V1
 		public PagedDataInquiryResponse<User> GetUsers()
 		{
 			var request = _pagedDataRequestFactory.Create(HttpContext);
-			var users = _allUsersInquiryProcessor.GetUsers(request);
-
-			return users;
+			return _allUsersInquiryProcessor.GetUsers(request);
 		}
 
 		[HttpGet("{id:long}")]
 		[Authorize(Roles = Constants.RoleNames.AllRoles)]
 		public User GetUserById(long id)
 		{
-			var user = _userByIdInquiryProcessor.GetUserById(id);
-			return user;
+			return _userByIdInquiryProcessor.GetUserById(id);
 		}
 
 		[HttpGet("{name}")]
 		[Authorize(Roles = Constants.RoleNames.AllRoles)]
 		public User GetUserByName(string name)
 		{
-			var user = _userByNameInquiryProcessor.GetUserByName(name);
-			return user;
+			return _userByNameInquiryProcessor.GetUserByName(name);
 		}
 
 		[AllowAnonymous]
@@ -65,7 +61,11 @@ namespace RldsApp.Web.Api.Controllers.V1
 		public ActionResult<User> RegisterUser(NewUser newUser)
 		{
 			var user = _addUserMaintenanceProcessor.AddUser(newUser);
-			return CreatedAtAction(nameof(GetUserById), new { id = user.Id }, user);
+			object routeValues = new
+			{
+				id = user.Id
+			};
+			return CreatedAtAction(nameof(GetUserById), routeValues, user);
 		}
 
 		[HttpPost]
@@ -73,15 +73,18 @@ namespace RldsApp.Web.Api.Controllers.V1
 		public ActionResult<User> AddUser(NewUser newUser)
 		{
 			var user = _addUserMaintenanceProcessor.AddUser(newUser);
-			return CreatedAtAction(nameof(GetUserById), new { id = user.Id }, user);
+			object routeValues = new
+			{
+				id = user.Id
+			};
+			return CreatedAtAction(nameof(GetUserById), routeValues, user);
 		}
 
 		[HttpPut("{id}")]
 		[Authorize(Roles = Constants.RoleNames.AllRoles)]
 		public User UpdateUser(long id, [FromBody] object updatedUser)
 		{
-			var user = _updateUserMaintenanceProcessor.UpdateUser(id, updatedUser);
-			return user;
+			return _updateUserMaintenanceProcessor.UpdateUser(id, updatedUser);
 		}
 
 		[HttpDelete("{id}")]
@@ -92,7 +95,6 @@ namespace RldsApp.Web.Api.Controllers.V1
 			{
 				return Ok();
 			}
-
 			return NotFound();
 		}
 
@@ -100,8 +102,7 @@ namespace RldsApp.Web.Api.Controllers.V1
 		[AllowAnonymous]
 		public AuthenticatedData AuthenticateUser(LoginData loginData)
 		{
-			var authenticatedData = _authenticateUserMaintenanceProcessor.AuthenticateUser(loginData);
-			return authenticatedData;
+			return _authenticateUserMaintenanceProcessor.AuthenticateUser(loginData);
 		}
 	}
 }

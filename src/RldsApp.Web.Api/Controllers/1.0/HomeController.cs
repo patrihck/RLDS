@@ -25,7 +25,7 @@ namespace RldsApp.Web.Api.Controllers._1._0
 		[HttpPost("GetCharts")]
 		public HomePageCharts GetGroup([FromBody] DateTime dateTime)
 		{
-			return  _getHomePageDataChartsInquiryProcessor.GetHomePageChartsData(dateTime);
+			return _getHomePageDataChartsInquiryProcessor.GetHomePageChartsData(dateTime);
 		}
 	}
 }

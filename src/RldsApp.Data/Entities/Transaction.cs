@@ -28,7 +28,7 @@ namespace RldsApp.Data.Entities
 
 		public virtual decimal Amount { get; set; }
 
-		public virtual RecurringTransaction RecurringTransaction { get; set; }
+		public virtual RecurringRule RecurringRule { get; set; }
 
 		public virtual byte[] Version { get; set; }
 	}

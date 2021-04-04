@@ -24,32 +24,28 @@ namespace RldsApp.Web.Api.Controllers.V1
 		[HttpPut]
 		public Task ReplaceTaskUsers(long taskId, [FromBody] IEnumerable<long> userIds)
 		{
-			var task = _taskUsersMaintenanceProcessor.ReplaceTaskUsers(taskId, userIds);
-			return task;
+			return _taskUsersMaintenanceProcessor.ReplaceTaskUsers(taskId, userIds);
 		}
 
 		[Route("{taskId:long}/users", Name = "DeleteTaskUsersRoute")]
 		[HttpDelete]
 		public Task DeleteTaskUsers(long taskId)
 		{
-			var task = _taskUsersMaintenanceProcessor.DeleteTaskUsers(taskId);
-			return task;
+			return _taskUsersMaintenanceProcessor.DeleteTaskUsers(taskId);
 		}
 
 		[Route("{taskId:long}/users/{userId:long}", Name = "AddTaskUserRoute")]
 		[HttpPut]
 		public Task AddTaskUser(long taskId, long userId)
 		{
-			var task = _taskUsersMaintenanceProcessor.AddTaskUser(taskId, userId);
-			return task;
+			return _taskUsersMaintenanceProcessor.AddTaskUser(taskId, userId);
 		}
 
 		[Route("{taskId:long}/users/{userId:long}", Name = "DeleteTaskUserRoute")]
 		[HttpDelete]
 		public Task DeleteTaskUser(long taskId, long userId)
 		{
-			var task = _taskUsersMaintenanceProcessor.DeleteTaskUser(taskId, userId);
-			return task;
+			return _taskUsersMaintenanceProcessor.DeleteTaskUser(taskId, userId);
 		}
 	}
 }

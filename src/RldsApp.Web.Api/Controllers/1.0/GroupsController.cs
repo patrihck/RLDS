@@ -38,35 +38,30 @@ namespace RldsApp.Web.Api.Controllers.V1
 		public PagedDataInquiryResponse<Group> GetGroup()
 		{
 			var request = _pagedDataRequestFactory.Create(HttpContext);
-			var groups = _allGroupsInquiryProcessor.GetGroups(request);
-
-			return groups;
+			return _allGroupsInquiryProcessor.GetGroups(request);
 		}
 
 		[HttpGet("{groupId:long}")]
 		public Group GetGroupById(long groupId)
 		{
-			var group = _groupByIdInquiryProcessor.GetGroupById(groupId);
-			return group;
+			return _groupByIdInquiryProcessor.GetGroupById(groupId);
 		}
 
 		[HttpPost]
 		public ActionResult<Group> AddGroup(NewGroup newGroup)
 		{
 			var group = _addGroupMaintenanceProcessor.AddGroup(newGroup);
-
-			return CreatedAtAction(nameof(GetGroupById), new
+			object routeValues = new 
 			{
 				groupId = group.Id
-			}, group);
+			};
+			return CreatedAtAction(nameof(GetGroupById), routeValues, group);
 		}
 
 		[HttpPut("{groupId:long}")]
 		public Group UpdateGroup(long groupId, [FromBody] object updatedGroup)
 		{
-			var group = _updateGroupMaintenanceProcessor.UpdateGroup(groupId, updatedGroup);
-
-			return group;
+			return _updateGroupMaintenanceProcessor.UpdateGroup(groupId, updatedGroup);
 		}
 
 		[HttpDelete("{groupId:long}")]
@@ -76,7 +71,6 @@ namespace RldsApp.Web.Api.Controllers.V1
 			{
 				return Ok();
 			}
-
 			return NoContent();
 		}
 	}

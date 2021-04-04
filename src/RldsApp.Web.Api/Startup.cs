@@ -14,7 +14,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using NHibernate;
 using RldsApp.Data.SqlServer.Mapping;
-using RldsApp.Web.Api.Code.RecurringTransactions;
+using RldsApp.Web.Api.Code.RecurringRuleProcessor;
 using RldsApp.Web.Common.ErrorHandling;
 
 using CoreLogger = Microsoft.Extensions.Logging;
@@ -113,12 +113,12 @@ namespace RldsApp.Web.Api
 			services.AddScoped(provider => provider.GetRequiredService<ISessionFactory>().OpenSession());
 		} 
 
-		private TransactionRuleProcessorProvider PrepareTransactionRuleProcessorProvider(IServiceProvider sp)
+		private RecurringRuleProcessorProvider PrepareTransactionRuleProcessorProvider(IServiceProvider sp)
 		{
-			return new TransactionRuleProcessorProvider()
-				.AddFactory(new DayRuleProcessorFactory())
-				.AddFactory(new WeekRuleProcessorFactory())
-				.AddFactory(new MonthRuleProcessorFactory());
+			return new RecurringRuleProcessorProvider()
+				.AddFactory(new DailyPeriodRecurringRuleProcessorFactory())
+				.AddFactory(new WeeklyPeriodRecurringRuleProcessorFactory())
+				.AddFactory(new MonthlyPeriodRecurringRuleProcessorFactory());
 		}
 	}
 }

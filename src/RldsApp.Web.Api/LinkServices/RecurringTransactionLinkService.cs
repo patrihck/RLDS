@@ -4,7 +4,7 @@ using RldsApp.Web.Api.Models;
 
 namespace RldsApp.Web.Api.LinkServices
 {
-	public class RecurringTransactionLinkService : IRecurringTransactionLinkService
+	public class RecurringTransactionLinkService : IRecurringRuleLinkService
 	{
 		private readonly ICommonLinkService _commonLinkService;
 
@@ -13,22 +13,22 @@ namespace RldsApp.Web.Api.LinkServices
 			_commonLinkService = commonLinkService;
 		}
 
-		public virtual void AddSelfLink(RecurringTransaction recurringTransaction)
+		public virtual void AddSelfLink(RecurringRule recurringRule)
 		{
-			if (recurringTransaction != null)
-				recurringTransaction.AddLink(GetSelfLink(recurringTransaction));
+			if (recurringRule != null)
+				recurringRule.AddLink(GetSelfLink(recurringRule));
 		}
 
-		public Link GetAllRecurringTransactionsLink()
+        public Link GetAllRecurringRulesLink()
 		{
 			const string pathFragment = "recurring-transactions";
 
 			return _commonLinkService.GetLink(pathFragment, Constants.CommonLinkRelValues.All, HttpMethod.Get);
 		}
 
-		public virtual Link GetSelfLink(RecurringTransaction recurringTransaction)
+		public virtual Link GetSelfLink(RecurringRule recurringRule)
 		{
-			var pathFragment = string.Format("recurring-transactions/{0}", recurringTransaction.Id);
+			var pathFragment = string.Format("recurring-transactions/{0}", recurringRule.Id);
 			var link = _commonLinkService.GetLink(pathFragment, Constants.CommonLinkRelValues.Self, HttpMethod.Get);
 
 			return link;

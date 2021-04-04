@@ -5,6 +5,7 @@ using RldsApp.Web.Api.InquiryProcessing;
 using RldsApp.Web.Api.Models;
 using RldsApp.Web.Api.InquiryProcessing.TransactionInquiryProcessor;
 using RldsApp.Web.Api.MaintenanceProcessing.TransactionMaintenanceProcessor;
+using System;
 
 namespace RldsApp.Web.Api.Controllers.V1
 {
@@ -21,7 +22,7 @@ namespace RldsApp.Web.Api.Controllers.V1
 		private readonly IAddTransactionMaintenanceProcessor _addTransactionMaintenanceProcessor;
 		private readonly IUpdateTransactionMaintenanceProcessor _updateTransactionMaintenanceProcessor;
 		private readonly IDeleteTransactionMaintenanceProcessor _deleteTransactionDataProcessor;
-		
+		private readonly IAllTransactionsInPeriodAndByStatusInquiryProcessor _allTransactionsInPeriodAndByStatusInquiryProcessor;
 
 		public TransactionsController(
 			ITransactionByIdInquiryProcessor transactionByIdInquiryProcessor,
@@ -30,7 +31,8 @@ namespace RldsApp.Web.Api.Controllers.V1
 			IAddTransactionMaintenanceProcessor addTransactionMaintenanceProcessor,
 			IUpdateTransactionMaintenanceProcessor updateTransactionMaintenanceProcessor,
 			IDeleteTransactionMaintenanceProcessor deleteTransactionDataProcessor,
-			IAllTransactionsByAccountIdInquiryProcessor allTransactionsByAccountIdInquiryProcessor)
+			IAllTransactionsByAccountIdInquiryProcessor allTransactionsByAccountIdInquiryProcessor,
+			IAllTransactionsInPeriodAndByStatusInquiryProcessor allTransactionsInPeriodAndByStatusInquiryProcessor)
 		{
 			_transactionByIdInquiryProcessor = transactionByIdInquiryProcessor;
 			_allTransactionsInquiryProcessor = allTransactionsInquiryProcessor;
@@ -39,23 +41,29 @@ namespace RldsApp.Web.Api.Controllers.V1
 			_updateTransactionMaintenanceProcessor = updateTransactionMaintenanceProcessor;
 			_deleteTransactionDataProcessor = deleteTransactionDataProcessor;
 			_allTransactionsByAccountIdInquiryProcessor = allTransactionsByAccountIdInquiryProcessor;
+			_allTransactionsInPeriodAndByStatusInquiryProcessor = allTransactionsInPeriodAndByStatusInquiryProcessor;
 		}
 
 		[HttpGet("{id:long}")]
 		[Authorize(Roles = Constants.RoleNames.AllRoles)]
 		public Transaction GetTransactionById(long id)
 		{
-			var transaction = _transactionByIdInquiryProcessor.GetTransactionById(id);
-			return transaction;
+			return _transactionByIdInquiryProcessor.GetTransactionById(id);
 		}
 
 		[HttpGet("GetTransactionsByAccountId/{id:long}")]
 		public PagedDataInquiryResponse<Transaction> GetTransactionsByAccountId(long id)
 		{
 			var request = _pagedDataRequestFactory.Create(HttpContext);
-			var transactions = _allTransactionsByAccountIdInquiryProcessor.GetAllTransactionsByAccountId(request, id);
+			return _allTransactionsByAccountIdInquiryProcessor.GetAllTransactionsByAccountId(request, id);
+		}
 
-			return transactions;
+		[HttpGet("GetTransactionsByStatus/{id:long")]
+		[Authorize(Roles = Constants.RoleNames.AllRoles)]
+		public PagedDataInquiryResponse<Transaction> GetTransactionsInPeriodAndByStatus([FromQuery] DateTime dateFrom, [FromQuery] DateTime dateTo, long id)
+        {
+			var request = _pagedDataRequestFactory.Create(HttpContext);
+			return _allTransactionsInPeriodAndByStatusInquiryProcessor.GetAllTransactionsInPeriodAndByStatusId(request, dateFrom, dateTo, id);
 		}
 
 		[HttpGet]
@@ -63,9 +71,7 @@ namespace RldsApp.Web.Api.Controllers.V1
 		public PagedDataInquiryResponse<Transaction> GetTransactions()
 		{
 			var request = _pagedDataRequestFactory.Create(HttpContext);
-			var transactions = _allTransactionsInquiryProcessor.GetTransactions(request);
-
-			return transactions;
+			return _allTransactionsInquiryProcessor.GetTransactions(request);
 		}
 
 		[HttpPost]
@@ -80,8 +86,7 @@ namespace RldsApp.Web.Api.Controllers.V1
 		[Authorize(Roles = Constants.RoleNames.AllRoles)]
 		public ActionResult<Transaction> UpdateTransaction(long id, [FromBody] object updatedTransaction)
 		{
-			var transaction = _updateTransactionMaintenanceProcessor.UpdateTransaction(id, updatedTransaction);
-			return transaction;
+			return _updateTransactionMaintenanceProcessor.UpdateTransaction(id, updatedTransaction);
 		}
 
 		[HttpDelete("{id:long}")]
@@ -92,7 +97,6 @@ namespace RldsApp.Web.Api.Controllers.V1
 			{
 				return Ok();
 			}
-
 			return NotFound();
 		}
 	}

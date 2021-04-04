@@ -44,9 +44,6 @@ namespace RldsApp.Web.Api.Models
 		[Editable(false)]
 		public byte[] Version { get; set; }
 
-		[Editable(true)]
-		public RecurringTransaction RecurringTransaction { get; set; }
-
 		[Editable(false)]
 		public List<Link> Links
 		{

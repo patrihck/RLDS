@@ -29,24 +29,21 @@ namespace RldsApp.Web.Api.Controllers.V1
 		[Route("tasks/{taskId:long}/activations", Name = "StartTaskRoute")]
 		public Task StartTask(long taskId)
 		{
-			var task = _startTaskWorkflowProcessor.StartTask(taskId);
-			return task;
+			return _startTaskWorkflowProcessor.StartTask(taskId);
 		}
 
 		[HttpPost]
 		[Route("tasks/{taskId:long}/completions", Name = "CompleteTaskRoute")]
 		public Task CompleteTask(long taskId)
 		{
-			var task = _completeTaskWorkflowProcessor.CompleteTask(taskId);
-			return task;
+			return _completeTaskWorkflowProcessor.CompleteTask(taskId);
 		}
 
 		[HttpPost]
 		[Route("tasks/{taskId:long}/reactivations", Name = "ReactivateTaskRoute")]
 		public Task ReactivateTask(long taskId)
 		{
-			var task = _reactivateTaskWorkflowProcessor.ReactivateTask(taskId);
-			return task;
+			return _reactivateTaskWorkflowProcessor.ReactivateTask(taskId);
 		}
 	}
 }

@@ -42,27 +42,21 @@ namespace RldsApp.Web.Api.Controllers.V1
 		public PagedDataInquiryResponse<Currency> GetCurrencies()
 		{
 			var request = _pagedDataRequestFactory.Create(HttpContext);
-			var currencies = _allCurrenciesInquiryProcessor.GetCurrencies(request);
-
-			return currencies;
+			return _allCurrenciesInquiryProcessor.GetCurrencies(request);
 		}
 
 		[HttpGet("{id:long}")]
 		[Authorize(Roles = Constants.RoleNames.AllRoles)]
 		public Currency GetCurrencyById(long id)
 		{
-			var currency = _currencyByIdInquiryProcessor.GetCurrencyById(id);
-
-			return currency;
+			return _currencyByIdInquiryProcessor.GetCurrencyById(id);
 		}
 
 		[HttpGet("{acronym}")]
 		[Authorize(Roles = Constants.RoleNames.AllRoles)]
 		public Currency GetCurrencyByAcronym(string acronym)
 		{
-			var currency = _currencyByAcronymInquiryProcessor.GetCurrencyByAcronym(acronym);
-
-			return currency;
+			return _currencyByAcronymInquiryProcessor.GetCurrencyByAcronym(acronym);
 		}
 
 		[HttpPost]
@@ -70,15 +64,18 @@ namespace RldsApp.Web.Api.Controllers.V1
 		public ActionResult<Currency> AddCurrency(NewCurrency newCurrency)
 		{
 			var currency = _addCurrencyMaintenanceProcessor.AddCurrency(newCurrency);
-			return CreatedAtAction(nameof(GetCurrencyById), new { id = currency.Id }, currency);
+			object routeValues = new
+			{
+				id = currency.Id
+			};
+			return CreatedAtAction(nameof(GetCurrencyById), routeValues, currency);
 		}
 
 		[HttpPut("{id}")]
 		[Authorize(Roles = Constants.RoleNames.AllRoles)]
 		public Currency UpdateCurrency(long id, [FromBody] object updatedCurrency)
 		{
-			var currency = _updateCurrencyMaintenanceProcessor.UpdateCurrency(id, updatedCurrency);
-			return currency;
+			return _updateCurrencyMaintenanceProcessor.UpdateCurrency(id, updatedCurrency);
 		}
 
 		[HttpDelete("{id}")]
@@ -89,7 +86,6 @@ namespace RldsApp.Web.Api.Controllers.V1
 			{
 				return Ok();
 			}
-
 			return NoContent();
 		}
 	}
