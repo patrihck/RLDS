@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RldsApp.Common;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace RldsApp.Web.Api.Models
@@ -12,10 +13,7 @@ namespace RldsApp.Web.Api.Models
 		public Account Sender { get; set; }
 
 		[Required]
-		public Account Receiver { get; set; }
-
-		[Required]
-		public TransactionType Type { get; set; }
+		public Account Receiver { get; set; } 
 
 		[Required]
 		public TransactionCategory Category { get; set; }
@@ -35,5 +33,7 @@ namespace RldsApp.Web.Api.Models
 		public DateTime? StartDate { get; set; }
 
 		public DateTime? EndDate { get; set; }
+
+		public RulePeriod RulePeriod { get; set; }
 	}
 }

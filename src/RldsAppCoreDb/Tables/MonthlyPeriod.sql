@@ -11,6 +11,6 @@ CREATE TABLE [dbo].[RecurringTransactionMonthRule]
 		PRIMARY KEY ([MonthlyPeriodId]),
 	CONSTRAINT [FK_RecurringTransactionMonthRule_RecurringTransaction]
 		FOREIGN KEY ([RecurringRuleId])
-		REFERENCES [RecurringTransaction] ([RecurringRuleId]),
+		REFERENCES [RecurringRule] ([RecurringRuleId]),
 );
 GO

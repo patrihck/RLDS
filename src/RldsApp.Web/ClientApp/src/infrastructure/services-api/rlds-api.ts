@@ -5391,7 +5391,6 @@ export class RecurringRule implements IRecurringRule {
     user?: UserLeaf | undefined;
     sender?: Account | undefined;
     receiver?: Account | undefined;
-    type?: string | undefined;
     category?: TransactionCategory | undefined;
     currency?: Currency | undefined;
     description?: string | undefined;
@@ -5417,7 +5416,6 @@ export class RecurringRule implements IRecurringRule {
             this.user = _data["user"] ? UserLeaf.fromJS(_data["user"]) : <any>undefined;
             this.sender = _data["sender"] ? Account.fromJS(_data["sender"]) : <any>undefined;
             this.receiver = _data["receiver"] ? Account.fromJS(_data["receiver"]) : <any>undefined;
-            this.type = _data["type"];
             this.category = _data["category"] ? TransactionCategory.fromJS(_data["category"]) : <any>undefined;
             this.currency = _data["currency"] ? Currency.fromJS(_data["currency"]) : <any>undefined;
             this.description = _data["description"];
@@ -5447,7 +5445,6 @@ export class RecurringRule implements IRecurringRule {
         data["user"] = this.user ? this.user.toJSON() : <any>undefined;
         data["sender"] = this.sender ? this.sender.toJSON() : <any>undefined;
         data["receiver"] = this.receiver ? this.receiver.toJSON() : <any>undefined;
-        data["type"] = this.type;
         data["category"] = this.category ? this.category.toJSON() : <any>undefined;
         data["currency"] = this.currency ? this.currency.toJSON() : <any>undefined;
         data["description"] = this.description;
@@ -5470,7 +5467,6 @@ export interface IRecurringRule {
     user?: UserLeaf | undefined;
     sender?: Account | undefined;
     receiver?: Account | undefined;
-    type?: string | undefined;
     category?: TransactionCategory | undefined;
     currency?: Currency | undefined;
     description?: string | undefined;
@@ -5670,7 +5666,6 @@ export class NewRecurringRule implements INewRecurringRule {
     user!: User;
     sender!: Account;
     receiver!: Account;
-    type!: TransactionType;
     category!: TransactionCategory;
     currency!: Currency;
     description!: string;
@@ -5678,6 +5673,7 @@ export class NewRecurringRule implements INewRecurringRule {
     isActive!: boolean;
     startDate?: string | undefined;
     endDate?: string | undefined;
+    rulePeriod!: RulePeriod;
 
     constructor(data?: INewRecurringRule) {
         if (data) {
@@ -5690,7 +5686,6 @@ export class NewRecurringRule implements INewRecurringRule {
             this.user = new User();
             this.sender = new Account();
             this.receiver = new Account();
-            this.type = new TransactionType();
             this.category = new TransactionCategory();
             this.currency = new Currency();
         }
@@ -5701,7 +5696,6 @@ export class NewRecurringRule implements INewRecurringRule {
             this.user = _data["user"] ? User.fromJS(_data["user"]) : new User();
             this.sender = _data["sender"] ? Account.fromJS(_data["sender"]) : new Account();
             this.receiver = _data["receiver"] ? Account.fromJS(_data["receiver"]) : new Account();
-            this.type = _data["type"] ? TransactionType.fromJS(_data["type"]) : new TransactionType();
             this.category = _data["category"] ? TransactionCategory.fromJS(_data["category"]) : new TransactionCategory();
             this.currency = _data["currency"] ? Currency.fromJS(_data["currency"]) : new Currency();
             this.description = _data["description"];
@@ -5709,6 +5703,7 @@ export class NewRecurringRule implements INewRecurringRule {
             this.isActive = _data["isActive"];
             this.startDate = _data["startDate"];
             this.endDate = _data["endDate"];
+            this.rulePeriod = _data["rulePeriod"];
         }
     }
 
@@ -5724,7 +5719,6 @@ export class NewRecurringRule implements INewRecurringRule {
         data["user"] = this.user ? this.user.toJSON() : <any>undefined;
         data["sender"] = this.sender ? this.sender.toJSON() : <any>undefined;
         data["receiver"] = this.receiver ? this.receiver.toJSON() : <any>undefined;
-        data["type"] = this.type ? this.type.toJSON() : <any>undefined;
         data["category"] = this.category ? this.category.toJSON() : <any>undefined;
         data["currency"] = this.currency ? this.currency.toJSON() : <any>undefined;
         data["description"] = this.description;
@@ -5732,6 +5726,7 @@ export class NewRecurringRule implements INewRecurringRule {
         data["isActive"] = this.isActive;
         data["startDate"] = this.startDate;
         data["endDate"] = this.endDate;
+        data["rulePeriod"] = this.rulePeriod;
         return data; 
     }
 }
@@ -5740,7 +5735,6 @@ export interface INewRecurringRule {
     user: User;
     sender: Account;
     receiver: Account;
-    type: TransactionType;
     category: TransactionCategory;
     currency: Currency;
     description: string;
@@ -5748,6 +5742,7 @@ export interface INewRecurringRule {
     isActive: boolean;
     startDate?: string | undefined;
     endDate?: string | undefined;
+    rulePeriod: RulePeriod;
 }
 
 export class User extends UserLeaf implements IUser {
@@ -5791,50 +5786,10 @@ export interface IUser extends IUserLeaf {
     roles?: Role[] | undefined;
 }
 
-export class TransactionType implements ITransactionType {
-    id!: TransactionTypeValue;
-    name?: string | undefined;
-
-    constructor(data?: ITransactionType) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.id = _data["id"];
-            this.name = _data["name"];
-        }
-    }
-
-    static fromJS(data: any): TransactionType {
-        data = typeof data === 'object' ? data : {};
-        let result = new TransactionType();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["id"] = this.id;
-        data["name"] = this.name;
-        return data; 
-    }
-}
-
-export interface ITransactionType {
-    id: TransactionTypeValue;
-    name?: string | undefined;
-}
-
-export enum TransactionTypeValue {
-    IncomingTransfer = 100,
-    OutgoingTransfer = 200,
-    Transfer = 300,
+export enum RulePeriod {
+    Daily = 0,
+    Weekly = 1,
+    Monthly = 2,
 }
 
 export class Task implements ITask {
@@ -6242,6 +6197,52 @@ export interface ITransaction {
     amount: number;
     version?: string | undefined;
     links?: Link[] | undefined;
+}
+
+export class TransactionType implements ITransactionType {
+    id!: TransactionTypeValue;
+    name?: string | undefined;
+
+    constructor(data?: ITransactionType) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.id = _data["id"];
+            this.name = _data["name"];
+        }
+    }
+
+    static fromJS(data: any): TransactionType {
+        data = typeof data === 'object' ? data : {};
+        let result = new TransactionType();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["id"] = this.id;
+        data["name"] = this.name;
+        return data; 
+    }
+}
+
+export interface ITransactionType {
+    id: TransactionTypeValue;
+    name?: string | undefined;
+}
+
+export enum TransactionTypeValue {
+    IncomingTransfer = 100,
+    OutgoingTransfer = 200,
+    Transfer = 300,
 }
 
 export class PagedDataInquiryResponseOfTransaction implements IPagedDataInquiryResponseOfTransaction {

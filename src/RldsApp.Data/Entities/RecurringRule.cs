@@ -14,8 +14,7 @@ namespace RldsApp.Data.Entities
 		public virtual long Id { get; set; }
 		public virtual User User { get; set; }
 		public virtual Account Sender { get; set; }
-		public virtual Account Receiver { get; set; }
-		public virtual TransactionType Type { get; set; }
+		public virtual Account Receiver { get; set; } 
 		public virtual TransactionCategory Category { get; set; }
 		public virtual Currency Currency { get; set; }
 		public virtual string Description { get; set; }

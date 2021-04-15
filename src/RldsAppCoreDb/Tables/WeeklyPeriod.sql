@@ -17,6 +17,6 @@ CREATE TABLE [dbo].[RecurringTransactionWeekRule]
 		PRIMARY KEY ([WeeklyPeriodId]),
 	CONSTRAINT [FK_RecurringTransactionWeekRule_RecurringTransaction]
 		FOREIGN KEY ([RecurringRuleId])
-		REFERENCES [RecurringTransaction] ([RecurringRuleId]),
+		REFERENCES [RecurringRule] ([RecurringRuleId]),
 );
 GO

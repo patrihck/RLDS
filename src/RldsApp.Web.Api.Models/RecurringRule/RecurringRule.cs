@@ -18,10 +18,7 @@ namespace RldsApp.Web.Api.Models
 		public Account Sender { get; set; }
 
 		[Editable(true)]
-		public Account Receiver { get; set; }
-
-		[Editable(true)]
-		public Type Type { get; set; }
+		public Account Receiver { get; set; } 
 
 		[Editable(true)]
 		public TransactionCategory Category { get; set; }

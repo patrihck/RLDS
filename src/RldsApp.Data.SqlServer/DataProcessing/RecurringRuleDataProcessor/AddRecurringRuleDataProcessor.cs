@@ -28,8 +28,7 @@ namespace RldsApp.Data.SqlServer.DataProcessing.RecurringRuleDataProcessor
 		{
 			recurringRule.User = session.GetChildEntity(recurringRule.User, q => q.Id, () => Messages.UserNotFound);
 			recurringRule.Sender = session.GetChildEntity(recurringRule.Sender, q => q.Id, () => Messages.AccountNotFound);
-			recurringRule.Receiver = session.GetChildEntity(recurringRule.Receiver, q => q.Id, () => Messages.AccountNotFound);
-			recurringRule.Type = session.GetChildEntity(recurringRule.Type, q => q.Id, () => Messages.TransactionTypeNotFound);
+			recurringRule.Receiver = session.GetChildEntity(recurringRule.Receiver, q => q.Id, () => Messages.AccountNotFound); 
 			recurringRule.Category = session.GetChildEntity(recurringRule.Category, q => q.Id, () => Messages.TransactionCategoryNotFound);
 			recurringRule.Currency = session.GetChildEntity(recurringRule.Currency, q => q.Id, () => Messages.CurrencyNotFound);
 		}

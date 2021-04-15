@@ -3481,9 +3481,6 @@
         "receiver": {
           "$ref": "#/definitions/Account"
         },
-        "type": {
-          "type": "string"
-        },
         "category": {
           "$ref": "#/definitions/TransactionCategory"
         },
@@ -3615,12 +3612,12 @@
         "user",
         "sender",
         "receiver",
-        "type",
         "category",
         "currency",
         "description",
         "amount",
-        "isActive"
+        "isActive",
+        "rulePeriod"
       ],
       "properties": {
         "user": {
@@ -3631,9 +3628,6 @@
         },
         "receiver": {
           "$ref": "#/definitions/Account"
-        },
-        "type": {
-          "$ref": "#/definitions/TransactionType"
         },
         "category": {
           "$ref": "#/definitions/TransactionCategory"
@@ -3658,6 +3652,9 @@
         "endDate": {
           "type": "string",
           "format": "date-time"
+        },
+        "rulePeriod": {
+          "$ref": "#/definitions/RulePeriod"
         }
       }
     },
@@ -3679,32 +3676,18 @@
         }
       ]
     },
-    "TransactionType": {
-      "type": "object",
-      "required": [
-        "id"
-      ],
-      "properties": {
-        "id": {
-          "$ref": "#/definitions/TransactionTypeValue"
-        },
-        "name": {
-          "type": "string"
-        }
-      }
-    },
-    "TransactionTypeValue": {
+    "RulePeriod": {
       "type": "integer",
       "description": "",
       "x-enumNames": [
-        "IncomingTransfer",
-        "OutgoingTransfer",
-        "Transfer"
+        "Daily",
+        "Weekly",
+        "Monthly"
       ],
       "enum": [
-        100,
-        200,
-        300
+        0,
+        1,
+        2
       ]
     },
     "Task": {
@@ -3930,6 +3913,34 @@
           }
         }
       }
+    },
+    "TransactionType": {
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/definitions/TransactionTypeValue"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "TransactionTypeValue": {
+      "type": "integer",
+      "description": "",
+      "x-enumNames": [
+        "IncomingTransfer",
+        "OutgoingTransfer",
+        "Transfer"
+      ],
+      "enum": [
+        100,
+        200,
+        300
+      ]
     },
     "PagedDataInquiryResponseOfTransaction": {
       "type": "object",

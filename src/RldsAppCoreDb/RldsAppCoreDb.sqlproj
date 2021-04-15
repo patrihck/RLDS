@@ -71,10 +71,10 @@
     <Build Include="Tables\CurrencyRate.sql" />
     <Build Include="Tables\TransactionCategory.sql" />
     <Build Include="Tables\Group.sql" />
-    <Build Include="Tables\RecurringTransaction.sql" />
-    <Build Include="Tables\RecurringTransactionDayRule.sql" />
-    <Build Include="Tables\RecurringTransactionMonthRule.sql" />
-    <Build Include="Tables\RecurringTransactionWeekRule.sql" />
+    <Build Include="Tables\DailyPeriod.sql" />
+    <Build Include="Tables\MonthlyPeriod.sql" />
+    <Build Include="Tables\RecurringRule.sql" />
+    <Build Include="Tables\WeeklyPeriod.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="RldsAppCoreDb.refactorlog" />

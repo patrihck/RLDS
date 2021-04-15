@@ -10,6 +10,6 @@ CREATE TABLE [dbo].[RecurringTransactionDayRule]
 		PRIMARY KEY ([DailyPeriodId]),
 	CONSTRAINT [FK_RecurringTransactionDayRule_RecurringTransaction]
 		FOREIGN KEY ([RecurringRuleId])
-		REFERENCES [RecurringTransaction] ([RecurringRuleId]),
+		REFERENCES [RecurringRule] ([RecurringRuleId]),
 );
 GO

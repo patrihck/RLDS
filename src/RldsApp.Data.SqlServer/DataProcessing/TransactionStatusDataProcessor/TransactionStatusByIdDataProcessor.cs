@@ -16,7 +16,12 @@ namespace RldsApp.Data.SqlServer.DataProcessing.TransactionStatusDataProcessor
 
         public TransactionStatus GetTransactionStatusById(long transactionStatusId)
         {
-            throw new System.NotImplementedException();
+			return new TransactionStatus()
+			{
+				Id = TransactionStatusValue.Planned,
+				Name = "Przypau",
+				Ordinal = 1
+			};
         }
     }
 }
