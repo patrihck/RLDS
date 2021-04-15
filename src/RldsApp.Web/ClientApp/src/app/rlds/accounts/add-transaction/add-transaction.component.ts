@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NewTransaction, TransactionsClient, RecurringTransaction, RecurringTransactionsClient, User, UsersClient, Transaction, TransactionStatus, TransactionStatusClient, TransactionType, TransactionTypesClient, Currency, CurrencyClient, TransactionCategoryClient, TransactionCategory, AccountsClient, Account, UserLeaf } from '../../../../infrastructure/services-api/rlds-api';
+import { NewTransaction, TransactionsClient, RecurringRule, RecurringRulesClient, User, UsersClient, Transaction, TransactionStatus, TransactionStatusClient, TransactionType, TransactionTypesClient, Currency, CurrencyClient, TransactionCategoryClient, TransactionCategory, AccountsClient, Account, UserLeaf } from '../../../../infrastructure/services-api/rlds-api';
 import { LayoutService, MessageSeverity } from '../../../../infrastructure/services/layout/layout.service';
 import { Router } from '@angular/router';
 import { Helper } from '../../../../infrastructure/helpers/helper';
@@ -19,7 +19,7 @@ export class AddTransactionComponent implements OnInit {
   statuses : Array<TransactionStatus>;
   types : Array<TransactionType>;
   users: Array<User>;
-  recuringTransactions: Array<RecurringTransaction>;
+  recuringTransactions: Array<RecurringRule>;
 
   constructor(private readonly layoutService: LayoutService,
     private readonly currencyClient: CurrencyClient,
@@ -28,7 +28,7 @@ export class AddTransactionComponent implements OnInit {
     private readonly transactionTypesClient: TransactionTypesClient,
     private readonly transactionStatusClient: TransactionStatusClient,
     private readonly usersClient: UsersClient,
-    private readonly recuringTransactionClient: RecurringTransactionsClient,
+    private readonly recuringTransactionClient: RecurringRulesClient,
     private readonly transactonsClient: TransactionsClient,
     private readonly router: Router) { }
 
