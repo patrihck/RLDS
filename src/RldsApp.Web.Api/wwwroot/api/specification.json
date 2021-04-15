@@ -1088,57 +1088,12 @@
         }
       }
     },
-    "/api/{v}/PlannedTransactions": {
+    "/api/{v}/RecurringRules/{id}": {
       "get": {
         "tags": [
-          "PlannedTransactions"
+          "RecurringRules"
         ],
-        "operationId": "PlannedTransactions_GetPlannedTransactions",
-        "produces": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "parameters": [
-          {
-            "type": "string",
-            "name": "dateFrom",
-            "in": "query",
-            "format": "date-time",
-            "x-nullable": false
-          },
-          {
-            "type": "string",
-            "name": "dateTo",
-            "in": "query",
-            "format": "date-time",
-            "x-nullable": false
-          },
-          {
-            "type": "string",
-            "name": "v",
-            "in": "path",
-            "required": true,
-            "x-nullable": false
-          }
-        ],
-        "responses": {
-          "200": {
-            "x-nullable": false,
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/PagedDataInquiryResponseOfTransaction"
-            }
-          }
-        }
-      }
-    },
-    "/api/{v}/RecurringTransactions/{id}": {
-      "get": {
-        "tags": [
-          "RecurringTransactions"
-        ],
-        "operationId": "RecurringTransactions_GetRecurringTransactionById",
+        "operationId": "RecurringRules_GetRecurringRuleById",
         "produces": [
           "text/plain",
           "application/json",
@@ -1166,16 +1121,16 @@
             "x-nullable": false,
             "description": "",
             "schema": {
-              "$ref": "#/definitions/RecurringTransaction"
+              "$ref": "#/definitions/RecurringRule"
             }
           }
         }
       },
       "put": {
         "tags": [
-          "RecurringTransactions"
+          "RecurringRules"
         ],
-        "operationId": "RecurringTransactions_UpdateRecurringTransaction",
+        "operationId": "RecurringRules_UpdateRecurringRule",
         "consumes": [
           "application/json-patch+json",
           "application/json",
@@ -1197,7 +1152,7 @@
             "x-nullable": false
           },
           {
-            "name": "updatedRecurringTransaction",
+            "name": "updatedRecurringRule",
             "in": "body",
             "required": true,
             "schema": {},
@@ -1216,16 +1171,16 @@
             "x-nullable": false,
             "description": "",
             "schema": {
-              "$ref": "#/definitions/RecurringTransaction"
+              "$ref": "#/definitions/RecurringRule"
             }
           }
         }
       },
       "delete": {
         "tags": [
-          "RecurringTransactions"
+          "RecurringRules"
         ],
-        "operationId": "RecurringTransactions_DeleteRecurringTransaction",
+        "operationId": "RecurringRules_DeleteRecurringRule",
         "parameters": [
           {
             "type": "integer",
@@ -1254,12 +1209,12 @@
         }
       }
     },
-    "/api/{v}/RecurringTransactions": {
+    "/api/{v}/RecurringRules": {
       "get": {
         "tags": [
-          "RecurringTransactions"
+          "RecurringRules"
         ],
-        "operationId": "RecurringTransactions_GetRecurringTransactions",
+        "operationId": "RecurringRules_GetRecurringRules",
         "produces": [
           "text/plain",
           "application/json",
@@ -1279,16 +1234,16 @@
             "x-nullable": false,
             "description": "",
             "schema": {
-              "$ref": "#/definitions/PagedDataInquiryResponseOfRecurringTransaction"
+              "$ref": "#/definitions/PagedDataInquiryResponseOfRecurringRule"
             }
           }
         }
       },
       "post": {
         "tags": [
-          "RecurringTransactions"
+          "RecurringRules"
         ],
-        "operationId": "RecurringTransactions_AddRecurringTransaction",
+        "operationId": "RecurringRules_AddRecurringRuleAndPlannedTransactions",
         "consumes": [
           "application/json-patch+json",
           "application/json",
@@ -1302,11 +1257,11 @@
         ],
         "parameters": [
           {
-            "name": "newRecurringTransaction",
+            "name": "newRecurringRule",
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/NewRecurringTransaction"
+              "$ref": "#/definitions/NewRecurringRule"
             },
             "x-nullable": false
           },
@@ -1323,7 +1278,7 @@
             "x-nullable": false,
             "description": "",
             "schema": {
-              "$ref": "#/definitions/RecurringTransaction"
+              "$ref": "#/definitions/RecurringRule"
             }
           }
         }
@@ -2032,6 +1987,59 @@
           "text/json"
         ],
         "parameters": [
+          {
+            "type": "integer",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "format": "int64",
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "v",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/PagedDataInquiryResponseOfTransaction"
+            }
+          }
+        }
+      }
+    },
+    "/api/{v}/Transactions/GetTransactionsByStatus/{id}": {
+      "get": {
+        "tags": [
+          "Transactions"
+        ],
+        "operationId": "Transactions_GetTransactionsInPeriodAndByStatus",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "dateFrom",
+            "in": "query",
+            "format": "date-time",
+            "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "dateTo",
+            "in": "query",
+            "format": "date-time",
+            "x-nullable": false
+          },
           {
             "type": "integer",
             "name": "id",
@@ -3452,55 +3460,17 @@
         }
       }
     },
-    "PagedDataInquiryResponseOfTransaction": {
-      "type": "object",
-      "required": [
-        "pageSize",
-        "pageNumber",
-        "pageCount"
-      ],
-      "properties": {
-        "items": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Transaction"
-          }
-        },
-        "pageSize": {
-          "type": "integer",
-          "format": "int32"
-        },
-        "links": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Link"
-          }
-        },
-        "pageNumber": {
-          "type": "integer",
-          "format": "int32"
-        },
-        "pageCount": {
-          "type": "integer",
-          "format": "int32"
-        }
-      }
-    },
-    "Transaction": {
+    "RecurringRule": {
       "type": "object",
       "required": [
         "id",
-        "date",
-        "amount"
+        "amount",
+        "isActive"
       ],
       "properties": {
         "id": {
           "type": "integer",
           "format": "int64"
-        },
-        "date": {
-          "type": "string",
-          "format": "date-time"
         },
         "user": {
           "$ref": "#/definitions/UserLeaf"
@@ -3512,13 +3482,10 @@
           "$ref": "#/definitions/Account"
         },
         "type": {
-          "$ref": "#/definitions/TransactionType"
+          "type": "string"
         },
         "category": {
           "$ref": "#/definitions/TransactionCategory"
-        },
-        "status": {
-          "$ref": "#/definitions/TransactionStatus"
         },
         "currency": {
           "$ref": "#/definitions/Currency"
@@ -3530,12 +3497,20 @@
           "type": "number",
           "format": "decimal"
         },
+        "isActive": {
+          "type": "boolean"
+        },
+        "startDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "endDate": {
+          "type": "string",
+          "format": "date-time"
+        },
         "version": {
           "type": "string",
           "format": "byte"
-        },
-        "recurringTransaction": {
-          "$ref": "#/definitions/RecurringTransaction"
         },
         "links": {
           "type": "array",
@@ -3544,34 +3519,6 @@
           }
         }
       }
-    },
-    "TransactionType": {
-      "type": "object",
-      "required": [
-        "id"
-      ],
-      "properties": {
-        "id": {
-          "$ref": "#/definitions/TransactionTypeValue"
-        },
-        "name": {
-          "type": "string"
-        }
-      }
-    },
-    "TransactionTypeValue": {
-      "type": "integer",
-      "description": "",
-      "x-enumNames": [
-        "IncomingTransfer",
-        "OutgoingTransfer",
-        "Transfer"
-      ],
-      "enum": [
-        100,
-        200,
-        300
-      ]
     },
     "TransactionCategory": {
       "type": "object",
@@ -3628,90 +3575,7 @@
         }
       }
     },
-    "TransactionStatus": {
-      "type": "object",
-      "required": [
-        "id",
-        "ordinal"
-      ],
-      "properties": {
-        "id": {
-          "$ref": "#/definitions/TransactionStatusValue"
-        },
-        "name": {
-          "type": "string"
-        },
-        "ordinal": {
-          "type": "integer",
-          "format": "int32"
-        }
-      }
-    },
-    "TransactionStatusValue": {
-      "type": "integer",
-      "description": "",
-      "x-enumNames": [
-        "Planned",
-        "Awaiting",
-        "Paid",
-        "Outdated"
-      ],
-      "enum": [
-        100,
-        200,
-        300,
-        400
-      ]
-    },
-    "RecurringTransaction": {
-      "type": "object",
-      "required": [
-        "id",
-        "amount"
-      ],
-      "properties": {
-        "id": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "user": {
-          "$ref": "#/definitions/UserLeaf"
-        },
-        "sender": {
-          "$ref": "#/definitions/Account"
-        },
-        "receiver": {
-          "$ref": "#/definitions/Account"
-        },
-        "type": {
-          "type": "string"
-        },
-        "category": {
-          "$ref": "#/definitions/TransactionCategory"
-        },
-        "currency": {
-          "$ref": "#/definitions/Currency"
-        },
-        "description": {
-          "type": "string"
-        },
-        "amount": {
-          "type": "number",
-          "format": "decimal"
-        },
-        "version": {
-          "type": "string",
-          "format": "byte"
-        },
-        "links": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Link"
-          }
-        }
-      }
-    },
-    "PagedDataInquiryResponseOfRecurringTransaction": {
+    "PagedDataInquiryResponseOfRecurringRule": {
       "type": "object",
       "required": [
         "pageSize",
@@ -3722,7 +3586,7 @@
         "items": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/RecurringTransaction"
+            "$ref": "#/definitions/RecurringRule"
           }
         },
         "pageSize": {
@@ -3745,7 +3609,7 @@
         }
       }
     },
-    "NewRecurringTransaction": {
+    "NewRecurringRule": {
       "type": "object",
       "required": [
         "user",
@@ -3755,7 +3619,8 @@
         "category",
         "currency",
         "description",
-        "amount"
+        "amount",
+        "isActive"
       ],
       "properties": {
         "user": {
@@ -3782,6 +3647,17 @@
         "amount": {
           "type": "number",
           "format": "decimal"
+        },
+        "isActive": {
+          "type": "boolean"
+        },
+        "startDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "endDate": {
+          "type": "string",
+          "format": "date-time"
         }
       }
     },
@@ -3801,6 +3677,34 @@
             }
           }
         }
+      ]
+    },
+    "TransactionType": {
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/definitions/TransactionTypeValue"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "TransactionTypeValue": {
+      "type": "integer",
+      "description": "",
+      "x-enumNames": [
+        "IncomingTransfer",
+        "OutgoingTransfer",
+        "Transfer"
+      ],
+      "enum": [
+        100,
+        200,
+        300
       ]
     },
     "Task": {
@@ -3852,6 +3756,41 @@
           }
         }
       }
+    },
+    "TransactionStatus": {
+      "type": "object",
+      "required": [
+        "id",
+        "ordinal"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/definitions/TransactionStatusValue"
+        },
+        "name": {
+          "type": "string"
+        },
+        "ordinal": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "TransactionStatusValue": {
+      "type": "integer",
+      "description": "",
+      "x-enumNames": [
+        "Planned",
+        "Awaiting",
+        "Paid",
+        "Outdated"
+      ],
+      "enum": [
+        100,
+        200,
+        300,
+        400
+      ]
     },
     "PagedDataInquiryResponseOfTask": {
       "type": "object",
@@ -3936,6 +3875,96 @@
         }
       }
     },
+    "Transaction": {
+      "type": "object",
+      "required": [
+        "id",
+        "date",
+        "amount"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "date": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "user": {
+          "$ref": "#/definitions/UserLeaf"
+        },
+        "sender": {
+          "$ref": "#/definitions/Account"
+        },
+        "receiver": {
+          "$ref": "#/definitions/Account"
+        },
+        "type": {
+          "$ref": "#/definitions/TransactionType"
+        },
+        "category": {
+          "$ref": "#/definitions/TransactionCategory"
+        },
+        "status": {
+          "$ref": "#/definitions/TransactionStatus"
+        },
+        "currency": {
+          "$ref": "#/definitions/Currency"
+        },
+        "description": {
+          "type": "string"
+        },
+        "amount": {
+          "type": "number",
+          "format": "decimal"
+        },
+        "version": {
+          "type": "string",
+          "format": "byte"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Link"
+          }
+        }
+      }
+    },
+    "PagedDataInquiryResponseOfTransaction": {
+      "type": "object",
+      "required": [
+        "pageSize",
+        "pageNumber",
+        "pageCount"
+      ],
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Transaction"
+          }
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Link"
+          }
+        },
+        "pageNumber": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "pageCount": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
     "NewTransaction": {
       "type": "object",
       "required": [
@@ -3983,9 +4012,6 @@
         "amount": {
           "type": "number",
           "format": "decimal"
-        },
-        "recurringTransaction": {
-          "$ref": "#/definitions/RecurringTransaction"
         }
       }
     },

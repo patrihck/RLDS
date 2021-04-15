@@ -58,7 +58,7 @@ namespace RldsApp.Web.Api.Controllers.V1
 			return _allTransactionsByAccountIdInquiryProcessor.GetAllTransactionsByAccountId(request, id);
 		}
 
-		[HttpGet("GetTransactionsByStatus/{id:long")]
+		[HttpGet("GetTransactionsByStatus/{id:long}")]
 		[Authorize(Roles = Constants.RoleNames.AllRoles)]
 		public PagedDataInquiryResponse<Transaction> GetTransactionsInPeriodAndByStatus([FromQuery] DateTime dateFrom, [FromQuery] DateTime dateTo, long id)
         {

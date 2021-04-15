@@ -1568,14 +1568,18 @@ export class GroupsClient implements IGroupsClient {
     }
 }
 
-export interface IPlannedTransactionsClient {
-    getPlannedTransactions(v: string, dateFrom?: string | undefined, dateTo?: string | undefined): Observable<PagedDataInquiryResponseOfTransaction>;
+export interface IRecurringRulesClient {
+    getRecurringRuleById(id: number, v: string): Observable<RecurringRule>;
+    updateRecurringRule(id: number, updatedRecurringRule: any, v: string): Observable<RecurringRule>;
+    deleteRecurringRule(id: number, v: string): Observable<FileResponse | null>;
+    getRecurringRules(v: string): Observable<PagedDataInquiryResponseOfRecurringRule>;
+    addRecurringRuleAndPlannedTransactions(newRecurringRule: NewRecurringRule, v: string): Observable<RecurringRule>;
 }
 
 @Injectable({
     providedIn: 'root'
 })
-export class PlannedTransactionsClient implements IPlannedTransactionsClient {
+export class RecurringRulesClient implements IRecurringRulesClient {
     private http: HttpClient;
     private baseUrl: string;
     protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
@@ -1585,89 +1589,8 @@ export class PlannedTransactionsClient implements IPlannedTransactionsClient {
         this.baseUrl = baseUrl !== undefined && baseUrl !== null ? baseUrl : "";
     }
 
-    getPlannedTransactions(v: string, dateFrom?: string | undefined, dateTo?: string | undefined): Observable<PagedDataInquiryResponseOfTransaction> {
-        let url_ = this.baseUrl + "/api/{v}/PlannedTransactions?";
-        if (v === undefined || v === null)
-            throw new Error("The parameter 'v' must be defined.");
-        url_ = url_.replace("{v}", encodeURIComponent("" + v));
-        if (dateFrom === null)
-            throw new Error("The parameter 'dateFrom' cannot be null.");
-        else if (dateFrom !== undefined)
-            url_ += "dateFrom=" + encodeURIComponent("" + dateFrom) + "&";
-        if (dateTo === null)
-            throw new Error("The parameter 'dateTo' cannot be null.");
-        else if (dateTo !== undefined)
-            url_ += "dateTo=" + encodeURIComponent("" + dateTo) + "&";
-        url_ = url_.replace(/[?&]$/, "");
-
-        let options_ : any = {
-            observe: "response",
-            responseType: "blob",
-            headers: new HttpHeaders({
-                "Accept": "application/json"
-            })
-        };
-
-        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processGetPlannedTransactions(response_);
-        })).pipe(_observableCatch((response_: any) => {
-            if (response_ instanceof HttpResponseBase) {
-                try {
-                    return this.processGetPlannedTransactions(<any>response_);
-                } catch (e) {
-                    return <Observable<PagedDataInquiryResponseOfTransaction>><any>_observableThrow(e);
-                }
-            } else
-                return <Observable<PagedDataInquiryResponseOfTransaction>><any>_observableThrow(response_);
-        }));
-    }
-
-    protected processGetPlannedTransactions(response: HttpResponseBase): Observable<PagedDataInquiryResponseOfTransaction> {
-        const status = response.status;
-        const responseBlob =
-            response instanceof HttpResponse ? response.body :
-            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
-
-        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
-        if (status === 200) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = PagedDataInquiryResponseOfTransaction.fromJS(resultData200);
-            return _observableOf(result200);
-            }));
-        } else if (status !== 200 && status !== 204) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            }));
-        }
-        return _observableOf<PagedDataInquiryResponseOfTransaction>(<any>null);
-    }
-}
-
-export interface IRecurringTransactionsClient {
-    getRecurringTransactionById(id: number, v: string): Observable<RecurringTransaction>;
-    updateRecurringTransaction(id: number, updatedRecurringTransaction: any, v: string): Observable<RecurringTransaction>;
-    deleteRecurringTransaction(id: number, v: string): Observable<FileResponse | null>;
-    getRecurringTransactions(v: string): Observable<PagedDataInquiryResponseOfRecurringTransaction>;
-    addRecurringTransaction(newRecurringTransaction: NewRecurringTransaction, v: string): Observable<RecurringTransaction>;
-}
-
-@Injectable({
-    providedIn: 'root'
-})
-export class RecurringTransactionsClient implements IRecurringTransactionsClient {
-    private http: HttpClient;
-    private baseUrl: string;
-    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
-
-    constructor(@Inject(HttpClient) http: HttpClient, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
-        this.http = http;
-        this.baseUrl = baseUrl !== undefined && baseUrl !== null ? baseUrl : "";
-    }
-
-    getRecurringTransactionById(id: number, v: string): Observable<RecurringTransaction> {
-        let url_ = this.baseUrl + "/api/{v}/RecurringTransactions/{id}";
+    getRecurringRuleById(id: number, v: string): Observable<RecurringRule> {
+        let url_ = this.baseUrl + "/api/{v}/RecurringRules/{id}";
         if (id === undefined || id === null)
             throw new Error("The parameter 'id' must be defined.");
         url_ = url_.replace("{id}", encodeURIComponent("" + id));
@@ -1685,20 +1608,20 @@ export class RecurringTransactionsClient implements IRecurringTransactionsClient
         };
 
         return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processGetRecurringTransactionById(response_);
+            return this.processGetRecurringRuleById(response_);
         })).pipe(_observableCatch((response_: any) => {
             if (response_ instanceof HttpResponseBase) {
                 try {
-                    return this.processGetRecurringTransactionById(<any>response_);
+                    return this.processGetRecurringRuleById(<any>response_);
                 } catch (e) {
-                    return <Observable<RecurringTransaction>><any>_observableThrow(e);
+                    return <Observable<RecurringRule>><any>_observableThrow(e);
                 }
             } else
-                return <Observable<RecurringTransaction>><any>_observableThrow(response_);
+                return <Observable<RecurringRule>><any>_observableThrow(response_);
         }));
     }
 
-    protected processGetRecurringTransactionById(response: HttpResponseBase): Observable<RecurringTransaction> {
+    protected processGetRecurringRuleById(response: HttpResponseBase): Observable<RecurringRule> {
         const status = response.status;
         const responseBlob =
             response instanceof HttpResponse ? response.body :
@@ -1709,7 +1632,7 @@ export class RecurringTransactionsClient implements IRecurringTransactionsClient
             return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
             let result200: any = null;
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = RecurringTransaction.fromJS(resultData200);
+            result200 = RecurringRule.fromJS(resultData200);
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -1717,11 +1640,11 @@ export class RecurringTransactionsClient implements IRecurringTransactionsClient
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             }));
         }
-        return _observableOf<RecurringTransaction>(<any>null);
+        return _observableOf<RecurringRule>(<any>null);
     }
 
-    updateRecurringTransaction(id: number, updatedRecurringTransaction: any, v: string): Observable<RecurringTransaction> {
-        let url_ = this.baseUrl + "/api/{v}/RecurringTransactions/{id}";
+    updateRecurringRule(id: number, updatedRecurringRule: any, v: string): Observable<RecurringRule> {
+        let url_ = this.baseUrl + "/api/{v}/RecurringRules/{id}";
         if (id === undefined || id === null)
             throw new Error("The parameter 'id' must be defined.");
         url_ = url_.replace("{id}", encodeURIComponent("" + id));
@@ -1730,7 +1653,7 @@ export class RecurringTransactionsClient implements IRecurringTransactionsClient
         url_ = url_.replace("{v}", encodeURIComponent("" + v));
         url_ = url_.replace(/[?&]$/, "");
 
-        const content_ = JSON.stringify(updatedRecurringTransaction);
+        const content_ = JSON.stringify(updatedRecurringRule);
 
         let options_ : any = {
             body: content_,
@@ -1743,20 +1666,20 @@ export class RecurringTransactionsClient implements IRecurringTransactionsClient
         };
 
         return this.http.request("put", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processUpdateRecurringTransaction(response_);
+            return this.processUpdateRecurringRule(response_);
         })).pipe(_observableCatch((response_: any) => {
             if (response_ instanceof HttpResponseBase) {
                 try {
-                    return this.processUpdateRecurringTransaction(<any>response_);
+                    return this.processUpdateRecurringRule(<any>response_);
                 } catch (e) {
-                    return <Observable<RecurringTransaction>><any>_observableThrow(e);
+                    return <Observable<RecurringRule>><any>_observableThrow(e);
                 }
             } else
-                return <Observable<RecurringTransaction>><any>_observableThrow(response_);
+                return <Observable<RecurringRule>><any>_observableThrow(response_);
         }));
     }
 
-    protected processUpdateRecurringTransaction(response: HttpResponseBase): Observable<RecurringTransaction> {
+    protected processUpdateRecurringRule(response: HttpResponseBase): Observable<RecurringRule> {
         const status = response.status;
         const responseBlob =
             response instanceof HttpResponse ? response.body :
@@ -1767,7 +1690,7 @@ export class RecurringTransactionsClient implements IRecurringTransactionsClient
             return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
             let result200: any = null;
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = RecurringTransaction.fromJS(resultData200);
+            result200 = RecurringRule.fromJS(resultData200);
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -1775,11 +1698,11 @@ export class RecurringTransactionsClient implements IRecurringTransactionsClient
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             }));
         }
-        return _observableOf<RecurringTransaction>(<any>null);
+        return _observableOf<RecurringRule>(<any>null);
     }
 
-    deleteRecurringTransaction(id: number, v: string): Observable<FileResponse | null> {
-        let url_ = this.baseUrl + "/api/{v}/RecurringTransactions/{id}";
+    deleteRecurringRule(id: number, v: string): Observable<FileResponse | null> {
+        let url_ = this.baseUrl + "/api/{v}/RecurringRules/{id}";
         if (id === undefined || id === null)
             throw new Error("The parameter 'id' must be defined.");
         url_ = url_.replace("{id}", encodeURIComponent("" + id));
@@ -1797,11 +1720,11 @@ export class RecurringTransactionsClient implements IRecurringTransactionsClient
         };
 
         return this.http.request("delete", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processDeleteRecurringTransaction(response_);
+            return this.processDeleteRecurringRule(response_);
         })).pipe(_observableCatch((response_: any) => {
             if (response_ instanceof HttpResponseBase) {
                 try {
-                    return this.processDeleteRecurringTransaction(<any>response_);
+                    return this.processDeleteRecurringRule(<any>response_);
                 } catch (e) {
                     return <Observable<FileResponse | null>><any>_observableThrow(e);
                 }
@@ -1810,7 +1733,7 @@ export class RecurringTransactionsClient implements IRecurringTransactionsClient
         }));
     }
 
-    protected processDeleteRecurringTransaction(response: HttpResponseBase): Observable<FileResponse | null> {
+    protected processDeleteRecurringRule(response: HttpResponseBase): Observable<FileResponse | null> {
         const status = response.status;
         const responseBlob =
             response instanceof HttpResponse ? response.body :
@@ -1830,8 +1753,8 @@ export class RecurringTransactionsClient implements IRecurringTransactionsClient
         return _observableOf<FileResponse | null>(<any>null);
     }
 
-    getRecurringTransactions(v: string): Observable<PagedDataInquiryResponseOfRecurringTransaction> {
-        let url_ = this.baseUrl + "/api/{v}/RecurringTransactions";
+    getRecurringRules(v: string): Observable<PagedDataInquiryResponseOfRecurringRule> {
+        let url_ = this.baseUrl + "/api/{v}/RecurringRules";
         if (v === undefined || v === null)
             throw new Error("The parameter 'v' must be defined.");
         url_ = url_.replace("{v}", encodeURIComponent("" + v));
@@ -1846,20 +1769,20 @@ export class RecurringTransactionsClient implements IRecurringTransactionsClient
         };
 
         return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processGetRecurringTransactions(response_);
+            return this.processGetRecurringRules(response_);
         })).pipe(_observableCatch((response_: any) => {
             if (response_ instanceof HttpResponseBase) {
                 try {
-                    return this.processGetRecurringTransactions(<any>response_);
+                    return this.processGetRecurringRules(<any>response_);
                 } catch (e) {
-                    return <Observable<PagedDataInquiryResponseOfRecurringTransaction>><any>_observableThrow(e);
+                    return <Observable<PagedDataInquiryResponseOfRecurringRule>><any>_observableThrow(e);
                 }
             } else
-                return <Observable<PagedDataInquiryResponseOfRecurringTransaction>><any>_observableThrow(response_);
+                return <Observable<PagedDataInquiryResponseOfRecurringRule>><any>_observableThrow(response_);
         }));
     }
 
-    protected processGetRecurringTransactions(response: HttpResponseBase): Observable<PagedDataInquiryResponseOfRecurringTransaction> {
+    protected processGetRecurringRules(response: HttpResponseBase): Observable<PagedDataInquiryResponseOfRecurringRule> {
         const status = response.status;
         const responseBlob =
             response instanceof HttpResponse ? response.body :
@@ -1870,7 +1793,7 @@ export class RecurringTransactionsClient implements IRecurringTransactionsClient
             return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
             let result200: any = null;
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = PagedDataInquiryResponseOfRecurringTransaction.fromJS(resultData200);
+            result200 = PagedDataInquiryResponseOfRecurringRule.fromJS(resultData200);
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -1878,17 +1801,17 @@ export class RecurringTransactionsClient implements IRecurringTransactionsClient
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             }));
         }
-        return _observableOf<PagedDataInquiryResponseOfRecurringTransaction>(<any>null);
+        return _observableOf<PagedDataInquiryResponseOfRecurringRule>(<any>null);
     }
 
-    addRecurringTransaction(newRecurringTransaction: NewRecurringTransaction, v: string): Observable<RecurringTransaction> {
-        let url_ = this.baseUrl + "/api/{v}/RecurringTransactions";
+    addRecurringRuleAndPlannedTransactions(newRecurringRule: NewRecurringRule, v: string): Observable<RecurringRule> {
+        let url_ = this.baseUrl + "/api/{v}/RecurringRules";
         if (v === undefined || v === null)
             throw new Error("The parameter 'v' must be defined.");
         url_ = url_.replace("{v}", encodeURIComponent("" + v));
         url_ = url_.replace(/[?&]$/, "");
 
-        const content_ = JSON.stringify(newRecurringTransaction);
+        const content_ = JSON.stringify(newRecurringRule);
 
         let options_ : any = {
             body: content_,
@@ -1901,20 +1824,20 @@ export class RecurringTransactionsClient implements IRecurringTransactionsClient
         };
 
         return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processAddRecurringTransaction(response_);
+            return this.processAddRecurringRuleAndPlannedTransactions(response_);
         })).pipe(_observableCatch((response_: any) => {
             if (response_ instanceof HttpResponseBase) {
                 try {
-                    return this.processAddRecurringTransaction(<any>response_);
+                    return this.processAddRecurringRuleAndPlannedTransactions(<any>response_);
                 } catch (e) {
-                    return <Observable<RecurringTransaction>><any>_observableThrow(e);
+                    return <Observable<RecurringRule>><any>_observableThrow(e);
                 }
             } else
-                return <Observable<RecurringTransaction>><any>_observableThrow(response_);
+                return <Observable<RecurringRule>><any>_observableThrow(response_);
         }));
     }
 
-    protected processAddRecurringTransaction(response: HttpResponseBase): Observable<RecurringTransaction> {
+    protected processAddRecurringRuleAndPlannedTransactions(response: HttpResponseBase): Observable<RecurringRule> {
         const status = response.status;
         const responseBlob =
             response instanceof HttpResponse ? response.body :
@@ -1925,7 +1848,7 @@ export class RecurringTransactionsClient implements IRecurringTransactionsClient
             return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
             let result200: any = null;
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = RecurringTransaction.fromJS(resultData200);
+            result200 = RecurringRule.fromJS(resultData200);
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -1933,7 +1856,7 @@ export class RecurringTransactionsClient implements IRecurringTransactionsClient
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             }));
         }
-        return _observableOf<RecurringTransaction>(<any>null);
+        return _observableOf<RecurringRule>(<any>null);
     }
 }
 
@@ -2787,6 +2710,7 @@ export interface ITransactionsClient {
     updateTransaction(id: number, updatedTransaction: any, v: string): Observable<Transaction>;
     deleteTransaction(id: number, v: string): Observable<FileResponse | null>;
     getTransactionsByAccountId(id: number, v: string): Observable<PagedDataInquiryResponseOfTransaction>;
+    getTransactionsInPeriodAndByStatus(id: number, v: string, dateFrom?: string | undefined, dateTo?: string | undefined): Observable<PagedDataInquiryResponseOfTransaction>;
     getTransactions(v: string): Observable<PagedDataInquiryResponseOfTransaction>;
     addTransaction(newTransaction: NewTransaction, v: string): Observable<Transaction>;
 }
@@ -3001,6 +2925,68 @@ export class TransactionsClient implements ITransactionsClient {
     }
 
     protected processGetTransactionsByAccountId(response: HttpResponseBase): Observable<PagedDataInquiryResponseOfTransaction> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = PagedDataInquiryResponseOfTransaction.fromJS(resultData200);
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<PagedDataInquiryResponseOfTransaction>(<any>null);
+    }
+
+    getTransactionsInPeriodAndByStatus(id: number, v: string, dateFrom?: string | undefined, dateTo?: string | undefined): Observable<PagedDataInquiryResponseOfTransaction> {
+        let url_ = this.baseUrl + "/api/{v}/Transactions/GetTransactionsByStatus/{id}?";
+        if (id === undefined || id === null)
+            throw new Error("The parameter 'id' must be defined.");
+        url_ = url_.replace("{id}", encodeURIComponent("" + id));
+        if (v === undefined || v === null)
+            throw new Error("The parameter 'v' must be defined.");
+        url_ = url_.replace("{v}", encodeURIComponent("" + v));
+        if (dateFrom === null)
+            throw new Error("The parameter 'dateFrom' cannot be null.");
+        else if (dateFrom !== undefined)
+            url_ += "dateFrom=" + encodeURIComponent("" + dateFrom) + "&";
+        if (dateTo === null)
+            throw new Error("The parameter 'dateTo' cannot be null.");
+        else if (dateTo !== undefined)
+            url_ += "dateTo=" + encodeURIComponent("" + dateTo) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetTransactionsInPeriodAndByStatus(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetTransactionsInPeriodAndByStatus(<any>response_);
+                } catch (e) {
+                    return <Observable<PagedDataInquiryResponseOfTransaction>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<PagedDataInquiryResponseOfTransaction>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetTransactionsInPeriodAndByStatus(response: HttpResponseBase): Observable<PagedDataInquiryResponseOfTransaction> {
         const status = response.status;
         const responseBlob =
             response instanceof HttpResponse ? response.body :
@@ -5400,91 +5386,23 @@ export interface INewGroup {
     ordinal: number;
 }
 
-export class PagedDataInquiryResponseOfTransaction implements IPagedDataInquiryResponseOfTransaction {
-    items?: Transaction[] | undefined;
-    pageSize!: number;
-    links?: Link[] | undefined;
-    pageNumber!: number;
-    pageCount!: number;
-
-    constructor(data?: IPagedDataInquiryResponseOfTransaction) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            if (Array.isArray(_data["items"])) {
-                this.items = [] as any;
-                for (let item of _data["items"])
-                    this.items!.push(Transaction.fromJS(item));
-            }
-            this.pageSize = _data["pageSize"];
-            if (Array.isArray(_data["links"])) {
-                this.links = [] as any;
-                for (let item of _data["links"])
-                    this.links!.push(Link.fromJS(item));
-            }
-            this.pageNumber = _data["pageNumber"];
-            this.pageCount = _data["pageCount"];
-        }
-    }
-
-    static fromJS(data: any): PagedDataInquiryResponseOfTransaction {
-        data = typeof data === 'object' ? data : {};
-        let result = new PagedDataInquiryResponseOfTransaction();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        if (Array.isArray(this.items)) {
-            data["items"] = [];
-            for (let item of this.items)
-                data["items"].push(item.toJSON());
-        }
-        data["pageSize"] = this.pageSize;
-        if (Array.isArray(this.links)) {
-            data["links"] = [];
-            for (let item of this.links)
-                data["links"].push(item.toJSON());
-        }
-        data["pageNumber"] = this.pageNumber;
-        data["pageCount"] = this.pageCount;
-        return data; 
-    }
-}
-
-export interface IPagedDataInquiryResponseOfTransaction {
-    items?: Transaction[] | undefined;
-    pageSize: number;
-    links?: Link[] | undefined;
-    pageNumber: number;
-    pageCount: number;
-}
-
-export class Transaction implements ITransaction {
+export class RecurringRule implements IRecurringRule {
     id!: number;
-    date!: string;
     user?: UserLeaf | undefined;
     sender?: Account | undefined;
     receiver?: Account | undefined;
-    type?: TransactionType | undefined;
+    type?: string | undefined;
     category?: TransactionCategory | undefined;
-    status?: TransactionStatus | undefined;
     currency?: Currency | undefined;
     description?: string | undefined;
     amount!: number;
+    isActive!: boolean;
+    startDate?: string | undefined;
+    endDate?: string | undefined;
     version?: string | undefined;
-    recurringTransaction?: RecurringTransaction | undefined;
     links?: Link[] | undefined;
 
-    constructor(data?: ITransaction) {
+    constructor(data?: IRecurringRule) {
         if (data) {
             for (var property in data) {
                 if (data.hasOwnProperty(property))
@@ -5496,18 +5414,18 @@ export class Transaction implements ITransaction {
     init(_data?: any) {
         if (_data) {
             this.id = _data["id"];
-            this.date = _data["date"];
             this.user = _data["user"] ? UserLeaf.fromJS(_data["user"]) : <any>undefined;
             this.sender = _data["sender"] ? Account.fromJS(_data["sender"]) : <any>undefined;
             this.receiver = _data["receiver"] ? Account.fromJS(_data["receiver"]) : <any>undefined;
-            this.type = _data["type"] ? TransactionType.fromJS(_data["type"]) : <any>undefined;
+            this.type = _data["type"];
             this.category = _data["category"] ? TransactionCategory.fromJS(_data["category"]) : <any>undefined;
-            this.status = _data["status"] ? TransactionStatus.fromJS(_data["status"]) : <any>undefined;
             this.currency = _data["currency"] ? Currency.fromJS(_data["currency"]) : <any>undefined;
             this.description = _data["description"];
             this.amount = _data["amount"];
+            this.isActive = _data["isActive"];
+            this.startDate = _data["startDate"];
+            this.endDate = _data["endDate"];
             this.version = _data["version"];
-            this.recurringTransaction = _data["recurringTransaction"] ? RecurringTransaction.fromJS(_data["recurringTransaction"]) : <any>undefined;
             if (Array.isArray(_data["links"])) {
                 this.links = [] as any;
                 for (let item of _data["links"])
@@ -5516,9 +5434,9 @@ export class Transaction implements ITransaction {
         }
     }
 
-    static fromJS(data: any): Transaction {
+    static fromJS(data: any): RecurringRule {
         data = typeof data === 'object' ? data : {};
-        let result = new Transaction();
+        let result = new RecurringRule();
         result.init(data);
         return result;
     }
@@ -5526,18 +5444,18 @@ export class Transaction implements ITransaction {
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["id"] = this.id;
-        data["date"] = this.date;
         data["user"] = this.user ? this.user.toJSON() : <any>undefined;
         data["sender"] = this.sender ? this.sender.toJSON() : <any>undefined;
         data["receiver"] = this.receiver ? this.receiver.toJSON() : <any>undefined;
-        data["type"] = this.type ? this.type.toJSON() : <any>undefined;
+        data["type"] = this.type;
         data["category"] = this.category ? this.category.toJSON() : <any>undefined;
-        data["status"] = this.status ? this.status.toJSON() : <any>undefined;
         data["currency"] = this.currency ? this.currency.toJSON() : <any>undefined;
         data["description"] = this.description;
         data["amount"] = this.amount;
+        data["isActive"] = this.isActive;
+        data["startDate"] = this.startDate;
+        data["endDate"] = this.endDate;
         data["version"] = this.version;
-        data["recurringTransaction"] = this.recurringTransaction ? this.recurringTransaction.toJSON() : <any>undefined;
         if (Array.isArray(this.links)) {
             data["links"] = [];
             for (let item of this.links)
@@ -5547,67 +5465,21 @@ export class Transaction implements ITransaction {
     }
 }
 
-export interface ITransaction {
+export interface IRecurringRule {
     id: number;
-    date: string;
     user?: UserLeaf | undefined;
     sender?: Account | undefined;
     receiver?: Account | undefined;
-    type?: TransactionType | undefined;
+    type?: string | undefined;
     category?: TransactionCategory | undefined;
-    status?: TransactionStatus | undefined;
     currency?: Currency | undefined;
     description?: string | undefined;
     amount: number;
+    isActive: boolean;
+    startDate?: string | undefined;
+    endDate?: string | undefined;
     version?: string | undefined;
-    recurringTransaction?: RecurringTransaction | undefined;
     links?: Link[] | undefined;
-}
-
-export class TransactionType implements ITransactionType {
-    id!: TransactionTypeValue;
-    name?: string | undefined;
-
-    constructor(data?: ITransactionType) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.id = _data["id"];
-            this.name = _data["name"];
-        }
-    }
-
-    static fromJS(data: any): TransactionType {
-        data = typeof data === 'object' ? data : {};
-        let result = new TransactionType();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["id"] = this.id;
-        data["name"] = this.name;
-        return data; 
-    }
-}
-
-export interface ITransactionType {
-    id: TransactionTypeValue;
-    name?: string | undefined;
-}
-
-export enum TransactionTypeValue {
-    IncomingTransfer = 100,
-    OutgoingTransfer = 200,
-    Transfer = 300,
 }
 
 export class TransactionCategory implements ITransactionCategory {
@@ -5726,149 +5598,14 @@ export interface ITransactionCategoryLeaf {
     links?: Link[] | undefined;
 }
 
-export class TransactionStatus implements ITransactionStatus {
-    id!: TransactionStatusValue;
-    name?: string | undefined;
-    ordinal!: number;
-
-    constructor(data?: ITransactionStatus) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.id = _data["id"];
-            this.name = _data["name"];
-            this.ordinal = _data["ordinal"];
-        }
-    }
-
-    static fromJS(data: any): TransactionStatus {
-        data = typeof data === 'object' ? data : {};
-        let result = new TransactionStatus();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["id"] = this.id;
-        data["name"] = this.name;
-        data["ordinal"] = this.ordinal;
-        return data; 
-    }
-}
-
-export interface ITransactionStatus {
-    id: TransactionStatusValue;
-    name?: string | undefined;
-    ordinal: number;
-}
-
-export enum TransactionStatusValue {
-    Planned = 100,
-    Awaiting = 200,
-    Paid = 300,
-    Outdated = 400,
-}
-
-export class RecurringTransaction implements IRecurringTransaction {
-    id!: number;
-    user?: UserLeaf | undefined;
-    sender?: Account | undefined;
-    receiver?: Account | undefined;
-    type?: string | undefined;
-    category?: TransactionCategory | undefined;
-    currency?: Currency | undefined;
-    description?: string | undefined;
-    amount!: number;
-    version?: string | undefined;
-    links?: Link[] | undefined;
-
-    constructor(data?: IRecurringTransaction) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.id = _data["id"];
-            this.user = _data["user"] ? UserLeaf.fromJS(_data["user"]) : <any>undefined;
-            this.sender = _data["sender"] ? Account.fromJS(_data["sender"]) : <any>undefined;
-            this.receiver = _data["receiver"] ? Account.fromJS(_data["receiver"]) : <any>undefined;
-            this.type = _data["type"];
-            this.category = _data["category"] ? TransactionCategory.fromJS(_data["category"]) : <any>undefined;
-            this.currency = _data["currency"] ? Currency.fromJS(_data["currency"]) : <any>undefined;
-            this.description = _data["description"];
-            this.amount = _data["amount"];
-            this.version = _data["version"];
-            if (Array.isArray(_data["links"])) {
-                this.links = [] as any;
-                for (let item of _data["links"])
-                    this.links!.push(Link.fromJS(item));
-            }
-        }
-    }
-
-    static fromJS(data: any): RecurringTransaction {
-        data = typeof data === 'object' ? data : {};
-        let result = new RecurringTransaction();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["id"] = this.id;
-        data["user"] = this.user ? this.user.toJSON() : <any>undefined;
-        data["sender"] = this.sender ? this.sender.toJSON() : <any>undefined;
-        data["receiver"] = this.receiver ? this.receiver.toJSON() : <any>undefined;
-        data["type"] = this.type;
-        data["category"] = this.category ? this.category.toJSON() : <any>undefined;
-        data["currency"] = this.currency ? this.currency.toJSON() : <any>undefined;
-        data["description"] = this.description;
-        data["amount"] = this.amount;
-        data["version"] = this.version;
-        if (Array.isArray(this.links)) {
-            data["links"] = [];
-            for (let item of this.links)
-                data["links"].push(item.toJSON());
-        }
-        return data; 
-    }
-}
-
-export interface IRecurringTransaction {
-    id: number;
-    user?: UserLeaf | undefined;
-    sender?: Account | undefined;
-    receiver?: Account | undefined;
-    type?: string | undefined;
-    category?: TransactionCategory | undefined;
-    currency?: Currency | undefined;
-    description?: string | undefined;
-    amount: number;
-    version?: string | undefined;
-    links?: Link[] | undefined;
-}
-
-export class PagedDataInquiryResponseOfRecurringTransaction implements IPagedDataInquiryResponseOfRecurringTransaction {
-    items?: RecurringTransaction[] | undefined;
+export class PagedDataInquiryResponseOfRecurringRule implements IPagedDataInquiryResponseOfRecurringRule {
+    items?: RecurringRule[] | undefined;
     pageSize!: number;
     links?: Link[] | undefined;
     pageNumber!: number;
     pageCount!: number;
 
-    constructor(data?: IPagedDataInquiryResponseOfRecurringTransaction) {
+    constructor(data?: IPagedDataInquiryResponseOfRecurringRule) {
         if (data) {
             for (var property in data) {
                 if (data.hasOwnProperty(property))
@@ -5882,7 +5619,7 @@ export class PagedDataInquiryResponseOfRecurringTransaction implements IPagedDat
             if (Array.isArray(_data["items"])) {
                 this.items = [] as any;
                 for (let item of _data["items"])
-                    this.items!.push(RecurringTransaction.fromJS(item));
+                    this.items!.push(RecurringRule.fromJS(item));
             }
             this.pageSize = _data["pageSize"];
             if (Array.isArray(_data["links"])) {
@@ -5895,9 +5632,9 @@ export class PagedDataInquiryResponseOfRecurringTransaction implements IPagedDat
         }
     }
 
-    static fromJS(data: any): PagedDataInquiryResponseOfRecurringTransaction {
+    static fromJS(data: any): PagedDataInquiryResponseOfRecurringRule {
         data = typeof data === 'object' ? data : {};
-        let result = new PagedDataInquiryResponseOfRecurringTransaction();
+        let result = new PagedDataInquiryResponseOfRecurringRule();
         result.init(data);
         return result;
     }
@@ -5921,15 +5658,15 @@ export class PagedDataInquiryResponseOfRecurringTransaction implements IPagedDat
     }
 }
 
-export interface IPagedDataInquiryResponseOfRecurringTransaction {
-    items?: RecurringTransaction[] | undefined;
+export interface IPagedDataInquiryResponseOfRecurringRule {
+    items?: RecurringRule[] | undefined;
     pageSize: number;
     links?: Link[] | undefined;
     pageNumber: number;
     pageCount: number;
 }
 
-export class NewRecurringTransaction implements INewRecurringTransaction {
+export class NewRecurringRule implements INewRecurringRule {
     user!: User;
     sender!: Account;
     receiver!: Account;
@@ -5938,8 +5675,11 @@ export class NewRecurringTransaction implements INewRecurringTransaction {
     currency!: Currency;
     description!: string;
     amount!: number;
+    isActive!: boolean;
+    startDate?: string | undefined;
+    endDate?: string | undefined;
 
-    constructor(data?: INewRecurringTransaction) {
+    constructor(data?: INewRecurringRule) {
         if (data) {
             for (var property in data) {
                 if (data.hasOwnProperty(property))
@@ -5966,12 +5706,15 @@ export class NewRecurringTransaction implements INewRecurringTransaction {
             this.currency = _data["currency"] ? Currency.fromJS(_data["currency"]) : new Currency();
             this.description = _data["description"];
             this.amount = _data["amount"];
+            this.isActive = _data["isActive"];
+            this.startDate = _data["startDate"];
+            this.endDate = _data["endDate"];
         }
     }
 
-    static fromJS(data: any): NewRecurringTransaction {
+    static fromJS(data: any): NewRecurringRule {
         data = typeof data === 'object' ? data : {};
-        let result = new NewRecurringTransaction();
+        let result = new NewRecurringRule();
         result.init(data);
         return result;
     }
@@ -5986,11 +5729,14 @@ export class NewRecurringTransaction implements INewRecurringTransaction {
         data["currency"] = this.currency ? this.currency.toJSON() : <any>undefined;
         data["description"] = this.description;
         data["amount"] = this.amount;
+        data["isActive"] = this.isActive;
+        data["startDate"] = this.startDate;
+        data["endDate"] = this.endDate;
         return data; 
     }
 }
 
-export interface INewRecurringTransaction {
+export interface INewRecurringRule {
     user: User;
     sender: Account;
     receiver: Account;
@@ -5999,6 +5745,9 @@ export interface INewRecurringTransaction {
     currency: Currency;
     description: string;
     amount: number;
+    isActive: boolean;
+    startDate?: string | undefined;
+    endDate?: string | undefined;
 }
 
 export class User extends UserLeaf implements IUser {
@@ -6040,6 +5789,52 @@ export class User extends UserLeaf implements IUser {
 
 export interface IUser extends IUserLeaf {
     roles?: Role[] | undefined;
+}
+
+export class TransactionType implements ITransactionType {
+    id!: TransactionTypeValue;
+    name?: string | undefined;
+
+    constructor(data?: ITransactionType) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.id = _data["id"];
+            this.name = _data["name"];
+        }
+    }
+
+    static fromJS(data: any): TransactionType {
+        data = typeof data === 'object' ? data : {};
+        let result = new TransactionType();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["id"] = this.id;
+        data["name"] = this.name;
+        return data; 
+    }
+}
+
+export interface ITransactionType {
+    id: TransactionTypeValue;
+    name?: string | undefined;
+}
+
+export enum TransactionTypeValue {
+    IncomingTransfer = 100,
+    OutgoingTransfer = 200,
+    Transfer = 300,
 }
 
 export class Task implements ITask {
@@ -6128,6 +5923,57 @@ export interface ITask {
     assignees?: UserLeaf[] | undefined;
     version?: string | undefined;
     links?: Link[] | undefined;
+}
+
+export class TransactionStatus implements ITransactionStatus {
+    id!: TransactionStatusValue;
+    name?: string | undefined;
+    ordinal!: number;
+
+    constructor(data?: ITransactionStatus) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.id = _data["id"];
+            this.name = _data["name"];
+            this.ordinal = _data["ordinal"];
+        }
+    }
+
+    static fromJS(data: any): TransactionStatus {
+        data = typeof data === 'object' ? data : {};
+        let result = new TransactionStatus();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["id"] = this.id;
+        data["name"] = this.name;
+        data["ordinal"] = this.ordinal;
+        return data; 
+    }
+}
+
+export interface ITransactionStatus {
+    id: TransactionStatusValue;
+    name?: string | undefined;
+    ordinal: number;
+}
+
+export enum TransactionStatusValue {
+    Planned = 100,
+    Awaiting = 200,
+    Paid = 300,
+    Outdated = 400,
 }
 
 export class PagedDataInquiryResponseOfTask implements IPagedDataInquiryResponseOfTask {
@@ -6306,6 +6152,166 @@ export interface IPagedDataInquiryResponseOfTransactionCategory {
     pageCount: number;
 }
 
+export class Transaction implements ITransaction {
+    id!: number;
+    date!: string;
+    user?: UserLeaf | undefined;
+    sender?: Account | undefined;
+    receiver?: Account | undefined;
+    type?: TransactionType | undefined;
+    category?: TransactionCategory | undefined;
+    status?: TransactionStatus | undefined;
+    currency?: Currency | undefined;
+    description?: string | undefined;
+    amount!: number;
+    version?: string | undefined;
+    links?: Link[] | undefined;
+
+    constructor(data?: ITransaction) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.id = _data["id"];
+            this.date = _data["date"];
+            this.user = _data["user"] ? UserLeaf.fromJS(_data["user"]) : <any>undefined;
+            this.sender = _data["sender"] ? Account.fromJS(_data["sender"]) : <any>undefined;
+            this.receiver = _data["receiver"] ? Account.fromJS(_data["receiver"]) : <any>undefined;
+            this.type = _data["type"] ? TransactionType.fromJS(_data["type"]) : <any>undefined;
+            this.category = _data["category"] ? TransactionCategory.fromJS(_data["category"]) : <any>undefined;
+            this.status = _data["status"] ? TransactionStatus.fromJS(_data["status"]) : <any>undefined;
+            this.currency = _data["currency"] ? Currency.fromJS(_data["currency"]) : <any>undefined;
+            this.description = _data["description"];
+            this.amount = _data["amount"];
+            this.version = _data["version"];
+            if (Array.isArray(_data["links"])) {
+                this.links = [] as any;
+                for (let item of _data["links"])
+                    this.links!.push(Link.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): Transaction {
+        data = typeof data === 'object' ? data : {};
+        let result = new Transaction();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["id"] = this.id;
+        data["date"] = this.date;
+        data["user"] = this.user ? this.user.toJSON() : <any>undefined;
+        data["sender"] = this.sender ? this.sender.toJSON() : <any>undefined;
+        data["receiver"] = this.receiver ? this.receiver.toJSON() : <any>undefined;
+        data["type"] = this.type ? this.type.toJSON() : <any>undefined;
+        data["category"] = this.category ? this.category.toJSON() : <any>undefined;
+        data["status"] = this.status ? this.status.toJSON() : <any>undefined;
+        data["currency"] = this.currency ? this.currency.toJSON() : <any>undefined;
+        data["description"] = this.description;
+        data["amount"] = this.amount;
+        data["version"] = this.version;
+        if (Array.isArray(this.links)) {
+            data["links"] = [];
+            for (let item of this.links)
+                data["links"].push(item.toJSON());
+        }
+        return data; 
+    }
+}
+
+export interface ITransaction {
+    id: number;
+    date: string;
+    user?: UserLeaf | undefined;
+    sender?: Account | undefined;
+    receiver?: Account | undefined;
+    type?: TransactionType | undefined;
+    category?: TransactionCategory | undefined;
+    status?: TransactionStatus | undefined;
+    currency?: Currency | undefined;
+    description?: string | undefined;
+    amount: number;
+    version?: string | undefined;
+    links?: Link[] | undefined;
+}
+
+export class PagedDataInquiryResponseOfTransaction implements IPagedDataInquiryResponseOfTransaction {
+    items?: Transaction[] | undefined;
+    pageSize!: number;
+    links?: Link[] | undefined;
+    pageNumber!: number;
+    pageCount!: number;
+
+    constructor(data?: IPagedDataInquiryResponseOfTransaction) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            if (Array.isArray(_data["items"])) {
+                this.items = [] as any;
+                for (let item of _data["items"])
+                    this.items!.push(Transaction.fromJS(item));
+            }
+            this.pageSize = _data["pageSize"];
+            if (Array.isArray(_data["links"])) {
+                this.links = [] as any;
+                for (let item of _data["links"])
+                    this.links!.push(Link.fromJS(item));
+            }
+            this.pageNumber = _data["pageNumber"];
+            this.pageCount = _data["pageCount"];
+        }
+    }
+
+    static fromJS(data: any): PagedDataInquiryResponseOfTransaction {
+        data = typeof data === 'object' ? data : {};
+        let result = new PagedDataInquiryResponseOfTransaction();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        if (Array.isArray(this.items)) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        data["pageSize"] = this.pageSize;
+        if (Array.isArray(this.links)) {
+            data["links"] = [];
+            for (let item of this.links)
+                data["links"].push(item.toJSON());
+        }
+        data["pageNumber"] = this.pageNumber;
+        data["pageCount"] = this.pageCount;
+        return data; 
+    }
+}
+
+export interface IPagedDataInquiryResponseOfTransaction {
+    items?: Transaction[] | undefined;
+    pageSize: number;
+    links?: Link[] | undefined;
+    pageNumber: number;
+    pageCount: number;
+}
+
 export class NewTransaction implements INewTransaction {
     date!: string;
     user!: UserLeaf;
@@ -6317,7 +6323,6 @@ export class NewTransaction implements INewTransaction {
     currency!: Currency;
     description!: string;
     amount!: number;
-    recurringTransaction?: RecurringTransaction | undefined;
 
     constructor(data?: INewTransaction) {
         if (data) {
@@ -6349,7 +6354,6 @@ export class NewTransaction implements INewTransaction {
             this.currency = _data["currency"] ? Currency.fromJS(_data["currency"]) : new Currency();
             this.description = _data["description"];
             this.amount = _data["amount"];
-            this.recurringTransaction = _data["recurringTransaction"] ? RecurringTransaction.fromJS(_data["recurringTransaction"]) : <any>undefined;
         }
     }
 
@@ -6372,7 +6376,6 @@ export class NewTransaction implements INewTransaction {
         data["currency"] = this.currency ? this.currency.toJSON() : <any>undefined;
         data["description"] = this.description;
         data["amount"] = this.amount;
-        data["recurringTransaction"] = this.recurringTransaction ? this.recurringTransaction.toJSON() : <any>undefined;
         return data; 
     }
 }
@@ -6388,7 +6391,6 @@ export interface INewTransaction {
     currency: Currency;
     description: string;
     amount: number;
-    recurringTransaction?: RecurringTransaction | undefined;
 }
 
 export class PagedDataInquiryResponseOfTransactionStatus implements IPagedDataInquiryResponseOfTransactionStatus {
