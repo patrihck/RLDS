@@ -6,22 +6,17 @@ namespace RldsApp.Web.Api.MaintenanceProcessing.RecurringTransactionMaintenanceP
 {
     public class DeleteRecurringRuleMaintenanceProcessor : IDeleteRecurringRuleMaintenanceProcessor
 	{
-		private readonly IDeleteRecurringRuleMaintenanceProcessor _deleteRecurringRuleMaintenanceProcessor;
-		private readonly IDeleteAllTransactionsByRecurringRuleIdAndStatusId _deleteAllTransactionsByRecurringRuleIdAndStatusId;
 
-		public DeleteRecurringRuleMaintenanceProcessor(
-			IDeleteRecurringRuleMaintenanceProcessor deleteRecurringRuleMaintenanceProcessor, 
-			IDeleteAllTransactionsByRecurringRuleIdAndStatusId deleteAllTransactionsByRecurringRuleIdAndStatusId)
+		public DeleteRecurringRuleMaintenanceProcessor()
 		{
-			_deleteRecurringRuleMaintenanceProcessor = deleteRecurringRuleMaintenanceProcessor;
-			_deleteAllTransactionsByRecurringRuleIdAndStatusId = deleteAllTransactionsByRecurringRuleIdAndStatusId;
 		}
 
 		public bool DeleteRecurringRule(long recurringRuleId)
 		{
-			var statusId = (long)TransactionStatusValue.Planned;
-			_deleteAllTransactionsByRecurringRuleIdAndStatusId.DeleteAllTransactionsByRecurringRuleIdAndStatusId(recurringRuleId, statusId);
-			return _deleteRecurringRuleMaintenanceProcessor.DeleteRecurringRule(recurringRuleId);
+			//var statusId = (long)TransactionStatusValue.Planned;
+			//_deleteAllTransactionsByRecurringRuleIdAndStatusId.Handle(recurringRuleId, statusId);
+			//return _deleteRecurringRuleMaintenanceProcessor.DeleteRecurringRule(recurringRuleId);
+			return false;
 		}
 	}
 }

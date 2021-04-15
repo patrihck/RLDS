@@ -9,16 +9,16 @@ using System.Text;
 
 namespace RldsApp.Data.SqlServer.DataProcessing.TransactionDataProcessor
 {
-    public class DeleteTransactionByRecurringRuleIdAndStatusId : IDeleteAllTransactionsByRecurringRuleIdAndStatusId
+    public class DeleteAllTransactionsByRecurringRuleIdAndStatusId : IDeleteAllTransactionsByRecurringRuleIdAndStatusId
 	{
 		private readonly ISession _session;
 
-		public DeleteTransactionByRecurringRuleIdAndStatusId(ISession session)
+		public DeleteAllTransactionsByRecurringRuleIdAndStatusId(ISession session)
 		{
 			_session = session;
 		}
 
-		public void DeleteAllTransactionsByRecurringRuleIdAndStatusId(long recurringRuleId, long statusId)
+		public void Handle(long recurringRuleId, long statusId)
 		{
 			Expression<Func<Transaction, bool>> predicate = transaction =>
 			transaction.RecurringRule.Id == recurringRuleId &&

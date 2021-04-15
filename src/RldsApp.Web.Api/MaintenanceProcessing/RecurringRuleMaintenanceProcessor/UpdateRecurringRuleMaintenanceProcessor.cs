@@ -19,7 +19,7 @@ namespace RldsApp.Web.Api.MaintenanceProcessing.RecurringRuleMaintenanceProcesso
 		private readonly IAddTransactionDataProcessor _addTransactionDataProcessor;
 		private readonly RecurringRuleProcessorProvider _recurringRuleProcessorProvider;
 		private readonly ITransactionStatusByIdDataProcessor _transactionStatusByIdDataProcessor;
-		private readonly IDeleteAllTransactionsByRecurringRuleIdAndStatusId _deleteAllTransactionsByRecurringRuleIdAndStatusId;
+		//private readonly IDeleteAllTransactionsByRecurringRuleIdAndStatusId _deleteAllTransactionsByRecurringRuleIdAndStatusId;
 		private readonly IRecurringRuleLinkService _linkService;
 
 		public UpdateRecurringRuleMaintenanceProcessor(
@@ -29,7 +29,7 @@ namespace RldsApp.Web.Api.MaintenanceProcessing.RecurringRuleMaintenanceProcesso
 			IAddTransactionDataProcessor addTransactionDataProcessor,
 			RecurringRuleProcessorProvider recurringRuleProcessorProvider,
 			ITransactionStatusByIdDataProcessor transactionStatusByIdDataProcessor,
-			IDeleteAllTransactionsByRecurringRuleIdAndStatusId deleteAllTransactionsByRecurringRuleIdAndStatusId,
+			//IDeleteAllTransactionsByRecurringRuleIdAndStatusId deleteAllTransactionsByRecurringRuleIdAndStatusId,
 			IRecurringRuleLinkService linkService)
 		{
 			_dataProcessor = dataProcessor;
@@ -38,7 +38,7 @@ namespace RldsApp.Web.Api.MaintenanceProcessing.RecurringRuleMaintenanceProcesso
 			_addTransactionDataProcessor = addTransactionDataProcessor;
 			_recurringRuleProcessorProvider = recurringRuleProcessorProvider;
 			_transactionStatusByIdDataProcessor = transactionStatusByIdDataProcessor;
-			_deleteAllTransactionsByRecurringRuleIdAndStatusId = deleteAllTransactionsByRecurringRuleIdAndStatusId;
+			//_deleteAllTransactionsByRecurringRuleIdAndStatusId = deleteAllTransactionsByRecurringRuleIdAndStatusId;
 			_linkService = linkService;
 		}
 
@@ -60,8 +60,9 @@ namespace RldsApp.Web.Api.MaintenanceProcessing.RecurringRuleMaintenanceProcesso
 
 		private void DeletePlannedTransactions(Data.Entities.RecurringRule recurringRule)
         {
-			var statusId = (long)TransactionStatusValue.Planned;
-			_deleteAllTransactionsByRecurringRuleIdAndStatusId.DeleteAllTransactionsByRecurringRuleIdAndStatusId(recurringRule.Id, statusId);
+			throw new System.Exception();
+			//var statusId = (long)TransactionStatusValue.Planned;
+			///_deleteAllTransactionsByRecurringRuleIdAndStatusId.Handle(recurringRule.Id, statusId);
 		}
 
 		private void AddPlannedTransactions(Data.Entities.RecurringRule recurringRule)

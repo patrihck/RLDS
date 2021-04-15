@@ -7,6 +7,6 @@ namespace RldsApp.Data.DataProcessing.TransactionDataProcessor
 {
     public interface IDeleteAllTransactionsByRecurringRuleIdAndStatusId
     {
-        void DeleteAllTransactionsByRecurringRuleIdAndStatusId(long recurringRuleId, long statusId);
+        void Handle(long recurringRuleId, long statusId);
     }
 }
