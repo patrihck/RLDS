@@ -12,7 +12,7 @@
 	[Description] [nvarchar](255) NULL,
 	[Amount] [money] NOT NULL,
 	[ts] [rowversion] NOT NULL,
-	[RecurringTransactionId] BIGINT NULL, 
+	[RecurringRuleId] BIGINT NULL, 
     CONSTRAINT [PK_Transaction]
 		PRIMARY KEY ([TransactionId]),
 	CONSTRAINT [FK_Transaction_User]
