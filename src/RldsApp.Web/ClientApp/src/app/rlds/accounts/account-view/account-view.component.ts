@@ -49,15 +49,19 @@ export class AccountViewComponent implements OnInit {
       o.field = 'date';
     }));
     this.cols.push(new PrimengTableColumn(o => {
-      o.header = 'user';
+      o.header = 'sender';
       o.field = 'user';
     }));
     this.cols.push(new PrimengTableColumn(o => {
-      o.header = 'sender';
+      o.header = 'sender account';
       o.field = 'sender';
     }));
     this.cols.push(new PrimengTableColumn(o => {
       o.header = 'receiver';
+      o.field = 'user2';
+    }));
+    this.cols.push(new PrimengTableColumn(o => {
+      o.header = 'receiver account';
       o.field = 'receiver';
     }));
     this.cols.push(new PrimengTableColumn(o => {

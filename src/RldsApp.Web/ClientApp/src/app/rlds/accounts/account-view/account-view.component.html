@@ -34,7 +34,10 @@
       <td *ngFor="let col of columns" [ngSwitch]="col.field">
 
         <div *ngSwitchCase="'user'">
-          {{item.user.firstname}} {{item.user.lastname}}
+          {{item.sender.user.firstname}} {{item.sender.user.lastname}}
+        </div>
+        <div *ngSwitchCase="'user2'">
+          {{item.receiver.user.firstname}} {{item.receiver.user.lastname}}
         </div>
         <div *ngSwitchCase="'currency'">
           <span *ngIf="item.currency">
@@ -73,6 +76,9 @@
           <span *ngIf="item.recurringTransaction">
             {{item.recurringTransaction.id}}
           </span>
+        </div>
+        <div *ngSwitchCase="'amount'">
+          {{item.amount | number : '1.2-2'}}
         </div>
 
 

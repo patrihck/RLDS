@@ -16,8 +16,8 @@ export class AddTransactionComponent implements OnInit {
   transactionData: NewTransaction;
   accounts: Array<Account>;
   categories: Array<TransactionCategory>;
-  statuses : Array<TransactionStatus>;
-  types : Array<TransactionType>;
+  statuses: Array<TransactionStatus>;
+  types: Array<TransactionType>;
   users: Array<User>;
   recuringTransactions: Array<RecurringRule>;
 
@@ -52,25 +52,28 @@ export class AddTransactionComponent implements OnInit {
 
   getData() {
     this.accountsClient.getAccount("1.0").subscribe(r => {
-      this.accounts = r.items;
+      this.accounts = r.items.filter(acc => acc.user.id != Helper.GetCurrentUser().id);
+      this.accounts.forEach(acc => {
+        acc.name = `${acc.user.firstname} ${acc.user.lastname} - ${acc.name}`
+      })
     });
     this.currencyClient.getCurrencies("1.0").subscribe(result => {
       this.currencies = result.items;
     });
 
-    this.transactionCategoryClient.getTransactionCategories( "1.0").subscribe(r => {
+    this.transactionCategoryClient.getTransactionCategories("1.0").subscribe(r => {
       this.categories = r.items;
     });
 
-    this.transactionTypesClient.getTransactionTypes( "1.0").subscribe(r => {
+    this.transactionTypesClient.getTransactionTypes("1.0").subscribe(r => {
       this.types = r.items;
     });
 
-    this.transactionStatusClient.getTransactionStatus( "1.0").subscribe(r => {
+    this.transactionStatusClient.getTransactionStatus("1.0").subscribe(r => {
       this.statuses = r.items;
     });
 
-    this.usersClient.getUsers( "1.0").subscribe(r => {
+    this.usersClient.getUsers("1.0").subscribe(r => {
       this.users = r.items;
     });
   }
