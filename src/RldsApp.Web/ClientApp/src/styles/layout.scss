@@ -159,7 +159,7 @@ p-sidebar {
     height: 100vh;
     border: 0;
     box-shadow: 0px 3px 40px $boxshadow;
-    background: $light 0% 0% no-repeat padding-box;
+    background: $dark 0% 0% no-repeat padding-box;
   }
 }
 
@@ -282,4 +282,20 @@ p-table {
       }
     }
   }
+}
+
+h3.ng-star-inserted {
+  color: $dark;
+}
+
+.chartjs-render-monitor {
+  background-color: $light;
+}
+
+.p-carousel-items-container {
+  background-color: $light;
+}
+
+.p-carousel-items-container > img:hover {
+  box-shadow: 10px 5px 5px $grey;
 }

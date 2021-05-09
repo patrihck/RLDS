@@ -7,13 +7,21 @@
   letter-spacing: 0px;
   color: $white;
   border-radius: 0 40px 40px 0;
-  color: $dark;
+  color: $light;
+  //text-shadow: 2px 2px 4px $light;
 
   &.active {
     background: $pink;
-    box-shadow: 3px 0px 6px $silver;
+    //box-shadow: 3px 0px 6px $silver;
     color: $white;
   }
+}
+
+.menu-item:hover {
+  background: $darkblue;
+  color: $white;
+  font-weight: bold;
+  text-shadow: 2px 2px 7px 5px grey;
 }
 
 .icon-background {

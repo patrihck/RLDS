@@ -1,3 +1,5 @@
+//@import '../../../../styles/variables.scss';
+
 .product-item {
   .product-item-content {
     border: 1px solid var(--surface-d);
@@ -5,10 +7,21 @@
     margin: .3rem;
     text-align: center;
     padding: 2rem 0;
+    background-color: white;
   }
 
   .product-image {
     width: 50%;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)
+    box-shadow: 3px 3px 15px 5px grey;
+    opacity: 70%;
+    filter: blur(0.7px);
   }
+
+  .product-image:hover {
+    opacity: 100%;
+    filter: blur(0px);
+    transform:scale(1.2);
+  }
+
 }
+

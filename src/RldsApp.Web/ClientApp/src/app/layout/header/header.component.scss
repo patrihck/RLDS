@@ -22,7 +22,7 @@
     text-align: left;
     font: 30px/23px Roboto;
     letter-spacing: 0px;
-    color: $darkblue;
+    color: $dark;
     opacity: 1;
     font-weight: bold;
   }
@@ -32,11 +32,11 @@
     text-align: left;
     font: 20px/27px Roboto;
     letter-spacing: 0px;
-    color: $darkblue;
+    color: $dark;
     opacity: 1;
   }
 
   &.avatar {
-    color: $grey
+    color: $dark;
   }
 }

@@ -9,6 +9,7 @@
   font-family: Roboto;
 }
 
+
 #app-body {
   margin: 20px;
 }
@@ -16,7 +17,25 @@
 body {
   margin: 0;
   font-family: Roboto;
-  background: $light 0% 0% no-repeat padding-box;
+  //background: $light 0% 0% no-repeat padding-box;
+  //background: linear-gradient(to left, $BurlyWood, $Beige);
+  height: 100%;
+  /* max-height: 600px; */
+  width: 100%;
+  background-color: #eceeef;
+
+  }
+
+@keyframes para {
+  100% {
+    background-position: 
+      -3000px 20%,
+      -800px 95%,
+      500px 50%,
+      1000px 100%,
+      400px 0;
+    }
+
 }
 
 #main-site-loader {
