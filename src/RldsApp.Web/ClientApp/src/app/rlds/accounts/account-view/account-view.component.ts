@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { defaultRequestErrorHandler } from '../../../../infrastructure/interceptors/error-interceptor';
 import { PrimengTableColumn } from '../../../../infrastructure/models/layout/primeng-table.model';
 import { Account, AccountsClient, Currency, CurrencyClient, PagedDataInquiryResponseOfTransaction, RecurringRule, Transaction, TransactionsClient } from '../../../../infrastructure/services-api/rlds-api';
-import { LayoutService } from '../../../../infrastructure/services/layout/layout.service';
+import { LayoutService, MessageSeverity } from '../../../../infrastructure/services/layout/layout.service';
 
 @Component({
   selector: 'app-account-view',
@@ -92,6 +93,13 @@ export class AccountViewComponent implements OnInit {
     //  o.header = 'recurringTransaction';
     //  o.field = 'recurringTransaction';
     //}));
+  }
+
+  removeTransaction(id: number) {
+    this.transactionClient.deleteTransaction(id, '1.0').subscribe(r => {
+      this.layoutService.showPopover(MessageSeverity.success, 'Usunięto transakcję');
+      this.getData();
+    }, err => defaultRequestErrorHandler(this.layoutService, err));
   }
 
   cl(a) { console.log(a)}

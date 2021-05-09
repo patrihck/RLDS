@@ -27,6 +27,7 @@
       <th *ngFor="let col of columns">
         {{col.header}}
       </th>
+      <th></th>
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-item let-columns="columns">
@@ -86,6 +87,11 @@
           {{item[col.field]}}
         </div>
 
+      </td>
+
+      <td>
+        <button pButton type="button" icon="pi pi-ban" label="Edytuj" iconPos="left" [routerLink]="['/rlds/transactions/edit',item.id]"></button>
+        <button pButton type="button" icon="pi pi-ban" label="Usuń" iconPos="left" (click)="removeTransaction(item.id)"></button>
       </td>
     </tr>
     {{cl(item)}}
